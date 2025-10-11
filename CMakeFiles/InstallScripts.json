@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/coffee/Gimbal/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

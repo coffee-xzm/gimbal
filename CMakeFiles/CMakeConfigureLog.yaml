@@ -1,0 +1,1799 @@
+
+---
+events:
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/local/share/cmake-4.1/Modules/CMakeDetermineSystem.cmake:12 (find_program)"
+      - "CMakeLists.txt:17 (project)"
+    mode: "program"
+    variable: "CMAKE_UNAME"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "uname"
+    candidate_directories:
+      - "/usr/local/bin/"
+      - "/usr/local/cuda-13.0/bin/"
+      - "/opt/ros/humble/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/usr/bin/"
+      - "/sbin/"
+      - "/bin/"
+      - "/usr/games/"
+      - "/usr/local/games/"
+      - "/snap/bin/"
+    searched_directories:
+      - "/usr/local/bin/uname"
+      - "/usr/local/cuda-13.0/bin/uname"
+      - "/opt/ros/humble/bin/uname"
+      - "/usr/local/sbin/uname"
+      - "/usr/sbin/uname"
+    found: "/usr/bin/uname"
+    search_context:
+      ENV{PATH}:
+        - "/usr/local/bin"
+        - "/usr/local/cuda-13.0/bin/"
+        - "/usr/local/bin"
+        - "/usr/local/cuda-13.0/bin/"
+        - "/opt/ros/humble/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/usr/games"
+        - "/usr/local/games"
+        - "/snap/bin"
+        - "/snap/bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/local/share/cmake-4.1/Modules/CMakeDetermineSystem.cmake:207 (message)"
+      - "CMakeLists.txt:17 (project)"
+    message: |
+      The target system is: Generic - 1 - 
+      The host system is: Linux - 6.8.0-85-generic - x86_64
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/local/share/cmake-4.1/Modules/CMakeUnixFindMake.cmake:5 (find_program)"
+      - "CMakeLists.txt:17 (project)"
+    mode: "program"
+    variable: "CMAKE_MAKE_PROGRAM"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "gmake"
+      - "make"
+      - "smake"
+    candidate_directories:
+      - "/usr/local/bin/"
+      - "/usr/local/cuda-13.0/bin/"
+      - "/opt/ros/humble/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/usr/bin/"
+      - "/sbin/"
+      - "/bin/"
+      - "/usr/games/"
+      - "/usr/local/games/"
+      - "/snap/bin/"
+    searched_directories:
+      - "/usr/local/bin/gmake"
+      - "/usr/local/cuda-13.0/bin/gmake"
+      - "/opt/ros/humble/bin/gmake"
+      - "/usr/local/sbin/gmake"
+      - "/usr/sbin/gmake"
+    found: "/usr/bin/gmake"
+    search_context:
+      ENV{PATH}:
+        - "/usr/local/bin"
+        - "/usr/local/cuda-13.0/bin/"
+        - "/usr/local/bin"
+        - "/usr/local/cuda-13.0/bin/"
+        - "/opt/ros/humble/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/usr/games"
+        - "/usr/local/games"
+        - "/snap/bin"
+        - "/snap/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/local/share/cmake-4.1/Modules/CMakeDetermineCompiler.cmake:115 (find_program)"
+      - "/usr/local/share/cmake-4.1/Modules/CMakeDetermineCCompiler.cmake:67 (_cmake_find_compiler_path)"
+      - "CMakeLists.txt:17 (project)"
+    mode: "program"
+    variable: "CMAKE_C_COMPILER_WITH_PATH"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "arm-none-eabi-gcc"
+    candidate_directories:
+      - "/usr/local/bin/"
+      - "/usr/local/cuda-13.0/bin/"
+      - "/opt/ros/humble/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/usr/bin/"
+      - "/sbin/"
+      - "/bin/"
+      - "/usr/games/"
+      - "/usr/local/games/"
+      - "/snap/bin/"
+    searched_directories:
+      - "/usr/local/bin/arm-none-eabi-gcc"
+      - "/usr/local/cuda-13.0/bin/arm-none-eabi-gcc"
+      - "/opt/ros/humble/bin/arm-none-eabi-gcc"
+      - "/usr/local/sbin/arm-none-eabi-gcc"
+      - "/usr/sbin/arm-none-eabi-gcc"
+    found: "/usr/bin/arm-none-eabi-gcc"
+    search_context:
+      ENV{PATH}:
+        - "/usr/local/bin"
+        - "/usr/local/cuda-13.0/bin/"
+        - "/usr/local/bin"
+        - "/usr/local/cuda-13.0/bin/"
+        - "/opt/ros/humble/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/usr/games"
+        - "/usr/local/games"
+        - "/snap/bin"
+        - "/snap/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/local/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "/usr/local/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "/usr/local/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "/usr/local/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/local/share/cmake-4.1/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:17 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCCompilerId.c.in"
+    candidate_directories:
+      - "/usr/local/share/cmake-4.1/Modules/"
+    found: "/usr/local/share/cmake-4.1/Modules/CMakeCCompilerId.c.in"
+    search_context:
+      ENV{PATH}:
+        - "/usr/local/bin"
+        - "/usr/local/cuda-13.0/bin/"
+        - "/usr/local/bin"
+        - "/usr/local/cuda-13.0/bin/"
+        - "/opt/ros/humble/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/usr/games"
+        - "/usr/local/games"
+        - "/snap/bin"
+        - "/snap/bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/local/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/local/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/local/share/cmake-4.1/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:17 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+      Compiler: /usr/bin/arm-none-eabi-gcc 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      1
+      /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/bin/ld: /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/libc.a(lib_a-exit.o): in function `exit':
+      /build/newlib-pB30de/newlib-3.3.0/build/arm-none-eabi/newlib/libc/stdlib/../../../../../newlib/libc/stdlib/exit.c:64: undefined reference to `_exit'
+      collect2: error: ld returned 1 exit status
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/local/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "/usr/local/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "/usr/local/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "/usr/local/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/local/share/cmake-4.1/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:17 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCCompilerId.c.in"
+    candidate_directories:
+      - "/usr/local/share/cmake-4.1/Modules/"
+    found: "/usr/local/share/cmake-4.1/Modules/CMakeCCompilerId.c.in"
+    search_context:
+      ENV{PATH}:
+        - "/usr/local/bin"
+        - "/usr/local/cuda-13.0/bin/"
+        - "/usr/local/bin"
+        - "/usr/local/cuda-13.0/bin/"
+        - "/opt/ros/humble/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/usr/games"
+        - "/usr/local/games"
+        - "/snap/bin"
+        - "/snap/bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/local/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/local/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/local/share/cmake-4.1/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:17 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+      Compiler: /usr/bin/arm-none-eabi-gcc 
+      Build flags: 
+      Id flags: -c 
+      
+      The output was:
+      0
+      
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.o"
+      
+      The C compiler identification is GNU, found in:
+        /home/coffee/Gimbal/CMakeFiles/4.1.1/CompilerIdC/CMakeCCompilerId.o
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/local/share/cmake-4.1/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "/usr/local/share/cmake-4.1/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:17 (project)"
+    mode: "program"
+    variable: "CMAKE_RANLIB"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "arm-none-eabi-ranlib"
+      - "ranlib"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/usr/local/bin/"
+      - "/usr/local/cuda-13.0/bin/"
+      - "/opt/ros/humble/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/bin/"
+      - "/usr/games/"
+      - "/usr/local/games/"
+      - "/snap/bin/"
+    found: "/usr/bin/arm-none-eabi-ranlib"
+    search_context:
+      ENV{PATH}:
+        - "/usr/local/bin"
+        - "/usr/local/cuda-13.0/bin/"
+        - "/usr/local/bin"
+        - "/usr/local/cuda-13.0/bin/"
+        - "/opt/ros/humble/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/usr/games"
+        - "/usr/local/games"
+        - "/snap/bin"
+        - "/snap/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/local/share/cmake-4.1/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "/usr/local/share/cmake-4.1/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:17 (project)"
+    mode: "program"
+    variable: "CMAKE_STRIP"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "arm-none-eabi-strip"
+      - "strip"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/usr/local/bin/"
+      - "/usr/local/cuda-13.0/bin/"
+      - "/opt/ros/humble/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/bin/"
+      - "/usr/games/"
+      - "/usr/local/games/"
+      - "/snap/bin/"
+    found: "/usr/bin/arm-none-eabi-strip"
+    search_context:
+      ENV{PATH}:
+        - "/usr/local/bin"
+        - "/usr/local/cuda-13.0/bin/"
+        - "/usr/local/bin"
+        - "/usr/local/cuda-13.0/bin/"
+        - "/opt/ros/humble/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/usr/games"
+        - "/usr/local/games"
+        - "/snap/bin"
+        - "/snap/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/local/share/cmake-4.1/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "/usr/local/share/cmake-4.1/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:17 (project)"
+    mode: "program"
+    variable: "CMAKE_LINKER"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "arm-none-eabi-ld"
+      - "ld"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/usr/local/bin/"
+      - "/usr/local/cuda-13.0/bin/"
+      - "/opt/ros/humble/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/bin/"
+      - "/usr/games/"
+      - "/usr/local/games/"
+      - "/snap/bin/"
+    found: "/usr/bin/arm-none-eabi-ld"
+    search_context:
+      ENV{PATH}:
+        - "/usr/local/bin"
+        - "/usr/local/cuda-13.0/bin/"
+        - "/usr/local/bin"
+        - "/usr/local/cuda-13.0/bin/"
+        - "/opt/ros/humble/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/usr/games"
+        - "/usr/local/games"
+        - "/snap/bin"
+        - "/snap/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/local/share/cmake-4.1/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "/usr/local/share/cmake-4.1/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:17 (project)"
+    mode: "program"
+    variable: "CMAKE_NM"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "arm-none-eabi-nm"
+      - "nm"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/usr/local/bin/"
+      - "/usr/local/cuda-13.0/bin/"
+      - "/opt/ros/humble/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/bin/"
+      - "/usr/games/"
+      - "/usr/local/games/"
+      - "/snap/bin/"
+    found: "/usr/bin/arm-none-eabi-nm"
+    search_context:
+      ENV{PATH}:
+        - "/usr/local/bin"
+        - "/usr/local/cuda-13.0/bin/"
+        - "/usr/local/bin"
+        - "/usr/local/cuda-13.0/bin/"
+        - "/opt/ros/humble/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/usr/games"
+        - "/usr/local/games"
+        - "/snap/bin"
+        - "/snap/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/local/share/cmake-4.1/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "/usr/local/share/cmake-4.1/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:17 (project)"
+    mode: "program"
+    variable: "CMAKE_READELF"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "arm-none-eabi-readelf"
+      - "readelf"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/usr/local/bin/"
+      - "/usr/local/cuda-13.0/bin/"
+      - "/opt/ros/humble/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/bin/"
+      - "/usr/games/"
+      - "/usr/local/games/"
+      - "/snap/bin/"
+    found: "/usr/bin/arm-none-eabi-readelf"
+    search_context:
+      ENV{PATH}:
+        - "/usr/local/bin"
+        - "/usr/local/cuda-13.0/bin/"
+        - "/usr/local/bin"
+        - "/usr/local/cuda-13.0/bin/"
+        - "/opt/ros/humble/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/usr/games"
+        - "/usr/local/games"
+        - "/snap/bin"
+        - "/snap/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/local/share/cmake-4.1/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "/usr/local/share/cmake-4.1/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:17 (project)"
+    mode: "program"
+    variable: "CMAKE_DLLTOOL"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "arm-none-eabi-dlltool"
+      - "dlltool"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/usr/local/bin/"
+      - "/usr/local/cuda-13.0/bin/"
+      - "/opt/ros/humble/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/bin/"
+      - "/usr/games/"
+      - "/usr/local/games/"
+      - "/snap/bin/"
+    searched_directories:
+      - "/usr/bin/arm-none-eabi-dlltool"
+      - "/usr/local/bin/arm-none-eabi-dlltool"
+      - "/usr/local/cuda-13.0/bin/arm-none-eabi-dlltool"
+      - "/opt/ros/humble/bin/arm-none-eabi-dlltool"
+      - "/usr/local/sbin/arm-none-eabi-dlltool"
+      - "/usr/sbin/arm-none-eabi-dlltool"
+      - "/sbin/arm-none-eabi-dlltool"
+      - "/bin/arm-none-eabi-dlltool"
+      - "/usr/games/arm-none-eabi-dlltool"
+      - "/usr/local/games/arm-none-eabi-dlltool"
+      - "/snap/bin/arm-none-eabi-dlltool"
+      - "/usr/bin/dlltool"
+      - "/usr/local/bin/dlltool"
+      - "/usr/local/cuda-13.0/bin/dlltool"
+      - "/opt/ros/humble/bin/dlltool"
+      - "/usr/local/sbin/dlltool"
+      - "/usr/sbin/dlltool"
+      - "/sbin/dlltool"
+      - "/bin/dlltool"
+      - "/usr/games/dlltool"
+      - "/usr/local/games/dlltool"
+      - "/snap/bin/dlltool"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "/usr/local/bin"
+        - "/usr/local/cuda-13.0/bin/"
+        - "/usr/local/bin"
+        - "/usr/local/cuda-13.0/bin/"
+        - "/opt/ros/humble/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/usr/games"
+        - "/usr/local/games"
+        - "/snap/bin"
+        - "/snap/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/local/share/cmake-4.1/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "/usr/local/share/cmake-4.1/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:17 (project)"
+    mode: "program"
+    variable: "CMAKE_ADDR2LINE"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "arm-none-eabi-addr2line"
+      - "addr2line"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/usr/local/bin/"
+      - "/usr/local/cuda-13.0/bin/"
+      - "/opt/ros/humble/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/bin/"
+      - "/usr/games/"
+      - "/usr/local/games/"
+      - "/snap/bin/"
+    found: "/usr/bin/arm-none-eabi-addr2line"
+    search_context:
+      ENV{PATH}:
+        - "/usr/local/bin"
+        - "/usr/local/cuda-13.0/bin/"
+        - "/usr/local/bin"
+        - "/usr/local/cuda-13.0/bin/"
+        - "/opt/ros/humble/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/usr/games"
+        - "/usr/local/games"
+        - "/snap/bin"
+        - "/snap/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/local/share/cmake-4.1/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "/usr/local/share/cmake-4.1/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:17 (project)"
+    mode: "program"
+    variable: "CMAKE_TAPI"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "arm-none-eabi-tapi"
+      - "tapi"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/usr/local/bin/"
+      - "/usr/local/cuda-13.0/bin/"
+      - "/opt/ros/humble/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/bin/"
+      - "/usr/games/"
+      - "/usr/local/games/"
+      - "/snap/bin/"
+    searched_directories:
+      - "/usr/bin/arm-none-eabi-tapi"
+      - "/usr/local/bin/arm-none-eabi-tapi"
+      - "/usr/local/cuda-13.0/bin/arm-none-eabi-tapi"
+      - "/opt/ros/humble/bin/arm-none-eabi-tapi"
+      - "/usr/local/sbin/arm-none-eabi-tapi"
+      - "/usr/sbin/arm-none-eabi-tapi"
+      - "/sbin/arm-none-eabi-tapi"
+      - "/bin/arm-none-eabi-tapi"
+      - "/usr/games/arm-none-eabi-tapi"
+      - "/usr/local/games/arm-none-eabi-tapi"
+      - "/snap/bin/arm-none-eabi-tapi"
+      - "/usr/bin/tapi"
+      - "/usr/local/bin/tapi"
+      - "/usr/local/cuda-13.0/bin/tapi"
+      - "/opt/ros/humble/bin/tapi"
+      - "/usr/local/sbin/tapi"
+      - "/usr/sbin/tapi"
+      - "/sbin/tapi"
+      - "/bin/tapi"
+      - "/usr/games/tapi"
+      - "/usr/local/games/tapi"
+      - "/snap/bin/tapi"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "/usr/local/bin"
+        - "/usr/local/cuda-13.0/bin/"
+        - "/usr/local/bin"
+        - "/usr/local/cuda-13.0/bin/"
+        - "/opt/ros/humble/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/usr/games"
+        - "/usr/local/games"
+        - "/snap/bin"
+        - "/snap/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/local/share/cmake-4.1/Modules/Compiler/GNU-FindBinUtils.cmake:18 (find_program)"
+      - "/usr/local/share/cmake-4.1/Modules/CMakeDetermineCCompiler.cmake:201 (include)"
+      - "CMakeLists.txt:17 (project)"
+    mode: "program"
+    variable: "CMAKE_C_COMPILER_AR"
+    description: "A wrapper around 'ar' adding the appropriate '--plugin' option for the GCC compiler"
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "arm-none-eabi-gcc-ar-10.3"
+      - "arm-none-eabi-gcc-ar-10"
+      - "arm-none-eabi-gcc-ar10"
+      - "arm-none-eabi-gcc-ar"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/usr/local/bin/"
+      - "/usr/local/cuda-13.0/bin/"
+      - "/opt/ros/humble/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/bin/"
+      - "/usr/games/"
+      - "/usr/local/games/"
+      - "/snap/bin/"
+    searched_directories:
+      - "/usr/bin/arm-none-eabi-gcc-ar-10.3"
+      - "/usr/local/bin/arm-none-eabi-gcc-ar-10.3"
+      - "/usr/local/cuda-13.0/bin/arm-none-eabi-gcc-ar-10.3"
+      - "/opt/ros/humble/bin/arm-none-eabi-gcc-ar-10.3"
+      - "/usr/local/sbin/arm-none-eabi-gcc-ar-10.3"
+      - "/usr/sbin/arm-none-eabi-gcc-ar-10.3"
+      - "/sbin/arm-none-eabi-gcc-ar-10.3"
+      - "/bin/arm-none-eabi-gcc-ar-10.3"
+      - "/usr/games/arm-none-eabi-gcc-ar-10.3"
+      - "/usr/local/games/arm-none-eabi-gcc-ar-10.3"
+      - "/snap/bin/arm-none-eabi-gcc-ar-10.3"
+      - "/usr/bin/arm-none-eabi-gcc-ar-10"
+      - "/usr/local/bin/arm-none-eabi-gcc-ar-10"
+      - "/usr/local/cuda-13.0/bin/arm-none-eabi-gcc-ar-10"
+      - "/opt/ros/humble/bin/arm-none-eabi-gcc-ar-10"
+      - "/usr/local/sbin/arm-none-eabi-gcc-ar-10"
+      - "/usr/sbin/arm-none-eabi-gcc-ar-10"
+      - "/sbin/arm-none-eabi-gcc-ar-10"
+      - "/bin/arm-none-eabi-gcc-ar-10"
+      - "/usr/games/arm-none-eabi-gcc-ar-10"
+      - "/usr/local/games/arm-none-eabi-gcc-ar-10"
+      - "/snap/bin/arm-none-eabi-gcc-ar-10"
+      - "/usr/bin/arm-none-eabi-gcc-ar10"
+      - "/usr/local/bin/arm-none-eabi-gcc-ar10"
+      - "/usr/local/cuda-13.0/bin/arm-none-eabi-gcc-ar10"
+      - "/opt/ros/humble/bin/arm-none-eabi-gcc-ar10"
+      - "/usr/local/sbin/arm-none-eabi-gcc-ar10"
+      - "/usr/sbin/arm-none-eabi-gcc-ar10"
+      - "/sbin/arm-none-eabi-gcc-ar10"
+      - "/bin/arm-none-eabi-gcc-ar10"
+      - "/usr/games/arm-none-eabi-gcc-ar10"
+      - "/usr/local/games/arm-none-eabi-gcc-ar10"
+      - "/snap/bin/arm-none-eabi-gcc-ar10"
+    found: "/usr/bin/arm-none-eabi-gcc-ar"
+    search_context:
+      ENV{PATH}:
+        - "/usr/local/bin"
+        - "/usr/local/cuda-13.0/bin/"
+        - "/usr/local/bin"
+        - "/usr/local/cuda-13.0/bin/"
+        - "/opt/ros/humble/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/usr/games"
+        - "/usr/local/games"
+        - "/snap/bin"
+        - "/snap/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/local/share/cmake-4.1/Modules/Compiler/GNU-FindBinUtils.cmake:30 (find_program)"
+      - "/usr/local/share/cmake-4.1/Modules/CMakeDetermineCCompiler.cmake:201 (include)"
+      - "CMakeLists.txt:17 (project)"
+    mode: "program"
+    variable: "CMAKE_C_COMPILER_RANLIB"
+    description: "A wrapper around 'ranlib' adding the appropriate '--plugin' option for the GCC compiler"
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "arm-none-eabi-gcc-ranlib-10.3"
+      - "arm-none-eabi-gcc-ranlib-10"
+      - "arm-none-eabi-gcc-ranlib10"
+      - "arm-none-eabi-gcc-ranlib"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/usr/local/bin/"
+      - "/usr/local/cuda-13.0/bin/"
+      - "/opt/ros/humble/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/bin/"
+      - "/usr/games/"
+      - "/usr/local/games/"
+      - "/snap/bin/"
+    searched_directories:
+      - "/usr/bin/arm-none-eabi-gcc-ranlib-10.3"
+      - "/usr/local/bin/arm-none-eabi-gcc-ranlib-10.3"
+      - "/usr/local/cuda-13.0/bin/arm-none-eabi-gcc-ranlib-10.3"
+      - "/opt/ros/humble/bin/arm-none-eabi-gcc-ranlib-10.3"
+      - "/usr/local/sbin/arm-none-eabi-gcc-ranlib-10.3"
+      - "/usr/sbin/arm-none-eabi-gcc-ranlib-10.3"
+      - "/sbin/arm-none-eabi-gcc-ranlib-10.3"
+      - "/bin/arm-none-eabi-gcc-ranlib-10.3"
+      - "/usr/games/arm-none-eabi-gcc-ranlib-10.3"
+      - "/usr/local/games/arm-none-eabi-gcc-ranlib-10.3"
+      - "/snap/bin/arm-none-eabi-gcc-ranlib-10.3"
+      - "/usr/bin/arm-none-eabi-gcc-ranlib-10"
+      - "/usr/local/bin/arm-none-eabi-gcc-ranlib-10"
+      - "/usr/local/cuda-13.0/bin/arm-none-eabi-gcc-ranlib-10"
+      - "/opt/ros/humble/bin/arm-none-eabi-gcc-ranlib-10"
+      - "/usr/local/sbin/arm-none-eabi-gcc-ranlib-10"
+      - "/usr/sbin/arm-none-eabi-gcc-ranlib-10"
+      - "/sbin/arm-none-eabi-gcc-ranlib-10"
+      - "/bin/arm-none-eabi-gcc-ranlib-10"
+      - "/usr/games/arm-none-eabi-gcc-ranlib-10"
+      - "/usr/local/games/arm-none-eabi-gcc-ranlib-10"
+      - "/snap/bin/arm-none-eabi-gcc-ranlib-10"
+      - "/usr/bin/arm-none-eabi-gcc-ranlib10"
+      - "/usr/local/bin/arm-none-eabi-gcc-ranlib10"
+      - "/usr/local/cuda-13.0/bin/arm-none-eabi-gcc-ranlib10"
+      - "/opt/ros/humble/bin/arm-none-eabi-gcc-ranlib10"
+      - "/usr/local/sbin/arm-none-eabi-gcc-ranlib10"
+      - "/usr/sbin/arm-none-eabi-gcc-ranlib10"
+      - "/sbin/arm-none-eabi-gcc-ranlib10"
+      - "/bin/arm-none-eabi-gcc-ranlib10"
+      - "/usr/games/arm-none-eabi-gcc-ranlib10"
+      - "/usr/local/games/arm-none-eabi-gcc-ranlib10"
+      - "/snap/bin/arm-none-eabi-gcc-ranlib10"
+    found: "/usr/bin/arm-none-eabi-gcc-ranlib"
+    search_context:
+      ENV{PATH}:
+        - "/usr/local/bin"
+        - "/usr/local/cuda-13.0/bin/"
+        - "/usr/local/bin"
+        - "/usr/local/cuda-13.0/bin/"
+        - "/opt/ros/humble/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/usr/games"
+        - "/usr/local/games"
+        - "/snap/bin"
+        - "/snap/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/local/share/cmake-4.1/Modules/CMakeDetermineCompiler.cmake:115 (find_program)"
+      - "/usr/local/share/cmake-4.1/Modules/CMakeDetermineCXXCompiler.cmake:71 (_cmake_find_compiler_path)"
+      - "CMakeLists.txt:17 (project)"
+    mode: "program"
+    variable: "CMAKE_CXX_COMPILER_WITH_PATH"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "arm-none-eabi-g++"
+    candidate_directories:
+      - "/usr/local/bin/"
+      - "/usr/local/cuda-13.0/bin/"
+      - "/opt/ros/humble/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/usr/bin/"
+      - "/sbin/"
+      - "/bin/"
+      - "/usr/games/"
+      - "/usr/local/games/"
+      - "/snap/bin/"
+    searched_directories:
+      - "/usr/local/bin/arm-none-eabi-g++"
+      - "/usr/local/cuda-13.0/bin/arm-none-eabi-g++"
+      - "/opt/ros/humble/bin/arm-none-eabi-g++"
+      - "/usr/local/sbin/arm-none-eabi-g++"
+      - "/usr/sbin/arm-none-eabi-g++"
+    found: "/usr/bin/arm-none-eabi-g++"
+    search_context:
+      ENV{PATH}:
+        - "/usr/local/bin"
+        - "/usr/local/cuda-13.0/bin/"
+        - "/usr/local/bin"
+        - "/usr/local/cuda-13.0/bin/"
+        - "/opt/ros/humble/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/usr/games"
+        - "/usr/local/games"
+        - "/snap/bin"
+        - "/snap/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/local/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "/usr/local/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "/usr/local/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "/usr/local/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/local/share/cmake-4.1/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:17 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCXXCompilerId.cpp.in"
+    candidate_directories:
+      - "/usr/local/share/cmake-4.1/Modules/"
+    found: "/usr/local/share/cmake-4.1/Modules/CMakeCXXCompilerId.cpp.in"
+    search_context:
+      ENV{PATH}:
+        - "/usr/local/bin"
+        - "/usr/local/cuda-13.0/bin/"
+        - "/usr/local/bin"
+        - "/usr/local/cuda-13.0/bin/"
+        - "/opt/ros/humble/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/usr/games"
+        - "/usr/local/games"
+        - "/snap/bin"
+        - "/snap/bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/local/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/local/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/local/share/cmake-4.1/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:17 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: /usr/bin/arm-none-eabi-g++ 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      1
+      /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/bin/ld: /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/libc.a(lib_a-exit.o): in function `exit':
+      /build/newlib-pB30de/newlib-3.3.0/build/arm-none-eabi/newlib/libc/stdlib/../../../../../newlib/libc/stdlib/exit.c:64: undefined reference to `_exit'
+      collect2: error: ld returned 1 exit status
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/local/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "/usr/local/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "/usr/local/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "/usr/local/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/local/share/cmake-4.1/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:17 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCXXCompilerId.cpp.in"
+    candidate_directories:
+      - "/usr/local/share/cmake-4.1/Modules/"
+    found: "/usr/local/share/cmake-4.1/Modules/CMakeCXXCompilerId.cpp.in"
+    search_context:
+      ENV{PATH}:
+        - "/usr/local/bin"
+        - "/usr/local/cuda-13.0/bin/"
+        - "/usr/local/bin"
+        - "/usr/local/cuda-13.0/bin/"
+        - "/opt/ros/humble/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/usr/games"
+        - "/usr/local/games"
+        - "/snap/bin"
+        - "/snap/bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/local/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/local/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/local/share/cmake-4.1/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:17 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+      Compiler: /usr/bin/arm-none-eabi-g++ 
+      Build flags: 
+      Id flags: -c 
+      
+      The output was:
+      0
+      
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CMakeCXXCompilerId.o"
+      
+      The CXX compiler identification is GNU, found in:
+        /home/coffee/Gimbal/CMakeFiles/4.1.1/CompilerIdCXX/CMakeCXXCompilerId.o
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/local/share/cmake-4.1/Modules/Compiler/GNU-FindBinUtils.cmake:18 (find_program)"
+      - "/usr/local/share/cmake-4.1/Modules/CMakeDetermineCXXCompiler.cmake:207 (include)"
+      - "CMakeLists.txt:17 (project)"
+    mode: "program"
+    variable: "CMAKE_CXX_COMPILER_AR"
+    description: "A wrapper around 'ar' adding the appropriate '--plugin' option for the GCC compiler"
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "arm-none-eabi-gcc-ar-10.3"
+      - "arm-none-eabi-gcc-ar-10"
+      - "arm-none-eabi-gcc-ar10"
+      - "arm-none-eabi-gcc-ar"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/usr/local/bin/"
+      - "/usr/local/cuda-13.0/bin/"
+      - "/opt/ros/humble/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/bin/"
+      - "/usr/games/"
+      - "/usr/local/games/"
+      - "/snap/bin/"
+    searched_directories:
+      - "/usr/bin/arm-none-eabi-gcc-ar-10.3"
+      - "/usr/local/bin/arm-none-eabi-gcc-ar-10.3"
+      - "/usr/local/cuda-13.0/bin/arm-none-eabi-gcc-ar-10.3"
+      - "/opt/ros/humble/bin/arm-none-eabi-gcc-ar-10.3"
+      - "/usr/local/sbin/arm-none-eabi-gcc-ar-10.3"
+      - "/usr/sbin/arm-none-eabi-gcc-ar-10.3"
+      - "/sbin/arm-none-eabi-gcc-ar-10.3"
+      - "/bin/arm-none-eabi-gcc-ar-10.3"
+      - "/usr/games/arm-none-eabi-gcc-ar-10.3"
+      - "/usr/local/games/arm-none-eabi-gcc-ar-10.3"
+      - "/snap/bin/arm-none-eabi-gcc-ar-10.3"
+      - "/usr/bin/arm-none-eabi-gcc-ar-10"
+      - "/usr/local/bin/arm-none-eabi-gcc-ar-10"
+      - "/usr/local/cuda-13.0/bin/arm-none-eabi-gcc-ar-10"
+      - "/opt/ros/humble/bin/arm-none-eabi-gcc-ar-10"
+      - "/usr/local/sbin/arm-none-eabi-gcc-ar-10"
+      - "/usr/sbin/arm-none-eabi-gcc-ar-10"
+      - "/sbin/arm-none-eabi-gcc-ar-10"
+      - "/bin/arm-none-eabi-gcc-ar-10"
+      - "/usr/games/arm-none-eabi-gcc-ar-10"
+      - "/usr/local/games/arm-none-eabi-gcc-ar-10"
+      - "/snap/bin/arm-none-eabi-gcc-ar-10"
+      - "/usr/bin/arm-none-eabi-gcc-ar10"
+      - "/usr/local/bin/arm-none-eabi-gcc-ar10"
+      - "/usr/local/cuda-13.0/bin/arm-none-eabi-gcc-ar10"
+      - "/opt/ros/humble/bin/arm-none-eabi-gcc-ar10"
+      - "/usr/local/sbin/arm-none-eabi-gcc-ar10"
+      - "/usr/sbin/arm-none-eabi-gcc-ar10"
+      - "/sbin/arm-none-eabi-gcc-ar10"
+      - "/bin/arm-none-eabi-gcc-ar10"
+      - "/usr/games/arm-none-eabi-gcc-ar10"
+      - "/usr/local/games/arm-none-eabi-gcc-ar10"
+      - "/snap/bin/arm-none-eabi-gcc-ar10"
+    found: "/usr/bin/arm-none-eabi-gcc-ar"
+    search_context:
+      ENV{PATH}:
+        - "/usr/local/bin"
+        - "/usr/local/cuda-13.0/bin/"
+        - "/usr/local/bin"
+        - "/usr/local/cuda-13.0/bin/"
+        - "/opt/ros/humble/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/usr/games"
+        - "/usr/local/games"
+        - "/snap/bin"
+        - "/snap/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/local/share/cmake-4.1/Modules/Compiler/GNU-FindBinUtils.cmake:30 (find_program)"
+      - "/usr/local/share/cmake-4.1/Modules/CMakeDetermineCXXCompiler.cmake:207 (include)"
+      - "CMakeLists.txt:17 (project)"
+    mode: "program"
+    variable: "CMAKE_CXX_COMPILER_RANLIB"
+    description: "A wrapper around 'ranlib' adding the appropriate '--plugin' option for the GCC compiler"
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "arm-none-eabi-gcc-ranlib-10.3"
+      - "arm-none-eabi-gcc-ranlib-10"
+      - "arm-none-eabi-gcc-ranlib10"
+      - "arm-none-eabi-gcc-ranlib"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/usr/local/bin/"
+      - "/usr/local/cuda-13.0/bin/"
+      - "/opt/ros/humble/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/bin/"
+      - "/usr/games/"
+      - "/usr/local/games/"
+      - "/snap/bin/"
+    searched_directories:
+      - "/usr/bin/arm-none-eabi-gcc-ranlib-10.3"
+      - "/usr/local/bin/arm-none-eabi-gcc-ranlib-10.3"
+      - "/usr/local/cuda-13.0/bin/arm-none-eabi-gcc-ranlib-10.3"
+      - "/opt/ros/humble/bin/arm-none-eabi-gcc-ranlib-10.3"
+      - "/usr/local/sbin/arm-none-eabi-gcc-ranlib-10.3"
+      - "/usr/sbin/arm-none-eabi-gcc-ranlib-10.3"
+      - "/sbin/arm-none-eabi-gcc-ranlib-10.3"
+      - "/bin/arm-none-eabi-gcc-ranlib-10.3"
+      - "/usr/games/arm-none-eabi-gcc-ranlib-10.3"
+      - "/usr/local/games/arm-none-eabi-gcc-ranlib-10.3"
+      - "/snap/bin/arm-none-eabi-gcc-ranlib-10.3"
+      - "/usr/bin/arm-none-eabi-gcc-ranlib-10"
+      - "/usr/local/bin/arm-none-eabi-gcc-ranlib-10"
+      - "/usr/local/cuda-13.0/bin/arm-none-eabi-gcc-ranlib-10"
+      - "/opt/ros/humble/bin/arm-none-eabi-gcc-ranlib-10"
+      - "/usr/local/sbin/arm-none-eabi-gcc-ranlib-10"
+      - "/usr/sbin/arm-none-eabi-gcc-ranlib-10"
+      - "/sbin/arm-none-eabi-gcc-ranlib-10"
+      - "/bin/arm-none-eabi-gcc-ranlib-10"
+      - "/usr/games/arm-none-eabi-gcc-ranlib-10"
+      - "/usr/local/games/arm-none-eabi-gcc-ranlib-10"
+      - "/snap/bin/arm-none-eabi-gcc-ranlib-10"
+      - "/usr/bin/arm-none-eabi-gcc-ranlib10"
+      - "/usr/local/bin/arm-none-eabi-gcc-ranlib10"
+      - "/usr/local/cuda-13.0/bin/arm-none-eabi-gcc-ranlib10"
+      - "/opt/ros/humble/bin/arm-none-eabi-gcc-ranlib10"
+      - "/usr/local/sbin/arm-none-eabi-gcc-ranlib10"
+      - "/usr/sbin/arm-none-eabi-gcc-ranlib10"
+      - "/sbin/arm-none-eabi-gcc-ranlib10"
+      - "/bin/arm-none-eabi-gcc-ranlib10"
+      - "/usr/games/arm-none-eabi-gcc-ranlib10"
+      - "/usr/local/games/arm-none-eabi-gcc-ranlib10"
+      - "/snap/bin/arm-none-eabi-gcc-ranlib10"
+    found: "/usr/bin/arm-none-eabi-gcc-ranlib"
+    search_context:
+      ENV{PATH}:
+        - "/usr/local/bin"
+        - "/usr/local/cuda-13.0/bin/"
+        - "/usr/local/bin"
+        - "/usr/local/cuda-13.0/bin/"
+        - "/opt/ros/humble/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/usr/games"
+        - "/usr/local/games"
+        - "/snap/bin"
+        - "/snap/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/local/share/cmake-4.1/Modules/CMakeDetermineCompiler.cmake:115 (find_program)"
+      - "/usr/local/share/cmake-4.1/Modules/CMakeDetermineASMCompiler.cmake:64 (_cmake_find_compiler_path)"
+      - "CMakeLists.txt:17 (project)"
+    mode: "program"
+    variable: "CMAKE_ASM_COMPILER_WITH_PATH"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "arm-none-eabi-gcc"
+    candidate_directories:
+      - "/usr/local/bin/"
+      - "/usr/local/cuda-13.0/bin/"
+      - "/opt/ros/humble/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/usr/bin/"
+      - "/sbin/"
+      - "/bin/"
+      - "/usr/games/"
+      - "/usr/local/games/"
+      - "/snap/bin/"
+    searched_directories:
+      - "/usr/local/bin/arm-none-eabi-gcc"
+      - "/usr/local/cuda-13.0/bin/arm-none-eabi-gcc"
+      - "/opt/ros/humble/bin/arm-none-eabi-gcc"
+      - "/usr/local/sbin/arm-none-eabi-gcc"
+      - "/usr/sbin/arm-none-eabi-gcc"
+    found: "/usr/bin/arm-none-eabi-gcc"
+    search_context:
+      ENV{PATH}:
+        - "/usr/local/bin"
+        - "/usr/local/cuda-13.0/bin/"
+        - "/usr/local/bin"
+        - "/usr/local/cuda-13.0/bin/"
+        - "/opt/ros/humble/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/usr/games"
+        - "/usr/local/games"
+        - "/snap/bin"
+        - "/snap/bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/local/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:1290 (message)"
+      - "/usr/local/share/cmake-4.1/Modules/CMakeDetermineASMCompiler.cmake:170 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "CMakeLists.txt:17 (project)"
+    message: |
+      Checking whether the ASM compiler is GNU using "--version" matched "(GNU assembler)|(GCC)|(Free Software Foundation)":
+      arm-none-eabi-gcc (15:10.3-2021.07-4) 10.3.1 20210621 (release)
+      Copyright (C) 2020 Free Software Foundation, Inc.
+      This is free software; see the source for copying conditions.  There is NO
+      warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/local/share/cmake-4.1/Modules/Compiler/GNU-FindBinUtils.cmake:18 (find_program)"
+      - "/usr/local/share/cmake-4.1/Modules/CMakeDetermineASMCompiler.cmake:268 (include)"
+      - "CMakeLists.txt:17 (project)"
+    mode: "program"
+    variable: "CMAKE_ASM_COMPILER_AR"
+    description: "A wrapper around 'ar' adding the appropriate '--plugin' option for the GCC compiler"
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "arm-none-eabi-gcc-ar-"
+      - "arm-none-eabi-gcc-ar-"
+      - "arm-none-eabi-gcc-ar"
+      - "arm-none-eabi-gcc-ar"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/usr/local/bin/"
+      - "/usr/local/cuda-13.0/bin/"
+      - "/opt/ros/humble/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/bin/"
+      - "/usr/games/"
+      - "/usr/local/games/"
+      - "/snap/bin/"
+    searched_directories:
+      - "/usr/bin/arm-none-eabi-gcc-ar-"
+      - "/usr/local/bin/arm-none-eabi-gcc-ar-"
+      - "/usr/local/cuda-13.0/bin/arm-none-eabi-gcc-ar-"
+      - "/opt/ros/humble/bin/arm-none-eabi-gcc-ar-"
+      - "/usr/local/sbin/arm-none-eabi-gcc-ar-"
+      - "/usr/sbin/arm-none-eabi-gcc-ar-"
+      - "/sbin/arm-none-eabi-gcc-ar-"
+      - "/bin/arm-none-eabi-gcc-ar-"
+      - "/usr/games/arm-none-eabi-gcc-ar-"
+      - "/usr/local/games/arm-none-eabi-gcc-ar-"
+      - "/snap/bin/arm-none-eabi-gcc-ar-"
+      - "/usr/bin/arm-none-eabi-gcc-ar-"
+      - "/usr/local/bin/arm-none-eabi-gcc-ar-"
+      - "/usr/local/cuda-13.0/bin/arm-none-eabi-gcc-ar-"
+      - "/opt/ros/humble/bin/arm-none-eabi-gcc-ar-"
+      - "/usr/local/sbin/arm-none-eabi-gcc-ar-"
+      - "/usr/sbin/arm-none-eabi-gcc-ar-"
+      - "/sbin/arm-none-eabi-gcc-ar-"
+      - "/bin/arm-none-eabi-gcc-ar-"
+      - "/usr/games/arm-none-eabi-gcc-ar-"
+      - "/usr/local/games/arm-none-eabi-gcc-ar-"
+      - "/snap/bin/arm-none-eabi-gcc-ar-"
+    found: "/usr/bin/arm-none-eabi-gcc-ar"
+    search_context:
+      ENV{PATH}:
+        - "/usr/local/bin"
+        - "/usr/local/cuda-13.0/bin/"
+        - "/usr/local/bin"
+        - "/usr/local/cuda-13.0/bin/"
+        - "/opt/ros/humble/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/usr/games"
+        - "/usr/local/games"
+        - "/snap/bin"
+        - "/snap/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/local/share/cmake-4.1/Modules/Compiler/GNU-FindBinUtils.cmake:30 (find_program)"
+      - "/usr/local/share/cmake-4.1/Modules/CMakeDetermineASMCompiler.cmake:268 (include)"
+      - "CMakeLists.txt:17 (project)"
+    mode: "program"
+    variable: "CMAKE_ASM_COMPILER_RANLIB"
+    description: "A wrapper around 'ranlib' adding the appropriate '--plugin' option for the GCC compiler"
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "arm-none-eabi-gcc-ranlib-"
+      - "arm-none-eabi-gcc-ranlib-"
+      - "arm-none-eabi-gcc-ranlib"
+      - "arm-none-eabi-gcc-ranlib"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/usr/local/bin/"
+      - "/usr/local/cuda-13.0/bin/"
+      - "/opt/ros/humble/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/bin/"
+      - "/usr/games/"
+      - "/usr/local/games/"
+      - "/snap/bin/"
+    searched_directories:
+      - "/usr/bin/arm-none-eabi-gcc-ranlib-"
+      - "/usr/local/bin/arm-none-eabi-gcc-ranlib-"
+      - "/usr/local/cuda-13.0/bin/arm-none-eabi-gcc-ranlib-"
+      - "/opt/ros/humble/bin/arm-none-eabi-gcc-ranlib-"
+      - "/usr/local/sbin/arm-none-eabi-gcc-ranlib-"
+      - "/usr/sbin/arm-none-eabi-gcc-ranlib-"
+      - "/sbin/arm-none-eabi-gcc-ranlib-"
+      - "/bin/arm-none-eabi-gcc-ranlib-"
+      - "/usr/games/arm-none-eabi-gcc-ranlib-"
+      - "/usr/local/games/arm-none-eabi-gcc-ranlib-"
+      - "/snap/bin/arm-none-eabi-gcc-ranlib-"
+      - "/usr/bin/arm-none-eabi-gcc-ranlib-"
+      - "/usr/local/bin/arm-none-eabi-gcc-ranlib-"
+      - "/usr/local/cuda-13.0/bin/arm-none-eabi-gcc-ranlib-"
+      - "/opt/ros/humble/bin/arm-none-eabi-gcc-ranlib-"
+      - "/usr/local/sbin/arm-none-eabi-gcc-ranlib-"
+      - "/usr/sbin/arm-none-eabi-gcc-ranlib-"
+      - "/sbin/arm-none-eabi-gcc-ranlib-"
+      - "/bin/arm-none-eabi-gcc-ranlib-"
+      - "/usr/games/arm-none-eabi-gcc-ranlib-"
+      - "/usr/local/games/arm-none-eabi-gcc-ranlib-"
+      - "/snap/bin/arm-none-eabi-gcc-ranlib-"
+    found: "/usr/bin/arm-none-eabi-gcc-ranlib"
+    search_context:
+      ENV{PATH}:
+        - "/usr/local/bin"
+        - "/usr/local/cuda-13.0/bin/"
+        - "/usr/local/bin"
+        - "/usr/local/cuda-13.0/bin/"
+        - "/opt/ros/humble/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/usr/games"
+        - "/usr/local/games"
+        - "/snap/bin"
+        - "/snap/bin"
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/local/share/cmake-4.1/Modules/CMakeDetermineCompilerABI.cmake:83 (try_compile)"
+      - "/usr/local/share/cmake-4.1/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:17 (project)"
+    checks:
+      - "Detecting C compiler ABI info"
+    directories:
+      source: "/home/coffee/Gimbal/CMakeFiles/CMakeScratch/TryCompile-ZBbkKQ"
+      binary: "/home/coffee/Gimbal/CMakeFiles/CMakeScratch/TryCompile-ZBbkKQ"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_C_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: '/home/coffee/Gimbal/CMakeFiles/CMakeScratch/TryCompile-ZBbkKQ'
+        
+        Run Build Command(s): /usr/local/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_f9646/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_f9646.dir/build.make CMakeFiles/cmTC_f9646.dir/build
+        gmake[1]: Entering directory '/home/coffee/Gimbal/CMakeFiles/CMakeScratch/TryCompile-ZBbkKQ'
+        Building C object CMakeFiles/cmTC_f9646.dir/CMakeCCompilerABI.c.obj
+        /usr/bin/arm-none-eabi-gcc   -v -o CMakeFiles/cmTC_f9646.dir/CMakeCCompilerABI.c.obj -c /usr/local/share/cmake-4.1/Modules/CMakeCCompilerABI.c
+        Using built-in specs.
+        COLLECT_GCC=/usr/bin/arm-none-eabi-gcc
+        Target: arm-none-eabi
+        Configured with: ../configure --build=x86_64-linux-gnu --prefix=/usr --includedir='/usr/lib/include' --mandir='/usr/lib/share/man' --infodir='/usr/lib/share/info' --sysconfdir=/etc --localstatedir=/var --disable-option-checking --disable-silent-rules --libdir='/usr/lib/lib/x86_64-linux-gnu' --libexecdir='/usr/lib/lib/x86_64-linux-gnu' --disable-maintainer-mode --disable-dependency-tracking --mandir=/usr/share/man --enable-languages=c,c++,lto --enable-multilib --disable-decimal-float --disable-libffi --disable-libgomp --disable-libmudflap --disable-libquadmath --disable-libssp --disable-libstdcxx-pch --disable-nls --disable-shared --disable-threads --enable-tls --build=x86_64-linux-gnu --target=arm-none-eabi --with-system-zlib --with-gnu-as --with-gnu-ld --with-pkgversion=15:10.3-2021.07-4 --without-included-gettext --prefix=/usr/lib --infodir=/usr/share/doc/gcc-arm-none-eabi/info --htmldir=/usr/share/doc/gcc-arm-none-eabi/html --pdfdir=/usr/share/doc/gcc-arm-none-eabi/pdf --bindir=/usr/bin --libexecdir=/usr/lib --libdir=/usr/lib --disable-libstdc++-v3 --host=x86_64-linux-gnu --with-headers=no --without-newlib --with-multilib-list=rmprofile,aprofile CFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-arm-none-eabi-hYfgK4/gcc-arm-none-eabi-10.3-2021.07=. -flto=auto -ffat-lto-objects -fstack-protector-strong' CPPFLAGS='-Wdate-time -D_FORTIFY_SOURCE=2' CXXFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-arm-none-eabi-hYfgK4/gcc-arm-none-eabi-10.3-2021.07=. -flto=auto -ffat-lto-objects -fstack-protector-strong' DFLAGS=-frelease FCFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-arm-none-eabi-hYfgK4/gcc-arm-none-eabi-10.3-2021.07=. -flto=auto -ffat-lto-objects -fstack-protector-strong' FFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-arm-none-eabi-hYfgK4/gcc-arm-none-eabi-10.3-2021.07=. -flto=auto -ffat-lto-objects -fstack-protector-strong' GCJFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-arm-none-eabi-hYfgK4/gcc-arm-none-eabi-10.3-2021.07=. -fstack-protector-strong' LDFLAGS='-Wl,-Bsymbolic-functions -flto=auto -Wl,-z,relro' OBJCFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-arm-none-eabi-hYfgK4/gcc-arm-none-eabi-10.3-2021.07=. -flto=auto -ffat-lto-objects -fstack-protector-strong' OBJCXXFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-arm-none-eabi-hYfgK4/gcc-arm-none-eabi-10.3-2021.07=. -flto=auto -ffat-lto-objects -fstack-protector-strong' INHIBIT_LIBC_CFLAGS=-DUSE_TM_CLONE_REGISTRY=0 AR_FOR_TARGET=arm-none-eabi-ar AS_FOR_TARGET=arm-none-eabi-as LD_FOR_TARGET=arm-none-eabi-ld NM_FOR_TARGET=arm-none-eabi-nm OBJDUMP_FOR_TARGET=arm-none-eabi-objdump RANLIB_FOR_TARGET=arm-none-eabi-ranlib READELF_FOR_TARGET=arm-none-eabi-readelf STRIP_FOR_TARGET=arm-none-eabi-strip SED=/bin/sed SHELL=/bin/sh BASH=/bin/bash CONFIG_SHELL=/bin/bash
+        Thread model: single
+        Supported LTO compression algorithms: zlib
+        gcc version 10.3.1 20210621 (release) (15:10.3-2021.07-4) 
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_f9646.dir/CMakeCCompilerABI.c.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t'
+         /usr/lib/gcc/arm-none-eabi/10.3.1/cc1 -quiet -v -D__USES_INITFINI__ /usr/local/share/cmake-4.1/Modules/CMakeCCompilerABI.c -quiet -dumpbase CMakeCCompilerABI.c -mcpu=arm7tdmi -mfloat-abi=soft -marm -mlibarch=armv4t -march=armv4t -auxbase-strip CMakeFiles/cmTC_f9646.dir/CMakeCCompilerABI.c.obj -version -o /tmp/ccua09GH.s
+        GNU C17 (15:10.3-2021.07-4) version 10.3.1 20210621 (release) (arm-none-eabi)
+        	compiled by GNU C version 11.2.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+        
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        ignoring nonexistent directory "/usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/sys-include"
+        #include "..." search starts here:
+        #include <...> search starts here:
+         /usr/lib/gcc/arm-none-eabi/10.3.1/include
+         /usr/lib/gcc/arm-none-eabi/10.3.1/include-fixed
+         /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/include
+        End of search list.
+        GNU C17 (15:10.3-2021.07-4) version 10.3.1 20210621 (release) (arm-none-eabi)
+        	compiled by GNU C version 11.2.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+        
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        Compiler executable checksum: 4cf7574ae54eb0935abb4a8c56f8bcfe
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_f9646.dir/CMakeCCompilerABI.c.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t'
+         /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/bin/as -v -march=armv4t -mfloat-abi=soft -meabi=5 -o CMakeFiles/cmTC_f9646.dir/CMakeCCompilerABI.c.obj /tmp/ccua09GH.s
+        GNU assembler version 2.38 (arm-none-eabi) using BFD version (2.38-3ubuntu1+15build1) 2.38
+        COMPILER_PATH=/usr/lib/gcc/arm-none-eabi/10.3.1/:/usr/lib/gcc/arm-none-eabi/10.3.1/:/usr/lib/gcc/arm-none-eabi/:/usr/lib/gcc/arm-none-eabi/10.3.1/:/usr/lib/gcc/arm-none-eabi/:/usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/bin/
+        LIBRARY_PATH=/usr/lib/gcc/arm-none-eabi/10.3.1/:/usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_f9646.dir/CMakeCCompilerABI.c.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t'
+        Linking C static library libcmTC_f9646.a
+        /usr/local/bin/cmake -P CMakeFiles/cmTC_f9646.dir/cmake_clean_target.cmake
+        /usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f9646.dir/link.txt --verbose=1
+        arm-none-eabi-ar qc libcmTC_f9646.a CMakeFiles/cmTC_f9646.dir/CMakeCCompilerABI.c.obj
+        /usr/bin/arm-none-eabi-ranlib libcmTC_f9646.a
+        gmake[1]: Leaving directory '/home/coffee/Gimbal/CMakeFiles/CMakeScratch/TryCompile-ZBbkKQ'
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/local/share/cmake-4.1/Modules/CMakeDetermineCompilerABI.cmake:217 (message)"
+      - "/usr/local/share/cmake-4.1/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:17 (project)"
+    message: |
+      Parsed C implicit include dir info: rv=done
+        found start of include info
+        found start of implicit include info
+          add: [/usr/lib/gcc/arm-none-eabi/10.3.1/include]
+          add: [/usr/lib/gcc/arm-none-eabi/10.3.1/include-fixed]
+          add: [/usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/include]
+        end of search list found
+        collapse include dir [/usr/lib/gcc/arm-none-eabi/10.3.1/include] ==> [/usr/lib/gcc/arm-none-eabi/10.3.1/include]
+        collapse include dir [/usr/lib/gcc/arm-none-eabi/10.3.1/include-fixed] ==> [/usr/lib/gcc/arm-none-eabi/10.3.1/include-fixed]
+        collapse include dir [/usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/include] ==> [/usr/lib/arm-none-eabi/include]
+        implicit include dirs: [/usr/lib/gcc/arm-none-eabi/10.3.1/include;/usr/lib/gcc/arm-none-eabi/10.3.1/include-fixed;/usr/lib/arm-none-eabi/include]
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/local/share/cmake-4.1/Modules/CMakeDetermineCompilerABI.cmake:253 (message)"
+      - "/usr/local/share/cmake-4.1/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:17 (project)"
+    message: |
+      Parsed C implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)))("|,| |$)]
+        ignore line: [Change Dir: '/home/coffee/Gimbal/CMakeFiles/CMakeScratch/TryCompile-ZBbkKQ']
+        ignore line: []
+        ignore line: [Run Build Command(s): /usr/local/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_f9646/fast]
+        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_f9646.dir/build.make CMakeFiles/cmTC_f9646.dir/build]
+        ignore line: [gmake[1]: Entering directory '/home/coffee/Gimbal/CMakeFiles/CMakeScratch/TryCompile-ZBbkKQ']
+        ignore line: [Building C object CMakeFiles/cmTC_f9646.dir/CMakeCCompilerABI.c.obj]
+        ignore line: [/usr/bin/arm-none-eabi-gcc   -v -o CMakeFiles/cmTC_f9646.dir/CMakeCCompilerABI.c.obj -c /usr/local/share/cmake-4.1/Modules/CMakeCCompilerABI.c]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=/usr/bin/arm-none-eabi-gcc]
+        ignore line: [Target: arm-none-eabi]
+        ignore line: [Configured with: ../configure --build=x86_64-linux-gnu --prefix=/usr --includedir='/usr/lib/include' --mandir='/usr/lib/share/man' --infodir='/usr/lib/share/info' --sysconfdir=/etc --localstatedir=/var --disable-option-checking --disable-silent-rules --libdir='/usr/lib/lib/x86_64-linux-gnu' --libexecdir='/usr/lib/lib/x86_64-linux-gnu' --disable-maintainer-mode --disable-dependency-tracking --mandir=/usr/share/man --enable-languages=c,c++,lto --enable-multilib --disable-decimal-float --disable-libffi --disable-libgomp --disable-libmudflap --disable-libquadmath --disable-libssp --disable-libstdcxx-pch --disable-nls --disable-shared --disable-threads --enable-tls --build=x86_64-linux-gnu --target=arm-none-eabi --with-system-zlib --with-gnu-as --with-gnu-ld --with-pkgversion=15:10.3-2021.07-4 --without-included-gettext --prefix=/usr/lib --infodir=/usr/share/doc/gcc-arm-none-eabi/info --htmldir=/usr/share/doc/gcc-arm-none-eabi/html --pdfdir=/usr/share/doc/gcc-arm-none-eabi/pdf --bindir=/usr/bin --libexecdir=/usr/lib --libdir=/usr/lib --disable-libstdc++-v3 --host=x86_64-linux-gnu --with-headers=no --without-newlib --with-multilib-list=rmprofile,aprofile CFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-arm-none-eabi-hYfgK4/gcc-arm-none-eabi-10.3-2021.07=. -flto=auto -ffat-lto-objects -fstack-protector-strong' CPPFLAGS='-Wdate-time -D_FORTIFY_SOURCE=2' CXXFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-arm-none-eabi-hYfgK4/gcc-arm-none-eabi-10.3-2021.07=. -flto=auto -ffat-lto-objects -fstack-protector-strong' DFLAGS=-frelease FCFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-arm-none-eabi-hYfgK4/gcc-arm-none-eabi-10.3-2021.07=. -flto=auto -ffat-lto-objects -fstack-protector-strong' FFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-arm-none-eabi-hYfgK4/gcc-arm-none-eabi-10.3-2021.07=. -flto=auto -ffat-lto-objects -fstack-protector-strong' GCJFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-arm-none-eabi-hYfgK4/gcc-arm-none-eabi-10.3-2021.07=. -fstack-protector-strong' LDFLAGS='-Wl,-Bsymbolic-functions -flto=auto -Wl,-z,relro' OBJCFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-arm-none-eabi-hYfgK4/gcc-arm-none-eabi-10.3-2021.07=. -flto=auto -ffat-lto-objects -fstack-protector-strong' OBJCXXFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-arm-none-eabi-hYfgK4/gcc-arm-none-eabi-10.3-2021.07=. -flto=auto -ffat-lto-objects -fstack-protector-strong' INHIBIT_LIBC_CFLAGS=-DUSE_TM_CLONE_REGISTRY=0 AR_FOR_TARGET=arm-none-eabi-ar AS_FOR_TARGET=arm-none-eabi-as LD_FOR_TARGET=arm-none-eabi-ld NM_FOR_TARGET=arm-none-eabi-nm OBJDUMP_FOR_TARGET=arm-none-eabi-objdump RANLIB_FOR_TARGET=arm-none-eabi-ranlib READELF_FOR_TARGET=arm-none-eabi-readelf STRIP_FOR_TARGET=arm-none-eabi-strip SED=/bin/sed SHELL=/bin/sh BASH=/bin/bash CONFIG_SHELL=/bin/bash]
+        ignore line: [Thread model: single]
+        ignore line: [Supported LTO compression algorithms: zlib]
+        ignore line: [gcc version 10.3.1 20210621 (release) (15:10.3-2021.07-4) ]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_f9646.dir/CMakeCCompilerABI.c.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t']
+        ignore line: [ /usr/lib/gcc/arm-none-eabi/10.3.1/cc1 -quiet -v -D__USES_INITFINI__ /usr/local/share/cmake-4.1/Modules/CMakeCCompilerABI.c -quiet -dumpbase CMakeCCompilerABI.c -mcpu=arm7tdmi -mfloat-abi=soft -marm -mlibarch=armv4t -march=armv4t -auxbase-strip CMakeFiles/cmTC_f9646.dir/CMakeCCompilerABI.c.obj -version -o /tmp/ccua09GH.s]
+        ignore line: [GNU C17 (15:10.3-2021.07-4) version 10.3.1 20210621 (release) (arm-none-eabi)]
+        ignore line: [	compiled by GNU C version 11.2.0  GMP version 6.2.1  MPFR version 4.1.0  MPC version 1.2.1  isl version isl-0.24-GMP]
+        ignore line: []
+        ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+        ignore line: [ignoring nonexistent directory "/usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/sys-include"]
+        ignore line: [#include "..." search starts here:]
+        ignore line: [#include <...> search starts here:]
+        ignore line: [ /usr/lib/gcc/arm-none-eabi/10.3.1/include]
+        ignore line: [ /usr/lib/gcc/arm-none-eabi/10.3.1/include-fixed]
+        ignore line: [ /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/include]
+        ignore line: [End of search list.]
+        ignore line: [GNU C17 (15:10.3-2021.07-4) version 10.3.1 20210621 (release) (arm-none-eabi)]
+        ignore line: [	compiled by GNU C version 11.2.0  GMP version 6.2.1  MPFR version 4.1.0  MPC version 1.2.1  isl version isl-0.24-GMP]
+        ignore line: []
+        ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+        ignore line: [Compiler executable checksum: 4cf7574ae54eb0935abb4a8c56f8bcfe]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_f9646.dir/CMakeCCompilerABI.c.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t']
+        ignore line: [ /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/bin/as -v -march=armv4t -mfloat-abi=soft -meabi=5 -o CMakeFiles/cmTC_f9646.dir/CMakeCCompilerABI.c.obj /tmp/ccua09GH.s]
+        ignore line: [GNU assembler version 2.38 (arm-none-eabi) using BFD version (2.38-3ubuntu1+15build1) 2.38]
+        ignore line: [COMPILER_PATH=/usr/lib/gcc/arm-none-eabi/10.3.1/:/usr/lib/gcc/arm-none-eabi/10.3.1/:/usr/lib/gcc/arm-none-eabi/:/usr/lib/gcc/arm-none-eabi/10.3.1/:/usr/lib/gcc/arm-none-eabi/:/usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/bin/]
+        ignore line: [LIBRARY_PATH=/usr/lib/gcc/arm-none-eabi/10.3.1/:/usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_f9646.dir/CMakeCCompilerABI.c.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t']
+        ignore line: [Linking C static library libcmTC_f9646.a]
+        ignore line: [/usr/local/bin/cmake -P CMakeFiles/cmTC_f9646.dir/cmake_clean_target.cmake]
+        ignore line: [/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f9646.dir/link.txt --verbose=1]
+        ignore line: [arm-none-eabi-ar qc libcmTC_f9646.a CMakeFiles/cmTC_f9646.dir/CMakeCCompilerABI.c.obj]
+        ignore line: [/usr/bin/arm-none-eabi-ranlib libcmTC_f9646.a]
+        ignore line: [gmake[1]: Leaving directory '/home/coffee/Gimbal/CMakeFiles/CMakeScratch/TryCompile-ZBbkKQ']
+        ignore line: []
+        ignore line: []
+        implicit libs: []
+        implicit objs: []
+        implicit dirs: []
+        implicit fwks: []
+      
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/local/share/cmake-4.1/Modules/CMakeDetermineCompilerABI.cmake:83 (try_compile)"
+      - "/usr/local/share/cmake-4.1/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:17 (project)"
+    checks:
+      - "Detecting CXX compiler ABI info"
+    directories:
+      source: "/home/coffee/Gimbal/CMakeFiles/CMakeScratch/TryCompile-GeddkU"
+      binary: "/home/coffee/Gimbal/CMakeFiles/CMakeScratch/TryCompile-GeddkU"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_CXX_SCAN_FOR_MODULES: "OFF"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_CXX_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: '/home/coffee/Gimbal/CMakeFiles/CMakeScratch/TryCompile-GeddkU'
+        
+        Run Build Command(s): /usr/local/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_46df4/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_46df4.dir/build.make CMakeFiles/cmTC_46df4.dir/build
+        gmake[1]: Entering directory '/home/coffee/Gimbal/CMakeFiles/CMakeScratch/TryCompile-GeddkU'
+        Building CXX object CMakeFiles/cmTC_46df4.dir/CMakeCXXCompilerABI.cpp.obj
+        /usr/bin/arm-none-eabi-g++   -v -o CMakeFiles/cmTC_46df4.dir/CMakeCXXCompilerABI.cpp.obj -c /usr/local/share/cmake-4.1/Modules/CMakeCXXCompilerABI.cpp
+        Using built-in specs.
+        COLLECT_GCC=/usr/bin/arm-none-eabi-g++
+        Target: arm-none-eabi
+        Configured with: ../configure --build=x86_64-linux-gnu --prefix=/usr --includedir='/usr/lib/include' --mandir='/usr/lib/share/man' --infodir='/usr/lib/share/info' --sysconfdir=/etc --localstatedir=/var --disable-option-checking --disable-silent-rules --libdir='/usr/lib/lib/x86_64-linux-gnu' --libexecdir='/usr/lib/lib/x86_64-linux-gnu' --disable-maintainer-mode --disable-dependency-tracking --mandir=/usr/share/man --enable-languages=c,c++,lto --enable-multilib --disable-decimal-float --disable-libffi --disable-libgomp --disable-libmudflap --disable-libquadmath --disable-libssp --disable-libstdcxx-pch --disable-nls --disable-shared --disable-threads --enable-tls --build=x86_64-linux-gnu --target=arm-none-eabi --with-system-zlib --with-gnu-as --with-gnu-ld --with-pkgversion=15:10.3-2021.07-4 --without-included-gettext --prefix=/usr/lib --infodir=/usr/share/doc/gcc-arm-none-eabi/info --htmldir=/usr/share/doc/gcc-arm-none-eabi/html --pdfdir=/usr/share/doc/gcc-arm-none-eabi/pdf --bindir=/usr/bin --libexecdir=/usr/lib --libdir=/usr/lib --disable-libstdc++-v3 --host=x86_64-linux-gnu --with-headers=no --without-newlib --with-multilib-list=rmprofile,aprofile CFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-arm-none-eabi-hYfgK4/gcc-arm-none-eabi-10.3-2021.07=. -flto=auto -ffat-lto-objects -fstack-protector-strong' CPPFLAGS='-Wdate-time -D_FORTIFY_SOURCE=2' CXXFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-arm-none-eabi-hYfgK4/gcc-arm-none-eabi-10.3-2021.07=. -flto=auto -ffat-lto-objects -fstack-protector-strong' DFLAGS=-frelease FCFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-arm-none-eabi-hYfgK4/gcc-arm-none-eabi-10.3-2021.07=. -flto=auto -ffat-lto-objects -fstack-protector-strong' FFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-arm-none-eabi-hYfgK4/gcc-arm-none-eabi-10.3-2021.07=. -flto=auto -ffat-lto-objects -fstack-protector-strong' GCJFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-arm-none-eabi-hYfgK4/gcc-arm-none-eabi-10.3-2021.07=. -fstack-protector-strong' LDFLAGS='-Wl,-Bsymbolic-functions -flto=auto -Wl,-z,relro' OBJCFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-arm-none-eabi-hYfgK4/gcc-arm-none-eabi-10.3-2021.07=. -flto=auto -ffat-lto-objects -fstack-protector-strong' OBJCXXFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-arm-none-eabi-hYfgK4/gcc-arm-none-eabi-10.3-2021.07=. -flto=auto -ffat-lto-objects -fstack-protector-strong' INHIBIT_LIBC_CFLAGS=-DUSE_TM_CLONE_REGISTRY=0 AR_FOR_TARGET=arm-none-eabi-ar AS_FOR_TARGET=arm-none-eabi-as LD_FOR_TARGET=arm-none-eabi-ld NM_FOR_TARGET=arm-none-eabi-nm OBJDUMP_FOR_TARGET=arm-none-eabi-objdump RANLIB_FOR_TARGET=arm-none-eabi-ranlib READELF_FOR_TARGET=arm-none-eabi-readelf STRIP_FOR_TARGET=arm-none-eabi-strip SED=/bin/sed SHELL=/bin/sh BASH=/bin/bash CONFIG_SHELL=/bin/bash
+        Thread model: single
+        Supported LTO compression algorithms: zlib
+        gcc version 10.3.1 20210621 (release) (15:10.3-2021.07-4) 
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_46df4.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t'
+         /usr/lib/gcc/arm-none-eabi/10.3.1/cc1plus -quiet -v -D__USES_INITFINI__ /usr/local/share/cmake-4.1/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpbase CMakeCXXCompilerABI.cpp -mcpu=arm7tdmi -mfloat-abi=soft -marm -mlibarch=armv4t -march=armv4t -auxbase-strip CMakeFiles/cmTC_46df4.dir/CMakeCXXCompilerABI.cpp.obj -version -o /tmp/ccYWEZEV.s
+        GNU C++14 (15:10.3-2021.07-4) version 10.3.1 20210621 (release) (arm-none-eabi)
+        	compiled by GNU C version 11.2.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+        
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        ignoring nonexistent directory "/usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/sys-include"
+        #include "..." search starts here:
+        #include <...> search starts here:
+         /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/include/c++/10.3.1
+         /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/include/c++/10.3.1/arm-none-eabi
+         /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/include/c++/10.3.1/backward
+         /usr/lib/gcc/arm-none-eabi/10.3.1/include
+         /usr/lib/gcc/arm-none-eabi/10.3.1/include-fixed
+         /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/include
+        End of search list.
+        GNU C++14 (15:10.3-2021.07-4) version 10.3.1 20210621 (release) (arm-none-eabi)
+        	compiled by GNU C version 11.2.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+        
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        Compiler executable checksum: 4f994585a8ca8864fa1f4d2fb208a0ba
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_46df4.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t'
+         /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/bin/as -v -march=armv4t -mfloat-abi=soft -meabi=5 -o CMakeFiles/cmTC_46df4.dir/CMakeCXXCompilerABI.cpp.obj /tmp/ccYWEZEV.s
+        GNU assembler version 2.38 (arm-none-eabi) using BFD version (2.38-3ubuntu1+15build1) 2.38
+        COMPILER_PATH=/usr/lib/gcc/arm-none-eabi/10.3.1/:/usr/lib/gcc/arm-none-eabi/10.3.1/:/usr/lib/gcc/arm-none-eabi/:/usr/lib/gcc/arm-none-eabi/10.3.1/:/usr/lib/gcc/arm-none-eabi/:/usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/bin/
+        LIBRARY_PATH=/usr/lib/gcc/arm-none-eabi/10.3.1/:/usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_46df4.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t'
+        Linking CXX static library libcmTC_46df4.a
+        /usr/local/bin/cmake -P CMakeFiles/cmTC_46df4.dir/cmake_clean_target.cmake
+        /usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_46df4.dir/link.txt --verbose=1
+        arm-none-eabi-ar qc libcmTC_46df4.a CMakeFiles/cmTC_46df4.dir/CMakeCXXCompilerABI.cpp.obj
+        /usr/bin/arm-none-eabi-ranlib libcmTC_46df4.a
+        gmake[1]: Leaving directory '/home/coffee/Gimbal/CMakeFiles/CMakeScratch/TryCompile-GeddkU'
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/local/share/cmake-4.1/Modules/CMakeDetermineCompilerABI.cmake:217 (message)"
+      - "/usr/local/share/cmake-4.1/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:17 (project)"
+    message: |
+      Parsed CXX implicit include dir info: rv=done
+        found start of include info
+        found start of implicit include info
+          add: [/usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/include/c++/10.3.1]
+          add: [/usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/include/c++/10.3.1/arm-none-eabi]
+          add: [/usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/include/c++/10.3.1/backward]
+          add: [/usr/lib/gcc/arm-none-eabi/10.3.1/include]
+          add: [/usr/lib/gcc/arm-none-eabi/10.3.1/include-fixed]
+          add: [/usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/include]
+        end of search list found
+        collapse include dir [/usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/include/c++/10.3.1] ==> [/usr/lib/arm-none-eabi/include/c++/10.3.1]
+        collapse include dir [/usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/include/c++/10.3.1/arm-none-eabi] ==> [/usr/lib/arm-none-eabi/include/c++/10.3.1/arm-none-eabi]
+        collapse include dir [/usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/include/c++/10.3.1/backward] ==> [/usr/lib/arm-none-eabi/include/c++/10.3.1/backward]
+        collapse include dir [/usr/lib/gcc/arm-none-eabi/10.3.1/include] ==> [/usr/lib/gcc/arm-none-eabi/10.3.1/include]
+        collapse include dir [/usr/lib/gcc/arm-none-eabi/10.3.1/include-fixed] ==> [/usr/lib/gcc/arm-none-eabi/10.3.1/include-fixed]
+        collapse include dir [/usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/include] ==> [/usr/lib/arm-none-eabi/include]
+        implicit include dirs: [/usr/lib/arm-none-eabi/include/c++/10.3.1;/usr/lib/arm-none-eabi/include/c++/10.3.1/arm-none-eabi;/usr/lib/arm-none-eabi/include/c++/10.3.1/backward;/usr/lib/gcc/arm-none-eabi/10.3.1/include;/usr/lib/gcc/arm-none-eabi/10.3.1/include-fixed;/usr/lib/arm-none-eabi/include]
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/local/share/cmake-4.1/Modules/CMakeDetermineCompilerABI.cmake:253 (message)"
+      - "/usr/local/share/cmake-4.1/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:17 (project)"
+    message: |
+      Parsed CXX implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)))("|,| |$)]
+        ignore line: [Change Dir: '/home/coffee/Gimbal/CMakeFiles/CMakeScratch/TryCompile-GeddkU']
+        ignore line: []
+        ignore line: [Run Build Command(s): /usr/local/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_46df4/fast]
+        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_46df4.dir/build.make CMakeFiles/cmTC_46df4.dir/build]
+        ignore line: [gmake[1]: Entering directory '/home/coffee/Gimbal/CMakeFiles/CMakeScratch/TryCompile-GeddkU']
+        ignore line: [Building CXX object CMakeFiles/cmTC_46df4.dir/CMakeCXXCompilerABI.cpp.obj]
+        ignore line: [/usr/bin/arm-none-eabi-g++   -v -o CMakeFiles/cmTC_46df4.dir/CMakeCXXCompilerABI.cpp.obj -c /usr/local/share/cmake-4.1/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=/usr/bin/arm-none-eabi-g++]
+        ignore line: [Target: arm-none-eabi]
+        ignore line: [Configured with: ../configure --build=x86_64-linux-gnu --prefix=/usr --includedir='/usr/lib/include' --mandir='/usr/lib/share/man' --infodir='/usr/lib/share/info' --sysconfdir=/etc --localstatedir=/var --disable-option-checking --disable-silent-rules --libdir='/usr/lib/lib/x86_64-linux-gnu' --libexecdir='/usr/lib/lib/x86_64-linux-gnu' --disable-maintainer-mode --disable-dependency-tracking --mandir=/usr/share/man --enable-languages=c,c++,lto --enable-multilib --disable-decimal-float --disable-libffi --disable-libgomp --disable-libmudflap --disable-libquadmath --disable-libssp --disable-libstdcxx-pch --disable-nls --disable-shared --disable-threads --enable-tls --build=x86_64-linux-gnu --target=arm-none-eabi --with-system-zlib --with-gnu-as --with-gnu-ld --with-pkgversion=15:10.3-2021.07-4 --without-included-gettext --prefix=/usr/lib --infodir=/usr/share/doc/gcc-arm-none-eabi/info --htmldir=/usr/share/doc/gcc-arm-none-eabi/html --pdfdir=/usr/share/doc/gcc-arm-none-eabi/pdf --bindir=/usr/bin --libexecdir=/usr/lib --libdir=/usr/lib --disable-libstdc++-v3 --host=x86_64-linux-gnu --with-headers=no --without-newlib --with-multilib-list=rmprofile,aprofile CFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-arm-none-eabi-hYfgK4/gcc-arm-none-eabi-10.3-2021.07=. -flto=auto -ffat-lto-objects -fstack-protector-strong' CPPFLAGS='-Wdate-time -D_FORTIFY_SOURCE=2' CXXFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-arm-none-eabi-hYfgK4/gcc-arm-none-eabi-10.3-2021.07=. -flto=auto -ffat-lto-objects -fstack-protector-strong' DFLAGS=-frelease FCFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-arm-none-eabi-hYfgK4/gcc-arm-none-eabi-10.3-2021.07=. -flto=auto -ffat-lto-objects -fstack-protector-strong' FFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-arm-none-eabi-hYfgK4/gcc-arm-none-eabi-10.3-2021.07=. -flto=auto -ffat-lto-objects -fstack-protector-strong' GCJFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-arm-none-eabi-hYfgK4/gcc-arm-none-eabi-10.3-2021.07=. -fstack-protector-strong' LDFLAGS='-Wl,-Bsymbolic-functions -flto=auto -Wl,-z,relro' OBJCFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-arm-none-eabi-hYfgK4/gcc-arm-none-eabi-10.3-2021.07=. -flto=auto -ffat-lto-objects -fstack-protector-strong' OBJCXXFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-arm-none-eabi-hYfgK4/gcc-arm-none-eabi-10.3-2021.07=. -flto=auto -ffat-lto-objects -fstack-protector-strong' INHIBIT_LIBC_CFLAGS=-DUSE_TM_CLONE_REGISTRY=0 AR_FOR_TARGET=arm-none-eabi-ar AS_FOR_TARGET=arm-none-eabi-as LD_FOR_TARGET=arm-none-eabi-ld NM_FOR_TARGET=arm-none-eabi-nm OBJDUMP_FOR_TARGET=arm-none-eabi-objdump RANLIB_FOR_TARGET=arm-none-eabi-ranlib READELF_FOR_TARGET=arm-none-eabi-readelf STRIP_FOR_TARGET=arm-none-eabi-strip SED=/bin/sed SHELL=/bin/sh BASH=/bin/bash CONFIG_SHELL=/bin/bash]
+        ignore line: [Thread model: single]
+        ignore line: [Supported LTO compression algorithms: zlib]
+        ignore line: [gcc version 10.3.1 20210621 (release) (15:10.3-2021.07-4) ]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_46df4.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t']
+        ignore line: [ /usr/lib/gcc/arm-none-eabi/10.3.1/cc1plus -quiet -v -D__USES_INITFINI__ /usr/local/share/cmake-4.1/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpbase CMakeCXXCompilerABI.cpp -mcpu=arm7tdmi -mfloat-abi=soft -marm -mlibarch=armv4t -march=armv4t -auxbase-strip CMakeFiles/cmTC_46df4.dir/CMakeCXXCompilerABI.cpp.obj -version -o /tmp/ccYWEZEV.s]
+        ignore line: [GNU C++14 (15:10.3-2021.07-4) version 10.3.1 20210621 (release) (arm-none-eabi)]
+        ignore line: [	compiled by GNU C version 11.2.0  GMP version 6.2.1  MPFR version 4.1.0  MPC version 1.2.1  isl version isl-0.24-GMP]
+        ignore line: []
+        ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+        ignore line: [ignoring nonexistent directory "/usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/sys-include"]
+        ignore line: [#include "..." search starts here:]
+        ignore line: [#include <...> search starts here:]
+        ignore line: [ /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/include/c++/10.3.1]
+        ignore line: [ /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/include/c++/10.3.1/arm-none-eabi]
+        ignore line: [ /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/include/c++/10.3.1/backward]
+        ignore line: [ /usr/lib/gcc/arm-none-eabi/10.3.1/include]
+        ignore line: [ /usr/lib/gcc/arm-none-eabi/10.3.1/include-fixed]
+        ignore line: [ /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/include]
+        ignore line: [End of search list.]
+        ignore line: [GNU C++14 (15:10.3-2021.07-4) version 10.3.1 20210621 (release) (arm-none-eabi)]
+        ignore line: [	compiled by GNU C version 11.2.0  GMP version 6.2.1  MPFR version 4.1.0  MPC version 1.2.1  isl version isl-0.24-GMP]
+        ignore line: []
+        ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+        ignore line: [Compiler executable checksum: 4f994585a8ca8864fa1f4d2fb208a0ba]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_46df4.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t']
+        ignore line: [ /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/bin/as -v -march=armv4t -mfloat-abi=soft -meabi=5 -o CMakeFiles/cmTC_46df4.dir/CMakeCXXCompilerABI.cpp.obj /tmp/ccYWEZEV.s]
+        ignore line: [GNU assembler version 2.38 (arm-none-eabi) using BFD version (2.38-3ubuntu1+15build1) 2.38]
+        ignore line: [COMPILER_PATH=/usr/lib/gcc/arm-none-eabi/10.3.1/:/usr/lib/gcc/arm-none-eabi/10.3.1/:/usr/lib/gcc/arm-none-eabi/:/usr/lib/gcc/arm-none-eabi/10.3.1/:/usr/lib/gcc/arm-none-eabi/:/usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/bin/]
+        ignore line: [LIBRARY_PATH=/usr/lib/gcc/arm-none-eabi/10.3.1/:/usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_46df4.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t']
+        ignore line: [Linking CXX static library libcmTC_46df4.a]
+        ignore line: [/usr/local/bin/cmake -P CMakeFiles/cmTC_46df4.dir/cmake_clean_target.cmake]
+        ignore line: [/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_46df4.dir/link.txt --verbose=1]
+        ignore line: [arm-none-eabi-ar qc libcmTC_46df4.a CMakeFiles/cmTC_46df4.dir/CMakeCXXCompilerABI.cpp.obj]
+        ignore line: [/usr/bin/arm-none-eabi-ranlib libcmTC_46df4.a]
+        ignore line: [gmake[1]: Leaving directory '/home/coffee/Gimbal/CMakeFiles/CMakeScratch/TryCompile-GeddkU']
+        ignore line: []
+        ignore line: []
+        implicit libs: []
+        implicit objs: []
+        implicit dirs: []
+        implicit fwks: []
+      
+      
+...
