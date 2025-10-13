@@ -49,10 +49,10 @@ osThreadId imuTaskHandle;
 osThreadId gimbalTaskHandle;
 /* USER CODE END Variables */
 osThreadId testHandle;
-osThreadId enginerTaskHandle;
+// osThreadId enginerTaskHandle;
 osThreadId ledTaskHandle;
-osThreadId refereeTaskHandle;
-osThreadId refereetranTaskHandle;
+// osThreadId refereeTaskHandle;
+// osThreadId refereetranTaskHandle;
 osThreadId myTask06Handle;
 
 /* Private function prototypes -----------------------------------------------*/
@@ -62,10 +62,10 @@ extern void gimbal_task(void const * argument);
 /* USER CODE END FunctionPrototypes */
 
 void test_task(void const * argument);
-extern void enginer_task(void const * argument);
+// extern void enginer_task(void const * argument);
 extern void led_Task(void const * argument);
-extern void referee_Task(void const * argument);
-extern void referee_transmit_task(void const * argument);
+// extern void referee_Task(void const * argument);
+// extern void referee_transmit_task(void const * argument);
 extern void StartTask06(void const * argument);
 
 extern void MX_USB_DEVICE_Init(void);
@@ -135,24 +135,25 @@ void MX_FREERTOS_Init(void) {
   testHandle = osThreadCreate(osThread(test), NULL);
 
   /* definition and creation of enginerTask */
-  osThreadDef(enginerTask, enginer_task, osPriorityAboveNormal, 0, 512);
-  enginerTaskHandle = osThreadCreate(osThread(enginerTask), NULL);
+  // osThreadDef(enginerTask, enginer_task, osPriorityAboveNormal, 0, 512);
+  // enginerTaskHandle = osThreadCreate(osThread(enginerTask), NULL);
 
   /* definition and creation of ledTask */
   osThreadDef(ledTask, led_Task, osPriorityNormal, 0, 512);
   ledTaskHandle = osThreadCreate(osThread(ledTask), NULL);
 
   /* definition and creation of refereeTask */
-  osThreadDef(refereeTask, referee_Task, osPriorityNormal, 0, 256);
-  refereeTaskHandle = osThreadCreate(osThread(refereeTask), NULL);
+  // osThreadDef(refereeTask, referee_Task, osPriorityNormal, 0, 256);
+  // refereeTaskHandle = osThreadCreate(osThread(refereeTask), NULL);
 
   /* definition and creation of refereetranTask */
-  osThreadDef(refereetranTask, referee_transmit_task, osPriorityNormal, 0, 256);
-  refereetranTaskHandle = osThreadCreate(osThread(refereetranTask), NULL);
+  // osThreadDef(refereetranTask, referee_transmit_task, osPriorityNormal, 0, 256);
+  // refereetranTaskHandle = osThreadCreate(osThread(refereetranTask), NULL);
 
   /* definition and creation of myTask06 */
-  osThreadDef(myTask06, StartTask06, osPriorityHigh, 0, 512);
-  myTask06Handle = osThreadCreate(osThread(myTask06), NULL);
+  //忘改名了，是usbtask,懒得再回windows了。
+  // osThreadDef(myTask06, StartTask06, osPriorityNormal, 0, 1024);
+  // myTask06Handle = osThreadCreate(osThread(myTask06), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
   osThreadDef(imuTask, imu_task, osPriorityRealtime, 0, 1024);
