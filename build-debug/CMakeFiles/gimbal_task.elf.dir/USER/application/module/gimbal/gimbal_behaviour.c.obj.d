@@ -80,4 +80,14 @@ CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal_behaviour.c
  /home/coffee/Gimbal/Middlewares/Third_Party/FreeRTOS/Source/include/queue.h \
  /home/coffee/Gimbal/Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h \
  /home/coffee/Gimbal/Middlewares/Third_Party/FreeRTOS/Source/include/timers.h \
- /home/coffee/Gimbal/USER/components/algorithm/user_lib.h
+ /home/coffee/Gimbal/USER/components/algorithm/user_lib.h \
+ /home/coffee/Gimbal/USER/application/callback/usb_callback.h \
+ /usr/include/newlib/stdio.h \
+ /usr/lib/gcc/arm-none-eabi/10.3.1/include/stdarg.h \
+ /usr/include/newlib/sys/types.h /usr/include/newlib/sys/_stdint.h \
+ /usr/include/newlib/machine/endian.h \
+ /usr/include/newlib/machine/_endian.h /usr/include/newlib/sys/select.h \
+ /usr/include/newlib/sys/_sigset.h /usr/include/newlib/sys/_timeval.h \
+ /usr/include/newlib/sys/timespec.h /usr/include/newlib/sys/_timespec.h \
+ /usr/include/newlib/sys/_pthreadtypes.h /usr/include/newlib/sys/sched.h \
+ /usr/include/newlib/machine/types.h /usr/include/newlib/sys/stdio.h
