@@ -152,8 +152,8 @@ void MX_FREERTOS_Init(void) {
 
   /* definition and creation of myTask06 */
   //忘改名了，是usbtask,懒得再回windows了。
-  // osThreadDef(myTask06, StartTask06, osPriorityNormal, 0, 1024);
-  // myTask06Handle = osThreadCreate(osThread(myTask06), NULL);
+  osThreadDef(myTask06, StartTask06, osPriorityAboveNormal, 0, 512);
+  myTask06Handle = osThreadCreate(osThread(myTask06), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
   osThreadDef(imuTask, imu_task, osPriorityRealtime, 0, 1024);

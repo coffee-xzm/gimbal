@@ -5,15 +5,12 @@
 
 void StartTask06(void const * argument)
 {
-    MX_USB_DEVICE_Init();
-    osDelay(2000);
+    osDelay(1000);
     // USB任务实现
     while(1)
     {
         // 这里可以添加USB相关的处理逻辑
-        taskENTER_CRITICAL();
         usb_send_gimbal_data();
-        taskEXIT_CRITICAL();
         osDelay(1);
     }
 }
