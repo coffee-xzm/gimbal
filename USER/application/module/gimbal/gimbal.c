@@ -89,11 +89,11 @@ void gimbal_init(gimbal_control_t * init){
     PID_init(&init->pitch.position_pid, PID_POSITION,posi_pid,M6020_MOTOR_POSITION_PID_MAX_OUT, M6020_MOTOR_POSITION_PID_MAX_IOUT);//6020
 
     // 获取Yaw轴-4310电机测量数据指针
-    //init->yaw.motor_measure.motor_DM = get_dm_motor_measure_point(2);
+    init->yaw.motor_measure.motor_DM = get_dm_motor_measure_point(2);
     init->pitch.motor_measure.motor_DJI = get_motor_measure_point();              // 获取3508电机测量数据指针
     //陀螺仪数据指针获取
     init->gimbal_INT_angle_point = get_INS_angle_point();
-    init->gimbal_INT_gyro_point = get_INS_gyro_point();
+    init->gimbal_INT_gyro_point = get_gyro_data_point();
 
     //更新数据
     gimbal_feedback_update(init);

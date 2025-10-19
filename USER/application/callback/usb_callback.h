@@ -15,7 +15,6 @@ typedef struct
     // 帧头和控制信息
     uint8_t head[2];  // 帧头 "SP"
     uint8_t mode;     // 模式 0: 空闲, 1: 自瞄, 2: 小符, 3: 大符
-    uint8_t reserved; // 保留字节，用于对齐
     float q[4];       // 四元数 wxyz
     float yaw; 
     float yaw_vel;
@@ -31,7 +30,6 @@ typedef struct
 
         uint8_t head[2];  // 帧头 "SP"
         uint8_t mode;     // 模式
-        uint8_t reserved; // 保留字节
         float yaw;        // 目标偏航角
         float yaw_vel;    // 目标偏航角速度
         float yaw_acc;    // 目标偏航角加速度
@@ -44,7 +42,7 @@ typedef struct
 
 // 公共函数原型
 void usb_receive_callback(uint8_t* Buf, uint32_t *Len);
-void get_latest_vision_data(VisionToGimbal* data_out);
+void get_vision_data(VisionToGimbal* data_out);
 void usb_send_gimbal_data(void);
 
 #endif // USB_CALLBACK_H

@@ -5,6 +5,7 @@
 
 void StartTask06(void const * argument)
 {
+
     osDelay(1000);
     // USB任务实现
     while(1)

@@ -129,8 +129,11 @@ int main(void)
   delay_init();
   usart1_tx_dma_init();
   remote_control_init();
-  // MX_USB_DEVICE_Init();
-  /* USER CODE END 2 */
+  MX_USB_DEVICE_Init();
+  // ≥ı ºªØº§π‚± 
+  HAL_TIM_PWM_Start(&htim3,TIM_CHANNEL_3);
+  __HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_3, 80);
+    /* USER CODE END 2 */
 
   /* Call init function for freertos objects (in cmsis_os2.c) */
   MX_FREERTOS_Init();

@@ -2,8 +2,6 @@
 #include "user_lib.h"
 #include <usb_callback.h>
 
-static VisionToGimbal vision_data;
-
 void gimbal_behaviour_mode_set(gimbal_control_t *set_mode)
 {
     if (set_mode == NULL){
@@ -85,78 +83,38 @@ void gimbal_behaviour_mode_set(gimbal_control_t *set_mode)
 
 // 自动模式
 void HandleAutoMode() {
-   // UpdateActionEngine(&engineer_control);  // 进入更新动作引擎环节
-   
-   #define MIN_YAW_ANGLE -1.5
-   #define MAX_YAW_ANGLE 1.5
-   #define MIN_PITCH_ANGLE -1.5
-   #define MAX_PITCH_ANGLE 1.5
+#define MIN_YAW_ANGLE -1.5f
+#define MAX_YAW_ANGLE 1.5f
+#define MIN_PITCH_ANGLE -1.5f
+#define MAX_PITCH_ANGLE 1.5f
 
-   fp32 dt=0;
-   fp32 add_yaw_angle = 0.0f;
-   fp32 add_pitch_angle = 0.0f;
+    static fp32 last_yaw = 0.0f;
+    static fp32 last_pitch = 0.0f;
 
-   rc_deadband_limit(vision_data.yaw, vision_data.yaw, MAX_YAW_ANGLE);
-   rc_deadband_limit(vision_data.pitch,vision_data.pitch, MIN_PITCH_ANGLE);
+    VisionToGimbal data;
+    get_vision_data(&data);
 
-   static fp32 yaw_bias_angle;
-   static fp32 yaw_angle_set;
-   //这里甑两没太看懂，姑且理解为短时间的增量了
+    // 角度限制
+    fp32 limited_yaw = data.yaw;
+    fp32 limited_pitch = data.pitch;
 
-   //now angle error
-   //当前控制误差角度
-   yaw_bias_angle = vision_data.yaw - gimbal_control.yaw.current_angle;
+    if (limited_yaw > MAX_YAW_ANGLE) limited_yaw = MAX_YAW_ANGLE;
+    else if (limited_yaw < MIN_YAW_ANGLE) limited_yaw = MIN_YAW_ANGLE;
 
-   //云台相对角度+ 误差角度 + 新增角度 如果大于 最大机械角度
-   if (gimbal_control.yaw.current_angle + yaw_bias_angle + dt*vision_data.yaw_vel > MAX_YAW_ANGLE)
-   {
-       //如果是往最大机械角度控制方向
-       if (dt*vision_data.yaw_vel > 0.0f)
-       {
-           //calculate max add_angle
-           //计算出一个最大的添加角度，
-           add_yaw_angle = MAX_YAW_ANGLE - gimbal_control.yaw.target_angle ;
-       }
-   }
-   else if (gimbal_control.yaw.current_angle + yaw_bias_angle + dt*vision_data.yaw_vel < MIN_YAW_ANGLE)
-   {
-       if (dt*vision_data.yaw_vel < 0.0f)
-       {
-           add_yaw_angle = MIN_YAW_ANGLE - gimbal_control.yaw.target_angle ;
-       }
-   }
-   yaw_angle_set = vision_data.yaw;
-   gimbal_control.yaw.target_angle = yaw_angle_set + add_yaw_angle;
+    if (limited_pitch > MAX_PITCH_ANGLE) limited_pitch = MAX_PITCH_ANGLE;
+    else if (limited_pitch < MIN_PITCH_ANGLE) limited_pitch = MIN_PITCH_ANGLE;
 
-   static fp32 pitch_bias_angle;
-   static fp32 pitch_angle_set;
+    // 低通滤波器 (alpha越小越平滑，但延迟越大)
+    #define FILTER_ALPHA 0.1f
+    fp32 filtered_yaw = FILTER_ALPHA * limited_yaw + (1.0f - FILTER_ALPHA) * last_yaw;
+    fp32 filtered_pitch = FILTER_ALPHA * limited_pitch + (1.0f - FILTER_ALPHA) * last_pitch;
 
-   //当前控制误差角度
-   pitch_bias_angle = vision_data.pitch - gimbal_control.pitch.current_angle;
+    last_yaw = filtered_yaw;
+    last_pitch = filtered_pitch;
 
-   //云台相对角度+ 误差角度 + 新增角度 如果大于 最大机械角度
-   if (gimbal_control.pitch.current_angle + pitch_bias_angle + dt*vision_data.pitch_vel > MAX_PITCH_ANGLE)
-   {
-       //如果是往最大机械角度控制方向
-       if (dt*vision_data.pitch_vel > 0.0f)
-       {
-           //calculate max add_angle
-           //计算出一个最大的添加角度，
-           add_pitch_angle = MAX_PITCH_ANGLE - gimbal_control.pitch.target_angle;
-       }
-   }
-   else if (gimbal_control.pitch.current_angle + pitch_bias_angle + dt*vision_data.pitch_vel < MIN_PITCH_ANGLE)
-   {
-       //如果是往最小机械角度控制方向
-       if (dt*vision_data.pitch_vel < 0.0f)
-       {
-           //calculate min add_angle
-           //计算出一个最小的添加角度，
-           add_pitch_angle = MIN_PITCH_ANGLE - gimbal_control.pitch.target_angle;
-       }
-   }
-   pitch_angle_set = vision_data.pitch;
-   gimbal_control.pitch.target_angle = pitch_angle_set + add_pitch_angle;
+    // 设置目标角度
+    gimbal_control.yaw.target_angle = filtered_yaw;
+    gimbal_control.pitch.target_angle = filtered_pitch;
 }
 
 // 无力模式

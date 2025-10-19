@@ -1,3 +1,0 @@
-/home/coffee/Gimbal/CMakeFiles/gimbal_task.elf.dir
-/home/coffee/Gimbal/CMakeFiles/edit_cache.dir
-/home/coffee/Gimbal/CMakeFiles/rebuild_cache.dir
