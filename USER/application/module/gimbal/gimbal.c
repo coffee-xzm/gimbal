@@ -291,7 +291,7 @@ void gimbal_position_control(gimbal_control_t *control){
     time++;
     if(time==1)
     {
-        MIT_CtrlMotor(&hcan1, 0x02, control->yaw.target_angle, 0.0f, 5.0f, 0.2f, 0.0f);
+        MIT_CtrlMotor(&hcan1, 0x02, control->yaw.target_angle, 0.0f, 15.0f, 1.0f, 0.0f);
     }
     else if (time==2)
     {

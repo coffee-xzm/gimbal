@@ -105,7 +105,7 @@ void HandleAutoMode() {
     else if (limited_pitch < MIN_PITCH_ANGLE) limited_pitch = MIN_PITCH_ANGLE;
 
     // 低通滤波器 (alpha越小越平滑，但延迟越大)
-    #define FILTER_ALPHA 0.1f
+    #define FILTER_ALPHA 0.3f
     fp32 filtered_yaw = FILTER_ALPHA * limited_yaw + (1.0f - FILTER_ALPHA) * last_yaw;
     fp32 filtered_pitch = FILTER_ALPHA * limited_pitch + (1.0f - FILTER_ALPHA) * last_pitch;
 
@@ -114,7 +114,7 @@ void HandleAutoMode() {
 
     // 设置目标角度
     gimbal_control.yaw.target_angle = filtered_yaw;
-    gimbal_control.pitch.target_angle = filtered_pitch;
+    gimbal_control.pitch.target_angle = -filtered_pitch;
 }
 
 // 无力模式

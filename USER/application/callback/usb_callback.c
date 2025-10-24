@@ -53,7 +53,7 @@ void data_init(void){
 
 void get_vision_data(VisionToGimbal* data_out)
 {
-    memcpy(data_out, &vision_data, sizeof(VisionToGimbal));
+    memcpy(data_out, &latest_vision_data, sizeof(VisionToGimbal));
 }
 
 void usb_send_gimbal_data(void)
