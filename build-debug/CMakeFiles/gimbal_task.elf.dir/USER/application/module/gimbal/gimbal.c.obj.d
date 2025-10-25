@@ -85,10 +85,8 @@ CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal.c.obj: \
  /home/coffee/Gimbal/USER/application/module/gimbal/gimbal_behaviour.h \
  /home/coffee/Gimbal/Inc/can.h /home/coffee/Gimbal/Inc/main.h \
  /home/coffee/Gimbal/USER/application/Task/INS_task.h \
- /home/coffee/Gimbal/USER/components/algorithm/AHRS_middleware.h \
  /home/coffee/Gimbal/USER/components/algorithm/user_lib.h \
  /home/coffee/Gimbal/USER/application/module/imu/imu.h \
- /home/coffee/Gimbal/USER/components/device/bmi088/BMI088driver.h \
  /home/coffee/Gimbal/Middlewares/ST/ARM/DSP/Inc/arm_math.h \
  /home/coffee/Gimbal/Drivers/CMSIS/Include/cmsis_compiler.h \
  /usr/lib/gcc/arm-none-eabi/10.3.1/include/float.h \

@@ -1,10 +1,7 @@
 CMakeFiles/gimbal_task.elf.dir/USER/application/Task/INS_task.c.obj: \
  /home/coffee/Gimbal/USER/application/Task/INS_task.c \
- /home/coffee/Gimbal/USER/components/algorithm/AHRS.h \
- /home/coffee/Gimbal/USER/components/algorithm/AHRS_middleware.h \
- /home/coffee/Gimbal/USER/components/bsp/bsp_imu_pwm.h \
+ /home/coffee/Gimbal/USER/application/Task/INS_task.h \
  /home/coffee/Gimbal/USER/components/support/struct_typedef.h \
- /home/coffee/Gimbal/USER/components/bsp/bsp_spi.h \
  /home/coffee/Gimbal/Inc/main.h \
  /home/coffee/Gimbal/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
  /home/coffee/Gimbal/Inc/stm32f4xx_hal_conf.h \
@@ -74,6 +71,10 @@ CMakeFiles/gimbal_task.elf.dir/USER/application/Task/INS_task.c.obj: \
  /home/coffee/Gimbal/Middlewares/Third_Party/FreeRTOS/Source/include/queue.h \
  /home/coffee/Gimbal/Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h \
  /home/coffee/Gimbal/Middlewares/Third_Party/FreeRTOS/Source/include/timers.h \
- /home/coffee/Gimbal/USER/application/module/imu/imu.h \
+ /home/coffee/Gimbal/USER/components/bsp/bsp_imu_pwm.h \
+ /home/coffee/Gimbal/USER/components/bsp/bsp_spi.h \
  /home/coffee/Gimbal/USER/components/device/bmi088/BMI088driver.h \
- /home/coffee/Gimbal/USER/components/controller/pid.h
+ /home/coffee/Gimbal/USER/components/device/ist8310/ist8310driver.h \
+ /home/coffee/Gimbal/USER/components/controller/pid.h \
+ /home/coffee/Gimbal/USER/components/algorithm/AHRS.h \
+ /home/coffee/Gimbal/USER/components/algorithm/AHRS_middleware.h

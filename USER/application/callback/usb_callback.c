@@ -17,6 +17,7 @@ void data_init(void){
     memset(&latest_vision_data, 0, sizeof(VisionToGimbal));
     memset(&vision_data, 0, sizeof(VisionToGimbal));
     memset(&gimbal_data, 0, sizeof(GimbalToVision));
+    // vision_data.yaw += 1.5f;
 }
 
 /**
@@ -54,6 +55,7 @@ void data_init(void){
 void get_vision_data(VisionToGimbal* data_out)
 {
     memcpy(data_out, &vision_data, sizeof(VisionToGimbal));
+    // data_out->yaw -= 1.5f;
 }
 
 void usb_send_gimbal_data(void)
@@ -73,12 +75,16 @@ void usb_send_gimbal_data(void)
 
     // 填充四元数 - 使用固定值测试用
     fp32 quat_data[4] = {1.0f, 0.0f, 0.0f, 0.0f};  // w, x, y, z
+    memcpy(quat_data, get_INS_quat_point(), 16);
+    // fp32 quat_data[4] = {ins[0], INS_quat[1], INS_quat[2], INS_quat[3]};
     memcpy(send_buffer + 3, quat_data, 16);  // 4个float = 16字节
 
     // 填充云台状态
-    fp32 yaw_data = gimbal_control.yaw.current_angle;
+    fp32 yaw_data = get_INS_angle_point()[0];
+    // fp32 yaw_data = gimbal_control.yaw.current_angle-1.5f;
     fp32 yaw_vel_data = gimbal_control.yaw.current_speed;
-    fp32 pitch_data = gimbal_control.pitch.current_angle;
+    // fp32 pitch_data = gimbal_control.pitch.current_angle;
+    fp32 pitch_data = get_INS_angle_point()[1];
     fp32 pitch_vel_data = gimbal_control.pitch.current_speed;
     memcpy(send_buffer + 19, &yaw_data, 4);
     memcpy(send_buffer + 23, &yaw_vel_data, 4);

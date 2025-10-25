@@ -100,4 +100,5 @@ CMakeFiles/gimbal_task.elf.dir/USER/application/callback/usb_callback.c.obj: \
  /home/coffee/Gimbal/Inc/main.h \
  /home/coffee/Gimbal/Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h \
  /home/coffee/Gimbal/Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h \
- /home/coffee/Gimbal/Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h
+ /home/coffee/Gimbal/Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h \
+ /home/coffee/Gimbal/USER/application/Task/INS_task.h
