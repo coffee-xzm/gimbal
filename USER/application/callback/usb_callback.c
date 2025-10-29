@@ -76,10 +76,10 @@ void usb_send_gimbal_data(void)
     memcpy(send_buffer + 3, quat_data, 16);  // 4个float = 16字节
 
     // 填充云台状态
-    fp32 yaw_data = gimbal_control.yaw.current_angle;
-    fp32 yaw_vel_data = gimbal_control.yaw.current_speed;
-    fp32 pitch_data = gimbal_control.pitch.current_angle;
-    fp32 pitch_vel_data = gimbal_control.pitch.current_speed;
+    fp32 yaw_data = gimbal_control.yaw.absolute_angle;
+    fp32 yaw_vel_data = gimbal_control.yaw.absolute_angle;
+    fp32 pitch_data = gimbal_control.pitch.absolute_angle;
+    fp32 pitch_vel_data = gimbal_control.pitch.absolute_angle;
     memcpy(send_buffer + 19, &yaw_data, 4);
     memcpy(send_buffer + 23, &yaw_vel_data, 4);
     memcpy(send_buffer + 27, &pitch_data, 4);

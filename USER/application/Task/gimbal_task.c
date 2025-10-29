@@ -6,8 +6,6 @@ void gimbal_task(void const *argument)
 {
     osDelay(2000);
     gimbal_init(&gimbal_control); // 初始化云台控制数据结构体
-    osDelay(100);
-
     while (1)
     {
 

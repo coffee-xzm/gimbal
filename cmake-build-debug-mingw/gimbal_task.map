@@ -2205,6 +2205,8 @@ Discarded input sections
  .bss           0x00000000        0x0 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal.c.obj
  .text.gimbal_angle_limit
                 0x00000000       0x28 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal.c.obj
+ .text.InitControlStrategy
+                0x00000000        0xc CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal.c.obj
  .text          0x00000000        0x0 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal_behaviour.c.obj
  .data          0x00000000        0x0 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal_behaviour.c.obj
  .bss           0x00000000        0x0 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal_behaviour.c.obj
@@ -2235,8 +2237,6 @@ Discarded input sections
                 0x00000000       0x10 CMakeFiles/gimbal_task.elf.dir/USER/components/algorithm/user_lib.c.obj
  .text.first_order_filter_cali
                 0x00000000       0x2e CMakeFiles/gimbal_task.elf.dir/USER/components/algorithm/user_lib.c.obj
- .text.abs_limit
-                0x00000000       0x28 CMakeFiles/gimbal_task.elf.dir/USER/components/algorithm/user_lib.c.obj
  .text.sign     0x00000000       0x16 CMakeFiles/gimbal_task.elf.dir/USER/components/algorithm/user_lib.c.obj
  .text.fp32_deadline
                 0x00000000       0x20 CMakeFiles/gimbal_task.elf.dir/USER/components/algorithm/user_lib.c.obj
@@ -2246,24 +2246,8 @@ Discarded input sections
                 0x00000000       0x20 CMakeFiles/gimbal_task.elf.dir/USER/components/algorithm/user_lib.c.obj
  .text.int16_constrain
                 0x00000000       0x10 CMakeFiles/gimbal_task.elf.dir/USER/components/algorithm/user_lib.c.obj
- .text.loop_fp32_constrain
-                0x00000000       0x4a CMakeFiles/gimbal_task.elf.dir/USER/components/algorithm/user_lib.c.obj
  .text.theta_format
                 0x00000000       0x18 CMakeFiles/gimbal_task.elf.dir/USER/components/algorithm/user_lib.c.obj
- .debug_info    0x00000000      0x514 CMakeFiles/gimbal_task.elf.dir/USER/components/algorithm/user_lib.c.obj
- .debug_abbrev  0x00000000      0x186 CMakeFiles/gimbal_task.elf.dir/USER/components/algorithm/user_lib.c.obj
- .debug_loclists
-                0x00000000      0x227 CMakeFiles/gimbal_task.elf.dir/USER/components/algorithm/user_lib.c.obj
- .debug_aranges
-                0x00000000       0x80 CMakeFiles/gimbal_task.elf.dir/USER/components/algorithm/user_lib.c.obj
- .debug_rnglists
-                0x00000000       0x5b CMakeFiles/gimbal_task.elf.dir/USER/components/algorithm/user_lib.c.obj
- .debug_line    0x00000000      0x39b CMakeFiles/gimbal_task.elf.dir/USER/components/algorithm/user_lib.c.obj
- .debug_str     0x00000000      0x388 CMakeFiles/gimbal_task.elf.dir/USER/components/algorithm/user_lib.c.obj
- .comment       0x00000000       0x46 CMakeFiles/gimbal_task.elf.dir/USER/components/algorithm/user_lib.c.obj
- .debug_frame   0x00000000       0xe8 CMakeFiles/gimbal_task.elf.dir/USER/components/algorithm/user_lib.c.obj
- .ARM.attributes
-                0x00000000       0x34 CMakeFiles/gimbal_task.elf.dir/USER/components/algorithm/user_lib.c.obj
  .text          0x00000000        0x0 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_adc.c.obj
  .data          0x00000000        0x0 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_adc.c.obj
  .bss           0x00000000        0x0 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_adc.c.obj
@@ -3482,7 +3466,7 @@ LOAD C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-ea
                 0x08000000                g_pfnVectors
                 0x08000188                        . = ALIGN (0x4)
 
-.text           0x080001c0    0x114d0
+.text           0x080001c0    0x11710
                 0x080001c0                        . = ALIGN (0x4)
  *(.text)
  .text          0x080001c0      0x378 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
@@ -4771,561 +4755,579 @@ LOAD C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-ea
                 0x0800b6e8      0x69c CMakeFiles/gimbal_task.elf.dir/USER/application/Task/INS_task.c.obj
                 0x0800b6e8                DMA2_Stream2_IRQHandler
  .text.gimbal_task
-                0x0800bd84       0x44 CMakeFiles/gimbal_task.elf.dir/USER/application/Task/gimbal_task.c.obj
+                0x0800bd84       0x3c CMakeFiles/gimbal_task.elf.dir/USER/application/Task/gimbal_task.c.obj
                 0x0800bd84                gimbal_task
  .text.init_sine_table
-                0x0800bdc8       0x50 CMakeFiles/gimbal_task.elf.dir/USER/application/Task/led_task.c.obj
-                0x0800bdc8                init_sine_table
+                0x0800bdc0       0x50 CMakeFiles/gimbal_task.elf.dir/USER/application/Task/led_task.c.obj
+                0x0800bdc0                init_sine_table
  .text.led_Task
-                0x0800be18       0xe0 CMakeFiles/gimbal_task.elf.dir/USER/application/Task/led_task.c.obj
-                0x0800be18                led_Task
+                0x0800be10       0xe0 CMakeFiles/gimbal_task.elf.dir/USER/application/Task/led_task.c.obj
+                0x0800be10                led_Task
  .text.StartTask06
-                0x0800bef8       0x16 CMakeFiles/gimbal_task.elf.dir/USER/application/Task/usb_task.c.obj
-                0x0800bef8                StartTask06
- *fill*         0x0800bf0e        0x2 
+                0x0800bef0       0x16 CMakeFiles/gimbal_task.elf.dir/USER/application/Task/usb_task.c.obj
+                0x0800bef0                StartTask06
+ *fill*         0x0800bf06        0x2 
  .text.HAL_CAN_RxFifo0MsgPendingCallback
-                0x0800bf10       0x40 CMakeFiles/gimbal_task.elf.dir/USER/application/callback/Can_Callback.c.obj
-                0x0800bf10                HAL_CAN_RxFifo0MsgPendingCallback
+                0x0800bf08       0x40 CMakeFiles/gimbal_task.elf.dir/USER/application/callback/Can_Callback.c.obj
+                0x0800bf08                HAL_CAN_RxFifo0MsgPendingCallback
  .text.usb_receive_callback
-                0x0800bf50       0x74 CMakeFiles/gimbal_task.elf.dir/USER/application/callback/usb_callback.c.obj
-                0x0800bf50                usb_receive_callback
+                0x0800bf48       0x74 CMakeFiles/gimbal_task.elf.dir/USER/application/callback/usb_callback.c.obj
+                0x0800bf48                usb_receive_callback
  .text.get_vision_data
-                0x0800bfc4       0x38 CMakeFiles/gimbal_task.elf.dir/USER/application/callback/usb_callback.c.obj
-                0x0800bfc4                get_vision_data
+                0x0800bfbc       0x38 CMakeFiles/gimbal_task.elf.dir/USER/application/callback/usb_callback.c.obj
+                0x0800bfbc                get_vision_data
  .text.usb_send_gimbal_data
-                0x0800bffc       0x98 CMakeFiles/gimbal_task.elf.dir/USER/application/callback/usb_callback.c.obj
-                0x0800bffc                usb_send_gimbal_data
+                0x0800bff4       0x94 CMakeFiles/gimbal_task.elf.dir/USER/application/callback/usb_callback.c.obj
+                0x0800bff4                usb_send_gimbal_data
+ .text.gimbal_PID_init
+                0x0800c088       0x1e CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal.c.obj
+ *fill*         0x0800c0a6        0x2 
+ .text.gimbal_PID_calc
+                0x0800c0a8       0xa8 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal.c.obj
  .text.RegisterModeHandler
-                0x0800c094       0x28 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal.c.obj
-                0x0800c094                RegisterModeHandler
+                0x0800c150       0x28 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal.c.obj
+                0x0800c150                RegisterModeHandler
  .text.InitializeModeHandlers
-                0x0800c0bc       0x34 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal.c.obj
-                0x0800c0bc                InitializeModeHandlers
+                0x0800c178       0x34 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal.c.obj
+                0x0800c178                InitializeModeHandlers
  .text.HandleCurrentMode
-                0x0800c0f0       0x2e CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal.c.obj
-                0x0800c0f0                HandleCurrentMode
+                0x0800c1ac       0x2e CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal.c.obj
+                0x0800c1ac                HandleCurrentMode
  .text.ChangeMode
-                0x0800c11e        0x8 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal.c.obj
-                0x0800c11e                ChangeMode
+                0x0800c1da        0x8 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal.c.obj
+                0x0800c1da                ChangeMode
  .text.gimbal_mode_change_control_transit
-                0x0800c126       0x74 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal.c.obj
-                0x0800c126                gimbal_mode_change_control_transit
+                0x0800c1e2       0x40 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal.c.obj
+                0x0800c1e2                gimbal_mode_change_control_transit
  .text.gimbal_feedback_update
-                0x0800c19a       0x74 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal.c.obj
-                0x0800c19a                gimbal_feedback_update
- *fill*         0x0800c20e        0x2 
+                0x0800c222       0x5e CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal.c.obj
+                0x0800c222                gimbal_feedback_update
  .text.gimbal_init
-                0x0800c210       0xac CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal.c.obj
-                0x0800c210                gimbal_init
+                0x0800c280      0x138 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal.c.obj
+                0x0800c280                gimbal_init
  .text.gimbal_mode_set
-                0x0800c2bc        0xc CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal.c.obj
-                0x0800c2bc                gimbal_mode_set
+                0x0800c3b8        0xc CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal.c.obj
+                0x0800c3b8                gimbal_mode_set
+ .text.NormalControlStrategy
+                0x0800c3c4       0x7a CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal.c.obj
+                0x0800c3c4                NormalControlStrategy
+ .text.ForcelessControlStrategy
+                0x0800c43e        0xc CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal.c.obj
+                0x0800c43e                ForcelessControlStrategy
+ *fill*         0x0800c44a        0x2 
  .text.gimbal_position_control
-                0x0800c2c8       0xa4 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal.c.obj
-                0x0800c2c8                gimbal_position_control
+                0x0800c44c       0x74 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal.c.obj
+                0x0800c44c                gimbal_position_control
  .text.gimbal_behaviour_mode_set
-                0x0800c36c       0xdc CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal_behaviour.c.obj
-                0x0800c36c                gimbal_behaviour_mode_set
+                0x0800c4c0       0xdc CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal_behaviour.c.obj
+                0x0800c4c0                gimbal_behaviour_mode_set
  .text.HandleAutoMode
-                0x0800c448       0xc4 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal_behaviour.c.obj
-                0x0800c448                HandleAutoMode
+                0x0800c59c       0xc4 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal_behaviour.c.obj
+                0x0800c59c                HandleAutoMode
  .text.HandleGravityCompensationMode
-                0x0800c50c        0x2 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal_behaviour.c.obj
-                0x0800c50c                HandleGravityCompensationMode
- *fill*         0x0800c50e        0x2 
+                0x0800c660        0x2 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal_behaviour.c.obj
+                0x0800c660                HandleGravityCompensationMode
+ *fill*         0x0800c662        0x2 
  .text.HandleRemoteMode
-                0x0800c510      0x154 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal_behaviour.c.obj
-                0x0800c510                HandleRemoteMode
+                0x0800c664      0x1cc CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal_behaviour.c.obj
+                0x0800c664                HandleRemoteMode
  .text.HandleInitMode
-                0x0800c664       0x10 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal_behaviour.c.obj
-                0x0800c664                HandleInitMode
+                0x0800c830       0x10 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal_behaviour.c.obj
+                0x0800c830                HandleInitMode
  .text.AHRS_get_height
-                0x0800c674        0x8 CMakeFiles/gimbal_task.elf.dir/USER/components/algorithm/AHRS_middleware.c.obj
-                0x0800c674                AHRS_get_height
+                0x0800c840        0x8 CMakeFiles/gimbal_task.elf.dir/USER/components/algorithm/AHRS_middleware.c.obj
+                0x0800c840                AHRS_get_height
  .text.AHRS_get_latitude
-                0x0800c67c        0xc CMakeFiles/gimbal_task.elf.dir/USER/components/algorithm/AHRS_middleware.c.obj
-                0x0800c67c                AHRS_get_latitude
+                0x0800c848        0xc CMakeFiles/gimbal_task.elf.dir/USER/components/algorithm/AHRS_middleware.c.obj
+                0x0800c848                AHRS_get_latitude
  .text.AHRS_invSqrt
-                0x0800c688       0x10 CMakeFiles/gimbal_task.elf.dir/USER/components/algorithm/AHRS_middleware.c.obj
-                0x0800c688                AHRS_invSqrt
+                0x0800c854       0x10 CMakeFiles/gimbal_task.elf.dir/USER/components/algorithm/AHRS_middleware.c.obj
+                0x0800c854                AHRS_invSqrt
  .text.AHRS_sinf
-                0x0800c698        0x8 CMakeFiles/gimbal_task.elf.dir/USER/components/algorithm/AHRS_middleware.c.obj
-                0x0800c698                AHRS_sinf
+                0x0800c864        0x8 CMakeFiles/gimbal_task.elf.dir/USER/components/algorithm/AHRS_middleware.c.obj
+                0x0800c864                AHRS_sinf
  .text.AHRS_cosf
-                0x0800c6a0        0x8 CMakeFiles/gimbal_task.elf.dir/USER/components/algorithm/AHRS_middleware.c.obj
-                0x0800c6a0                AHRS_cosf
+                0x0800c86c        0x8 CMakeFiles/gimbal_task.elf.dir/USER/components/algorithm/AHRS_middleware.c.obj
+                0x0800c86c                AHRS_cosf
  .text.AHRS_asinf
-                0x0800c6a8        0x8 CMakeFiles/gimbal_task.elf.dir/USER/components/algorithm/AHRS_middleware.c.obj
-                0x0800c6a8                AHRS_asinf
+                0x0800c874        0x8 CMakeFiles/gimbal_task.elf.dir/USER/components/algorithm/AHRS_middleware.c.obj
+                0x0800c874                AHRS_asinf
  .text.AHRS_atan2f
-                0x0800c6b0        0x8 CMakeFiles/gimbal_task.elf.dir/USER/components/algorithm/AHRS_middleware.c.obj
-                0x0800c6b0                AHRS_atan2f
+                0x0800c87c        0x8 CMakeFiles/gimbal_task.elf.dir/USER/components/algorithm/AHRS_middleware.c.obj
+                0x0800c87c                AHRS_atan2f
+ .text.abs_limit
+                0x0800c884       0x28 CMakeFiles/gimbal_task.elf.dir/USER/components/algorithm/user_lib.c.obj
+                0x0800c884                abs_limit
+ .text.loop_fp32_constrain
+                0x0800c8ac       0x4a CMakeFiles/gimbal_task.elf.dir/USER/components/algorithm/user_lib.c.obj
+                0x0800c8ac                loop_fp32_constrain
+ *fill*         0x0800c8f6        0x2 
  .text.can_filter_init
-                0x0800c6b8       0x60 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_can.c.obj
-                0x0800c6b8                can_filter_init
+                0x0800c8f8       0x60 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_can.c.obj
+                0x0800c8f8                can_filter_init
  .text.delay_init
-                0x0800c718       0x34 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_delay.c.obj
-                0x0800c718                delay_init
+                0x0800c958       0x34 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_delay.c.obj
+                0x0800c958                delay_init
  .text.delay_us
-                0x0800c74c       0x40 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_delay.c.obj
-                0x0800c74c                delay_us
+                0x0800c98c       0x40 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_delay.c.obj
+                0x0800c98c                delay_us
  .text.DMA1_Stream7_IRQHandler
-                0x0800c78c       0x70 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_i2c.c.obj
-                0x0800c78c                DMA1_Stream7_IRQHandler
+                0x0800c9cc       0x70 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_i2c.c.obj
+                0x0800c9cc                DMA1_Stream7_IRQHandler
  .text.aRGB_led_show
-                0x0800c7fc       0xbc CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_led.c.obj
-                0x0800c7fc                aRGB_led_show
- .text.RC_Init  0x0800c8b8       0x68 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_rc.c.obj
-                0x0800c8b8                RC_Init
+                0x0800ca3c       0xbc CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_led.c.obj
+                0x0800ca3c                aRGB_led_show
+ .text.RC_Init  0x0800caf8       0x68 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_rc.c.obj
+                0x0800caf8                RC_Init
  .text.SPI1_DMA_init
-                0x0800c920      0x114 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_spi.c.obj
-                0x0800c920                SPI1_DMA_init
+                0x0800cb60      0x114 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_spi.c.obj
+                0x0800cb60                SPI1_DMA_init
  .text.SPI1_DMA_enable
-                0x0800ca34     0x1d78 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_spi.c.obj
-                0x0800ca34                SPI1_DMA_enable
+                0x0800cc74     0x1d78 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_spi.c.obj
+                0x0800cc74                SPI1_DMA_enable
  .text.usart1_tx_dma_init
-                0x0800e7ac       0x50 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_usart.c.obj
-                0x0800e7ac                usart1_tx_dma_init
+                0x0800e9ec       0x50 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_usart.c.obj
+                0x0800e9ec                usart1_tx_dma_init
  .text.usart1_tx_dma_enable
-                0x0800e7fc       0x84 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_usart.c.obj
-                0x0800e7fc                usart1_tx_dma_enable
+                0x0800ea3c       0x84 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_usart.c.obj
+                0x0800ea3c                usart1_tx_dma_enable
  .text.PID_init
-                0x0800e880       0x32 CMakeFiles/gimbal_task.elf.dir/USER/components/controller/pid.c.obj
-                0x0800e880                PID_init
- *fill*         0x0800e8b2        0x2 
+                0x0800eac0       0x32 CMakeFiles/gimbal_task.elf.dir/USER/components/controller/pid.c.obj
+                0x0800eac0                PID_init
+ *fill*         0x0800eaf2        0x2 
  .text.PID_calc
-                0x0800e8b4      0x158 CMakeFiles/gimbal_task.elf.dir/USER/components/controller/pid.c.obj
-                0x0800e8b4                PID_calc
+                0x0800eaf4      0x158 CMakeFiles/gimbal_task.elf.dir/USER/components/controller/pid.c.obj
+                0x0800eaf4                PID_calc
  .text.dji_motor_measure_parse
-                0x0800ea0c       0x2e CMakeFiles/gimbal_task.elf.dir/USER/components/device/DJI_Motor/DJI_Motor.c.obj
-                0x0800ea0c                dji_motor_measure_parse
- *fill*         0x0800ea3a        0x6 
+                0x0800ec4c       0x2e CMakeFiles/gimbal_task.elf.dir/USER/components/device/DJI_Motor/DJI_Motor.c.obj
+                0x0800ec4c                dji_motor_measure_parse
+ *fill*         0x0800ec7a        0x6 
  .text.simple_encoder_to_radians
-                0x0800ea40       0x94 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DJI_Motor/DJI_Motor.c.obj
-                0x0800ea40                simple_encoder_to_radians
+                0x0800ec80       0x94 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DJI_Motor/DJI_Motor.c.obj
+                0x0800ec80                simple_encoder_to_radians
  .text.DJI_6020_data_Get
-                0x0800ead4       0x9c CMakeFiles/gimbal_task.elf.dir/USER/components/device/DJI_Motor/DJI_Motor.c.obj
-                0x0800ead4                DJI_6020_data_Get
+                0x0800ed14       0x9c CMakeFiles/gimbal_task.elf.dir/USER/components/device/DJI_Motor/DJI_Motor.c.obj
+                0x0800ed14                DJI_6020_data_Get
  .text.dji_motor_can_callback
-                0x0800eb70       0x14 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DJI_Motor/DJI_Motor.c.obj
-                0x0800eb70                dji_motor_can_callback
+                0x0800edb0       0x14 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DJI_Motor/DJI_Motor.c.obj
+                0x0800edb0                dji_motor_can_callback
  .text.CAN_cmd_DJI_control
-                0x0800eb84       0x5c CMakeFiles/gimbal_task.elf.dir/USER/components/device/DJI_Motor/DJI_Motor.c.obj
-                0x0800eb84                CAN_cmd_DJI_control
+                0x0800edc4       0x5c CMakeFiles/gimbal_task.elf.dir/USER/components/device/DJI_Motor/DJI_Motor.c.obj
+                0x0800edc4                CAN_cmd_DJI_control
  .text.get_motor_measure_point
-                0x0800ebe0        0x8 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DJI_Motor/DJI_Motor.c.obj
-                0x0800ebe0                get_motor_measure_point
+                0x0800ee20        0x8 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DJI_Motor/DJI_Motor.c.obj
+                0x0800ee20                get_motor_measure_point
  .text.get_dm_motor_measure_point
-                0x0800ebe8       0x10 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DM/DM_4310.c.obj
-                0x0800ebe8                get_dm_motor_measure_point
+                0x0800ee28       0x10 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DM/DM_4310.c.obj
+                0x0800ee28                get_dm_motor_measure_point
  .text.DM_MotorEnable
-                0x0800ebf8       0x4c CMakeFiles/gimbal_task.elf.dir/USER/components/device/DM/DM_4310.c.obj
-                0x0800ebf8                DM_MotorEnable
+                0x0800ee38       0x4c CMakeFiles/gimbal_task.elf.dir/USER/components/device/DM/DM_4310.c.obj
+                0x0800ee38                DM_MotorEnable
  .text.DMmotor_UintToFloat
-                0x0800ec44       0x28 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DM/DM_4310.c.obj
-                0x0800ec44                DMmotor_UintToFloat
+                0x0800ee84       0x28 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DM/DM_4310.c.obj
+                0x0800ee84                DMmotor_UintToFloat
  .text.dm_motor_measure_parse
-                0x0800ec6c       0x98 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DM/DM_4310.c.obj
-                0x0800ec6c                dm_motor_measure_parse
+                0x0800eeac       0x98 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DM/DM_4310.c.obj
+                0x0800eeac                dm_motor_measure_parse
  .text.dm_motor_can_callback
-                0x0800ed04       0x34 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DM/DM_4310.c.obj
-                0x0800ed04                dm_motor_can_callback
+                0x0800ef44       0x34 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DM/DM_4310.c.obj
+                0x0800ef44                dm_motor_can_callback
  .text.float_to_uint
-                0x0800ed38       0x28 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DM/DM_4310.c.obj
-                0x0800ed38                float_to_uint
+                0x0800ef78       0x28 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DM/DM_4310.c.obj
+                0x0800ef78                float_to_uint
  .text.MIT_CtrlMotor
-                0x0800ed60       0xfc CMakeFiles/gimbal_task.elf.dir/USER/components/device/DM/DM_4310.c.obj
-                0x0800ed60                MIT_CtrlMotor
+                0x0800efa0       0xfc CMakeFiles/gimbal_task.elf.dir/USER/components/device/DM/DM_4310.c.obj
+                0x0800efa0                MIT_CtrlMotor
  .text.sbus_to_rc
-                0x0800ee5c       0xde CMakeFiles/gimbal_task.elf.dir/USER/components/device/DT7/DT7.c.obj
- *fill*         0x0800ef3a        0x2 
+                0x0800f09c       0xde CMakeFiles/gimbal_task.elf.dir/USER/components/device/DT7/DT7.c.obj
+ *fill*         0x0800f17a        0x2 
  .text.remote_control_init
-                0x0800ef3c       0x14 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DT7/DT7.c.obj
-                0x0800ef3c                remote_control_init
+                0x0800f17c       0x14 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DT7/DT7.c.obj
+                0x0800f17c                remote_control_init
  .text.get_remote_control_point
-                0x0800ef50        0x8 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DT7/DT7.c.obj
-                0x0800ef50                get_remote_control_point
+                0x0800f190        0x8 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DT7/DT7.c.obj
+                0x0800f190                get_remote_control_point
  .text.sbus_to_usart1
-                0x0800ef58       0x60 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DT7/DT7.c.obj
-                0x0800ef58                sbus_to_usart1
+                0x0800f198       0x60 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DT7/DT7.c.obj
+                0x0800f198                sbus_to_usart1
  .text.USART3_IRQHandler
-                0x0800efb8       0xf0 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DT7/DT7.c.obj
-                0x0800efb8                USART3_IRQHandler
+                0x0800f1f8       0xf0 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DT7/DT7.c.obj
+                0x0800f1f8                USART3_IRQHandler
  .text.BMI088_GPIO_init
-                0x0800f0a8        0x2 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088Middleware.c.obj
-                0x0800f0a8                BMI088_GPIO_init
+                0x0800f2e8        0x2 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088Middleware.c.obj
+                0x0800f2e8                BMI088_GPIO_init
  .text.BMI088_com_init
-                0x0800f0aa        0x2 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088Middleware.c.obj
-                0x0800f0aa                BMI088_com_init
+                0x0800f2ea        0x2 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088Middleware.c.obj
+                0x0800f2ea                BMI088_com_init
  .text.BMI088_delay_ms
-                0x0800f0ac        0x8 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088Middleware.c.obj
-                0x0800f0ac                BMI088_delay_ms
+                0x0800f2ec        0x8 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088Middleware.c.obj
+                0x0800f2ec                BMI088_delay_ms
  .text.BMI088_delay_us
-                0x0800f0b4        0x8 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088Middleware.c.obj
-                0x0800f0b4                BMI088_delay_us
+                0x0800f2f4        0x8 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088Middleware.c.obj
+                0x0800f2f4                BMI088_delay_us
  .text.BMI088_ACCEL_NS_L
-                0x0800f0bc       0x14 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088Middleware.c.obj
-                0x0800f0bc                BMI088_ACCEL_NS_L
+                0x0800f2fc       0x14 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088Middleware.c.obj
+                0x0800f2fc                BMI088_ACCEL_NS_L
  .text.BMI088_ACCEL_NS_H
-                0x0800f0d0       0x14 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088Middleware.c.obj
-                0x0800f0d0                BMI088_ACCEL_NS_H
+                0x0800f310       0x14 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088Middleware.c.obj
+                0x0800f310                BMI088_ACCEL_NS_H
  .text.BMI088_GYRO_NS_L
-                0x0800f0e4       0x14 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088Middleware.c.obj
-                0x0800f0e4                BMI088_GYRO_NS_L
+                0x0800f324       0x14 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088Middleware.c.obj
+                0x0800f324                BMI088_GYRO_NS_L
  .text.BMI088_GYRO_NS_H
-                0x0800f0f8       0x14 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088Middleware.c.obj
-                0x0800f0f8                BMI088_GYRO_NS_H
+                0x0800f338       0x14 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088Middleware.c.obj
+                0x0800f338                BMI088_GYRO_NS_H
  .text.BMI088_read_write_byte
-                0x0800f10c       0x2c CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088Middleware.c.obj
-                0x0800f10c                BMI088_read_write_byte
+                0x0800f34c       0x2c CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088Middleware.c.obj
+                0x0800f34c                BMI088_read_write_byte
  .text.BMI088_write_single_reg
-                0x0800f138       0x10 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088driver.c.obj
+                0x0800f378       0x10 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088driver.c.obj
  .text.BMI088_read_single_reg
-                0x0800f148       0x16 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088driver.c.obj
+                0x0800f388       0x16 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088driver.c.obj
  .text.BMI088_read_muli_reg
-                0x0800f15e       0x24 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088driver.c.obj
- *fill*         0x0800f182        0x2 
+                0x0800f39e       0x24 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088driver.c.obj
+ *fill*         0x0800f3c2        0x2 
  .text.bmi088_accel_init
-                0x0800f184      0x134 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088driver.c.obj
-                0x0800f184                bmi088_accel_init
+                0x0800f3c4      0x134 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088driver.c.obj
+                0x0800f3c4                bmi088_accel_init
  .text.bmi088_gyro_init
-                0x0800f2b8       0xf0 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088driver.c.obj
-                0x0800f2b8                bmi088_gyro_init
+                0x0800f4f8       0xf0 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088driver.c.obj
+                0x0800f4f8                bmi088_gyro_init
  .text.bmi088_accel_self_test
-                0x0800f3a8      0x2fc CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088driver.c.obj
-                0x0800f3a8                bmi088_accel_self_test
+                0x0800f5e8      0x2fc CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088driver.c.obj
+                0x0800f5e8                bmi088_accel_self_test
  .text.bmi088_gyro_self_test
-                0x0800f6a4       0xd6 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088driver.c.obj
-                0x0800f6a4                bmi088_gyro_self_test
+                0x0800f8e4       0xd6 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088driver.c.obj
+                0x0800f8e4                bmi088_gyro_self_test
  .text.BMI088_init
-                0x0800f77a       0x32 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088driver.c.obj
-                0x0800f77a                BMI088_init
+                0x0800f9ba       0x32 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088driver.c.obj
+                0x0800f9ba                BMI088_init
  .text.BMI088_temperature_read_over
-                0x0800f7ac       0x32 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088driver.c.obj
-                0x0800f7ac                BMI088_temperature_read_over
- *fill*         0x0800f7de        0x2 
+                0x0800f9ec       0x32 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088driver.c.obj
+                0x0800f9ec                BMI088_temperature_read_over
+ *fill*         0x0800fa1e        0x2 
  .text.BMI088_accel_read_over
-                0x0800f7e0       0x90 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088driver.c.obj
-                0x0800f7e0                BMI088_accel_read_over
+                0x0800fa20       0x90 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088driver.c.obj
+                0x0800fa20                BMI088_accel_read_over
  .text.BMI088_gyro_read_over
-                0x0800f870       0x64 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088driver.c.obj
-                0x0800f870                BMI088_gyro_read_over
+                0x0800fab0       0x64 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088driver.c.obj
+                0x0800fab0                BMI088_gyro_read_over
  .text.BMI088_read
-                0x0800f8d4      0x164 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088driver.c.obj
-                0x0800f8d4                BMI088_read
+                0x0800fb14      0x164 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088driver.c.obj
+                0x0800fb14                BMI088_read
  .text.ist8310_init
-                0x0800fa38       0x80 CMakeFiles/gimbal_task.elf.dir/USER/components/device/ist8310/ist8310driver.c.obj
-                0x0800fa38                ist8310_init
+                0x0800fc78       0x80 CMakeFiles/gimbal_task.elf.dir/USER/components/device/ist8310/ist8310driver.c.obj
+                0x0800fc78                ist8310_init
  .text.ist8310_GPIO_init
-                0x0800fab8        0x2 CMakeFiles/gimbal_task.elf.dir/USER/components/device/ist8310/ist8310driver_middleware.c.obj
-                0x0800fab8                ist8310_GPIO_init
+                0x0800fcf8        0x2 CMakeFiles/gimbal_task.elf.dir/USER/components/device/ist8310/ist8310driver_middleware.c.obj
+                0x0800fcf8                ist8310_GPIO_init
  .text.ist8310_com_init
-                0x0800faba        0x2 CMakeFiles/gimbal_task.elf.dir/USER/components/device/ist8310/ist8310driver_middleware.c.obj
-                0x0800faba                ist8310_com_init
+                0x0800fcfa        0x2 CMakeFiles/gimbal_task.elf.dir/USER/components/device/ist8310/ist8310driver_middleware.c.obj
+                0x0800fcfa                ist8310_com_init
  .text.ist8310_IIC_read_single_reg
-                0x0800fabc       0x2c CMakeFiles/gimbal_task.elf.dir/USER/components/device/ist8310/ist8310driver_middleware.c.obj
-                0x0800fabc                ist8310_IIC_read_single_reg
+                0x0800fcfc       0x2c CMakeFiles/gimbal_task.elf.dir/USER/components/device/ist8310/ist8310driver_middleware.c.obj
+                0x0800fcfc                ist8310_IIC_read_single_reg
  .text.ist8310_IIC_write_single_reg
-                0x0800fae8       0x2c CMakeFiles/gimbal_task.elf.dir/USER/components/device/ist8310/ist8310driver_middleware.c.obj
-                0x0800fae8                ist8310_IIC_write_single_reg
+                0x0800fd28       0x2c CMakeFiles/gimbal_task.elf.dir/USER/components/device/ist8310/ist8310driver_middleware.c.obj
+                0x0800fd28                ist8310_IIC_write_single_reg
  .text.ist8310_delay_ms
-                0x0800fb14        0x8 CMakeFiles/gimbal_task.elf.dir/USER/components/device/ist8310/ist8310driver_middleware.c.obj
-                0x0800fb14                ist8310_delay_ms
+                0x0800fd54        0x8 CMakeFiles/gimbal_task.elf.dir/USER/components/device/ist8310/ist8310driver_middleware.c.obj
+                0x0800fd54                ist8310_delay_ms
  .text.ist8310_RST_H
-                0x0800fb1c       0x14 CMakeFiles/gimbal_task.elf.dir/USER/components/device/ist8310/ist8310driver_middleware.c.obj
-                0x0800fb1c                ist8310_RST_H
+                0x0800fd5c       0x14 CMakeFiles/gimbal_task.elf.dir/USER/components/device/ist8310/ist8310driver_middleware.c.obj
+                0x0800fd5c                ist8310_RST_H
  .text.ist8310_RST_L
-                0x0800fb30       0x14 CMakeFiles/gimbal_task.elf.dir/USER/components/device/ist8310/ist8310driver_middleware.c.obj
-                0x0800fb30                ist8310_RST_L
+                0x0800fd70       0x14 CMakeFiles/gimbal_task.elf.dir/USER/components/device/ist8310/ist8310driver_middleware.c.obj
+                0x0800fd70                ist8310_RST_L
  .text.get_CRC16_check_sum
-                0x0800fb44       0x38 CMakeFiles/gimbal_task.elf.dir/USER/components/support/CRC8_CRC16.c.obj
-                0x0800fb44                get_CRC16_check_sum
+                0x0800fd84       0x38 CMakeFiles/gimbal_task.elf.dir/USER/components/support/CRC8_CRC16.c.obj
+                0x0800fd84                get_CRC16_check_sum
  .text.arm_sin_f32
-                0x0800fb7c       0x8c C:/Users/16844/Desktop/gimbal111/gimbal/Middlewares/ST/ARM/DSP/Lib/libarm_cortexM4lf_math.a(arm_sin_f32.o)
-                0x0800fb7c                arm_sin_f32
+                0x0800fdbc       0x8c C:/Users/16844/Desktop/gimbal111/gimbal/Middlewares/ST/ARM/DSP/Lib/libarm_cortexM4lf_math.a(arm_sin_f32.o)
+                0x0800fdbc                arm_sin_f32
  .text.arm_cos_f32
-                0x0800fc08       0x94 C:/Users/16844/Desktop/gimbal111/gimbal/Middlewares/ST/ARM/DSP/Lib/libarm_cortexM4lf_math.a(arm_cos_f32.o)
-                0x0800fc08                arm_cos_f32
+                0x0800fe48       0x94 C:/Users/16844/Desktop/gimbal111/gimbal/Middlewares/ST/ARM/DSP/Lib/libarm_cortexM4lf_math.a(arm_cos_f32.o)
+                0x0800fe48                arm_cos_f32
  .text.__udivmoddi4
-                0x0800fc9c      0x2bc C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
-                0x0800fc9c                __udivmoddi4
+                0x0800fedc      0x2bc C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
+                0x0800fedc                __udivmoddi4
  .text.__malloc_lock
-                0x0800ff58        0xc C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-mlock.o)
-                0x0800ff58                __malloc_lock
+                0x08010198        0xc C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-mlock.o)
+                0x08010198                __malloc_lock
  .text.__malloc_unlock
-                0x0800ff64        0xc C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-mlock.o)
-                0x0800ff64                __malloc_unlock
- .text.memset   0x0800ff70       0xa4 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-memset.o)
-                0x0800ff70                memset
+                0x080101a4        0xc C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-mlock.o)
+                0x080101a4                __malloc_unlock
+ .text.memset   0x080101b0       0xa4 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-memset.o)
+                0x080101b0                memset
  .text._reclaim_reent
-                0x08010014       0x6c C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-reent.o)
-                0x08010014                _reclaim_reent
- .text._sbrk_r  0x08010080       0x24 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-sbrkr.o)
-                0x08010080                _sbrk_r
- .text.__errno  0x080100a4        0xc C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-errno.o)
-                0x080100a4                __errno
+                0x08010254       0x6c C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-reent.o)
+                0x08010254                _reclaim_reent
+ .text._sbrk_r  0x080102c0       0x24 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-sbrkr.o)
+                0x080102c0                _sbrk_r
+ .text.__errno  0x080102e4        0xc C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-errno.o)
+                0x080102e4                __errno
  .text.__libc_init_array
-                0x080100b0       0x50 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-init.o)
-                0x080100b0                __libc_init_array
+                0x080102f0       0x50 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-init.o)
+                0x080102f0                __libc_init_array
  .text.__retarget_lock_acquire_recursive
-                0x08010100        0x4 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-lock.o)
-                0x08010100                __retarget_lock_acquire_recursive
+                0x08010340        0x4 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-lock.o)
+                0x08010340                __retarget_lock_acquire_recursive
  .text.__retarget_lock_release_recursive
-                0x08010104        0x4 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-lock.o)
-                0x08010104                __retarget_lock_release_recursive
- .text.sysconf  0x08010108       0x1c C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-sysconf.o)
-                0x08010108                sysconf
+                0x08010344        0x4 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-lock.o)
+                0x08010344                __retarget_lock_release_recursive
+ .text.sysconf  0x08010348       0x1c C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-sysconf.o)
+                0x08010348                sysconf
  .text.__aeabi_memclr
-                0x08010124        0x8 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-aeabi_memclr.o)
-                0x08010124                __aeabi_memclr
-                0x08010124                __aeabi_memclr4
-                0x08010124                __aeabi_memclr8
+                0x08010364        0x8 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-aeabi_memclr.o)
+                0x08010364                __aeabi_memclr
+                0x08010364                __aeabi_memclr4
+                0x08010364                __aeabi_memclr8
  .text.startup.register_fini
-                0x0801012c       0x14 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-__call_atexit.o)
- .text.atexit   0x08010140        0xc C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-atexit.o)
-                0x08010140                atexit
+                0x0801036c       0x14 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-__call_atexit.o)
+ .text.atexit   0x08010380        0xc C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-atexit.o)
+                0x08010380                atexit
  .text._malloc_trim_r
-                0x0801014c       0xb8 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-freer.o)
-                0x0801014c                _malloc_trim_r
- .text._free_r  0x08010204      0x1f8 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-freer.o)
-                0x08010204                _free_r
+                0x0801038c       0xb8 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-freer.o)
+                0x0801038c                _malloc_trim_r
+ .text._free_r  0x08010444      0x1f8 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-freer.o)
+                0x08010444                _free_r
  .text.__libc_fini_array
-                0x080103fc       0x28 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-fini.o)
-                0x080103fc                __libc_fini_array
+                0x0801063c       0x28 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-fini.o)
+                0x0801063c                __libc_fini_array
  .text.__register_exitproc
-                0x08010424       0x80 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-__atexit.o)
-                0x08010424                __register_exitproc
- .text.asinf    0x080104a4       0x58 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_asin.o)
-                0x080104a4                asinf
- .text.atan2f   0x080104fc        0x4 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_atan2.o)
-                0x080104fc                atan2f
- .text.sqrtf    0x08010500       0x44 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_sqrt.o)
-                0x08010500                sqrtf
- .text.fabsf    0x08010544       0x10 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_fabs.o)
-                0x08010544                fabsf
- .text.sinf     0x08010554       0x74 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_sin.o)
-                0x08010554                sinf
- .text.nanf     0x080105c8        0xc C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_nan.o)
-                0x080105c8                nanf
+                0x08010664       0x80 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-__atexit.o)
+                0x08010664                __register_exitproc
+ .text.asinf    0x080106e4       0x58 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_asin.o)
+                0x080106e4                asinf
+ .text.atan2f   0x0801073c        0x4 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_atan2.o)
+                0x0801073c                atan2f
+ .text.sqrtf    0x08010740       0x44 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_sqrt.o)
+                0x08010740                sqrtf
+ .text.fabsf    0x08010784       0x10 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_fabs.o)
+                0x08010784                fabsf
+ .text.sinf     0x08010794       0x74 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_sin.o)
+                0x08010794                sinf
+ .text.nanf     0x08010808        0xc C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_nan.o)
+                0x08010808                nanf
  .text.__ieee754_sqrtf
-                0x080105d4        0x8 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_sqrt.o)
-                0x080105d4                __ieee754_sqrtf
+                0x08010814        0x8 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_sqrt.o)
+                0x08010814                __ieee754_sqrtf
  .text.__kernel_cosf
-                0x080105dc      0x104 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_cos.o)
-                0x080105dc                __kernel_cosf
+                0x0801081c      0x104 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_cos.o)
+                0x0801081c                __kernel_cosf
  .text.__kernel_sinf
-                0x080106e0       0x90 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_sin.o)
-                0x080106e0                __kernel_sinf
+                0x08010920       0x90 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_sin.o)
+                0x08010920                __kernel_sinf
  .text.__ieee754_asinf
-                0x08010770      0x1f8 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_asin.o)
-                0x08010770                __ieee754_asinf
+                0x080109b0      0x1f8 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_asin.o)
+                0x080109b0                __ieee754_asinf
  .text.__ieee754_atan2f
-                0x08010968      0x150 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_atan2.o)
-                0x08010968                __ieee754_atan2f
+                0x08010ba8      0x150 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_atan2.o)
+                0x08010ba8                __ieee754_atan2f
  .text.__ieee754_rem_pio2f
-                0x08010ab8      0x260 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_rem_pio2.o)
-                0x08010ab8                __ieee754_rem_pio2f
- .text.atanf    0x08010d18      0x1ac C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_atan.o)
-                0x08010d18                atanf
+                0x08010cf8      0x260 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_rem_pio2.o)
+                0x08010cf8                __ieee754_rem_pio2f
+ .text.atanf    0x08010f58      0x1ac C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_atan.o)
+                0x08010f58                atanf
  .text.__kernel_rem_pio2f
-                0x08010ec4      0x63c C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_rem_pio2.o)
-                0x08010ec4                __kernel_rem_pio2f
- .text.scalbnf  0x08011500       0xe4 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_scalbn.o)
-                0x08011500                scalbnf
- .text.floorf   0x080115e4       0x94 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_floor.o)
-                0x080115e4                floorf
+                0x08011104      0x63c C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_rem_pio2.o)
+                0x08011104                __kernel_rem_pio2f
+ .text.scalbnf  0x08011740       0xe4 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_scalbn.o)
+                0x08011740                scalbnf
+ .text.floorf   0x08011824       0x94 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_floor.o)
+                0x08011824                floorf
  *(.glue_7)
- .glue_7        0x08011678        0x0 linker stubs
+ .glue_7        0x080118b8        0x0 linker stubs
  *(.glue_7t)
- .glue_7t       0x08011678        0x0 linker stubs
+ .glue_7t       0x080118b8        0x0 linker stubs
  *(.eh_frame)
- .eh_frame      0x08011678        0x0 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+ .eh_frame      0x080118b8        0x0 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
  *(.init)
- .init          0x08011678        0x4 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crti.o
-                0x08011678                _init
- .init          0x0801167c        0x8 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtn.o
+ .init          0x080118b8        0x4 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crti.o
+                0x080118b8                _init
+ .init          0x080118bc        0x8 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtn.o
  *(.fini)
- .fini          0x08011684        0x4 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crti.o
-                0x08011684                _fini
- .fini          0x08011688        0x8 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtn.o
-                0x08011690                        . = ALIGN (0x4)
-                0x08011690                        _etext = .
+ .fini          0x080118c4        0x4 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crti.o
+                0x080118c4                _fini
+ .fini          0x080118c8        0x8 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtn.o
+                0x080118d0                        . = ALIGN (0x4)
+                0x080118d0                        _etext = .
 
-.vfp11_veneer   0x08011690        0x0
- .vfp11_veneer  0x08011690        0x0 linker stubs
+.vfp11_veneer   0x080118d0        0x0
+ .vfp11_veneer  0x080118d0        0x0 linker stubs
 
-.v4_bx          0x08011690        0x0
- .v4_bx         0x08011690        0x0 linker stubs
+.v4_bx          0x080118d0        0x0
+ .v4_bx         0x080118d0        0x0 linker stubs
 
-.iplt           0x08011690        0x0
- .iplt          0x08011690        0x0 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+.iplt           0x080118d0        0x0
+ .iplt          0x080118d0        0x0 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
 
-i.AHRS_fabs     0x08011690       0x1a
- i.AHRS_fabs    0x08011690       0x1a C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
+i.AHRS_fabs     0x080118d0       0x1a
+ i.AHRS_fabs    0x080118d0       0x1a C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
 
-i.AHRS_init     0x080116ac      0x29c
- i.AHRS_init    0x080116ac      0x29c C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
-                0x080116ac                AHRS_init
+i.AHRS_init     0x080118ec      0x29c
+ i.AHRS_init    0x080118ec      0x29c C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
+                0x080118ec                AHRS_init
 
-i.AHRS_update   0x08011948      0x13a
- i.AHRS_update  0x08011948      0x13a C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
-                0x08011948                AHRS_update
+i.AHRS_update   0x08011b88      0x13a
+ i.AHRS_update  0x08011b88      0x13a C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
+                0x08011b88                AHRS_update
 
 i.accel_comple_filter
-                0x08011a84      0x1d0
+                0x08011cc4      0x1d0
  i.accel_comple_filter
-                0x08011a84      0x1d0 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
+                0x08011cc4      0x1d0 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
 
 i.accel_update_kp_ki
-                0x08011c54      0x18c
+                0x08011e94      0x18c
  i.accel_update_kp_ki
-                0x08011c54      0x18c C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
+                0x08011e94      0x18c C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
 
 i.angle_to_quat
-                0x08011de0      0x16c
+                0x08012020      0x16c
  i.angle_to_quat
-                0x08011de0      0x16c C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
+                0x08012020      0x16c C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
 
-i.get_angle     0x08011f4c       0xe8
- i.get_angle    0x08011f4c       0xe8 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
-                0x08011f4c                get_angle
+i.get_angle     0x0801218c       0xe8
+ i.get_angle    0x0801218c       0xe8 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
+                0x0801218c                get_angle
 
 i.quat_normalization
-                0x08012034       0x84
+                0x08012274       0x84
  i.quat_normalization
-                0x08012034       0x84 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
+                0x08012274       0x84 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
 
-i.update_w      0x080120b8       0x7a
- i.update_w     0x080120b8       0x7a C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
+i.update_w      0x080122f8       0x7a
+ i.update_w     0x080122f8       0x7a C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
 
-.rodata         0x08012134      0xfb4
-                0x08012134                        . = ALIGN (0x4)
+.rodata         0x08012374      0xfb4
+                0x08012374                        . = ALIGN (0x4)
  *(.rodata)
- .rodata        0x08012134       0x8c CMakeFiles/gimbal_task.elf.dir/Src/freertos.c.obj
+ .rodata        0x08012374       0x8c CMakeFiles/gimbal_task.elf.dir/Src/freertos.c.obj
  *(.rodata*)
  .rodata.flagBitshiftOffset.0
-                0x080121c0        0x8 CMakeFiles/gimbal_task.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
+                0x08012400        0x8 CMakeFiles/gimbal_task.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
  .rodata.vTaskStartScheduler.str1.4
-                0x080121c8       0x8e CMakeFiles/gimbal_task.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x08012408       0x8e CMakeFiles/gimbal_task.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
                                   0x5 (size before relaxing)
  .rodata.prvCheckForValidListAndQueue.str1.4
-                0x08012256        0x5 CMakeFiles/gimbal_task.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
+                0x08012496        0x5 CMakeFiles/gimbal_task.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
  .rodata.xTimerCreateTimerTask.str1.4
-                0x08012256        0x8 CMakeFiles/gimbal_task.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
+                0x08012496        0x8 CMakeFiles/gimbal_task.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
  .rodata.str1.4
-                0x08012256       0x2d CMakeFiles/gimbal_task.elf.dir/Src/freertos.c.obj
- *fill*         0x08012256        0x2 
+                0x08012496       0x2d CMakeFiles/gimbal_task.elf.dir/Src/freertos.c.obj
+ *fill*         0x08012496        0x2 
  .rodata.APBPrescTable
-                0x08012258        0x8 CMakeFiles/gimbal_task.elf.dir/Src/system_stm32f4xx.c.obj
-                0x08012258                APBPrescTable
+                0x08012498        0x8 CMakeFiles/gimbal_task.elf.dir/Src/system_stm32f4xx.c.obj
+                0x08012498                APBPrescTable
  .rodata.AHBPrescTable
-                0x08012260       0x10 CMakeFiles/gimbal_task.elf.dir/Src/system_stm32f4xx.c.obj
-                0x08012260                AHBPrescTable
+                0x080124a0       0x10 CMakeFiles/gimbal_task.elf.dir/Src/system_stm32f4xx.c.obj
+                0x080124a0                AHBPrescTable
  .rodata.USBD_FS_ProductStrDescriptor.str1.4
-                0x08012270       0x16 CMakeFiles/gimbal_task.elf.dir/Src/usbd_desc.c.obj
+                0x080124b0       0x16 CMakeFiles/gimbal_task.elf.dir/Src/usbd_desc.c.obj
  .rodata.USBD_FS_ManufacturerStrDescriptor.str1.4
-                0x08012270       0x13 CMakeFiles/gimbal_task.elf.dir/Src/usbd_desc.c.obj
+                0x080124b0       0x13 CMakeFiles/gimbal_task.elf.dir/Src/usbd_desc.c.obj
  .rodata.USBD_FS_ConfigStrDescriptor.str1.4
-                0x08012270        0xb CMakeFiles/gimbal_task.elf.dir/Src/usbd_desc.c.obj
+                0x080124b0        0xb CMakeFiles/gimbal_task.elf.dir/Src/usbd_desc.c.obj
  .rodata.USBD_FS_InterfaceStrDescriptor.str1.4
-                0x08012270        0xe CMakeFiles/gimbal_task.elf.dir/Src/usbd_desc.c.obj
+                0x080124b0        0xe CMakeFiles/gimbal_task.elf.dir/Src/usbd_desc.c.obj
  .rodata.imu_temp_PID
-                0x08012270        0xc CMakeFiles/gimbal_task.elf.dir/USER/application/Task/INS_task.c.obj
- .rodata.posi_pid.1
-                0x0801227c        0xc CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal.c.obj
- .rodata.speed_pid.2
-                0x08012288        0xc CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal.c.obj
+                0x080124b0        0xc CMakeFiles/gimbal_task.elf.dir/USER/application/Task/INS_task.c.obj
+ .rodata.yaw_speed_pid.1
+                0x080124bc        0xc CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal.c.obj
+ .rodata.pitch_speed_pid.2
+                0x080124c8        0xc CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal.c.obj
  .rodata.write_BMI088_ACCEL_self_test_Reg_Data_Error.0
-                0x08012294       0x12 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088driver.c.obj
- *fill*         0x080122a6        0x2 
+                0x080124d4       0x12 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088driver.c.obj
+ *fill*         0x080124e6        0x2 
  .rodata.write_BMI088_gyro_reg_data_error
-                0x080122a8       0x12 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088driver.c.obj
- *fill*         0x080122ba        0x2 
+                0x080124e8       0x12 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088driver.c.obj
+ *fill*         0x080124fa        0x2 
  .rodata.write_BMI088_accel_reg_data_error
-                0x080122bc       0x12 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088driver.c.obj
- *fill*         0x080122ce        0x2 
+                0x080124fc       0x12 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088driver.c.obj
+ *fill*         0x0801250e        0x2 
  .rodata.ist8310_write_reg_data_error
-                0x080122d0        0xc CMakeFiles/gimbal_task.elf.dir/USER/components/device/ist8310/ist8310driver.c.obj
+                0x08012510        0xc CMakeFiles/gimbal_task.elf.dir/USER/components/device/ist8310/ist8310driver.c.obj
  .rodata.wCRC_table
-                0x080122dc      0x200 CMakeFiles/gimbal_task.elf.dir/USER/components/support/CRC8_CRC16.c.obj
-                0x080122dc                wCRC_table
+                0x0801251c      0x200 CMakeFiles/gimbal_task.elf.dir/USER/components/support/CRC8_CRC16.c.obj
+                0x0801251c                wCRC_table
  .rodata.sinTable_f32
-                0x080124dc      0x804 C:/Users/16844/Desktop/gimbal111/gimbal/Middlewares/ST/ARM/DSP/Lib/libarm_cortexM4lf_math.a(arm_common_tables.o)
-                0x080124dc                sinTable_f32
+                0x0801271c      0x804 C:/Users/16844/Desktop/gimbal111/gimbal/Middlewares/ST/ARM/DSP/Lib/libarm_cortexM4lf_math.a(arm_common_tables.o)
+                0x0801271c                sinTable_f32
  .rodata.asinf.str1.4
-                0x08012ce0        0x1 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_asin.o)
+                0x08012f20        0x1 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_asin.o)
  .rodata.CSWTCH.9
-                0x08012ce0        0xc C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_atan2.o)
+                0x08012f20        0xc C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_atan2.o)
  .rodata.CSWTCH.8
-                0x08012cec        0xc C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_atan2.o)
+                0x08012f2c        0xc C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_atan2.o)
  .rodata.npio2_hw
-                0x08012cf8       0x80 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_rem_pio2.o)
+                0x08012f38       0x80 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_rem_pio2.o)
  .rodata.two_over_pi
-                0x08012d78      0x318 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_rem_pio2.o)
+                0x08012fb8      0x318 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_rem_pio2.o)
  .rodata.atanlo
-                0x08013090       0x10 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_atan.o)
+                0x080132d0       0x10 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_atan.o)
  .rodata.atanhi
-                0x080130a0       0x10 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_atan.o)
- .rodata.PIo2   0x080130b0       0x2c C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_rem_pio2.o)
+                0x080132e0       0x10 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_atan.o)
+ .rodata.PIo2   0x080132f0       0x2c C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_rem_pio2.o)
  .rodata.init_jk
-                0x080130dc        0xc C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_rem_pio2.o)
-                0x080130e8                        . = ALIGN (0x4)
+                0x0801331c        0xc C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_rem_pio2.o)
+                0x08013328                        . = ALIGN (0x4)
 
-.constdata      0x080130e8        0xc
- .constdata     0x080130e8        0xc C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
+.constdata      0x08013328        0xc
+ .constdata     0x08013328        0xc C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
 
-.ARM.extab      0x080130f4        0x0
-                0x080130f4                        . = ALIGN (0x4)
+.ARM.extab      0x08013334        0x0
+                0x08013334                        . = ALIGN (0x4)
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x080130f4                        . = ALIGN (0x4)
+                0x08013334                        . = ALIGN (0x4)
 
-.ARM            0x080130f4        0x8
-                0x080130f4                        . = ALIGN (0x4)
-                0x080130f4                        __exidx_start = .
+.ARM            0x08013334        0x8
+                0x08013334                        . = ALIGN (0x4)
+                0x08013334                        __exidx_start = .
  *(.ARM.exidx*)
- .ARM.exidx     0x080130f4        0x8 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-memcpy.o)
- .ARM.exidx     0x080130fc        0x0 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-strlen.o)
+ .ARM.exidx     0x08013334        0x8 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-memcpy.o)
+ .ARM.exidx     0x0801333c        0x0 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-strlen.o)
                                   0x8 (size before relaxing)
- .ARM.exidx     0x080130fc        0x0 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-aeabi_memset-soft.o)
+ .ARM.exidx     0x0801333c        0x0 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-aeabi_memset-soft.o)
                                   0x8 (size before relaxing)
  .ARM.exidx.text.__udivmoddi4
-                0x080130fc        0x0 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
+                0x0801333c        0x0 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
                                   0x8 (size before relaxing)
-                0x080130fc                        __exidx_end = .
-                0x080130fc                        . = ALIGN (0x4)
+                0x0801333c                        __exidx_end = .
+                0x0801333c                        . = ALIGN (0x4)
 
-.preinit_array  0x080130fc        0x0
-                0x080130fc                        . = ALIGN (0x4)
-                0x080130fc                        PROVIDE (__preinit_array_start = .)
+.preinit_array  0x0801333c        0x0
+                0x0801333c                        . = ALIGN (0x4)
+                0x0801333c                        PROVIDE (__preinit_array_start = .)
  *(.preinit_array*)
-                0x080130fc                        PROVIDE (__preinit_array_end = .)
-                0x080130fc                        . = ALIGN (0x4)
+                0x0801333c                        PROVIDE (__preinit_array_end = .)
+                0x0801333c                        . = ALIGN (0x4)
 
-.init_array     0x080130fc        0x8
-                0x080130fc                        . = ALIGN (0x4)
-                0x080130fc                        PROVIDE (__init_array_start = .)
+.init_array     0x0801333c        0x8
+                0x0801333c                        . = ALIGN (0x4)
+                0x0801333c                        PROVIDE (__init_array_start = .)
  *(SORT_BY_NAME(.init_array.*))
  .init_array.00000
-                0x080130fc        0x4 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-__call_atexit.o)
+                0x0801333c        0x4 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-__call_atexit.o)
  *(.init_array*)
- .init_array    0x08013100        0x4 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
-                0x08013104                        PROVIDE (__init_array_end = .)
-                0x08013104                        . = ALIGN (0x4)
+ .init_array    0x08013340        0x4 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+                0x08013344                        PROVIDE (__init_array_end = .)
+                0x08013344                        . = ALIGN (0x4)
 
-.fini_array     0x08013104        0x4
-                0x08013104                        . = ALIGN (0x4)
-                0x08013104                        PROVIDE (__fini_array_start = .)
+.fini_array     0x08013344        0x4
+                0x08013344                        . = ALIGN (0x4)
+                0x08013344                        PROVIDE (__fini_array_start = .)
  *(SORT_BY_NAME(.fini_array.*))
  *(.fini_array*)
- .fini_array    0x08013104        0x4 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
-                0x08013108                        PROVIDE (__fini_array_end = .)
-                0x08013108                        . = ALIGN (0x4)
-                0x08013108                        _sidata = LOADADDR (.data)
+ .fini_array    0x08013344        0x4 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+                0x08013348                        PROVIDE (__fini_array_end = .)
+                0x08013348                        . = ALIGN (0x4)
+                0x08013348                        _sidata = LOADADDR (.data)
 
-.rel.dyn        0x08013108        0x0
- .rel.iplt      0x08013108        0x0 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+.rel.dyn        0x08013348        0x0
+ .rel.iplt      0x08013348        0x0 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
 
-.data           0x20000000      0x714 load address 0x08013108
+.data           0x20000000      0x714 load address 0x08013348
                 0x20000000                        . = ALIGN (0x4)
                 0x20000000                        _sdata = .
  *(.data)
@@ -5422,19 +5424,19 @@ i.update_w      0x080120b8       0x7a
  *(.RamFunc*)
                 0x20000714                        . = ALIGN (0x4)
                 0x20000714                        _edata = .
-                0x0801381c                        _siccmram = LOADADDR (.ccmram)
+                0x08013a5c                        _siccmram = LOADADDR (.ccmram)
 
 .tm_clone_table
-                0x20000714        0x0 load address 0x0801381c
+                0x20000714        0x0 load address 0x08013a5c
  .tm_clone_table
                 0x20000714        0x0 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
  .tm_clone_table
                 0x20000714        0x0 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtend.o
 
-.igot.plt       0x20000714        0x0 load address 0x0801381c
+.igot.plt       0x20000714        0x0 load address 0x08013a5c
  .igot.plt      0x20000714        0x0 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
 
-.ccmram         0x10000000        0x0 load address 0x0801381c
+.ccmram         0x10000000        0x0 load address 0x08013a5c
                 0x10000000                        . = ALIGN (0x4)
                 0x10000000                        _sccmram = .
  *(.ccmram)
@@ -5443,7 +5445,7 @@ i.update_w      0x080120b8       0x7a
                 0x10000000                        _eccmram = .
                 0x10000000                        . = ALIGN (0x4)
 
-.bss            0x20000718     0x9db4
+.bss            0x20000718     0x9dc8
                 0x20000718                        _sbss = .
                 0x20000718                        __bss_start__ = _sbss
  *(.bss)
@@ -5726,92 +5728,91 @@ i.update_w      0x080120b8       0x7a
  *fill*         0x20009ec5        0x3 
  .bss.time.0    0x20009ec8        0x4 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal.c.obj
  .bss.gimbal_control
-                0x20009ecc      0x1cc CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal.c.obj
+                0x20009ecc      0x1e0 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal.c.obj
                 0x20009ecc                gimbal_control
  .bss.pitch_angle_set.0
-                0x2000a098        0x4 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal_behaviour.c.obj
- .bss.pitch_bias_angle.1
-                0x2000a09c        0x4 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal_behaviour.c.obj
- .bss.yaw_angle_set.2
-                0x2000a0a0        0x4 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal_behaviour.c.obj
- .bss.yaw_bias_angle.3
-                0x2000a0a4        0x4 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal_behaviour.c.obj
- .bss.pitch_channel.4
-                0x2000a0a8        0x2 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal_behaviour.c.obj
- .bss.yaw_channel.5
-                0x2000a0aa        0x2 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal_behaviour.c.obj
- .bss.last_pitch.6
                 0x2000a0ac        0x4 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal_behaviour.c.obj
- .bss.last_yaw.7
+ .bss.pitch_bias_angle.1
                 0x2000a0b0        0x4 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal_behaviour.c.obj
+ .bss.yaw_angle_set.2
+                0x2000a0b4        0x4 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal_behaviour.c.obj
+ .bss.yaw_bias_angle.3
+                0x2000a0b8        0x4 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal_behaviour.c.obj
+ .bss.pitch_channel.4
+                0x2000a0bc        0x2 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal_behaviour.c.obj
+ .bss.yaw_channel.5
+                0x2000a0be        0x2 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal_behaviour.c.obj
+ .bss.last_pitch.6
+                0x2000a0c0        0x4 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal_behaviour.c.obj
+ .bss.last_yaw.7
+                0x2000a0c4        0x4 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal_behaviour.c.obj
  .bss.init_stop_time.9
-                0x2000a0b4        0x2 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal_behaviour.c.obj
+                0x2000a0c8        0x2 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal_behaviour.c.obj
  .bss.init_time.10
-                0x2000a0b6        0x2 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal_behaviour.c.obj
- .bss.fac_ms    0x2000a0b8        0x4 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_delay.c.obj
- .bss.fac_us    0x2000a0bc        0x1 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_delay.c.obj
- *fill*         0x2000a0bd        0x1 
- .bss.blue.0    0x2000a0be        0x2 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_led.c.obj
- .bss.green.1   0x2000a0c0        0x2 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_led.c.obj
- .bss.red.2     0x2000a0c2        0x2 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_led.c.obj
- .bss.alpha.3   0x2000a0c4        0x1 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_led.c.obj
- *fill*         0x2000a0c5        0x3 
+                0x2000a0ca        0x2 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal_behaviour.c.obj
+ .bss.fac_ms    0x2000a0cc        0x4 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_delay.c.obj
+ .bss.fac_us    0x2000a0d0        0x1 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_delay.c.obj
+ *fill*         0x2000a0d1        0x1 
+ .bss.blue.0    0x2000a0d2        0x2 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_led.c.obj
+ .bss.green.1   0x2000a0d4        0x2 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_led.c.obj
+ .bss.red.2     0x2000a0d6        0x2 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_led.c.obj
+ .bss.alpha.3   0x2000a0d8        0x1 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_led.c.obj
+ *fill*         0x2000a0d9        0x3 
  .bss.dji_motor
-                0x2000a0c8       0x30 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DJI_Motor/DJI_Motor.c.obj
-                0x2000a0c8                dji_motor
+                0x2000a0dc       0x30 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DJI_Motor/DJI_Motor.c.obj
+                0x2000a0dc                dji_motor
  .bss.dm_motor_measure
-                0x2000a0f8       0x54 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DM/DM_4310.c.obj
- .bss.i.0       0x2000a14c        0x1 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DT7/DT7.c.obj
- *fill*         0x2000a14d        0x3 
+                0x2000a10c       0x54 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DM/DM_4310.c.obj
+ .bss.i.0       0x2000a160        0x1 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DT7/DT7.c.obj
+ *fill*         0x2000a161        0x3 
  .bss.usart_tx_buf.1
-                0x2000a150       0x14 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DT7/DT7.c.obj
+                0x2000a164       0x14 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DT7/DT7.c.obj
  .bss.this_time_rx_len.2
-                0x2000a164        0x2 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DT7/DT7.c.obj
- *fill*         0x2000a166        0x2 
+                0x2000a178        0x2 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DT7/DT7.c.obj
+ *fill*         0x2000a17a        0x2 
  .bss.sbus_rx_buf
-                0x2000a168       0x48 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DT7/DT7.c.obj
- .bss.rc_ctrl   0x2000a1b0       0x16 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DT7/DT7.c.obj
-                0x2000a1b0                rc_ctrl
- *fill*         0x2000a1c6        0x2 
+                0x2000a17c       0x48 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DT7/DT7.c.obj
+ .bss.rc_ctrl   0x2000a1c4       0x16 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DT7/DT7.c.obj
+                0x2000a1c4                rc_ctrl
+ *fill*         0x2000a1da        0x2 
  .bss.__malloc_current_mallinfo
-                0x2000a1c8       0x28 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-mallocr.o)
-                0x2000a1c8                __malloc_current_mallinfo
+                0x2000a1dc       0x28 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-mallocr.o)
+                0x2000a1dc                __malloc_current_mallinfo
  .bss.__malloc_top_pad
-                0x2000a1f0        0x4 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-mallocr.o)
-                0x2000a1f0                __malloc_top_pad
- .bss.__sf      0x2000a1f4      0x138 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-findfp.o)
-                0x2000a1f4                __sf
- .bss.errno     0x2000a32c        0x4 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-reent.o)
-                0x2000a32c                errno
+                0x2000a204        0x4 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-mallocr.o)
+                0x2000a204                __malloc_top_pad
+ .bss.__sf      0x2000a208      0x138 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-findfp.o)
+                0x2000a208                __sf
+ .bss.errno     0x2000a340        0x4 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-reent.o)
+                0x2000a340                errno
  .bss.__lock___malloc_recursive_mutex
-                0x2000a330        0x1 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-lock.o)
-                0x2000a330                __lock___malloc_recursive_mutex
- *fill*         0x2000a331        0x3 
+                0x2000a344        0x1 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-lock.o)
+                0x2000a344                __lock___malloc_recursive_mutex
+ *fill*         0x2000a345        0x3 
  .bss.__lock___atexit_recursive_mutex
-                0x2000a334        0x1 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-lock.o)
-                0x2000a334                __lock___atexit_recursive_mutex
- *fill*         0x2000a335        0x3 
- .bss.__atexit  0x2000a338        0x4 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-__call_atexit.o)
-                0x2000a338                __atexit
+                0x2000a348        0x1 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-lock.o)
+                0x2000a348                __lock___atexit_recursive_mutex
+ *fill*         0x2000a349        0x3 
+ .bss.__atexit  0x2000a34c        0x4 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-__call_atexit.o)
+                0x2000a34c                __atexit
  .bss.__atexit0
-                0x2000a33c      0x190 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-__atexit.o)
-                0x2000a33c                __atexit0
+                0x2000a350      0x190 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-__atexit.o)
+                0x2000a350                __atexit0
  *(COMMON)
-                0x2000a4cc                        . = ALIGN (0x4)
-                0x2000a4cc                        _ebss = .
-                0x2000a4cc                        __bss_end__ = _ebss
+                0x2000a4e0                        . = ALIGN (0x4)
+                0x2000a4e0                        _ebss = .
+                0x2000a4e0                        __bss_end__ = _ebss
 
 ._user_heap_stack
-                0x2000a4cc     0x4004
-                0x2000a4d0                        . = ALIGN (0x8)
- *fill*         0x2000a4cc        0x4 
+                0x2000a4e0     0x4000
+                0x2000a4e0                        . = ALIGN (0x8)
                 [!provide]                        PROVIDE (end = .)
-                0x2000a4d0                        PROVIDE (_end = .)
-                0x2000c4d0                        . = (. + _Min_Heap_Size)
- *fill*         0x2000a4d0     0x2000 
-                0x2000e4d0                        . = (. + _Min_Stack_Size)
- *fill*         0x2000c4d0     0x2000 
-                0x2000e4d0                        . = ALIGN (0x8)
+                0x2000a4e0                        PROVIDE (_end = .)
+                0x2000c4e0                        . = (. + _Min_Heap_Size)
+ *fill*         0x2000a4e0     0x2000 
+                0x2000e4e0                        . = (. + _Min_Stack_Size)
+ *fill*         0x2000c4e0     0x2000 
+                0x2000e4e0                        . = ALIGN (0x8)
 
 /DISCARD/
  libc.a(*)
@@ -5950,110 +5951,112 @@ i.update_w      0x080120b8       0x7a
  .ARM.attributes
                 0x00000ca7       0x34 CMakeFiles/gimbal_task.elf.dir/USER/components/algorithm/AHRS_middleware.c.obj
  .ARM.attributes
-                0x00000cdb       0x34 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_can.c.obj
+                0x00000cdb       0x34 CMakeFiles/gimbal_task.elf.dir/USER/components/algorithm/user_lib.c.obj
  .ARM.attributes
-                0x00000d0f       0x34 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_delay.c.obj
+                0x00000d0f       0x34 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_can.c.obj
  .ARM.attributes
-                0x00000d43       0x34 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_i2c.c.obj
+                0x00000d43       0x34 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_delay.c.obj
  .ARM.attributes
-                0x00000d77       0x34 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_led.c.obj
+                0x00000d77       0x34 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_i2c.c.obj
  .ARM.attributes
-                0x00000dab       0x34 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_rc.c.obj
+                0x00000dab       0x34 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_led.c.obj
  .ARM.attributes
-                0x00000ddf       0x34 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_spi.c.obj
+                0x00000ddf       0x34 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_rc.c.obj
  .ARM.attributes
-                0x00000e13       0x34 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_usart.c.obj
+                0x00000e13       0x34 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_spi.c.obj
  .ARM.attributes
-                0x00000e47       0x34 CMakeFiles/gimbal_task.elf.dir/USER/components/controller/pid.c.obj
+                0x00000e47       0x34 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_usart.c.obj
  .ARM.attributes
-                0x00000e7b       0x34 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DJI_Motor/DJI_Motor.c.obj
+                0x00000e7b       0x34 CMakeFiles/gimbal_task.elf.dir/USER/components/controller/pid.c.obj
  .ARM.attributes
-                0x00000eaf       0x34 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DM/DM_4310.c.obj
+                0x00000eaf       0x34 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DJI_Motor/DJI_Motor.c.obj
  .ARM.attributes
-                0x00000ee3       0x34 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DT7/DT7.c.obj
+                0x00000ee3       0x34 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DM/DM_4310.c.obj
  .ARM.attributes
-                0x00000f17       0x34 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088Middleware.c.obj
+                0x00000f17       0x34 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DT7/DT7.c.obj
  .ARM.attributes
-                0x00000f4b       0x34 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088driver.c.obj
+                0x00000f4b       0x34 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088Middleware.c.obj
  .ARM.attributes
-                0x00000f7f       0x34 CMakeFiles/gimbal_task.elf.dir/USER/components/device/ist8310/ist8310driver.c.obj
+                0x00000f7f       0x34 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088driver.c.obj
  .ARM.attributes
-                0x00000fb3       0x34 CMakeFiles/gimbal_task.elf.dir/USER/components/device/ist8310/ist8310driver_middleware.c.obj
+                0x00000fb3       0x34 CMakeFiles/gimbal_task.elf.dir/USER/components/device/ist8310/ist8310driver.c.obj
  .ARM.attributes
-                0x00000fe7       0x34 CMakeFiles/gimbal_task.elf.dir/USER/components/support/CRC8_CRC16.c.obj
+                0x00000fe7       0x34 CMakeFiles/gimbal_task.elf.dir/USER/components/device/ist8310/ist8310driver_middleware.c.obj
  .ARM.attributes
-                0x0000101b       0x5e C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
+                0x0000101b       0x34 CMakeFiles/gimbal_task.elf.dir/USER/components/support/CRC8_CRC16.c.obj
  .ARM.attributes
-                0x00001079       0x34 C:/Users/16844/Desktop/gimbal111/gimbal/Middlewares/ST/ARM/DSP/Lib/libarm_cortexM4lf_math.a(arm_sin_f32.o)
+                0x0000104f       0x5e C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
  .ARM.attributes
-                0x000010ad       0x34 C:/Users/16844/Desktop/gimbal111/gimbal/Middlewares/ST/ARM/DSP/Lib/libarm_cortexM4lf_math.a(arm_cos_f32.o)
+                0x000010ad       0x34 C:/Users/16844/Desktop/gimbal111/gimbal/Middlewares/ST/ARM/DSP/Lib/libarm_cortexM4lf_math.a(arm_sin_f32.o)
  .ARM.attributes
-                0x000010e1       0x39 C:/Users/16844/Desktop/gimbal111/gimbal/Middlewares/ST/ARM/DSP/Lib/libarm_cortexM4lf_math.a(arm_common_tables.o)
+                0x000010e1       0x34 C:/Users/16844/Desktop/gimbal111/gimbal/Middlewares/ST/ARM/DSP/Lib/libarm_cortexM4lf_math.a(arm_cos_f32.o)
  .ARM.attributes
-                0x0000111a       0x22 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
+                0x00001115       0x39 C:/Users/16844/Desktop/gimbal111/gimbal/Middlewares/ST/ARM/DSP/Lib/libarm_cortexM4lf_math.a(arm_common_tables.o)
  .ARM.attributes
-                0x0000113c       0x22 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
+                0x0000114e       0x22 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
  .ARM.attributes
-                0x0000115e       0x22 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_cmpdf2.o)
+                0x00001170       0x22 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
  .ARM.attributes
-                0x00001180       0x22 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_truncdfsf2.o)
+                0x00001192       0x22 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_cmpdf2.o)
  .ARM.attributes
-                0x000011a2       0x22 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_aeabi_uldivmod.o)
+                0x000011b4       0x22 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_truncdfsf2.o)
  .ARM.attributes
-                0x000011c4       0x34 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
+                0x000011d6       0x22 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_aeabi_uldivmod.o)
  .ARM.attributes
-                0x000011f8       0x22 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_dvmd_tls.o)
+                0x000011f8       0x34 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
  .ARM.attributes
-                0x0000121a       0x34 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-mallocr.o)
+                0x0000122c       0x22 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_dvmd_tls.o)
  .ARM.attributes
-                0x0000124e       0x34 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-mlock.o)
+                0x0000124e       0x34 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-mallocr.o)
  .ARM.attributes
-                0x00001282       0x34 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-findfp.o)
+                0x00001282       0x34 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-mlock.o)
  .ARM.attributes
-                0x000012b6       0x34 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-memset.o)
+                0x000012b6       0x34 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-findfp.o)
  .ARM.attributes
-                0x000012ea       0x34 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-reent.o)
+                0x000012ea       0x34 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-memset.o)
  .ARM.attributes
-                0x0000131e       0x34 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-impure.o)
+                0x0000131e       0x34 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-reent.o)
  .ARM.attributes
-                0x00001352       0x34 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-sbrkr.o)
+                0x00001352       0x34 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-impure.o)
  .ARM.attributes
-                0x00001386       0x34 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-errno.o)
+                0x00001386       0x34 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-sbrkr.o)
  .ARM.attributes
-                0x000013ba       0x34 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-init.o)
+                0x000013ba       0x34 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-errno.o)
  .ARM.attributes
-                0x000013ee       0x34 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-lock.o)
+                0x000013ee       0x34 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-init.o)
  .ARM.attributes
-                0x00001422       0x34 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-sysconf.o)
+                0x00001422       0x34 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-lock.o)
  .ARM.attributes
-                0x00001456       0x34 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-aeabi_memclr.o)
+                0x00001456       0x34 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-sysconf.o)
  .ARM.attributes
-                0x0000148a       0x20 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-memcpy.o)
+                0x0000148a       0x34 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-aeabi_memclr.o)
  .ARM.attributes
-                0x000014aa       0x1c C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-strlen.o)
+                0x000014be       0x20 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-memcpy.o)
  .ARM.attributes
-                0x000014c6       0x34 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-__call_atexit.o)
+                0x000014de       0x1c C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-strlen.o)
  .ARM.attributes
-                0x000014fa       0x34 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-atexit.o)
+                0x000014fa       0x34 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-__call_atexit.o)
  .ARM.attributes
-                0x0000152e       0x34 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-freer.o)
+                0x0000152e       0x34 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-atexit.o)
  .ARM.attributes
-                0x00001562       0x34 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-fini.o)
+                0x00001562       0x34 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-freer.o)
  .ARM.attributes
-                0x00001596       0x20 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-aeabi_memset-soft.o)
+                0x00001596       0x34 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-fini.o)
  .ARM.attributes
-                0x000015b6       0x34 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-__atexit.o)
+                0x000015ca       0x20 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-aeabi_memset-soft.o)
  .ARM.attributes
-                0x000015ea       0x34 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtend.o
+                0x000015ea       0x34 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-__atexit.o)
  .ARM.attributes
-                0x0000161e       0x22 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtn.o
+                0x0000161e       0x34 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtend.o
+ .ARM.attributes
+                0x00001652       0x22 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtn.o
 OUTPUT(gimbal_task.elf elf32-littlearm)
 LOAD linker stubs
 LOAD C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libc.a
 LOAD C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libm.a
 LOAD C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a
 
-.debug_info     0x00000000    0x4cb5a
+.debug_info     0x00000000    0x4d72d
  .debug_info    0x00000000      0x9e2 CMakeFiles/gimbal_task.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
  .debug_info    0x000009e2      0xe96 CMakeFiles/gimbal_task.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.c.obj
  .debug_info    0x00001878     0x11f4 CMakeFiles/gimbal_task.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
@@ -6108,59 +6111,60 @@ LOAD C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-ea
  .debug_info    0x00039021      0x5dd CMakeFiles/gimbal_task.elf.dir/Src/usbd_desc.c.obj
  .debug_info    0x000395fe       0x30 CMakeFiles/gimbal_task.elf.dir/Startup/startup_stm32f407ighx.s.obj
  .debug_info    0x0003962e     0x14ec CMakeFiles/gimbal_task.elf.dir/USER/application/Task/INS_task.c.obj
- .debug_info    0x0003ab1a      0x842 CMakeFiles/gimbal_task.elf.dir/USER/application/Task/gimbal_task.c.obj
- .debug_info    0x0003b35c      0x380 CMakeFiles/gimbal_task.elf.dir/USER/application/Task/led_task.c.obj
- .debug_info    0x0003b6dc      0x18c CMakeFiles/gimbal_task.elf.dir/USER/application/Task/usb_task.c.obj
- .debug_info    0x0003b868      0x66e CMakeFiles/gimbal_task.elf.dir/USER/application/callback/Can_Callback.c.obj
- .debug_info    0x0003bed6      0xb0c CMakeFiles/gimbal_task.elf.dir/USER/application/callback/usb_callback.c.obj
- .debug_info    0x0003c9e2      0xff0 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal.c.obj
- .debug_info    0x0003d9d2      0x993 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal_behaviour.c.obj
- .debug_info    0x0003e365      0x368 CMakeFiles/gimbal_task.elf.dir/USER/components/algorithm/AHRS_middleware.c.obj
- .debug_info    0x0003e6cd      0x625 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_can.c.obj
- .debug_info    0x0003ecf2      0x248 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_delay.c.obj
- .debug_info    0x0003ef3a      0x918 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_i2c.c.obj
- .debug_info    0x0003f852      0x6c3 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_led.c.obj
- .debug_info    0x0003ff15      0x5ec CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_rc.c.obj
- .debug_info    0x00040501      0x678 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_spi.c.obj
- .debug_info    0x00040b79      0x68b CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_usart.c.obj
- .debug_info    0x00041204      0x260 CMakeFiles/gimbal_task.elf.dir/USER/components/controller/pid.c.obj
- .debug_info    0x00041464      0x97e CMakeFiles/gimbal_task.elf.dir/USER/components/device/DJI_Motor/DJI_Motor.c.obj
- .debug_info    0x00041de2      0xd7b CMakeFiles/gimbal_task.elf.dir/USER/components/device/DM/DM_4310.c.obj
- .debug_info    0x00042b5d      0x9c1 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DT7/DT7.c.obj
- .debug_info    0x0004351e      0x94b CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088Middleware.c.obj
- .debug_info    0x00043e69     0x1561 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088driver.c.obj
- .debug_info    0x000453ca      0x35f CMakeFiles/gimbal_task.elf.dir/USER/components/device/ist8310/ist8310driver.c.obj
- .debug_info    0x00045729      0xaf1 CMakeFiles/gimbal_task.elf.dir/USER/components/device/ist8310/ist8310driver_middleware.c.obj
- .debug_info    0x0004621a      0x3aa CMakeFiles/gimbal_task.elf.dir/USER/components/support/CRC8_CRC16.c.obj
- .debug_info    0x000465c4       0xb8 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
- .debug_info    0x0004667c      0x114 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
- .debug_info    0x00046790      0x148 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
- .debug_info    0x000468d8      0x21c C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
- .debug_info    0x00046af4      0x104 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
- .debug_info    0x00046bf8      0x104 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
- .debug_info    0x00046cfc      0x104 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
- .debug_info    0x00046e00      0x1fc C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
- .debug_info    0x00046ffc      0x18c C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
- .debug_info    0x00047188      0x1cc C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
- .debug_info    0x00047354      0x108 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
- .debug_info    0x0004745c      0x108 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
- .debug_info    0x00047564      0x108 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
- .debug_info    0x0004766c      0x110 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
- .debug_info    0x0004777c      0x104 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
- .debug_info    0x00047880      0x1ec C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
-                0x00047880                __ARM_grp..debug_info$AHRS_MiddleWare.h$.2_oB0000_gdKo08fjhf0_300000
-                0x00047880                __ARM_grp.AHRS_MiddleWare.h.2_oB0000_gdKo08fjhf0_300000
- .debug_info    0x00047a6c       0xb8 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
-                0x00047a6c                __ARM_grp.AHRS.h.2_As0000_PieY4wFFo66_300000
-                0x00047a6c                __ARM_grp..debug_info$AHRS.h$.2_As0000_PieY4wFFo66_300000
- .debug_info    0x00047b24       0xc8 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
-                0x00047b24                __ARM_grp..debug_info$AHRS.c$.2_kR0000_yWR2zUbHmB7_800000
-                0x00047b24                __ARM_grp.AHRS.c.2_kR0000_yWR2zUbHmB7_800000
- .debug_info    0x00047bec     0x1874 C:/Users/16844/Desktop/gimbal111/gimbal/Middlewares/ST/ARM/DSP/Lib/libarm_cortexM4lf_math.a(arm_sin_f32.o)
- .debug_info    0x00049460     0x1874 C:/Users/16844/Desktop/gimbal111/gimbal/Middlewares/ST/ARM/DSP/Lib/libarm_cortexM4lf_math.a(arm_cos_f32.o)
- .debug_info    0x0004acd4     0x1e86 C:/Users/16844/Desktop/gimbal111/gimbal/Middlewares/ST/ARM/DSP/Lib/libarm_cortexM4lf_math.a(arm_common_tables.o)
+ .debug_info    0x0003ab1a      0x8e3 CMakeFiles/gimbal_task.elf.dir/USER/application/Task/gimbal_task.c.obj
+ .debug_info    0x0003b3fd      0x380 CMakeFiles/gimbal_task.elf.dir/USER/application/Task/led_task.c.obj
+ .debug_info    0x0003b77d      0x18c CMakeFiles/gimbal_task.elf.dir/USER/application/Task/usb_task.c.obj
+ .debug_info    0x0003b909      0x66e CMakeFiles/gimbal_task.elf.dir/USER/application/callback/Can_Callback.c.obj
+ .debug_info    0x0003bf77      0xbc6 CMakeFiles/gimbal_task.elf.dir/USER/application/callback/usb_callback.c.obj
+ .debug_info    0x0003cb3d     0x13f2 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal.c.obj
+ .debug_info    0x0003df2f      0xaf5 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal_behaviour.c.obj
+ .debug_info    0x0003ea24      0x368 CMakeFiles/gimbal_task.elf.dir/USER/components/algorithm/AHRS_middleware.c.obj
+ .debug_info    0x0003ed8c      0x514 CMakeFiles/gimbal_task.elf.dir/USER/components/algorithm/user_lib.c.obj
+ .debug_info    0x0003f2a0      0x625 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_can.c.obj
+ .debug_info    0x0003f8c5      0x248 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_delay.c.obj
+ .debug_info    0x0003fb0d      0x918 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_i2c.c.obj
+ .debug_info    0x00040425      0x6c3 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_led.c.obj
+ .debug_info    0x00040ae8      0x5ec CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_rc.c.obj
+ .debug_info    0x000410d4      0x678 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_spi.c.obj
+ .debug_info    0x0004174c      0x68b CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_usart.c.obj
+ .debug_info    0x00041dd7      0x260 CMakeFiles/gimbal_task.elf.dir/USER/components/controller/pid.c.obj
+ .debug_info    0x00042037      0x97e CMakeFiles/gimbal_task.elf.dir/USER/components/device/DJI_Motor/DJI_Motor.c.obj
+ .debug_info    0x000429b5      0xd7b CMakeFiles/gimbal_task.elf.dir/USER/components/device/DM/DM_4310.c.obj
+ .debug_info    0x00043730      0x9c1 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DT7/DT7.c.obj
+ .debug_info    0x000440f1      0x94b CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088Middleware.c.obj
+ .debug_info    0x00044a3c     0x1561 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088driver.c.obj
+ .debug_info    0x00045f9d      0x35f CMakeFiles/gimbal_task.elf.dir/USER/components/device/ist8310/ist8310driver.c.obj
+ .debug_info    0x000462fc      0xaf1 CMakeFiles/gimbal_task.elf.dir/USER/components/device/ist8310/ist8310driver_middleware.c.obj
+ .debug_info    0x00046ded      0x3aa CMakeFiles/gimbal_task.elf.dir/USER/components/support/CRC8_CRC16.c.obj
+ .debug_info    0x00047197       0xb8 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
+ .debug_info    0x0004724f      0x114 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
+ .debug_info    0x00047363      0x148 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
+ .debug_info    0x000474ab      0x21c C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
+ .debug_info    0x000476c7      0x104 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
+ .debug_info    0x000477cb      0x104 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
+ .debug_info    0x000478cf      0x104 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
+ .debug_info    0x000479d3      0x1fc C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
+ .debug_info    0x00047bcf      0x18c C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
+ .debug_info    0x00047d5b      0x1cc C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
+ .debug_info    0x00047f27      0x108 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
+ .debug_info    0x0004802f      0x108 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
+ .debug_info    0x00048137      0x108 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
+ .debug_info    0x0004823f      0x110 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
+ .debug_info    0x0004834f      0x104 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
+ .debug_info    0x00048453      0x1ec C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
+                0x00048453                __ARM_grp..debug_info$AHRS_MiddleWare.h$.2_oB0000_gdKo08fjhf0_300000
+                0x00048453                __ARM_grp.AHRS_MiddleWare.h.2_oB0000_gdKo08fjhf0_300000
+ .debug_info    0x0004863f       0xb8 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
+                0x0004863f                __ARM_grp.AHRS.h.2_As0000_PieY4wFFo66_300000
+                0x0004863f                __ARM_grp..debug_info$AHRS.h$.2_As0000_PieY4wFFo66_300000
+ .debug_info    0x000486f7       0xc8 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
+                0x000486f7                __ARM_grp..debug_info$AHRS.c$.2_kR0000_yWR2zUbHmB7_800000
+                0x000486f7                __ARM_grp.AHRS.c.2_kR0000_yWR2zUbHmB7_800000
+ .debug_info    0x000487bf     0x1874 C:/Users/16844/Desktop/gimbal111/gimbal/Middlewares/ST/ARM/DSP/Lib/libarm_cortexM4lf_math.a(arm_sin_f32.o)
+ .debug_info    0x0004a033     0x1874 C:/Users/16844/Desktop/gimbal111/gimbal/Middlewares/ST/ARM/DSP/Lib/libarm_cortexM4lf_math.a(arm_cos_f32.o)
+ .debug_info    0x0004b8a7     0x1e86 C:/Users/16844/Desktop/gimbal111/gimbal/Middlewares/ST/ARM/DSP/Lib/libarm_cortexM4lf_math.a(arm_common_tables.o)
 
-.debug_abbrev   0x00000000     0xb6f8
+.debug_abbrev   0x00000000     0xb923
  .debug_abbrev  0x00000000      0x240 CMakeFiles/gimbal_task.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
  .debug_abbrev  0x00000240      0x278 CMakeFiles/gimbal_task.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.c.obj
  .debug_abbrev  0x000004b8      0x28c CMakeFiles/gimbal_task.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
@@ -6215,38 +6219,39 @@ LOAD C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-ea
  .debug_abbrev  0x00007a6a      0x1ec CMakeFiles/gimbal_task.elf.dir/Src/usbd_desc.c.obj
  .debug_abbrev  0x00007c56       0x24 CMakeFiles/gimbal_task.elf.dir/Startup/startup_stm32f407ighx.s.obj
  .debug_abbrev  0x00007c7a      0x360 CMakeFiles/gimbal_task.elf.dir/USER/application/Task/INS_task.c.obj
- .debug_abbrev  0x00007fda      0x19a CMakeFiles/gimbal_task.elf.dir/USER/application/Task/gimbal_task.c.obj
- .debug_abbrev  0x00008174      0x17d CMakeFiles/gimbal_task.elf.dir/USER/application/Task/led_task.c.obj
- .debug_abbrev  0x000082f1       0xf0 CMakeFiles/gimbal_task.elf.dir/USER/application/Task/usb_task.c.obj
- .debug_abbrev  0x000083e1      0x1bb CMakeFiles/gimbal_task.elf.dir/USER/application/callback/Can_Callback.c.obj
- .debug_abbrev  0x0000859c      0x1f4 CMakeFiles/gimbal_task.elf.dir/USER/application/callback/usb_callback.c.obj
- .debug_abbrev  0x00008790      0x395 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal.c.obj
- .debug_abbrev  0x00008b25      0x1e2 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal_behaviour.c.obj
- .debug_abbrev  0x00008d07      0x111 CMakeFiles/gimbal_task.elf.dir/USER/components/algorithm/AHRS_middleware.c.obj
- .debug_abbrev  0x00008e18      0x197 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_can.c.obj
- .debug_abbrev  0x00008faf      0x110 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_delay.c.obj
- .debug_abbrev  0x000090bf      0x275 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_i2c.c.obj
- .debug_abbrev  0x00009334      0x196 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_led.c.obj
- .debug_abbrev  0x000094ca      0x189 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_rc.c.obj
- .debug_abbrev  0x00009653      0x194 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_spi.c.obj
- .debug_abbrev  0x000097e7      0x185 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_usart.c.obj
- .debug_abbrev  0x0000996c      0x136 CMakeFiles/gimbal_task.elf.dir/USER/components/controller/pid.c.obj
- .debug_abbrev  0x00009aa2      0x267 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DJI_Motor/DJI_Motor.c.obj
- .debug_abbrev  0x00009d09      0x21f CMakeFiles/gimbal_task.elf.dir/USER/components/device/DM/DM_4310.c.obj
- .debug_abbrev  0x00009f28      0x2fb CMakeFiles/gimbal_task.elf.dir/USER/components/device/DT7/DT7.c.obj
- .debug_abbrev  0x0000a223      0x20d CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088Middleware.c.obj
- .debug_abbrev  0x0000a430      0x231 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088driver.c.obj
- .debug_abbrev  0x0000a661      0x1b9 CMakeFiles/gimbal_task.elf.dir/USER/components/device/ist8310/ist8310driver.c.obj
- .debug_abbrev  0x0000a81a      0x1f3 CMakeFiles/gimbal_task.elf.dir/USER/components/device/ist8310/ist8310driver_middleware.c.obj
- .debug_abbrev  0x0000aa0d      0x103 CMakeFiles/gimbal_task.elf.dir/USER/components/support/CRC8_CRC16.c.obj
- .debug_abbrev  0x0000ab10      0x5a4 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
-                0x0000ab10                __ARM_grp..debug_abbrev.group.2_Am0000_lbphKItke$2_000000
- .debug_abbrev  0x0000b0b4      0x22c C:/Users/16844/Desktop/gimbal111/gimbal/Middlewares/ST/ARM/DSP/Lib/libarm_cortexM4lf_math.a(arm_sin_f32.o)
- .debug_abbrev  0x0000b2e0      0x22c C:/Users/16844/Desktop/gimbal111/gimbal/Middlewares/ST/ARM/DSP/Lib/libarm_cortexM4lf_math.a(arm_cos_f32.o)
- .debug_abbrev  0x0000b50c      0x1ec C:/Users/16844/Desktop/gimbal111/gimbal/Middlewares/ST/ARM/DSP/Lib/libarm_cortexM4lf_math.a(arm_common_tables.o)
+ .debug_abbrev  0x00007fda      0x1a5 CMakeFiles/gimbal_task.elf.dir/USER/application/Task/gimbal_task.c.obj
+ .debug_abbrev  0x0000817f      0x17d CMakeFiles/gimbal_task.elf.dir/USER/application/Task/led_task.c.obj
+ .debug_abbrev  0x000082fc       0xf0 CMakeFiles/gimbal_task.elf.dir/USER/application/Task/usb_task.c.obj
+ .debug_abbrev  0x000083ec      0x1bb CMakeFiles/gimbal_task.elf.dir/USER/application/callback/Can_Callback.c.obj
+ .debug_abbrev  0x000085a7      0x1ff CMakeFiles/gimbal_task.elf.dir/USER/application/callback/usb_callback.c.obj
+ .debug_abbrev  0x000087a6      0x402 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal.c.obj
+ .debug_abbrev  0x00008ba8      0x204 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal_behaviour.c.obj
+ .debug_abbrev  0x00008dac      0x111 CMakeFiles/gimbal_task.elf.dir/USER/components/algorithm/AHRS_middleware.c.obj
+ .debug_abbrev  0x00008ebd      0x186 CMakeFiles/gimbal_task.elf.dir/USER/components/algorithm/user_lib.c.obj
+ .debug_abbrev  0x00009043      0x197 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_can.c.obj
+ .debug_abbrev  0x000091da      0x110 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_delay.c.obj
+ .debug_abbrev  0x000092ea      0x275 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_i2c.c.obj
+ .debug_abbrev  0x0000955f      0x196 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_led.c.obj
+ .debug_abbrev  0x000096f5      0x189 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_rc.c.obj
+ .debug_abbrev  0x0000987e      0x194 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_spi.c.obj
+ .debug_abbrev  0x00009a12      0x185 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_usart.c.obj
+ .debug_abbrev  0x00009b97      0x136 CMakeFiles/gimbal_task.elf.dir/USER/components/controller/pid.c.obj
+ .debug_abbrev  0x00009ccd      0x267 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DJI_Motor/DJI_Motor.c.obj
+ .debug_abbrev  0x00009f34      0x21f CMakeFiles/gimbal_task.elf.dir/USER/components/device/DM/DM_4310.c.obj
+ .debug_abbrev  0x0000a153      0x2fb CMakeFiles/gimbal_task.elf.dir/USER/components/device/DT7/DT7.c.obj
+ .debug_abbrev  0x0000a44e      0x20d CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088Middleware.c.obj
+ .debug_abbrev  0x0000a65b      0x231 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088driver.c.obj
+ .debug_abbrev  0x0000a88c      0x1b9 CMakeFiles/gimbal_task.elf.dir/USER/components/device/ist8310/ist8310driver.c.obj
+ .debug_abbrev  0x0000aa45      0x1f3 CMakeFiles/gimbal_task.elf.dir/USER/components/device/ist8310/ist8310driver_middleware.c.obj
+ .debug_abbrev  0x0000ac38      0x103 CMakeFiles/gimbal_task.elf.dir/USER/components/support/CRC8_CRC16.c.obj
+ .debug_abbrev  0x0000ad3b      0x5a4 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
+                0x0000ad3b                __ARM_grp..debug_abbrev.group.2_Am0000_lbphKItke$2_000000
+ .debug_abbrev  0x0000b2df      0x22c C:/Users/16844/Desktop/gimbal111/gimbal/Middlewares/ST/ARM/DSP/Lib/libarm_cortexM4lf_math.a(arm_sin_f32.o)
+ .debug_abbrev  0x0000b50b      0x22c C:/Users/16844/Desktop/gimbal111/gimbal/Middlewares/ST/ARM/DSP/Lib/libarm_cortexM4lf_math.a(arm_cos_f32.o)
+ .debug_abbrev  0x0000b737      0x1ec C:/Users/16844/Desktop/gimbal111/gimbal/Middlewares/ST/ARM/DSP/Lib/libarm_cortexM4lf_math.a(arm_common_tables.o)
 
 .debug_loclists
-                0x00000000    0x1ba90
+                0x00000000    0x1bde8
  .debug_loclists
                 0x00000000       0xe1 CMakeFiles/gimbal_task.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
  .debug_loclists
@@ -6348,45 +6353,47 @@ LOAD C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-ea
  .debug_loclists
                 0x00019d6f       0x20 CMakeFiles/gimbal_task.elf.dir/USER/application/callback/Can_Callback.c.obj
  .debug_loclists
-                0x00019d8f       0xf9 CMakeFiles/gimbal_task.elf.dir/USER/application/callback/usb_callback.c.obj
+                0x00019d8f       0xd5 CMakeFiles/gimbal_task.elf.dir/USER/application/callback/usb_callback.c.obj
  .debug_loclists
-                0x00019e88      0x12a CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal.c.obj
+                0x00019e64      0x257 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal.c.obj
  .debug_loclists
-                0x00019fb2      0x105 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal_behaviour.c.obj
+                0x0001a0bb      0x12d CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal_behaviour.c.obj
  .debug_loclists
-                0x0001a0b7       0xdc CMakeFiles/gimbal_task.elf.dir/USER/components/algorithm/AHRS_middleware.c.obj
+                0x0001a1e8       0xdc CMakeFiles/gimbal_task.elf.dir/USER/components/algorithm/AHRS_middleware.c.obj
  .debug_loclists
-                0x0001a193      0x16c CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_delay.c.obj
+                0x0001a2c4      0x227 CMakeFiles/gimbal_task.elf.dir/USER/components/algorithm/user_lib.c.obj
  .debug_loclists
-                0x0001a2ff      0x43c CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_i2c.c.obj
+                0x0001a4eb      0x16c CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_delay.c.obj
  .debug_loclists
-                0x0001a73b       0x37 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_led.c.obj
+                0x0001a657      0x43c CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_i2c.c.obj
  .debug_loclists
-                0x0001a772       0x29 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_rc.c.obj
+                0x0001aa93       0x37 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_led.c.obj
  .debug_loclists
-                0x0001a79b       0x6c CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_spi.c.obj
+                0x0001aaca       0x29 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_rc.c.obj
  .debug_loclists
-                0x0001a807       0x43 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_usart.c.obj
+                0x0001aaf3       0x6c CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_spi.c.obj
  .debug_loclists
-                0x0001a84a       0xa0 CMakeFiles/gimbal_task.elf.dir/USER/components/controller/pid.c.obj
+                0x0001ab5f       0x43 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_usart.c.obj
  .debug_loclists
-                0x0001a8ea      0x24f CMakeFiles/gimbal_task.elf.dir/USER/components/device/DJI_Motor/DJI_Motor.c.obj
+                0x0001aba2       0xa0 CMakeFiles/gimbal_task.elf.dir/USER/components/controller/pid.c.obj
  .debug_loclists
-                0x0001ab39      0x478 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DM/DM_4310.c.obj
+                0x0001ac42      0x24f CMakeFiles/gimbal_task.elf.dir/USER/components/device/DJI_Motor/DJI_Motor.c.obj
  .debug_loclists
-                0x0001afb1       0x76 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DT7/DT7.c.obj
+                0x0001ae91      0x478 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DM/DM_4310.c.obj
  .debug_loclists
-                0x0001b027       0x5b CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088Middleware.c.obj
+                0x0001b309       0x76 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DT7/DT7.c.obj
  .debug_loclists
-                0x0001b082      0x463 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088driver.c.obj
+                0x0001b37f       0x5b CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088Middleware.c.obj
  .debug_loclists
-                0x0001b4e5      0x130 CMakeFiles/gimbal_task.elf.dir/USER/components/device/ist8310/ist8310driver.c.obj
+                0x0001b3da      0x463 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088driver.c.obj
  .debug_loclists
-                0x0001b615      0x188 CMakeFiles/gimbal_task.elf.dir/USER/components/device/ist8310/ist8310driver_middleware.c.obj
+                0x0001b83d      0x130 CMakeFiles/gimbal_task.elf.dir/USER/components/device/ist8310/ist8310driver.c.obj
  .debug_loclists
-                0x0001b79d      0x2f3 CMakeFiles/gimbal_task.elf.dir/USER/components/support/CRC8_CRC16.c.obj
+                0x0001b96d      0x188 CMakeFiles/gimbal_task.elf.dir/USER/components/device/ist8310/ist8310driver_middleware.c.obj
+ .debug_loclists
+                0x0001baf5      0x2f3 CMakeFiles/gimbal_task.elf.dir/USER/components/support/CRC8_CRC16.c.obj
 
-.debug_aranges  0x00000000     0x2cd0
+.debug_aranges  0x00000000     0x2d78
  .debug_aranges
                 0x00000000       0xf0 CMakeFiles/gimbal_task.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
  .debug_aranges
@@ -6506,52 +6513,54 @@ LOAD C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-ea
  .debug_aranges
                 0x000026b0       0x38 CMakeFiles/gimbal_task.elf.dir/USER/application/callback/usb_callback.c.obj
  .debug_aranges
-                0x000026e8       0x68 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal.c.obj
+                0x000026e8       0x90 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal.c.obj
  .debug_aranges
-                0x00002750       0x40 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal_behaviour.c.obj
+                0x00002778       0x40 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal_behaviour.c.obj
  .debug_aranges
-                0x00002790       0x60 CMakeFiles/gimbal_task.elf.dir/USER/components/algorithm/AHRS_middleware.c.obj
+                0x000027b8       0x60 CMakeFiles/gimbal_task.elf.dir/USER/components/algorithm/AHRS_middleware.c.obj
  .debug_aranges
-                0x000027f0       0x20 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_can.c.obj
+                0x00002818       0x80 CMakeFiles/gimbal_task.elf.dir/USER/components/algorithm/user_lib.c.obj
  .debug_aranges
-                0x00002810       0x30 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_delay.c.obj
+                0x00002898       0x20 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_can.c.obj
  .debug_aranges
-                0x00002840       0x58 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_i2c.c.obj
+                0x000028b8       0x30 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_delay.c.obj
  .debug_aranges
-                0x00002898       0x20 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_led.c.obj
+                0x000028e8       0x58 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_i2c.c.obj
  .debug_aranges
-                0x000028b8       0x30 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_rc.c.obj
+                0x00002940       0x20 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_led.c.obj
  .debug_aranges
-                0x000028e8       0x28 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_spi.c.obj
+                0x00002960       0x30 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_rc.c.obj
  .debug_aranges
-                0x00002910       0x38 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_usart.c.obj
+                0x00002990       0x28 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_spi.c.obj
  .debug_aranges
-                0x00002948       0x30 CMakeFiles/gimbal_task.elf.dir/USER/components/controller/pid.c.obj
+                0x000029b8       0x38 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_usart.c.obj
  .debug_aranges
-                0x00002978       0x48 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DJI_Motor/DJI_Motor.c.obj
+                0x000029f0       0x30 CMakeFiles/gimbal_task.elf.dir/USER/components/controller/pid.c.obj
  .debug_aranges
-                0x000029c0       0x70 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DM/DM_4310.c.obj
+                0x00002a20       0x48 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DJI_Motor/DJI_Motor.c.obj
  .debug_aranges
-                0x00002a30       0x60 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DT7/DT7.c.obj
+                0x00002a68       0x70 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DM/DM_4310.c.obj
  .debug_aranges
-                0x00002a90       0x60 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088Middleware.c.obj
+                0x00002ad8       0x60 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DT7/DT7.c.obj
  .debug_aranges
-                0x00002af0       0xa8 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088driver.c.obj
+                0x00002b38       0x60 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088Middleware.c.obj
  .debug_aranges
-                0x00002b98       0x30 CMakeFiles/gimbal_task.elf.dir/USER/components/device/ist8310/ist8310driver.c.obj
+                0x00002b98       0xa8 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088driver.c.obj
  .debug_aranges
-                0x00002bc8       0x68 CMakeFiles/gimbal_task.elf.dir/USER/components/device/ist8310/ist8310driver_middleware.c.obj
+                0x00002c40       0x30 CMakeFiles/gimbal_task.elf.dir/USER/components/device/ist8310/ist8310driver.c.obj
  .debug_aranges
-                0x00002c30       0x48 CMakeFiles/gimbal_task.elf.dir/USER/components/support/CRC8_CRC16.c.obj
+                0x00002c70       0x68 CMakeFiles/gimbal_task.elf.dir/USER/components/device/ist8310/ist8310driver_middleware.c.obj
  .debug_aranges
-                0x00002c78       0x20 C:/Users/16844/Desktop/gimbal111/gimbal/Middlewares/ST/ARM/DSP/Lib/libarm_cortexM4lf_math.a(arm_sin_f32.o)
+                0x00002cd8       0x48 CMakeFiles/gimbal_task.elf.dir/USER/components/support/CRC8_CRC16.c.obj
  .debug_aranges
-                0x00002c98       0x20 C:/Users/16844/Desktop/gimbal111/gimbal/Middlewares/ST/ARM/DSP/Lib/libarm_cortexM4lf_math.a(arm_cos_f32.o)
+                0x00002d20       0x20 C:/Users/16844/Desktop/gimbal111/gimbal/Middlewares/ST/ARM/DSP/Lib/libarm_cortexM4lf_math.a(arm_sin_f32.o)
  .debug_aranges
-                0x00002cb8       0x18 C:/Users/16844/Desktop/gimbal111/gimbal/Middlewares/ST/ARM/DSP/Lib/libarm_cortexM4lf_math.a(arm_common_tables.o)
+                0x00002d40       0x20 C:/Users/16844/Desktop/gimbal111/gimbal/Middlewares/ST/ARM/DSP/Lib/libarm_cortexM4lf_math.a(arm_cos_f32.o)
+ .debug_aranges
+                0x00002d60       0x18 C:/Users/16844/Desktop/gimbal111/gimbal/Middlewares/ST/ARM/DSP/Lib/libarm_cortexM4lf_math.a(arm_common_tables.o)
 
 .debug_rnglists
-                0x00000000     0x227c
+                0x00000000     0x22f5
  .debug_rnglists
                 0x00000000       0xaf CMakeFiles/gimbal_task.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
  .debug_rnglists
@@ -6671,45 +6680,47 @@ LOAD C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-ea
  .debug_rnglists
                 0x00001e45       0x26 CMakeFiles/gimbal_task.elf.dir/USER/application/callback/usb_callback.c.obj
  .debug_rnglists
-                0x00001e6b       0x4b CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal.c.obj
+                0x00001e6b       0x69 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal.c.obj
  .debug_rnglists
-                0x00001eb6       0x47 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal_behaviour.c.obj
+                0x00001ed4       0x47 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal_behaviour.c.obj
  .debug_rnglists
-                0x00001efd       0x43 CMakeFiles/gimbal_task.elf.dir/USER/components/algorithm/AHRS_middleware.c.obj
+                0x00001f1b       0x43 CMakeFiles/gimbal_task.elf.dir/USER/components/algorithm/AHRS_middleware.c.obj
  .debug_rnglists
-                0x00001f40       0x13 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_can.c.obj
+                0x00001f5e       0x5b CMakeFiles/gimbal_task.elf.dir/USER/components/algorithm/user_lib.c.obj
  .debug_rnglists
-                0x00001f53       0x1f CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_delay.c.obj
+                0x00001fb9       0x13 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_can.c.obj
  .debug_rnglists
-                0x00001f72       0x4e CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_i2c.c.obj
+                0x00001fcc       0x1f CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_delay.c.obj
  .debug_rnglists
-                0x00001fc0       0x14 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_led.c.obj
+                0x00001feb       0x4e CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_i2c.c.obj
  .debug_rnglists
-                0x00001fd4       0x1f CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_rc.c.obj
+                0x00002039       0x14 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_led.c.obj
  .debug_rnglists
-                0x00001ff3       0x1b CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_spi.c.obj
+                0x0000204d       0x1f CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_rc.c.obj
  .debug_rnglists
-                0x0000200e       0x28 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_usart.c.obj
+                0x0000206c       0x1b CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_spi.c.obj
  .debug_rnglists
-                0x00002036       0x20 CMakeFiles/gimbal_task.elf.dir/USER/components/controller/pid.c.obj
+                0x00002087       0x28 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_usart.c.obj
  .debug_rnglists
-                0x00002056       0x33 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DJI_Motor/DJI_Motor.c.obj
+                0x000020af       0x20 CMakeFiles/gimbal_task.elf.dir/USER/components/controller/pid.c.obj
  .debug_rnglists
-                0x00002089       0x51 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DM/DM_4310.c.obj
+                0x000020cf       0x33 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DJI_Motor/DJI_Motor.c.obj
  .debug_rnglists
-                0x000020da       0x45 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DT7/DT7.c.obj
+                0x00002102       0x51 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DM/DM_4310.c.obj
  .debug_rnglists
-                0x0000211f       0x43 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088Middleware.c.obj
+                0x00002153       0x45 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DT7/DT7.c.obj
  .debug_rnglists
-                0x00002162       0x80 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088driver.c.obj
+                0x00002198       0x43 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088Middleware.c.obj
  .debug_rnglists
-                0x000021e2       0x20 CMakeFiles/gimbal_task.elf.dir/USER/components/device/ist8310/ist8310driver.c.obj
+                0x000021db       0x80 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088driver.c.obj
  .debug_rnglists
-                0x00002202       0x49 CMakeFiles/gimbal_task.elf.dir/USER/components/device/ist8310/ist8310driver_middleware.c.obj
+                0x0000225b       0x20 CMakeFiles/gimbal_task.elf.dir/USER/components/device/ist8310/ist8310driver.c.obj
  .debug_rnglists
-                0x0000224b       0x31 CMakeFiles/gimbal_task.elf.dir/USER/components/support/CRC8_CRC16.c.obj
+                0x0000227b       0x49 CMakeFiles/gimbal_task.elf.dir/USER/components/device/ist8310/ist8310driver_middleware.c.obj
+ .debug_rnglists
+                0x000022c4       0x31 CMakeFiles/gimbal_task.elf.dir/USER/components/support/CRC8_CRC16.c.obj
 
-.debug_line     0x00000000    0x362f7
+.debug_line     0x00000000    0x36880
  .debug_line    0x00000000      0x607 CMakeFiles/gimbal_task.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
  .debug_line    0x00000607     0x1109 CMakeFiles/gimbal_task.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.c.obj
  .debug_line    0x00001710     0x11eb CMakeFiles/gimbal_task.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
@@ -6764,137 +6775,139 @@ LOAD C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-ea
  .debug_line    0x0002bb5c      0x3a5 CMakeFiles/gimbal_task.elf.dir/Src/usbd_desc.c.obj
  .debug_line    0x0002bf01       0x7a CMakeFiles/gimbal_task.elf.dir/Startup/startup_stm32f407ighx.s.obj
  .debug_line    0x0002bf7b     0x10df CMakeFiles/gimbal_task.elf.dir/USER/application/Task/INS_task.c.obj
- .debug_line    0x0002d05a      0x3a2 CMakeFiles/gimbal_task.elf.dir/USER/application/Task/gimbal_task.c.obj
- .debug_line    0x0002d3fc      0x36d CMakeFiles/gimbal_task.elf.dir/USER/application/Task/led_task.c.obj
- .debug_line    0x0002d769      0x205 CMakeFiles/gimbal_task.elf.dir/USER/application/Task/usb_task.c.obj
- .debug_line    0x0002d96e      0x362 CMakeFiles/gimbal_task.elf.dir/USER/application/callback/Can_Callback.c.obj
- .debug_line    0x0002dcd0      0x53b CMakeFiles/gimbal_task.elf.dir/USER/application/callback/usb_callback.c.obj
- .debug_line    0x0002e20b      0x88b CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal.c.obj
- .debug_line    0x0002ea96      0x614 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal_behaviour.c.obj
- .debug_line    0x0002f0aa      0x24b CMakeFiles/gimbal_task.elf.dir/USER/components/algorithm/AHRS_middleware.c.obj
- .debug_line    0x0002f2f5      0x286 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_can.c.obj
- .debug_line    0x0002f57b      0x351 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_delay.c.obj
- .debug_line    0x0002f8cc      0x727 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_i2c.c.obj
- .debug_line    0x0002fff3      0x2f5 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_led.c.obj
- .debug_line    0x000302e8      0x300 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_rc.c.obj
- .debug_line    0x000305e8     0x1969 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_spi.c.obj
- .debug_line    0x00031f51      0x411 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_usart.c.obj
- .debug_line    0x00032362      0x31b CMakeFiles/gimbal_task.elf.dir/USER/components/controller/pid.c.obj
- .debug_line    0x0003267d      0x47a CMakeFiles/gimbal_task.elf.dir/USER/components/device/DJI_Motor/DJI_Motor.c.obj
- .debug_line    0x00032af7      0x5de CMakeFiles/gimbal_task.elf.dir/USER/components/device/DM/DM_4310.c.obj
- .debug_line    0x000330d5      0x727 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DT7/DT7.c.obj
- .debug_line    0x000337fc      0x41d CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088Middleware.c.obj
- .debug_line    0x00033c19      0xdac CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088driver.c.obj
- .debug_line    0x000349c5      0x284 CMakeFiles/gimbal_task.elf.dir/USER/components/device/ist8310/ist8310driver.c.obj
- .debug_line    0x00034c49      0x454 CMakeFiles/gimbal_task.elf.dir/USER/components/device/ist8310/ist8310driver_middleware.c.obj
- .debug_line    0x0003509d      0x2fc CMakeFiles/gimbal_task.elf.dir/USER/components/support/CRC8_CRC16.c.obj
- .debug_line    0x00035399       0x38 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
- .debug_line    0x000353d1       0x84 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
- .debug_line    0x00035455      0x10c C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
- .debug_line    0x00035561       0x6c C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
- .debug_line    0x000355cd       0x7c C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
- .debug_line    0x00035649       0x64 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
- .debug_line    0x000356ad       0xe4 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
- .debug_line    0x00035791       0xbc C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
- .debug_line    0x0003584d       0xf0 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
- .debug_line    0x0003593d       0x54 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
- .debug_line    0x00035991       0x54 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
- .debug_line    0x000359e5       0x54 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
- .debug_line    0x00035a39       0x74 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
- .debug_line    0x00035aad       0x50 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
- .debug_line    0x00035afd       0x44 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
-                0x00035afd                __ARM_grp..debug_line$AHRS_MiddleWare.h$.2_oB0000_gdKo08fjhf0_300000
- .debug_line    0x00035b41       0x50 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
-                0x00035b41                __ARM_grp..debug_line$AHRS.h$.2_As0000_PieY4wFFo66_300000
- .debug_line    0x00035b91       0x64 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
-                0x00035b91                __ARM_grp..debug_line$AHRS.c$.2_kR0000_yWR2zUbHmB7_800000
- .debug_line    0x00035bf5      0x284 C:/Users/16844/Desktop/gimbal111/gimbal/Middlewares/ST/ARM/DSP/Lib/libarm_cortexM4lf_math.a(arm_sin_f32.o)
- .debug_line    0x00035e79      0x287 C:/Users/16844/Desktop/gimbal111/gimbal/Middlewares/ST/ARM/DSP/Lib/libarm_cortexM4lf_math.a(arm_cos_f32.o)
- .debug_line    0x00036100      0x1f7 C:/Users/16844/Desktop/gimbal111/gimbal/Middlewares/ST/ARM/DSP/Lib/libarm_cortexM4lf_math.a(arm_common_tables.o)
+ .debug_line    0x0002d05a      0x3a1 CMakeFiles/gimbal_task.elf.dir/USER/application/Task/gimbal_task.c.obj
+ .debug_line    0x0002d3fb      0x36d CMakeFiles/gimbal_task.elf.dir/USER/application/Task/led_task.c.obj
+ .debug_line    0x0002d768      0x205 CMakeFiles/gimbal_task.elf.dir/USER/application/Task/usb_task.c.obj
+ .debug_line    0x0002d96d      0x362 CMakeFiles/gimbal_task.elf.dir/USER/application/callback/Can_Callback.c.obj
+ .debug_line    0x0002dccf      0x519 CMakeFiles/gimbal_task.elf.dir/USER/application/callback/usb_callback.c.obj
+ .debug_line    0x0002e1e8      0xa27 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal.c.obj
+ .debug_line    0x0002ec0f      0x689 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal_behaviour.c.obj
+ .debug_line    0x0002f298      0x24b CMakeFiles/gimbal_task.elf.dir/USER/components/algorithm/AHRS_middleware.c.obj
+ .debug_line    0x0002f4e3      0x39b CMakeFiles/gimbal_task.elf.dir/USER/components/algorithm/user_lib.c.obj
+ .debug_line    0x0002f87e      0x286 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_can.c.obj
+ .debug_line    0x0002fb04      0x351 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_delay.c.obj
+ .debug_line    0x0002fe55      0x727 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_i2c.c.obj
+ .debug_line    0x0003057c      0x2f5 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_led.c.obj
+ .debug_line    0x00030871      0x300 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_rc.c.obj
+ .debug_line    0x00030b71     0x1969 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_spi.c.obj
+ .debug_line    0x000324da      0x411 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_usart.c.obj
+ .debug_line    0x000328eb      0x31b CMakeFiles/gimbal_task.elf.dir/USER/components/controller/pid.c.obj
+ .debug_line    0x00032c06      0x47a CMakeFiles/gimbal_task.elf.dir/USER/components/device/DJI_Motor/DJI_Motor.c.obj
+ .debug_line    0x00033080      0x5de CMakeFiles/gimbal_task.elf.dir/USER/components/device/DM/DM_4310.c.obj
+ .debug_line    0x0003365e      0x727 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DT7/DT7.c.obj
+ .debug_line    0x00033d85      0x41d CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088Middleware.c.obj
+ .debug_line    0x000341a2      0xdac CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088driver.c.obj
+ .debug_line    0x00034f4e      0x284 CMakeFiles/gimbal_task.elf.dir/USER/components/device/ist8310/ist8310driver.c.obj
+ .debug_line    0x000351d2      0x454 CMakeFiles/gimbal_task.elf.dir/USER/components/device/ist8310/ist8310driver_middleware.c.obj
+ .debug_line    0x00035626      0x2fc CMakeFiles/gimbal_task.elf.dir/USER/components/support/CRC8_CRC16.c.obj
+ .debug_line    0x00035922       0x38 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
+ .debug_line    0x0003595a       0x84 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
+ .debug_line    0x000359de      0x10c C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
+ .debug_line    0x00035aea       0x6c C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
+ .debug_line    0x00035b56       0x7c C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
+ .debug_line    0x00035bd2       0x64 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
+ .debug_line    0x00035c36       0xe4 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
+ .debug_line    0x00035d1a       0xbc C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
+ .debug_line    0x00035dd6       0xf0 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
+ .debug_line    0x00035ec6       0x54 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
+ .debug_line    0x00035f1a       0x54 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
+ .debug_line    0x00035f6e       0x54 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
+ .debug_line    0x00035fc2       0x74 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
+ .debug_line    0x00036036       0x50 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
+ .debug_line    0x00036086       0x44 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
+                0x00036086                __ARM_grp..debug_line$AHRS_MiddleWare.h$.2_oB0000_gdKo08fjhf0_300000
+ .debug_line    0x000360ca       0x50 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
+                0x000360ca                __ARM_grp..debug_line$AHRS.h$.2_As0000_PieY4wFFo66_300000
+ .debug_line    0x0003611a       0x64 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
+                0x0003611a                __ARM_grp..debug_line$AHRS.c$.2_kR0000_yWR2zUbHmB7_800000
+ .debug_line    0x0003617e      0x284 C:/Users/16844/Desktop/gimbal111/gimbal/Middlewares/ST/ARM/DSP/Lib/libarm_cortexM4lf_math.a(arm_sin_f32.o)
+ .debug_line    0x00036402      0x287 C:/Users/16844/Desktop/gimbal111/gimbal/Middlewares/ST/ARM/DSP/Lib/libarm_cortexM4lf_math.a(arm_cos_f32.o)
+ .debug_line    0x00036689      0x1f7 C:/Users/16844/Desktop/gimbal111/gimbal/Middlewares/ST/ARM/DSP/Lib/libarm_cortexM4lf_math.a(arm_common_tables.o)
 
-.debug_str      0x00000000     0xea50
- .debug_str     0x00000000     0xea50 CMakeFiles/gimbal_task.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
+.debug_str      0x00000000     0xecae
+ .debug_str     0x00000000     0xecae CMakeFiles/gimbal_task.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
                                 0xbc2 (size before relaxing)
- .debug_str     0x0000ea50      0x9c0 CMakeFiles/gimbal_task.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.c.obj
- .debug_str     0x0000ea50      0xa93 CMakeFiles/gimbal_task.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
- .debug_str     0x0000ea50      0xcd3 CMakeFiles/gimbal_task.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
- .debug_str     0x0000ea50      0x401 CMakeFiles/gimbal_task.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_crc.c.obj
- .debug_str     0x0000ea50      0x7d4 CMakeFiles/gimbal_task.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
- .debug_str     0x0000ea50      0x53e CMakeFiles/gimbal_task.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c.obj
- .debug_str     0x0000ea50     0x109b CMakeFiles/gimbal_task.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.c.obj
- .debug_str     0x0000ea50      0xe63 CMakeFiles/gimbal_task.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.c.obj
- .debug_str     0x0000ea50      0x7a1 CMakeFiles/gimbal_task.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.c.obj
- .debug_str     0x0000ea50      0x764 CMakeFiles/gimbal_task.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj
- .debug_str     0x0000ea50      0x525 CMakeFiles/gimbal_task.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c.obj
- .debug_str     0x0000ea50      0x4be CMakeFiles/gimbal_task.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rng.c.obj
- .debug_str     0x0000ea50      0x842 CMakeFiles/gimbal_task.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc.c.obj
- .debug_str     0x0000ea50      0xc52 CMakeFiles/gimbal_task.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c.obj
- .debug_str     0x0000ea50     0x175d CMakeFiles/gimbal_task.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c.obj
- .debug_str     0x0000ea50      0xf69 CMakeFiles/gimbal_task.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c.obj
- .debug_str     0x0000ea50      0xdf9 CMakeFiles/gimbal_task.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
- .debug_str     0x0000ea50      0xd8c CMakeFiles/gimbal_task.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c.obj
- .debug_str     0x0000ea50      0xdfd CMakeFiles/gimbal_task.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj
- .debug_str     0x0000ea50      0xa3d CMakeFiles/gimbal_task.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c.obj
- .debug_str     0x0000ea50      0x868 CMakeFiles/gimbal_task.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c.obj
- .debug_str     0x0000ea50      0x73d CMakeFiles/gimbal_task.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c.obj
- .debug_str     0x0000ea50     0x156a CMakeFiles/gimbal_task.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c.obj
- .debug_str     0x0000ea50      0x360 CMakeFiles/gimbal_task.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj
- .debug_str     0x0000ea50      0x4dc CMakeFiles/gimbal_task.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj
- .debug_str     0x0000ea50      0x579 CMakeFiles/gimbal_task.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
- .debug_str     0x0000ea50      0xc60 CMakeFiles/gimbal_task.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
- .debug_str     0x0000ea50     0x15fd CMakeFiles/gimbal_task.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
- .debug_str     0x0000ea50      0xf76 CMakeFiles/gimbal_task.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
- .debug_str     0x0000ea50      0x859 CMakeFiles/gimbal_task.elf.dir/Src/adc.c.obj
- .debug_str     0x0000ea50      0xbe2 CMakeFiles/gimbal_task.elf.dir/Src/can.c.obj
- .debug_str     0x0000ea50      0x484 CMakeFiles/gimbal_task.elf.dir/Src/crc.c.obj
- .debug_str     0x0000ea50      0x826 CMakeFiles/gimbal_task.elf.dir/Src/dma.c.obj
- .debug_str     0x0000ea50      0xaa5 CMakeFiles/gimbal_task.elf.dir/Src/freertos.c.obj
- .debug_str     0x0000ea50      0x8f3 CMakeFiles/gimbal_task.elf.dir/Src/gpio.c.obj
- .debug_str     0x0000ea50      0x952 CMakeFiles/gimbal_task.elf.dir/Src/i2c.c.obj
- .debug_str     0x0000ea50      0xcec CMakeFiles/gimbal_task.elf.dir/Src/main.c.obj
- .debug_str     0x0000ea50      0x475 CMakeFiles/gimbal_task.elf.dir/Src/rng.c.obj
- .debug_str     0x0000ea50      0x53d CMakeFiles/gimbal_task.elf.dir/Src/rtc.c.obj
- .debug_str     0x0000ea50      0x8a9 CMakeFiles/gimbal_task.elf.dir/Src/spi.c.obj
- .debug_str     0x0000ea50      0x821 CMakeFiles/gimbal_task.elf.dir/Src/stm32f4xx_hal_msp.c.obj
- .debug_str     0x0000ea50      0xec5 CMakeFiles/gimbal_task.elf.dir/Src/stm32f4xx_hal_timebase_tim.c.obj
- .debug_str     0x0000ea50     0x1173 CMakeFiles/gimbal_task.elf.dir/Src/stm32f4xx_it.c.obj
- .debug_str     0x0000ea50      0x27e CMakeFiles/gimbal_task.elf.dir/Src/sysmem.c.obj
- .debug_str     0x0000ea50      0x3ce CMakeFiles/gimbal_task.elf.dir/Src/system_stm32f4xx.c.obj
- .debug_str     0x0000ea50      0xc28 CMakeFiles/gimbal_task.elf.dir/Src/tim.c.obj
- .debug_str     0x0000ea50      0xe60 CMakeFiles/gimbal_task.elf.dir/Src/usart.c.obj
- .debug_str     0x0000ea50      0x720 CMakeFiles/gimbal_task.elf.dir/Src/usb_device.c.obj
- .debug_str     0x0000ea50      0x809 CMakeFiles/gimbal_task.elf.dir/Src/usbd_cdc_if.c.obj
- .debug_str     0x0000ea50     0x162c CMakeFiles/gimbal_task.elf.dir/Src/usbd_conf.c.obj
- .debug_str     0x0000ea50      0x4b1 CMakeFiles/gimbal_task.elf.dir/Src/usbd_desc.c.obj
- .debug_str     0x0000ea50       0xa4 CMakeFiles/gimbal_task.elf.dir/Startup/startup_stm32f407ighx.s.obj
- .debug_str     0x0000ea50      0xde5 CMakeFiles/gimbal_task.elf.dir/USER/application/Task/INS_task.c.obj
- .debug_str     0x0000ea50      0x73c CMakeFiles/gimbal_task.elf.dir/USER/application/Task/gimbal_task.c.obj
- .debug_str     0x0000ea50      0x3fc CMakeFiles/gimbal_task.elf.dir/USER/application/Task/led_task.c.obj
- .debug_str     0x0000ea50      0x332 CMakeFiles/gimbal_task.elf.dir/USER/application/Task/usb_task.c.obj
- .debug_str     0x0000ea50      0x6c0 CMakeFiles/gimbal_task.elf.dir/USER/application/callback/Can_Callback.c.obj
- .debug_str     0x0000ea50      0x773 CMakeFiles/gimbal_task.elf.dir/USER/application/callback/usb_callback.c.obj
- .debug_str     0x0000ea50      0xad7 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal.c.obj
- .debug_str     0x0000ea50      0x79b CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal_behaviour.c.obj
- .debug_str     0x0000ea50      0x2df CMakeFiles/gimbal_task.elf.dir/USER/components/algorithm/AHRS_middleware.c.obj
- .debug_str     0x0000ea50      0x5e9 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_can.c.obj
- .debug_str     0x0000ea50      0x29f CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_delay.c.obj
- .debug_str     0x0000ea50      0x872 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_i2c.c.obj
- .debug_str     0x0000ea50      0x780 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_led.c.obj
- .debug_str     0x0000ea50      0x6c0 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_rc.c.obj
- .debug_str     0x0000ea50      0x6c4 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_spi.c.obj
- .debug_str     0x0000ea50      0x73b CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_usart.c.obj
- .debug_str     0x0000ea50      0x28d CMakeFiles/gimbal_task.elf.dir/USER/components/controller/pid.c.obj
- .debug_str     0x0000ea50      0x7e8 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DJI_Motor/DJI_Motor.c.obj
- .debug_str     0x0000ea50      0x764 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DM/DM_4310.c.obj
- .debug_str     0x0000ea50      0x7d7 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DT7/DT7.c.obj
- .debug_str     0x0000ea50      0x8d2 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088Middleware.c.obj
- .debug_str     0x0000ea50      0x74d CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088driver.c.obj
- .debug_str     0x0000ea50      0x363 CMakeFiles/gimbal_task.elf.dir/USER/components/device/ist8310/ist8310driver.c.obj
- .debug_str     0x0000ea50      0x9b0 CMakeFiles/gimbal_task.elf.dir/USER/components/device/ist8310/ist8310driver_middleware.c.obj
- .debug_str     0x0000ea50      0x345 CMakeFiles/gimbal_task.elf.dir/USER/components/support/CRC8_CRC16.c.obj
- .debug_str     0x0000ea50      0xfb7 C:/Users/16844/Desktop/gimbal111/gimbal/Middlewares/ST/ARM/DSP/Lib/libarm_cortexM4lf_math.a(arm_sin_f32.o)
- .debug_str     0x0000ea50      0xfb7 C:/Users/16844/Desktop/gimbal111/gimbal/Middlewares/ST/ARM/DSP/Lib/libarm_cortexM4lf_math.a(arm_cos_f32.o)
- .debug_str     0x0000ea50      0xf92 C:/Users/16844/Desktop/gimbal111/gimbal/Middlewares/ST/ARM/DSP/Lib/libarm_cortexM4lf_math.a(arm_common_tables.o)
+ .debug_str     0x0000ecae      0x9c0 CMakeFiles/gimbal_task.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.c.obj
+ .debug_str     0x0000ecae      0xa93 CMakeFiles/gimbal_task.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
+ .debug_str     0x0000ecae      0xcd3 CMakeFiles/gimbal_task.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
+ .debug_str     0x0000ecae      0x401 CMakeFiles/gimbal_task.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_crc.c.obj
+ .debug_str     0x0000ecae      0x7d4 CMakeFiles/gimbal_task.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
+ .debug_str     0x0000ecae      0x53e CMakeFiles/gimbal_task.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c.obj
+ .debug_str     0x0000ecae     0x109b CMakeFiles/gimbal_task.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.c.obj
+ .debug_str     0x0000ecae      0xe63 CMakeFiles/gimbal_task.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.c.obj
+ .debug_str     0x0000ecae      0x7a1 CMakeFiles/gimbal_task.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.c.obj
+ .debug_str     0x0000ecae      0x764 CMakeFiles/gimbal_task.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj
+ .debug_str     0x0000ecae      0x525 CMakeFiles/gimbal_task.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c.obj
+ .debug_str     0x0000ecae      0x4be CMakeFiles/gimbal_task.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rng.c.obj
+ .debug_str     0x0000ecae      0x842 CMakeFiles/gimbal_task.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc.c.obj
+ .debug_str     0x0000ecae      0xc52 CMakeFiles/gimbal_task.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c.obj
+ .debug_str     0x0000ecae     0x175d CMakeFiles/gimbal_task.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c.obj
+ .debug_str     0x0000ecae      0xf69 CMakeFiles/gimbal_task.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c.obj
+ .debug_str     0x0000ecae      0xdf9 CMakeFiles/gimbal_task.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
+ .debug_str     0x0000ecae      0xd8c CMakeFiles/gimbal_task.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c.obj
+ .debug_str     0x0000ecae      0xdfd CMakeFiles/gimbal_task.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj
+ .debug_str     0x0000ecae      0xa3d CMakeFiles/gimbal_task.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c.obj
+ .debug_str     0x0000ecae      0x868 CMakeFiles/gimbal_task.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c.obj
+ .debug_str     0x0000ecae      0x73d CMakeFiles/gimbal_task.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c.obj
+ .debug_str     0x0000ecae     0x156a CMakeFiles/gimbal_task.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c.obj
+ .debug_str     0x0000ecae      0x360 CMakeFiles/gimbal_task.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj
+ .debug_str     0x0000ecae      0x4dc CMakeFiles/gimbal_task.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj
+ .debug_str     0x0000ecae      0x579 CMakeFiles/gimbal_task.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
+ .debug_str     0x0000ecae      0xc60 CMakeFiles/gimbal_task.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
+ .debug_str     0x0000ecae     0x15fd CMakeFiles/gimbal_task.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+ .debug_str     0x0000ecae      0xf76 CMakeFiles/gimbal_task.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
+ .debug_str     0x0000ecae      0x859 CMakeFiles/gimbal_task.elf.dir/Src/adc.c.obj
+ .debug_str     0x0000ecae      0xbe2 CMakeFiles/gimbal_task.elf.dir/Src/can.c.obj
+ .debug_str     0x0000ecae      0x484 CMakeFiles/gimbal_task.elf.dir/Src/crc.c.obj
+ .debug_str     0x0000ecae      0x826 CMakeFiles/gimbal_task.elf.dir/Src/dma.c.obj
+ .debug_str     0x0000ecae      0xaa5 CMakeFiles/gimbal_task.elf.dir/Src/freertos.c.obj
+ .debug_str     0x0000ecae      0x8f3 CMakeFiles/gimbal_task.elf.dir/Src/gpio.c.obj
+ .debug_str     0x0000ecae      0x952 CMakeFiles/gimbal_task.elf.dir/Src/i2c.c.obj
+ .debug_str     0x0000ecae      0xcec CMakeFiles/gimbal_task.elf.dir/Src/main.c.obj
+ .debug_str     0x0000ecae      0x475 CMakeFiles/gimbal_task.elf.dir/Src/rng.c.obj
+ .debug_str     0x0000ecae      0x53d CMakeFiles/gimbal_task.elf.dir/Src/rtc.c.obj
+ .debug_str     0x0000ecae      0x8a9 CMakeFiles/gimbal_task.elf.dir/Src/spi.c.obj
+ .debug_str     0x0000ecae      0x821 CMakeFiles/gimbal_task.elf.dir/Src/stm32f4xx_hal_msp.c.obj
+ .debug_str     0x0000ecae      0xec5 CMakeFiles/gimbal_task.elf.dir/Src/stm32f4xx_hal_timebase_tim.c.obj
+ .debug_str     0x0000ecae     0x1173 CMakeFiles/gimbal_task.elf.dir/Src/stm32f4xx_it.c.obj
+ .debug_str     0x0000ecae      0x27e CMakeFiles/gimbal_task.elf.dir/Src/sysmem.c.obj
+ .debug_str     0x0000ecae      0x3ce CMakeFiles/gimbal_task.elf.dir/Src/system_stm32f4xx.c.obj
+ .debug_str     0x0000ecae      0xc28 CMakeFiles/gimbal_task.elf.dir/Src/tim.c.obj
+ .debug_str     0x0000ecae      0xe60 CMakeFiles/gimbal_task.elf.dir/Src/usart.c.obj
+ .debug_str     0x0000ecae      0x720 CMakeFiles/gimbal_task.elf.dir/Src/usb_device.c.obj
+ .debug_str     0x0000ecae      0x809 CMakeFiles/gimbal_task.elf.dir/Src/usbd_cdc_if.c.obj
+ .debug_str     0x0000ecae     0x162c CMakeFiles/gimbal_task.elf.dir/Src/usbd_conf.c.obj
+ .debug_str     0x0000ecae      0x4b1 CMakeFiles/gimbal_task.elf.dir/Src/usbd_desc.c.obj
+ .debug_str     0x0000ecae       0xa4 CMakeFiles/gimbal_task.elf.dir/Startup/startup_stm32f407ighx.s.obj
+ .debug_str     0x0000ecae      0xde5 CMakeFiles/gimbal_task.elf.dir/USER/application/Task/INS_task.c.obj
+ .debug_str     0x0000ecae      0x798 CMakeFiles/gimbal_task.elf.dir/USER/application/Task/gimbal_task.c.obj
+ .debug_str     0x0000ecae      0x3fc CMakeFiles/gimbal_task.elf.dir/USER/application/Task/led_task.c.obj
+ .debug_str     0x0000ecae      0x332 CMakeFiles/gimbal_task.elf.dir/USER/application/Task/usb_task.c.obj
+ .debug_str     0x0000ecae      0x6c0 CMakeFiles/gimbal_task.elf.dir/USER/application/callback/Can_Callback.c.obj
+ .debug_str     0x0000ecae      0x7cf CMakeFiles/gimbal_task.elf.dir/USER/application/callback/usb_callback.c.obj
+ .debug_str     0x0000ecae      0xbe0 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal.c.obj
+ .debug_str     0x0000ecae      0x821 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal_behaviour.c.obj
+ .debug_str     0x0000ecae      0x2df CMakeFiles/gimbal_task.elf.dir/USER/components/algorithm/AHRS_middleware.c.obj
+ .debug_str     0x0000ecae      0x388 CMakeFiles/gimbal_task.elf.dir/USER/components/algorithm/user_lib.c.obj
+ .debug_str     0x0000ecae      0x5e9 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_can.c.obj
+ .debug_str     0x0000ecae      0x29f CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_delay.c.obj
+ .debug_str     0x0000ecae      0x872 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_i2c.c.obj
+ .debug_str     0x0000ecae      0x780 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_led.c.obj
+ .debug_str     0x0000ecae      0x6c0 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_rc.c.obj
+ .debug_str     0x0000ecae      0x6c4 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_spi.c.obj
+ .debug_str     0x0000ecae      0x73b CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_usart.c.obj
+ .debug_str     0x0000ecae      0x28d CMakeFiles/gimbal_task.elf.dir/USER/components/controller/pid.c.obj
+ .debug_str     0x0000ecae      0x7e8 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DJI_Motor/DJI_Motor.c.obj
+ .debug_str     0x0000ecae      0x764 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DM/DM_4310.c.obj
+ .debug_str     0x0000ecae      0x7d7 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DT7/DT7.c.obj
+ .debug_str     0x0000ecae      0x8d2 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088Middleware.c.obj
+ .debug_str     0x0000ecae      0x74d CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088driver.c.obj
+ .debug_str     0x0000ecae      0x363 CMakeFiles/gimbal_task.elf.dir/USER/components/device/ist8310/ist8310driver.c.obj
+ .debug_str     0x0000ecae      0x9b0 CMakeFiles/gimbal_task.elf.dir/USER/components/device/ist8310/ist8310driver_middleware.c.obj
+ .debug_str     0x0000ecae      0x345 CMakeFiles/gimbal_task.elf.dir/USER/components/support/CRC8_CRC16.c.obj
+ .debug_str     0x0000ecae      0xfb7 C:/Users/16844/Desktop/gimbal111/gimbal/Middlewares/ST/ARM/DSP/Lib/libarm_cortexM4lf_math.a(arm_sin_f32.o)
+ .debug_str     0x0000ecae      0xfb7 C:/Users/16844/Desktop/gimbal111/gimbal/Middlewares/ST/ARM/DSP/Lib/libarm_cortexM4lf_math.a(arm_cos_f32.o)
+ .debug_str     0x0000ecae      0xf92 C:/Users/16844/Desktop/gimbal111/gimbal/Middlewares/ST/ARM/DSP/Lib/libarm_cortexM4lf_math.a(arm_common_tables.o)
 
 .comment        0x00000000      0x4da
  .comment       0x00000000       0xbe CMakeFiles/gimbal_task.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
@@ -6959,6 +6972,7 @@ LOAD C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-ea
  .comment       0x000000be       0x46 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal.c.obj
  .comment       0x000000be       0x46 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal_behaviour.c.obj
  .comment       0x000000be       0x46 CMakeFiles/gimbal_task.elf.dir/USER/components/algorithm/AHRS_middleware.c.obj
+ .comment       0x000000be       0x46 CMakeFiles/gimbal_task.elf.dir/USER/components/algorithm/user_lib.c.obj
  .comment       0x000000be       0x46 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_can.c.obj
  .comment       0x000000be       0x46 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_delay.c.obj
  .comment       0x000000be       0x46 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_i2c.c.obj
@@ -6985,7 +6999,7 @@ LOAD C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-ea
  .arm_vfe_header
                 0x00000000        0x4 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
 
-.debug_frame    0x00000000     0x85b0
+.debug_frame    0x00000000     0x875c
  .debug_frame   0x00000000      0x1ec CMakeFiles/gimbal_task.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
  .debug_frame   0x000001ec      0x268 CMakeFiles/gimbal_task.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.c.obj
  .debug_frame   0x00000454      0x2d8 CMakeFiles/gimbal_task.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
@@ -7044,62 +7058,63 @@ LOAD C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-ea
  .debug_frame   0x0000690c       0x28 CMakeFiles/gimbal_task.elf.dir/USER/application/Task/usb_task.c.obj
  .debug_frame   0x00006934       0x30 CMakeFiles/gimbal_task.elf.dir/USER/application/callback/Can_Callback.c.obj
  .debug_frame   0x00006964       0x80 CMakeFiles/gimbal_task.elf.dir/USER/application/callback/usb_callback.c.obj
- .debug_frame   0x000069e4      0x108 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal.c.obj
- .debug_frame   0x00006aec       0x7c CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal_behaviour.c.obj
- .debug_frame   0x00006b68       0xd8 CMakeFiles/gimbal_task.elf.dir/USER/components/algorithm/AHRS_middleware.c.obj
- .debug_frame   0x00006c40       0x30 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_can.c.obj
- .debug_frame   0x00006c70       0x58 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_delay.c.obj
- .debug_frame   0x00006cc8       0xd8 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_i2c.c.obj
- .debug_frame   0x00006da0       0x30 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_led.c.obj
- .debug_frame   0x00006dd0       0x58 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_rc.c.obj
- .debug_frame   0x00006e28       0x54 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_spi.c.obj
- .debug_frame   0x00006e7c       0x78 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_usart.c.obj
- .debug_frame   0x00006ef4       0x40 CMakeFiles/gimbal_task.elf.dir/USER/components/controller/pid.c.obj
- .debug_frame   0x00006f34       0xb4 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DJI_Motor/DJI_Motor.c.obj
- .debug_frame   0x00006fe8      0x138 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DM/DM_4310.c.obj
- .debug_frame   0x00007120       0xe8 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DT7/DT7.c.obj
- .debug_frame   0x00007208       0xdc CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088Middleware.c.obj
- .debug_frame   0x000072e4      0x224 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088driver.c.obj
- .debug_frame   0x00007508       0x5c CMakeFiles/gimbal_task.elf.dir/USER/components/device/ist8310/ist8310driver.c.obj
- .debug_frame   0x00007564      0x100 CMakeFiles/gimbal_task.elf.dir/USER/components/device/ist8310/ist8310driver_middleware.c.obj
- .debug_frame   0x00007664       0xe4 CMakeFiles/gimbal_task.elf.dir/USER/components/support/CRC8_CRC16.c.obj
- .debug_frame   0x00007748       0x98 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
- .debug_frame   0x000077e0       0xbc C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
- .debug_frame   0x0000789c       0x88 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
- .debug_frame   0x00007924       0x74 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
- .debug_frame   0x00007998       0x74 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
- .debug_frame   0x00007a0c       0x98 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
- .debug_frame   0x00007aa4       0x98 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
- .debug_frame   0x00007b3c       0x9c C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
- .debug_frame   0x00007bd8       0x7c C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
- .debug_frame   0x00007c54       0x7c C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
- .debug_frame   0x00007cd0       0x7c C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
- .debug_frame   0x00007d4c       0x84 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
- .debug_frame   0x00007dd0       0x74 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
- .debug_frame   0x00007e44       0x20 C:/Users/16844/Desktop/gimbal111/gimbal/Middlewares/ST/ARM/DSP/Lib/libarm_cortexM4lf_math.a(arm_sin_f32.o)
- .debug_frame   0x00007e64       0x20 C:/Users/16844/Desktop/gimbal111/gimbal/Middlewares/ST/ARM/DSP/Lib/libarm_cortexM4lf_math.a(arm_cos_f32.o)
- .debug_frame   0x00007e84       0xac C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
- .debug_frame   0x00007f30       0x50 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
- .debug_frame   0x00007f80       0xc4 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_cmpdf2.o)
- .debug_frame   0x00008044       0x24 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_truncdfsf2.o)
- .debug_frame   0x00008068       0x2c C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_aeabi_uldivmod.o)
- .debug_frame   0x00008094       0x34 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
- .debug_frame   0x000080c8       0x48 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-mallocr.o)
- .debug_frame   0x00008110       0x30 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-mlock.o)
- .debug_frame   0x00008140      0x13c C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-findfp.o)
- .debug_frame   0x0000827c       0x2c C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-memset.o)
- .debug_frame   0x000082a8       0x3c C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-reent.o)
- .debug_frame   0x000082e4       0x2c C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-sbrkr.o)
- .debug_frame   0x00008310       0x20 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-errno.o)
- .debug_frame   0x00008330       0x2c C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-init.o)
- .debug_frame   0x0000835c       0xb0 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-lock.o)
- .debug_frame   0x0000840c       0x28 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-sysconf.o)
- .debug_frame   0x00008434       0x20 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-aeabi_memclr.o)
- .debug_frame   0x00008454       0x5c C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-__call_atexit.o)
- .debug_frame   0x000084b0       0x20 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-atexit.o)
- .debug_frame   0x000084d0       0x78 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-freer.o)
- .debug_frame   0x00008548       0x34 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-fini.o)
- .debug_frame   0x0000857c       0x34 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-__atexit.o)
+ .debug_frame   0x000069e4      0x1a4 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal.c.obj
+ .debug_frame   0x00006b88       0xa4 CMakeFiles/gimbal_task.elf.dir/USER/application/module/gimbal/gimbal_behaviour.c.obj
+ .debug_frame   0x00006c2c       0xd8 CMakeFiles/gimbal_task.elf.dir/USER/components/algorithm/AHRS_middleware.c.obj
+ .debug_frame   0x00006d04       0xe8 CMakeFiles/gimbal_task.elf.dir/USER/components/algorithm/user_lib.c.obj
+ .debug_frame   0x00006dec       0x30 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_can.c.obj
+ .debug_frame   0x00006e1c       0x58 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_delay.c.obj
+ .debug_frame   0x00006e74       0xd8 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_i2c.c.obj
+ .debug_frame   0x00006f4c       0x30 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_led.c.obj
+ .debug_frame   0x00006f7c       0x58 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_rc.c.obj
+ .debug_frame   0x00006fd4       0x54 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_spi.c.obj
+ .debug_frame   0x00007028       0x78 CMakeFiles/gimbal_task.elf.dir/USER/components/bsp/bsp_usart.c.obj
+ .debug_frame   0x000070a0       0x40 CMakeFiles/gimbal_task.elf.dir/USER/components/controller/pid.c.obj
+ .debug_frame   0x000070e0       0xb4 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DJI_Motor/DJI_Motor.c.obj
+ .debug_frame   0x00007194      0x138 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DM/DM_4310.c.obj
+ .debug_frame   0x000072cc       0xe8 CMakeFiles/gimbal_task.elf.dir/USER/components/device/DT7/DT7.c.obj
+ .debug_frame   0x000073b4       0xdc CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088Middleware.c.obj
+ .debug_frame   0x00007490      0x224 CMakeFiles/gimbal_task.elf.dir/USER/components/device/bmi088/BMI088driver.c.obj
+ .debug_frame   0x000076b4       0x5c CMakeFiles/gimbal_task.elf.dir/USER/components/device/ist8310/ist8310driver.c.obj
+ .debug_frame   0x00007710      0x100 CMakeFiles/gimbal_task.elf.dir/USER/components/device/ist8310/ist8310driver_middleware.c.obj
+ .debug_frame   0x00007810       0xe4 CMakeFiles/gimbal_task.elf.dir/USER/components/support/CRC8_CRC16.c.obj
+ .debug_frame   0x000078f4       0x98 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
+ .debug_frame   0x0000798c       0xbc C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
+ .debug_frame   0x00007a48       0x88 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
+ .debug_frame   0x00007ad0       0x74 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
+ .debug_frame   0x00007b44       0x74 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
+ .debug_frame   0x00007bb8       0x98 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
+ .debug_frame   0x00007c50       0x98 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
+ .debug_frame   0x00007ce8       0x9c C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
+ .debug_frame   0x00007d84       0x7c C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
+ .debug_frame   0x00007e00       0x7c C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
+ .debug_frame   0x00007e7c       0x7c C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
+ .debug_frame   0x00007ef8       0x84 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
+ .debug_frame   0x00007f7c       0x74 C:/Users/16844/Desktop/gimbal111/gimbal/USER/components/algorithm/AHRS.lib(ahrs.o)
+ .debug_frame   0x00007ff0       0x20 C:/Users/16844/Desktop/gimbal111/gimbal/Middlewares/ST/ARM/DSP/Lib/libarm_cortexM4lf_math.a(arm_sin_f32.o)
+ .debug_frame   0x00008010       0x20 C:/Users/16844/Desktop/gimbal111/gimbal/Middlewares/ST/ARM/DSP/Lib/libarm_cortexM4lf_math.a(arm_cos_f32.o)
+ .debug_frame   0x00008030       0xac C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
+ .debug_frame   0x000080dc       0x50 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
+ .debug_frame   0x0000812c       0xc4 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_cmpdf2.o)
+ .debug_frame   0x000081f0       0x24 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_truncdfsf2.o)
+ .debug_frame   0x00008214       0x2c C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_aeabi_uldivmod.o)
+ .debug_frame   0x00008240       0x34 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
+ .debug_frame   0x00008274       0x48 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-mallocr.o)
+ .debug_frame   0x000082bc       0x30 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-mlock.o)
+ .debug_frame   0x000082ec      0x13c C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-findfp.o)
+ .debug_frame   0x00008428       0x2c C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-memset.o)
+ .debug_frame   0x00008454       0x3c C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-reent.o)
+ .debug_frame   0x00008490       0x2c C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-sbrkr.o)
+ .debug_frame   0x000084bc       0x20 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-errno.o)
+ .debug_frame   0x000084dc       0x2c C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-init.o)
+ .debug_frame   0x00008508       0xb0 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-lock.o)
+ .debug_frame   0x000085b8       0x28 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-sysconf.o)
+ .debug_frame   0x000085e0       0x20 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-aeabi_memclr.o)
+ .debug_frame   0x00008600       0x5c C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-__call_atexit.o)
+ .debug_frame   0x0000865c       0x20 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-atexit.o)
+ .debug_frame   0x0000867c       0x78 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-freer.o)
+ .debug_frame   0x000086f4       0x34 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-fini.o)
+ .debug_frame   0x00008728       0x34 C:/ClionToolChain/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libg.a(libc_a-__atexit.o)
 
 .debug_line_str
                 0x00000000      0x272

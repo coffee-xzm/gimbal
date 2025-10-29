@@ -1,7 +1,3 @@
-//
-// Created by 16844 on 2025/3/20.
-//
-
 #include "DJI_Motor.h"
 #include "can.h"
 

@@ -15,7 +15,7 @@ void gimbal_behaviour_mode_set(gimbal_control_t *set_mode)
         static uint16_t init_stop_time = 0;
         init_time++;
 
-        if ((fabs(set_mode->pitch.current_angle) < 0.1f))
+        if ((fabs(set_mode->pitch.relative_angle) < 0.1f))
         {
             if (init_stop_time < 100)
             {
@@ -113,8 +113,8 @@ void HandleAutoMode() {
     last_pitch = filtered_pitch;
 
     // 设置目标角度
-    gimbal_control.yaw.target_angle = filtered_yaw;
-    gimbal_control.pitch.target_angle = -filtered_pitch;
+    gimbal_control.yaw.relative_angle_set = filtered_yaw;
+    gimbal_control.pitch.relative_angle_set = -filtered_pitch;
 }
 
 // 无力模式
@@ -123,16 +123,13 @@ void HandleGravityCompensationMode() {
 }
 
 
-
-
 // 自定义控制器（遥操作）模式
 void HandleRemoteMode()
 {
-
-    #define MIN_YAW_ANGLE -1.5
-    #define MAX_YAW_ANGLE 1.5
-    #define MIN_PITCH_ANGLE -1.5
-    #define MAX_PITCH_ANGLE 1.5
+#define MIN_YAW_ANGLE -1.5f
+#define MAX_YAW_ANGLE 1.5f
+#define MIN_PITCH_ANGLE -1.5f
+#define MAX_PITCH_ANGLE 1.5f
 
     fp32 add_yaw_angle = 0.0f;
     fp32 add_pitch_angle = 0.0f;
@@ -146,68 +143,68 @@ void HandleRemoteMode()
     add_yaw_angle = -(float)yaw_channel * yaw_rc_sen;
     add_pitch_angle = -(float)pitch_channel * pitch_rc_sen;
 
+    // 设置控制策略
+    gimbal_control.control_strategy = NormalControlStrategy;
+
+    // Yaw轴角度限制处理（按照gimbal_absolute_angle_limit逻辑）
     static fp32 yaw_bias_angle;
     static fp32 yaw_angle_set;
 
-    //now angle error
-    //当前控制误差角度
-    yaw_bias_angle = gimbal_control.yaw.target_angle - gimbal_control.yaw.current_angle;
+    // 当前控制误差角度
+    yaw_bias_angle = rad_format(gimbal_control.yaw.absolute_angle_set - gimbal_control.yaw.absolute_angle);
 
-    //云台相对角度+ 误差角度 + 新增角度 如果大于 最大机械角度
-    if (gimbal_control.yaw.current_angle + yaw_bias_angle + add_yaw_angle > MAX_YAW_ANGLE)
+    // 云台相对角度 + 误差角度 + 新增角度 如果大于 最大机械角度
+    if (gimbal_control.yaw.relative_angle + yaw_bias_angle + add_yaw_angle > MAX_YAW_ANGLE)
     {
-        //如果是往最大机械角度控制方向
+        // 如果是往最大机械角度控制方向
         if (add_yaw_angle > 0.0f)
         {
-            //calculate max add_angle
-            //计算出一个最大的添加角度，
-            add_yaw_angle = MAX_YAW_ANGLE - gimbal_control.yaw.target_angle ;
+            // 计算出一个最大的添加角度
+            add_yaw_angle = MAX_YAW_ANGLE - gimbal_control.yaw.relative_angle - yaw_bias_angle;
         }
     }
-    else if (gimbal_control.yaw.current_angle + yaw_bias_angle + add_yaw_angle < MIN_YAW_ANGLE)
+    else if (gimbal_control.yaw.relative_angle + yaw_bias_angle + add_yaw_angle < MIN_YAW_ANGLE)
     {
         if (add_yaw_angle < 0.0f)
         {
-            add_yaw_angle = MIN_YAW_ANGLE - gimbal_control.yaw.target_angle ;
+            add_yaw_angle = MIN_YAW_ANGLE - gimbal_control.yaw.relative_angle - yaw_bias_angle;
         }
     }
-    yaw_angle_set = gimbal_control.yaw.target_angle;
-    gimbal_control.yaw.target_angle = yaw_angle_set + add_yaw_angle;
+    yaw_angle_set = gimbal_control.yaw.absolute_angle_set;
+    gimbal_control.yaw.absolute_angle_set = rad_format(yaw_angle_set + add_yaw_angle);
 
+    // Pitch轴角度限制处理（按照gimbal_absolute_angle_limit逻辑）
     static fp32 pitch_bias_angle;
     static fp32 pitch_angle_set;
 
-    //当前控制误差角度
-    pitch_bias_angle = gimbal_control.pitch.target_angle - gimbal_control.pitch.current_angle;
+    // 当前控制误差角度
+    pitch_bias_angle = rad_format(gimbal_control.pitch.absolute_angle_set - gimbal_control.pitch.absolute_angle);
 
-    //云台相对角度+ 误差角度 + 新增角度 如果大于 最大机械角度
-    if (gimbal_control.pitch.current_angle + pitch_bias_angle + add_pitch_angle > MAX_PITCH_ANGLE)
+    // 云台相对角度 + 误差角度 + 新增角度 如果大于 最大机械角度
+    if (gimbal_control.pitch.relative_angle + pitch_bias_angle + add_pitch_angle > MAX_PITCH_ANGLE)
     {
-        //如果是往最大机械角度控制方向
+        // 如果是往最大机械角度控制方向
         if (add_pitch_angle > 0.0f)
         {
-            //calculate max add_angle
-            //计算出一个最大的添加角度，
-            add_pitch_angle = MAX_PITCH_ANGLE - gimbal_control.pitch.target_angle;
+            // 计算出一个最大的添加角度
+            add_pitch_angle = MAX_PITCH_ANGLE - gimbal_control.pitch.relative_angle - pitch_bias_angle;
         }
     }
-    else if (gimbal_control.pitch.current_angle + pitch_bias_angle + add_pitch_angle < MIN_PITCH_ANGLE)
+    else if (gimbal_control.pitch.relative_angle + pitch_bias_angle + add_pitch_angle < MIN_PITCH_ANGLE)
     {
-        //如果是往最小机械角度控制方向
         if (add_pitch_angle < 0.0f)
         {
-            //calculate min add_angle
-            //计算出一个最小的添加角度，
-            add_pitch_angle = MIN_PITCH_ANGLE - gimbal_control.pitch.target_angle;
+            add_pitch_angle = MIN_PITCH_ANGLE - gimbal_control.pitch.relative_angle - pitch_bias_angle;
         }
     }
-    pitch_angle_set = gimbal_control.pitch.target_angle;
-    gimbal_control.pitch.target_angle = pitch_angle_set + add_pitch_angle;
+    pitch_angle_set = gimbal_control.pitch.absolute_angle_set;
+    gimbal_control.pitch.absolute_angle_set = rad_format(pitch_angle_set + add_pitch_angle);
+
 }
 
 
 void HandleInitMode()
 {
-    gimbal_control.yaw.target_angle = 0.0f;
-    gimbal_control.pitch.target_angle = 0.0f;
+    gimbal_control.yaw.relative_angle_set = 0.0f;
+    gimbal_control.pitch.relative_angle_set = 0.0f;
 }
