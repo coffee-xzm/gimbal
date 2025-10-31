@@ -73,11 +73,11 @@ void usb_send_gimbal_data(void)
 
     // 填充四元数 - 使用固定值测试用
     fp32 quat_data[4] = {1.0f, 0.0f, 0.0f, 0.0f};  // w, x, y, z
-    memcpy(send_buffer + 3, quat_data, 16);  // 4个float = 16字节
+    memcpy(send_buffer + 3, quat_data, 16);  // 4个float = 16字节  //这个要改成
 
     // 填充云台状态
     fp32 yaw_data = gimbal_control.yaw.absolute_angle;
-    fp32 yaw_vel_data = gimbal_control.yaw.absolute_angle;
+    fp32 yaw_vel_data = gimbal_control.yaw.motor_gyro;  //萌神，这个是电机速度，记得修改成陀螺仪速度
     fp32 pitch_data = gimbal_control.pitch.absolute_angle;
     fp32 pitch_vel_data = gimbal_control.pitch.absolute_angle;
     memcpy(send_buffer + 19, &yaw_data, 4);

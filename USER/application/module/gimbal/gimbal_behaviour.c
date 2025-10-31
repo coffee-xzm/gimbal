@@ -120,10 +120,11 @@ void HandleAutoMode() {
 // 无力模式
 void HandleGravityCompensationMode() {
     // 无力模式逻辑
+    gimbal_control.control_strategy = ForcelessControlStrategy;
 }
 
 
-// 自定义控制器（遥操作）模式
+// 操作模式
 void HandleRemoteMode()
 {
 #define MIN_YAW_ANGLE -1.5f
@@ -134,7 +135,7 @@ void HandleRemoteMode()
     fp32 add_yaw_angle = 0.0f;
     fp32 add_pitch_angle = 0.0f;
     const float yaw_rc_sen = 0.00001f;
-    const float pitch_rc_sen = -0.000024f;
+    const float pitch_rc_sen = 0.000024f;
     static int16_t yaw_channel = 0, pitch_channel = 0;
 
     rc_deadband_limit(gimbal_control.gimbal_rc_ctrl->rc.ch[2], yaw_channel, 10);
@@ -151,7 +152,7 @@ void HandleRemoteMode()
     static fp32 yaw_angle_set;
 
     // 当前控制误差角度
-    yaw_bias_angle = rad_format(gimbal_control.yaw.absolute_angle_set - gimbal_control.yaw.absolute_angle);
+    yaw_bias_angle = gimbal_control.yaw.absolute_angle_set - gimbal_control.yaw.absolute_angle;
 
     // 云台相对角度 + 误差角度 + 新增角度 如果大于 最大机械角度
     if (gimbal_control.yaw.relative_angle + yaw_bias_angle + add_yaw_angle > MAX_YAW_ANGLE)
@@ -171,14 +172,14 @@ void HandleRemoteMode()
         }
     }
     yaw_angle_set = gimbal_control.yaw.absolute_angle_set;
-    gimbal_control.yaw.absolute_angle_set = rad_format(yaw_angle_set + add_yaw_angle);
+    gimbal_control.yaw.absolute_angle_set = yaw_angle_set + add_yaw_angle;
 
     // Pitch轴角度限制处理（按照gimbal_absolute_angle_limit逻辑）
     static fp32 pitch_bias_angle;
     static fp32 pitch_angle_set;
 
     // 当前控制误差角度
-    pitch_bias_angle = rad_format(gimbal_control.pitch.absolute_angle_set - gimbal_control.pitch.absolute_angle);
+    pitch_bias_angle = gimbal_control.pitch.absolute_angle_set - gimbal_control.pitch.absolute_angle;
 
     // 云台相对角度 + 误差角度 + 新增角度 如果大于 最大机械角度
     if (gimbal_control.pitch.relative_angle + pitch_bias_angle + add_pitch_angle > MAX_PITCH_ANGLE)
@@ -198,13 +199,14 @@ void HandleRemoteMode()
         }
     }
     pitch_angle_set = gimbal_control.pitch.absolute_angle_set;
-    gimbal_control.pitch.absolute_angle_set = rad_format(pitch_angle_set + add_pitch_angle);
+    gimbal_control.pitch.absolute_angle_set = pitch_angle_set + add_pitch_angle;
 
 }
 
 
 void HandleInitMode()
 {
+
     gimbal_control.yaw.relative_angle_set = 0.0f;
     gimbal_control.pitch.relative_angle_set = 0.0f;
 }

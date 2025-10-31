@@ -11,45 +11,49 @@
 
 #define PI	3.14159265358979f
 
+// ==================== Pitch轴-GM6020 PID控制参数初始化 ====================
+// 大疆6020电机位置环PID参数
+#define M6020_MOTOR_SPEED_PID_KP 1300.0f//10
+#define M6020_MOTOR_SPEED_PID_KI 15.0f
+#define M6020_MOTOR_SPEED_PID_KD 0
+#define M6020_MOTOR_SPEED_PID_MAX_OUT 30000.0f
+#define M6020_MOTOR_SPEED_PID_MAX_IOUT 10000.0f
 
+//pitch encode angle close-loop PID params, max out and max iout
+//pitch 角度环 角度由编码器 PID参数以及 PID最大输出，积分输出
+#define PITCH_ENCODE_RELATIVE_PID_KP 10.0f
+#define PITCH_ENCODE_RELATIVE_PID_KI 0.00f
+#define PITCH_ENCODE_RELATIVE_PID_KD 0.0f
+#define PITCH_ENCODE_RELATIVE_PID_MAX_OUT 10.0f
+#define PITCH_ENCODE_RELATIVE_PID_MAX_IOUT 0.0f
+
+#define PITCH_GYRO_ABSOLUTE_PID_KP        10.0f
+#define PITCH_GYRO_ABSOLUTE_PID_KI        0.0f
+#define PITCH_GYRO_ABSOLUTE_PID_KD        0.3f
+#define PITCH_GYRO_ABSOLUTE_PID_MAX_OUT   10.0f
+#define PITCH_GYRO_ABSOLUTE_PID_MAX_IOUT  0.0f
+
+// ==================== YAW轴-4310电机 PID控制参数初始化 ====================
+#define DM4310_MOTOR_SPEED_PID_KP      1.0f
+#define DM4310_MOTOR_SPEED_PID_KI      0.0f
+#define DM4310_MOTOR_SPEED_PID_KD      0.0f
+#define DM4310_MOTOR_SPEED_PID_MAX_OUT  30000.0f
+#define DM4310_MOTOR_SPEED_PID_MAX_IOUT 10000.0f
 //yaw gyro angle close-loop PID params, max out and max iout
 //yaw 角度环 角度由陀螺仪解算 PID参数以及 PID最大输出，积分输出
-#define YAW_GYRO_ABSOLUTE_PID_KP        26.0f
+#define YAW_GYRO_ABSOLUTE_PID_KP        5.0f
 #define YAW_GYRO_ABSOLUTE_PID_KI        0.0f
 #define YAW_GYRO_ABSOLUTE_PID_KD        0.3f
 #define YAW_GYRO_ABSOLUTE_PID_MAX_OUT   10.0f
 #define YAW_GYRO_ABSOLUTE_PID_MAX_IOUT  0.0f
-
-//pitch encode angle close-loop PID params, max out and max iout
-//pitch 角度环 角度由编码器 PID参数以及 PID最大输出，积分输出
-#define PITCH_ENCODE_RELATIVE_PID_KP 15.0f
-#define PITCH_ENCODE_RELATIVE_PID_KI 0.00f
-#define PITCH_ENCODE_RELATIVE_PID_KD 0.0f
-
-#define PITCH_ENCODE_RELATIVE_PID_MAX_OUT 10.0f
-#define PITCH_ENCODE_RELATIVE_PID_MAX_IOUT 0.0f
-
 //yaw encode angle close-loop PID params, max out and max iout
 //yaw 角度环 角度由编码器 PID参数以及 PID最大输出，积分输出
-#define YAW_ENCODE_RELATIVE_PID_KP        8.0f
+#define YAW_ENCODE_RELATIVE_PID_KP        1.0f
 #define YAW_ENCODE_RELATIVE_PID_KI        0.0f
 #define YAW_ENCODE_RELATIVE_PID_KD        0.0f
 #define YAW_ENCODE_RELATIVE_PID_MAX_OUT   10.0f
 #define YAW_ENCODE_RELATIVE_PID_MAX_IOUT  0.0f
 
-
-#define DM4310_MOTOR_POSITION_PID_KP      8.0f
-#define DM4310_MOTOR_POSITION_PID_KI      0.0f
-#define DM4310_MOTOR_POSITION_PID_KD      0.0f
-
-#define M6020_MOTOR_POSITION_PID_MAX_OUT  30000.0f
-#define M6020_MOTOR_POSITION_PID_MAX_IOUT 10000.0f
-// 大疆6020电机位置环PID参数
-#define M6020_MOTOR_SPEED_PID_KP 12.0f//10
-#define M6020_MOTOR_SPEED_PID_KI 0.06f
-#define M6020_MOTOR_SPEED_PID_KD 0
-#define M6020_MOTOR_SPEED_PID_MAX_OUT 30000.0f
-#define M6020_MOTOR_SPEED_PID_MAX_IOUT 10000.0f
 
 typedef enum {
     INIT_MODE = 0,      // 初始化模式
