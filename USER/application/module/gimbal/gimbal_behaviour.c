@@ -210,6 +210,9 @@ void HandleRemoteMode()
 
 void HandleInitMode()
 {
+    //* 上电时设置机械零点
+    gimbal_control.initial_yaw_motor_angle = gimbal_control.yaw.motor_measure.motor_DM->position;
+    gimbal_control.initial_pitch_motor_angle = gimbal_control.pitch.motor_measure.motor_DJI->Now_Angle;
 
     gimbal_control.yaw.relative_angle_set = 0.0f;
     gimbal_control.pitch.relative_angle_set = 0.0f;

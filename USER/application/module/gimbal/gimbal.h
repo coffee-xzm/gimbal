@@ -137,8 +137,10 @@ struct gimbal_control_s
     const fp32 *gimbal_INT_gyro_point;      // 陀螺仪角速度数据指针
 
     // ==================== 执行机构 ====================
-    gimbal_motor_status_t yaw;        // 外Yaw轴电机状态
-    gimbal_motor_status_t pitch;        // 内Yaw轴电机状态
+    gimbal_motor_status_t yaw;        // Yaw轴电机状态
+    gimbal_motor_status_t pitch;        // pitch轴电机状态
+    fp32 initial_yaw_motor_angle;
+    fp32 initial_pitch_motor_angle;
 
     // ==================== 模式管理 ====================
     gimbal_mode_e mode;                     // 当前控制模式
