@@ -72,14 +72,20 @@ void usb_send_gimbal_data(void)
     memcpy(send_buffer + 2, &mode, 1);
 
     // 填充四元数 - 使用固定值测试用
-    fp32 quat_data[4] = {1.0f, 0.0f, 0.0f, 0.0f};  // w, x, y, z
+    // fp32 quat_data[4] = {1.0f, 0.0f, 0.0f, 0.0f};  // w, x, y, z
+    const fp32* quat_data = get_INS_quat_point();
     memcpy(send_buffer + 3, quat_data, 16);  // 4个float = 16字节  //这个要改成
 
     // 填充云台状态
-    fp32 yaw_data = gimbal_control.yaw.absolute_angle;
-    fp32 yaw_vel_data = gimbal_control.yaw.motor_gyro;  //萌神，这个是电机速度，记得修改成陀螺仪速度
-    fp32 pitch_data = gimbal_control.pitch.absolute_angle;
-    fp32 pitch_vel_data = gimbal_control.pitch.absolute_angle;
+    // fp32 yaw_data = gimbal_control.yaw.absolute_angle;
+    // fp32 yaw_vel_data = gimbal_control.yaw.motor_measure.motor_DM->velocity;  //萌神，这个是电机速度，记得修改成陀螺仪速度
+    // fp32 pitch_data = gimbal_control.pitch.absolute_angle;
+    // fp32 pitch_vel_data = gimbal_control.pitch.motor_measure.motor_DJI->Now_Omega;
+    //? 减去温飘，就是上位机在odom下期望的位置
+    fp32 yaw_data = gimbal_control.yaw.absolute_angle - (gimbal_control.yaw.absolute_angle- gimbal_control.yaw.relative_angle);
+    fp32 yaw_vel_data = gimbal_control.yaw.motor_gyro;  //萌神，这个是电机速度，记得修改成陀螺仪速度  已改
+    fp32 pitch_data = gimbal_control.pitch.absolute_angle - (gimbal_control.pitch.absolute_angle- gimbal_control.pitch.relative_angle);
+    fp32 pitch_vel_data = gimbal_control.pitch.motor_gyro;
     memcpy(send_buffer + 19, &yaw_data, 4);
     memcpy(send_buffer + 23, &yaw_vel_data, 4);
     memcpy(send_buffer + 27, &pitch_data, 4);

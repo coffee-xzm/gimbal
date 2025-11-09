@@ -94,6 +94,8 @@ void HandleAutoMode() {
     VisionToGimbal data;
     get_vision_data(&data);
 
+    gimbal_control.control_strategy = NormalControlStrategy;
+
     // 角度限制
     fp32 limited_yaw = data.yaw;
     fp32 limited_pitch = data.pitch;
@@ -113,8 +115,10 @@ void HandleAutoMode() {
     last_pitch = filtered_pitch;
 
     // 设置目标角度
-    gimbal_control.yaw.relative_angle_set = filtered_yaw;
-    gimbal_control.pitch.relative_angle_set = -filtered_pitch;
+    //? absolute_angle-relative_angle基本是温飘的角度？
+    //? 上位机发的是当前四元数作为odom的相对角度，补上温飘就是下位机认为的世界坐标系了。
+    gimbal_control.yaw.absolute_angle_set = filtered_yaw + gimbal_control.yaw.absolute_angle- gimbal_control.yaw.relative_angle;
+    gimbal_control.pitch.absolute_angle_set = -filtered_pitch+ gimbal_control.pitch.absolute_angle- gimbal_control.pitch.relative_angle;
 }
 
 // 无力模式
