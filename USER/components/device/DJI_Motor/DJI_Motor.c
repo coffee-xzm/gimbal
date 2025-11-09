@@ -1,12 +1,8 @@
-//
-// Created by 16844 on 2025/3/20.
-//
-
 #include "DJI_Motor.h"
 #include "can.h"
 
 motor_measure_t dji_motor ;  //大疆电机
-#define ZERO_ANGLE 4832
+#define ZERO_ANGLE 2107
 /**
  * @brief 解析CAN数据并填充到motor_3508_measure_t结构体中。
  *
@@ -77,7 +73,7 @@ void DJI_6020_data_Get(uint8_t* data)
     }
     dji_motor.Total_Encoder = dji_motor.Total_Round * Encoder_Num_Per_Round + tmp_encoder;
     //计算电机本身信息
-    dji_motor.Now_Angle = simple_encoder_to_radians(dji_motor.raw_ecd,4832) ;
+    dji_motor.Now_Angle = simple_encoder_to_radians(dji_motor.raw_ecd,ZERO_ANGLE) ;
     dji_motor.Now_Omega = (float) tmp_omega * RPM_TO_RADPS ;
     dji_motor.Now_Current = tmp_torque / 1000.0f;
     dji_motor.Now_Temperature = (float)tmp_temperature ;

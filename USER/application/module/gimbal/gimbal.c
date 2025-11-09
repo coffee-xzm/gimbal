@@ -3,12 +3,10 @@
 #include "struct_typedef.h"
 #include "gimbal_behaviour.h"
 #include "can.h"
-
 #include "INS_task.h"
 #include "user_lib.h"
 #include "imu.h"
 #include "arm_math.h"
-
 
 /**
  * @brief 初始化云台控制数据结构体
@@ -37,7 +35,8 @@ void RegisterModeHandler(gimbal_mode_e mode, ModeHandler handler) {
 /**
  * @brief 控制模式函数注册
  */
-void InitializeModeHandlers() {
+void InitializeModeHandlers()
+{
     RegisterModeHandler(INIT_MODE, HandleInitMode); // 初始化模式
     RegisterModeHandler(FORCELESS_MODE,HandleGravityCompensationMode);  // 无力模式
     RegisterModeHandler(REMOTE_MODE, HandleRemoteMode); // 遥控器模式
@@ -77,95 +76,119 @@ void gimbal_init(gimbal_control_t * init){
         return;
     }
 
+    // 初始化时使能大喵电机
     DM_MotorEnable(&hcan1,0x02);
-    InitializeModeHandlers();  // 初始化模式处理函数
+    // 初始化模式处理函数
+    InitializeModeHandlers();
 
-    //Pitch轴-GM6020电压控制PID
-    const static fp32 speed_pid[3] = {M6020_MOTOR_SPEED_PID_KP, M6020_MOTOR_SPEED_PID_KI, M6020_MOTOR_SPEED_PID_KD};
-    const static fp32 posi_pid[3] = {M6020_MOTOR_POSITION_PID_KP, M6020_MOTOR_POSITION_PID_KI, M6020_MOTOR_POSITION_PID_KD};
+    // ==================== Pitch轴-GM6020 PID控制参数初始化 ====================
+    const static fp32 pitch_speed_pid[3] = {M6020_MOTOR_SPEED_PID_KP, M6020_MOTOR_SPEED_PID_KI, M6020_MOTOR_SPEED_PID_KD};
+    PID_init(&init->pitch.speed_pid, PID_POSITION,pitch_speed_pid,M6020_MOTOR_SPEED_PID_MAX_OUT, M6020_MOTOR_SPEED_PID_MAX_IOUT);//6020
+    gimbal_PID_init(&init->pitch.gimbal_motor_absolute_angle_pid, PITCH_GYRO_ABSOLUTE_PID_MAX_OUT, PITCH_GYRO_ABSOLUTE_PID_MAX_IOUT, PITCH_GYRO_ABSOLUTE_PID_KP, PITCH_GYRO_ABSOLUTE_PID_KI, PITCH_GYRO_ABSOLUTE_PID_KD);
+    gimbal_PID_init(&init->pitch.gimbal_motor_relative_angle_pid, PITCH_ENCODE_RELATIVE_PID_MAX_OUT, PITCH_ENCODE_RELATIVE_PID_MAX_IOUT, PITCH_ENCODE_RELATIVE_PID_KP, PITCH_ENCODE_RELATIVE_PID_KI, PITCH_ENCODE_RELATIVE_PID_KD);
 
-    //6020电机控制参数初始化
-    PID_init(&init->pitch.speed_pid, PID_POSITION,speed_pid,M6020_MOTOR_SPEED_PID_MAX_OUT, M6020_MOTOR_SPEED_PID_MAX_IOUT);//6020
-    PID_init(&init->pitch.position_pid, PID_POSITION,posi_pid,M6020_MOTOR_POSITION_PID_MAX_OUT, M6020_MOTOR_POSITION_PID_MAX_IOUT);//6020
+    // ==================== Yaw轴-4310电机 PID控制参数初始化 ====================
+    const static fp32 yaw_speed_pid[3] = {DM4310_MOTOR_SPEED_PID_KP, DM4310_MOTOR_SPEED_PID_KI, DM4310_MOTOR_SPEED_PID_KD};
+    PID_init(&init->yaw.speed_pid, PID_POSITION,yaw_speed_pid,DM4310_MOTOR_SPEED_PID_MAX_OUT, DM4310_MOTOR_SPEED_PID_MAX_IOUT);//4310
+    gimbal_PID_init(&init->yaw.gimbal_motor_absolute_angle_pid, YAW_GYRO_ABSOLUTE_PID_MAX_OUT, YAW_GYRO_ABSOLUTE_PID_MAX_IOUT, YAW_GYRO_ABSOLUTE_PID_KP, YAW_GYRO_ABSOLUTE_PID_KI, YAW_GYRO_ABSOLUTE_PID_KD);
+    gimbal_PID_init(&init->yaw.gimbal_motor_relative_angle_pid, YAW_ENCODE_RELATIVE_PID_MAX_OUT, YAW_ENCODE_RELATIVE_PID_MAX_IOUT, YAW_ENCODE_RELATIVE_PID_KP, YAW_ENCODE_RELATIVE_PID_KI, YAW_ENCODE_RELATIVE_PID_KD);
 
-    // 获取Yaw轴-4310电机测量数据指针
+    // 获取Yaw轴 - 4310电机测量数据指针
     init->yaw.motor_measure.motor_DM = get_dm_motor_measure_point(2);
-    init->pitch.motor_measure.motor_DJI = get_motor_measure_point();              // 获取3508电机测量数据指针
+    // 获取Pitch轴 - 6020电机测量数据指针
+    init->pitch.motor_measure.motor_DJI = get_motor_measure_point();
+
     //陀螺仪数据指针获取
     init->gimbal_INT_angle_point = get_INS_angle_point();
     init->gimbal_INT_gyro_point = get_gyro_data_point();
 
     //更新数据
     gimbal_feedback_update(init);
-    // 同步角度
-    init->yaw.target_angle =  init->yaw.current_angle;
-    init->pitch.target_angle =  init->pitch.current_angle;
-    // 同步速度
-    init->yaw.speed_set = init->yaw.current_speed;
-    init->pitch.speed_set = init->pitch.current_speed;
 
     //获取遥控器数据指针
     init->gimbal_rc_ctrl = get_remote_control_point();
 
     init->mode = FORCELESS_MODE;
     init->last_mode = FORCELESS_MODE;
+
+    init->yaw.absolute_angle_set = init->yaw.absolute_angle;
+    init->yaw.relative_angle_set = init->yaw.relative_angle;
+    init->yaw.motor_gyro_set = init->yaw.motor_gyro;
+
+    init->pitch.absolute_angle_set = init->pitch.absolute_angle;
+    init->pitch.relative_angle_set = init->pitch.relative_angle;
+    init->pitch.motor_gyro_set = init->pitch.motor_gyro;
+
 }
-
-
 
 /**
  * @brief 模式切换状态保存
  * @param engineer_mode_change 控制数据结构体指针
  */
-void gimbal_mode_change_control_transit(gimbal_control_t* engineer_mode_change)
+void gimbal_mode_change_control_transit(gimbal_control_t* mode_change)
 {
-    if (engineer_mode_change == NULL){
+    if (mode_change == NULL){
         return;
     }
-    if (engineer_mode_change->last_mode != INIT_MODE && engineer_mode_change->mode == INIT_MODE){  // 切换到遥控模式
+    if (mode_change->last_mode != INIT_MODE && mode_change->mode == INIT_MODE)
+    {  // 切换到初始化模式
+        mode_change->yaw.relative_angle_set = mode_change->yaw.relative_angle;
+        mode_change->pitch.relative_angle_set = mode_change->pitch.relative_angle;
+    }
+    if (mode_change->last_mode != REMOTE_MODE && mode_change->mode == REMOTE_MODE)
+    {  // 切换到遥控模式
 
-        engineer_mode_change->yaw.target_angle = engineer_mode_change->yaw.current_angle;
-        engineer_mode_change->pitch.target_angle = engineer_mode_change->pitch.current_angle;
+        mode_change->yaw.absolute_angle_set = mode_change->yaw.absolute_angle;
+        mode_change->pitch.absolute_angle_set = mode_change->pitch.absolute_angle;
     }
-    if (engineer_mode_change->last_mode != REMOTE_MODE && engineer_mode_change->mode == REMOTE_MODE){  // 切换到遥控模式
-
-        engineer_mode_change->yaw.target_angle = engineer_mode_change->yaw.current_angle;
-        engineer_mode_change->pitch.target_angle = engineer_mode_change->pitch.current_angle;
+    else if (mode_change->last_mode != AUTO_MODE && mode_change->mode == AUTO_MODE)
+    {    // 切换到自动模式
+        mode_change->yaw.absolute_angle_set = mode_change->yaw.absolute_angle_set;
+        mode_change->pitch.absolute_angle_set = mode_change->pitch.absolute_angle_set;
     }
-    else if (engineer_mode_change->last_mode != AUTO_MODE && engineer_mode_change->mode == AUTO_MODE){    // 切换到自动模式
-        engineer_mode_change->yaw.target_angle = engineer_mode_change->yaw.current_angle;
-        engineer_mode_change->pitch.target_angle = engineer_mode_change->pitch.current_angle;
+    else if (mode_change->last_mode != FORCELESS_MODE && mode_change->mode == FORCELESS_MODE)
+    {    // 切换到无力模式
+        mode_change->yaw.absolute_angle_set = mode_change->yaw.absolute_angle_set;
+        mode_change->pitch.absolute_angle_set = mode_change->pitch.absolute_angle_set;
     }
-    else if (engineer_mode_change->last_mode != FORCELESS_MODE && engineer_mode_change->mode == FORCELESS_MODE){    // 切换到无力模式
-        engineer_mode_change->yaw.target_angle = engineer_mode_change->yaw.current_angle;
-        engineer_mode_change->pitch.target_angle = engineer_mode_change->pitch.current_angle;
-    }
-    engineer_mode_change->last_mode = engineer_mode_change->mode;
+    mode_change->last_mode = mode_change->mode;
 }
 
 
+#define PITCH_TURN 1
 
 /**
  * @brief 数据更新函数
  * @param feedback_update
  */
 void gimbal_feedback_update(gimbal_control_t* feedback_update){
-    if (feedback_update == NULL){
-        return;}
+    if (feedback_update == NULL)
+    {
+        return;
+    }
+    //云台数据更新
     feedback_update->pitch.absolute_angle = *(feedback_update->gimbal_INT_angle_point + INS_PITCH_ADDRESS_OFFSET);
-    feedback_update->pitch.absolute_gyro = *(feedback_update->gimbal_INT_gyro_point + INS_GYRO_Y_ADDRESS_OFFSET);
+
+#if PITCH_TURN
+    feedback_update->pitch.relative_angle = -feedback_update->pitch.motor_measure.motor_DJI->Now_Angle;
+#else
+    // 由于安装的是GM6020电机，电机的相对角度需要转换
+    feedback_update->pitch.relative_angle = feedback_update->pitch.motor_measure.motor_DJI->Now_Angle;
+#endif
+
+    feedback_update->pitch.motor_gyro = *(feedback_update->gimbal_INT_gyro_point + INS_GYRO_Y_ADDRESS_OFFSET);
 
     feedback_update->yaw.absolute_angle = *(feedback_update->gimbal_INT_angle_point + INS_YAW_ADDRESS_OFFSET);
-    feedback_update->yaw.absolute_gyro = arm_cos_f32(feedback_update->pitch.current_angle) * (*(feedback_update->gimbal_INT_gyro_point + INS_GYRO_Z_ADDRESS_OFFSET))
-                                                   - arm_sin_f32(feedback_update->pitch.current_angle) * (*(feedback_update->gimbal_INT_gyro_point + INS_GYRO_X_ADDRESS_OFFSET));
-    /***************************更新角度*************************/
-    feedback_update->yaw.current_angle = feedback_update->yaw.motor_measure.motor_DM->position;
-    feedback_update->pitch.current_angle = feedback_update->pitch.motor_measure.motor_DJI->Now_Angle;
 
-    /***************************更新速度*************************/
+#if YAW_TURN
+    feedback_update->gimbal_yaw_motor.relative_angle = -motor_ecd_to_angle_change(feedback_update->gimbal_yaw_motor.gimbal_motor_measure->ecd,
+                                                                                        feedback_update->gimbal_yaw_motor.offset_ecd);
 
-    feedback_update->yaw.current_speed = feedback_update->yaw.motor_measure.motor_DM->velocity;
-    feedback_update->pitch.current_speed = feedback_update->pitch.motor_measure.motor_DJI->Now_Omega;
+#else
+    feedback_update->yaw.relative_angle = feedback_update->yaw.motor_measure.motor_DM->position ;
+#endif
+    feedback_update->yaw.motor_gyro = arm_cos_f32(feedback_update->pitch.relative_angle) * (*(feedback_update->gimbal_INT_gyro_point + INS_GYRO_Z_ADDRESS_OFFSET))
+                                                   - arm_sin_f32(feedback_update->pitch.relative_angle) * (*(feedback_update->gimbal_INT_gyro_point + INS_GYRO_X_ADDRESS_OFFSET));
 }
 
 
@@ -267,35 +290,100 @@ static void gimbal_PID_clear(gimbal_PID_t *gimbal_pid_clear)
     gimbal_pid_clear->out = gimbal_pid_clear->Pout = gimbal_pid_clear->Iout = gimbal_pid_clear->Dout = 0.0f;
 }
 
+// ==================== 控制策略实现 ====================
 
+/**
+ * @brief 正常控制策略 - 双环PID控制
+ */
+/**
+ * @brief 正常控制策略 - 角度环+速度环双环PID控制
+ * @param control 云台控制数据结构体指针
+ * @note 使用角度环(外环)输出角速度设定值，速度环(内环)输出电流值
+ */
+void NormalControlStrategy(gimbal_control_t* control) {
+    if (control == NULL) return;
+
+    // ==================== Pitch轴 GM6020 双环PID控制 ====================
+    // 角度环PID计算：角度误差 → 角速度设定值
+    control->pitch.motor_gyro_set = gimbal_PID_calc(&control->pitch.gimbal_motor_absolute_angle_pid,
+                                                    control->pitch.absolute_angle,
+                                                    control->pitch.absolute_angle_set,
+                                                    control->pitch.motor_gyro);
+
+    // 速度环PID计算：速度误差 → 电流值
+    if (control->pitch.motor_measure.motor_DJI != NULL) {
+        control->pitch.given_current = PID_calc(&control->pitch.speed_pid,
+                                                control->pitch.motor_gyro,
+                                                control->pitch.motor_gyro_set);
+    } else {
+        control->pitch.given_current = 0;
+    }
+
+    // ==================== Yaw轴 DM4310 双环PID控制 ====================
+    // 角度环PID计算：角度误差 → 角速度设定值
+    control->yaw.motor_gyro_set = gimbal_PID_calc(&control->yaw.gimbal_motor_absolute_angle_pid,
+                                                  control->yaw.absolute_angle,
+                                                  control->yaw.absolute_angle_set,
+                                                  control->yaw.motor_gyro);
+
+    // 速度环PID计算：速度误差 → 电流值
+    if (control->yaw.motor_measure.motor_DM != NULL) {
+        control->yaw.given_current = PID_calc(&control->yaw.speed_pid,
+                                              control->yaw.motor_gyro,
+                                              control->yaw.motor_gyro_set);
+    } else {
+        control->yaw.given_current = 0;
+    }
+}
+
+/**
+ * @brief 无力模式控制策略 - 输出0电流
+ */
+void ForcelessControlStrategy(gimbal_control_t* control) {
+    if (control == NULL) return;
+
+    // 直接输出0电流，电机自由转动
+    control->yaw.torque = 0;
+    control->pitch.given_current = 0;
+
+}
+
+/**
+ * @brief 初始化控制策略
+ */
+void InitControlStrategy(gimbal_control_t* control) {
+    if (control == NULL) return;
+
+    // 使用正常的PID控制，但目标角度设为0（初始化位置）
+    NormalControlStrategy(control);
+}
+
+/**
+ * @brief 云台位置控制函数
+ * @param control 云台控制数据结构体指针
+ */
 void gimbal_position_control(gimbal_control_t *control){
     if (control == NULL)
         return;
 
-
-    if(control->mode == FORCELESS_MODE)
-    {
-        control->pitch.given_current = 0;
+    // 调用当前控制策略
+    if (control->control_strategy != NULL) {
+        control->control_strategy(control);
+    } else {
+        // 默认策略：无力模式
+        ForcelessControlStrategy(control);
     }
-    else
-    {
-        control->pitch.speed_set = PID_calc(&control->pitch.position_pid,
-                                            control->pitch.current_angle,
-                                            control->pitch.target_angle);
 
-        control->pitch.given_current = PID_calc(&control->pitch.speed_pid,
-                                                control->pitch.motor_measure.motor_DJI->raw_speed_rpm,
-                                                control->pitch.speed_set);
-    }
     static int time = 0;
     time++;
     if(time==1)
     {
-        MIT_CtrlMotor(&hcan1, 0x02, control->yaw.target_angle, 0.0f, 5.0f, 0.2f, 0.0f);
+        MIT_CtrlMotor(&hcan1, 0x02, 0, 0.0f, 0, 0, control->yaw.given_current);
     }
     else if (time==2)
     {
-        CAN_cmd_DJI_control((int16_t)control->pitch.given_current,0,0,0);
+        //CAN_cmd_DJI_control(0,0,0,0);
+        CAN_cmd_DJI_control((int16_t)(-control->pitch.given_current),0,0,0);
         time= 0;
     }
 }
