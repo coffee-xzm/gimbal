@@ -119,6 +119,9 @@ void gimbal_init(gimbal_control_t * init){
     init->pitch.relative_angle_set = init->pitch.relative_angle;
     init->pitch.motor_gyro_set = init->pitch.motor_gyro;
 
+    init->initial_yaw_motor_angle = init->yaw.motor_measure.motor_DM->position;
+    init->initial_pitch_motor_angle = init->pitch.motor_measure.motor_DJI->Now_Angle;
+
 }
 
 /**
@@ -138,11 +141,16 @@ void gimbal_mode_change_control_transit(gimbal_control_t* mode_change)
     if (mode_change->last_mode != REMOTE_MODE && mode_change->mode == REMOTE_MODE)
     {  // 切换到遥控模式
 
-        mode_change->yaw.absolute_angle_set = mode_change->yaw.absolute_angle;
-        mode_change->pitch.absolute_angle_set = mode_change->pitch.absolute_angle;
+        // mode_change->yaw.absolute_angle_set = mode_change->yaw.absolute_angle;
+        // mode_change->pitch.absolute_angle_set = mode_change->pitch.absolute_angle;
+        mode_change->yaw.absolute_angle_set = mode_change->yaw.absolute_angle_set;
+        mode_change->pitch.absolute_angle_set = mode_change->pitch.absolute_angle_set;
     }
     else if (mode_change->last_mode != AUTO_MODE && mode_change->mode == AUTO_MODE)
     {    // 切换到自动模式
+        //! 先试一下，还没想通为啥这样改
+        // mode_change->yaw.absolute_angle_set = mode_change->yaw.absolute_angle;
+        // mode_change->pitch.absolute_angle_set = mode_change->pitch.absolute_angle;
         mode_change->yaw.absolute_angle_set = mode_change->yaw.absolute_angle_set;
         mode_change->pitch.absolute_angle_set = mode_change->pitch.absolute_angle_set;
     }
@@ -170,8 +178,8 @@ void gimbal_feedback_update(gimbal_control_t* feedback_update){
     feedback_update->pitch.absolute_angle = *(feedback_update->gimbal_INT_angle_point + INS_PITCH_ADDRESS_OFFSET);
 
 #if PITCH_TURN
-    feedback_update->pitch.relative_angle = (-feedback_update->pitch.motor_measure.motor_DJI->Now_Angle+ feedback_update->initial_pitch_motor_angle);
-    // feedback_update->pitch.relative_angle = -feedback_update->pitch.motor_measure.motor_DJI->Now_Angle;
+    // feedback_update->pitch.relative_angle = (-feedback_update->pitch.motor_measure.motor_DJI->Now_Angle+ feedback_update->initial_pitch_motor_angle);
+    feedback_update->pitch.relative_angle = -feedback_update->pitch.motor_measure.motor_DJI->Now_Angle;
     #else
     // 由于安装的是GM6020电机，电机的相对角度需要转换
     feedback_update->pitch.relative_angle = feedback_update->pitch.motor_measure.motor_DJI->Now_Angle;
@@ -186,8 +194,8 @@ void gimbal_feedback_update(gimbal_control_t* feedback_update){
                                                                                         feedback_update->gimbal_yaw_motor.offset_ecd);
 
 #else
-    feedback_update->yaw.relative_angle = feedback_update->yaw.motor_measure.motor_DM->position - feedback_update->initial_yaw_motor_angle;
-    // feedback_update->yaw.relative_angle = feedback_update->yaw.motor_measure.motor_DM->position;
+    // feedback_update->yaw.relative_angle = feedback_update->yaw.motor_measure.motor_DM->position - feedback_update->initial_yaw_motor_angle;
+    feedback_update->yaw.relative_angle = feedback_update->yaw.motor_measure.motor_DM->position;
 #endif
     feedback_update->yaw.motor_gyro = arm_cos_f32(feedback_update->pitch.relative_angle) * (*(feedback_update->gimbal_INT_gyro_point + INS_GYRO_Z_ADDRESS_OFFSET))
                                                    - arm_sin_f32(feedback_update->pitch.relative_angle) * (*(feedback_update->gimbal_INT_gyro_point + INS_GYRO_X_ADDRESS_OFFSET));

@@ -115,14 +115,14 @@ void HandleAutoMode() {
     last_yaw = filtered_yaw;
     last_pitch = filtered_pitch;
 
-    // 设置目标角度
-    //? absolute_angle-relative_angle基本是温飘的角度？
-    //? 上位机发的是当前四元数作为odom的相对角度，补上温飘就是下位机认为的世界坐标系了。
-    gimbal_control.yaw.absolute_angle_set = filtered_yaw + gimbal_control.yaw.absolute_angle- gimbal_control.yaw.relative_angle;
-    gimbal_control.pitch.absolute_angle_set = -filtered_pitch+ gimbal_control.pitch.absolute_angle - gimbal_control.pitch.relative_angle;
+    // // 设置目标角度
+    // //? absolute_angle-relative_angle基本是温飘的角度？
+    // //? 上位机发的是当前四元数作为odom的相对角度，补上温飘就是下位机认为的世界坐标系了。
+    // gimbal_control.yaw.absolute_angle_set = limited_yaw + gimbal_control.yaw.absolute_angle- gimbal_control.yaw.relative_angle;
+    // gimbal_control.pitch.absolute_angle_set = -limited_pitch+ gimbal_control.pitch.absolute_angle - gimbal_control.pitch.relative_angle;
 
-    // gimbal_control.yaw.absolute_angle_set = filtered_yaw ;
-    // gimbal_control.pitch.absolute_angle_set = -filtered_pitch;
+    gimbal_control.yaw.absolute_angle_set = filtered_yaw ;
+    gimbal_control.pitch.absolute_angle_set = -filtered_pitch;
     // //! 上位机发的相对角度，相对加绝对加补温飘
     // gimbal_control.yaw.absolute_angle_set = filtered_yaw + gimbal_control.yaw.absolute_angle;
     // gimbal_control.pitch.absolute_angle_set = -filtered_pitch+ gimbal_control.pitch.absolute_angle;
@@ -218,8 +218,9 @@ void HandleRemoteMode()
 void HandleInitMode()
 {
     //* 上电时设置机械零点
-    gimbal_control.initial_yaw_motor_angle = gimbal_control.yaw.motor_measure.motor_DM->position;
-    gimbal_control.initial_pitch_motor_angle = gimbal_control.pitch.motor_measure.motor_DJI->Now_Angle;
+    //! 不应该在这里设置，会被改变
+    // gimbal_control.initial_yaw_motor_angle = gimbal_control.yaw.motor_measure.motor_DM->position;
+    // gimbal_control.initial_pitch_motor_angle = gimbal_control.pitch.motor_measure.motor_DJI->Now_Angle;
 
     gimbal_control.yaw.relative_angle_set = 0.0f;
     gimbal_control.pitch.relative_angle_set = 0.0f;
