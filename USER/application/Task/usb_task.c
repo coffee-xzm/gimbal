@@ -3,7 +3,7 @@
 #include "cmsis_os.h"
 #include "usb_callback.h"
 
-void StartTask06(void const * argument)
+void usbSendTask(void const * argument)
 {
 
     osDelay(1000);
