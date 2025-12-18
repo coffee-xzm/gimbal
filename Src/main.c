@@ -38,6 +38,7 @@
 #include "bsp_delay.h"
 #include "bsp_usart.h"
 #include "DT7.h"
+#include "SEGGER_SYSVIEW.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -133,6 +134,8 @@ int main(void)
   // ��ʼ�������
   HAL_TIM_PWM_Start(&htim3,TIM_CHANNEL_3);
   __HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_3, 80);
+
+  trace_start();
   /* USER CODE END 2 */
 
   /* Call init function for freertos objects (in cmsis_os2.c) */
