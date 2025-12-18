@@ -39,6 +39,7 @@
 #include "bsp_usart.h"
 #include "DT7.h"
 #include "SEGGER_SYSVIEW.h"
+// #include "SEGGER_RTT.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -135,7 +136,11 @@ int main(void)
   HAL_TIM_PWM_Start(&htim3,TIM_CHANNEL_3);
   __HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_3, 80);
 
+  // SEGGER_RTT_WriteString(0, "RTT Test: System starting...\r\n");
+
   SEGGER_SYSVIEW_Conf();
+
+  // SEGGER_RTT_WriteString(0, "SystemView initialized\r\n");
   /* USER CODE END 2 */
 
   /* Call init function for freertos objects (in cmsis_os2.c) */

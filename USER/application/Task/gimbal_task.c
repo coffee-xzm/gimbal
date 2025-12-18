@@ -1,14 +1,17 @@
 #include "gimbal_task.h"
 #include "cmsis_os.h"
 #include "gimbal.h"
+#include "SEGGER_SYSVIEW.h"
 
 void gimbal_task(void const *argument)
 {
     osDelay(2000);
     gimbal_init(&gimbal_control); // 初始化云台控制数据结构体
-    SEGGER_SYSVIEW_OnTaskStartExec(osThreadGetId());
+    
     while (1)
     {
+
+        SEGGER_SYSVIEW_OnTaskStartExec(osThreadGetId());
 
         gimbal_mode_set(&gimbal_control);  // 设置云台控制模式
 

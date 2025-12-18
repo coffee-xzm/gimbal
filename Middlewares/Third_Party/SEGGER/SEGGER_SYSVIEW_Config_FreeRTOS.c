@@ -71,7 +71,14 @@ extern const SEGGER_SYSVIEW_OS_API SYSVIEW_X_OS_TraceAPI;
 #define SYSVIEW_CPU_FREQ        configCPU_CLOCK_HZ
 
 // The lowest RAM address used for IDs (pointers)
-#define SYSVIEW_RAM_BASE        (0x10000000)
+#define SYSVIEW_RAM_BASE        (0x20000000)
+
+// 添加DWT相关定义
+#define DEMCR (*(volatile U32*) (0xE000EDFCuL))  // Debug Exception and Monitor Control Register
+#define TRACEENA_BIT (1uL << 24)                 // Trace enable bit
+#define DWT_CTRL (*(volatile U32*) (0xE0001000uL)) // DWT Control Register
+#define NOCYCCNT_BIT (1uL << 25)                  // Cycle counter support bit
+#define CYCCNTENA_BIT (1uL << 0)                  // Cycle counter enable bit
 
 /********************************************************************* 
 *
@@ -92,6 +99,20 @@ static void _cbSendSystemDesc(void) {
 **********************************************************************
 */
 void SEGGER_SYSVIEW_Conf(void) {
+
+  // 启用DWT Cycle Counter（用于精确时间戳）
+  // 如果调试器未连接，需要应用程序启用DWT
+  if ((DEMCR & TRACEENA_BIT) == 0) {
+    DEMCR |= TRACEENA_BIT;
+  }
+  
+  // 启用cycle counter
+  if ((DWT_CTRL & NOCYCCNT_BIT) == 0) { // Cycle counter支持？
+    if ((DWT_CTRL & CYCCNTENA_BIT) == 0) { // Cycle counter未启用？
+      DWT_CTRL |= CYCCNTENA_BIT; // 启用Cycle counter
+    }
+  }
+  
   SEGGER_SYSVIEW_Init(SYSVIEW_TIMESTAMP_FREQ, SYSVIEW_CPU_FREQ, 
                       &SYSVIEW_X_OS_TraceAPI, _cbSendSystemDesc);
   SEGGER_SYSVIEW_SetRAMBase(SYSVIEW_RAM_BASE);

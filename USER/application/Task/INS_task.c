@@ -33,6 +33,7 @@
 #include "ist8310driver.h"
 #include "pid.h"
 #include "AHRS.h"
+#include "SEGGER_SYSVIEW.h"
 
 
 
@@ -213,6 +214,7 @@ void imu_task(void const *pvParameters)
 
     while (1)
     {
+      SEGGER_SYSVIEW_OnTaskStartExec((void*)INS_task_local_handler);
         //wait spi DMA tansmit done
         //µÈ´ýSPI DMA´«Êä
         while (ulTaskNotifyTake(pdTRUE, portMAX_DELAY) != pdPASS)
@@ -273,6 +275,8 @@ void imu_task(void const *pvParameters)
             mag_update_flag |= (1 << IMU_SPI_SHFITS);
 //            ist8310_read_mag(ist8310_real_data.mag);
         }
+
+        SEGGER_SYSVIEW_OnTaskStopExec();
 
     }
 }
