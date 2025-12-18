@@ -107,25 +107,20 @@ void HandleAutoMode() {
     if (limited_pitch > MAX_PITCH_ANGLE) limited_pitch = MAX_PITCH_ANGLE;
     else if (limited_pitch < MIN_PITCH_ANGLE) limited_pitch = MIN_PITCH_ANGLE;
 
-    // 低通滤波器 (alpha越小越平滑，但延迟越大)
-    #define FILTER_ALPHA 0.3f
-    fp32 filtered_yaw = FILTER_ALPHA * limited_yaw + (1.0f - FILTER_ALPHA) * last_yaw;
-    fp32 filtered_pitch = FILTER_ALPHA * limited_pitch + (1.0f - FILTER_ALPHA) * last_pitch;
+    // // 低通滤波器 (alpha越小越平滑，但延迟越大)
+    // #define FILTER_ALPHA 0.3f
+    // fp32 filtered_yaw = FILTER_ALPHA * limited_yaw + (1.0f - FILTER_ALPHA) * last_yaw;
+    // fp32 filtered_pitch = FILTER_ALPHA * limited_pitch + (1.0f - FILTER_ALPHA) * last_pitch;
 
-    last_yaw = filtered_yaw;
-    last_pitch = filtered_pitch;
+    // last_yaw = filtered_yaw;
+    // last_pitch = filtered_pitch;
 
-    // // 设置目标角度
-    // //? absolute_angle-relative_angle基本是温飘的角度？
-    // //? 上位机发的是当前四元数作为odom的相对角度，补上温飘就是下位机认为的世界坐标系了。
-    // gimbal_control.yaw.absolute_angle_set = limited_yaw + gimbal_control.yaw.absolute_angle- gimbal_control.yaw.relative_angle;
-    // gimbal_control.pitch.absolute_angle_set = -limited_pitch+ gimbal_control.pitch.absolute_angle - gimbal_control.pitch.relative_angle;
 
-    gimbal_control.yaw.absolute_angle_set = filtered_yaw ;
-    gimbal_control.pitch.absolute_angle_set = -filtered_pitch;
-    // //! 上位机发的相对角度，相对加绝对加补温飘
-    // gimbal_control.yaw.absolute_angle_set = filtered_yaw + gimbal_control.yaw.absolute_angle;
-    // gimbal_control.pitch.absolute_angle_set = -filtered_pitch+ gimbal_control.pitch.absolute_angle;
+    // gimbal_control.yaw.absolute_angle_set = filtered_yaw ;
+    // gimbal_control.pitch.absolute_angle_set = -filtered_pitch;
+    gimbal_control.yaw.absolute_angle_set = limited_yaw;
+    gimbal_control.pitch.absolute_angle_set = limited_pitch;//todo 这里上下位机都去除负号，明天测试下
+    //TODO 之后想尝试下tracealyzer
 }
 
 // 无力模式

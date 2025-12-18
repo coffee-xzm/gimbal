@@ -54,6 +54,8 @@ else ()
     add_compile_options(-Og -g)
 endif ()
 
+set(SYSVIEW_ROOT_DIR ${CMAKE_SOURCE_DIR}/Middlewares/Third_Party/SEGGER)
+
 include_directories(Inc Drivers/STM32F4xx_HAL_Driver/Inc
         Drivers/STM32F4xx_HAL_Driver/Inc/Legacy
         Middlewares/Third_Party/FreeRTOS/Source/include
@@ -66,6 +68,23 @@ include_directories(Inc Drivers/STM32F4xx_HAL_Driver/Inc
         Drivers/CMSIS/Device/ST/STM32F4xx/Include
         Middlewares/ST/ARM/DSP/Inc
 
+        # 移植systemview
+        ${SYSVIEW_ROOT_DIR}/include
+
+)
+
+set(SYSVIEW_SOURCES
+    ${SYSVIEW_ROOT_DIR}/SEGGER_RTT.c
+    ${SYSVIEW_ROOT_DIR}/SEGGER_SYSVIEW.c
+    ${SYSVIEW_ROOT_DIR}/SEGGER_SYSVIEW_Config_FreeRTOS.c
+    ${SYSVIEW_ROOT_DIR}/SEGGER_SYSVIEW_FreeRTOS.c
+    ${SYSVIEW_ROOT_DIR}/SEGGER_RTT_ASM_ARMv7M.S
+)
+
+# 为汇编文件设置特定的编译选项
+set_source_files_properties(${SYSVIEW_ROOT_DIR}/SEGGER_RTT_ASM_ARMv7M.S
+    PROPERTIES
+    COMPILE_FLAGS "-x assembler-with-cpp"
 )
 
 include_directories(
@@ -109,7 +128,7 @@ add_link_options(-Wl,-gc-sections,--print-memory-usage,-Map=${PROJECT_BINARY_DIR
 add_link_options(-mcpu=cortex-m4 -mthumb -mthumb-interwork)
 add_link_options(-T ${LINKER_SCRIPT})
 
-add_executable(${PROJECT_NAME}.elf ${SOURCES} ${LINKER_SCRIPT})
+add_executable(${PROJECT_NAME}.elf ${SOURCES} ${LINKER_SCRIPT} ${SYSVIEW_SOURCES})
 
 set(HEX_FILE ${PROJECT_BINARY_DIR}/${PROJECT_NAME}.hex)
 set(BIN_FILE ${PROJECT_BINARY_DIR}/${PROJECT_NAME}.bin)
