@@ -23,6 +23,8 @@ if (CMAKE_C_COMPILER_ID STREQUAL "GNU")
     add_compile_options(-fno-short-wchar)  # 显式禁用 2 字节模式
 endif()
 
+add_definitions(-DUSE_LEGACY_TRACE_API=1) # freertos v10的兼容
+
 #Uncomment for hardware floating point
 add_compile_definitions(ARM_MATH_CM4;ARM_MATH_MATRIX_CHECK;ARM_MATH_ROUNDING)
 add_compile_options(-mfloat-abi=hard -mfpu=fpv4-sp-d16)

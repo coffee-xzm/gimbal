@@ -156,3 +156,8 @@ standard names. */
 /* USER CODE END Defines */
 
 #endif /* FREERTOS_CONFIG_H */
+
+
+#define INCLUDE_xTaskGetIdleTaskHandle       1  // SystemView必需
+#define INCLUDE_pxTaskGetStackStart          1  // SystemView必需
+#include "SEGGER_SYSVIEW_FreeRTOS.h"

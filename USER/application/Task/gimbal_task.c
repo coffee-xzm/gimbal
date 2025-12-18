@@ -6,6 +6,7 @@ void gimbal_task(void const *argument)
 {
     osDelay(2000);
     gimbal_init(&gimbal_control); // 初始化云台控制数据结构体
+    SEGGER_SYSVIEW_OnTaskStartExec(osThreadGetId());
     while (1)
     {
 
@@ -18,6 +19,8 @@ void gimbal_task(void const *argument)
         HandleCurrentMode(&gimbal_control);  // 处理当前模式
 
         gimbal_position_control(&gimbal_control);  // 位置控制
+
+        SEGGER_SYSVIEW_OnTaskStopExec();
 
         osDelay(1);
     }

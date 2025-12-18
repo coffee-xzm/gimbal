@@ -135,7 +135,7 @@ int main(void)
   HAL_TIM_PWM_Start(&htim3,TIM_CHANNEL_3);
   __HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_3, 80);
 
-  trace_start();
+  SEGGER_SYSVIEW_Conf();
   /* USER CODE END 2 */
 
   /* Call init function for freertos objects (in cmsis_os2.c) */
