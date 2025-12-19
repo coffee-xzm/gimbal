@@ -26,5 +26,6 @@ void gimbal_task(void const *argument)
         SEGGER_SYSVIEW_OnTaskStopExec();
 
         osDelay(1);
+        // taskYIELD();
     }
 }

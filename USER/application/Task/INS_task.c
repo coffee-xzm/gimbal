@@ -186,6 +186,9 @@ void imu_task(void const *pvParameters)
         osDelay(100);
     }
 
+    static uint8_t send_counter = 0;
+    #define SEND_INTERVAL 2
+
     BMI088_read(bmi088_real_data.gyro, bmi088_real_data.accel, &bmi088_real_data.temp);
     //rotate and zero drift
     imu_cali_slove(INS_gyro, INS_accel, INS_mag, &bmi088_real_data, &ist8310_real_data);
@@ -277,7 +280,11 @@ void imu_task(void const *pvParameters)
 //            ist8310_read_mag(ist8310_real_data.mag);
         }
 
-        usb_send_gimbal_data();
+        if(send_counter++ >= SEND_INTERVAL)
+        {
+            send_counter = 0;
+            usb_send_gimbal_data();
+        }
 
         SEGGER_SYSVIEW_OnTaskStopExec();
 
