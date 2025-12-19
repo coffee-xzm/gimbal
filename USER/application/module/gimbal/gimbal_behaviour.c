@@ -83,45 +83,45 @@ void gimbal_behaviour_mode_set(gimbal_control_t *set_mode)
     }
 
 // 自动模式
-void HandleAutoMode() {
-#define MIN_YAW_ANGLE -1.5f
-#define MAX_YAW_ANGLE 1.5f
-#define MIN_PITCH_ANGLE -1.5f
-#define MAX_PITCH_ANGLE 1.5f
+// void HandleAutoMode() {
+// #define MIN_YAW_ANGLE -1.5f
+// #define MAX_YAW_ANGLE 1.5f
+// #define MIN_PITCH_ANGLE -1.5f
+// #define MAX_PITCH_ANGLE 1.5f
 
-    static fp32 last_yaw = 0.0f;
-    static fp32 last_pitch = 0.0f;
+//     static fp32 last_yaw = 0.0f;
+//     static fp32 last_pitch = 0.0f;
 
-    VisionToGimbal data;
-    get_vision_data(&data);
+//     VisionToGimbal data;
+//     get_vision_data(&data);
 
-    gimbal_control.control_strategy = NormalControlStrategy;
+//     gimbal_control.control_strategy = NormalControlStrategy;
 
-    // 角度限制
-    fp32 limited_yaw = data.yaw;
-    fp32 limited_pitch = data.pitch;
+//     // 角度限制
+//     fp32 limited_yaw = data.yaw;
+//     fp32 limited_pitch = data.pitch;
 
-    if (limited_yaw > MAX_YAW_ANGLE) limited_yaw = MAX_YAW_ANGLE;
-    else if (limited_yaw < MIN_YAW_ANGLE) limited_yaw = MIN_YAW_ANGLE;
+//     if (limited_yaw > MAX_YAW_ANGLE) limited_yaw = MAX_YAW_ANGLE;
+//     else if (limited_yaw < MIN_YAW_ANGLE) limited_yaw = MIN_YAW_ANGLE;
 
-    if (limited_pitch > MAX_PITCH_ANGLE) limited_pitch = MAX_PITCH_ANGLE;
-    else if (limited_pitch < MIN_PITCH_ANGLE) limited_pitch = MIN_PITCH_ANGLE;
+//     if (limited_pitch > MAX_PITCH_ANGLE) limited_pitch = MAX_PITCH_ANGLE;
+//     else if (limited_pitch < MIN_PITCH_ANGLE) limited_pitch = MIN_PITCH_ANGLE;
 
-    // // 低通滤波器 (alpha越小越平滑，但延迟越大)
-    // #define FILTER_ALPHA 0.3f
-    // fp32 filtered_yaw = FILTER_ALPHA * limited_yaw + (1.0f - FILTER_ALPHA) * last_yaw;
-    // fp32 filtered_pitch = FILTER_ALPHA * limited_pitch + (1.0f - FILTER_ALPHA) * last_pitch;
+//     // // 低通滤波器 (alpha越小越平滑，但延迟越大)
+//     // #define FILTER_ALPHA 0.3f
+//     // fp32 filtered_yaw = FILTER_ALPHA * limited_yaw + (1.0f - FILTER_ALPHA) * last_yaw;
+//     // fp32 filtered_pitch = FILTER_ALPHA * limited_pitch + (1.0f - FILTER_ALPHA) * last_pitch;
 
-    // last_yaw = filtered_yaw;
-    // last_pitch = filtered_pitch;
+//     // last_yaw = filtered_yaw;
+//     // last_pitch = filtered_pitch;
 
 
-    // gimbal_control.yaw.absolute_angle_set = filtered_yaw ;
-    // gimbal_control.pitch.absolute_angle_set = -filtered_pitch;
-    gimbal_control.yaw.absolute_angle_set = limited_yaw;
-    gimbal_control.pitch.absolute_angle_set = limited_pitch;//todo 这里上下位机都去除负号，明天测试下
-    //TODO 之后想尝试下tracealyzer
-}
+//     // gimbal_control.yaw.absolute_angle_set = filtered_yaw ;
+//     // gimbal_control.pitch.absolute_angle_set = -filtered_pitch;
+//     gimbal_control.yaw.absolute_angle_set = limited_yaw;
+//     gimbal_control.pitch.absolute_angle_set = limited_pitch;//todo 这里上下位机都去除负号，明天测试下
+//     //TODO 之后想尝试下tracealyzer
+// }
 
 // 无力模式
 void HandleGravityCompensationMode() {

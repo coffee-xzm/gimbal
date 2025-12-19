@@ -13,7 +13,7 @@ void HandleGravityCompensationMode();
 // 过渡模式
 void HandleTransitionMode();
 // 自动模式
-void HandleAutoMode();
+// void HandleAutoMode();
 // 机械臂控制模式切换函数
 void gimbal_behaviour_mode_set(gimbal_control_t* set_mode);
 
