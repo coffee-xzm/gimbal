@@ -6,6 +6,9 @@
 #include "usbd_cdc_if.h"
 #include "INS_task.h"
 
+#include "SEGGER_SYSVIEW.h"
+#include "core_cm4.h"
+
 // 外部声明全局变量
 extern gimbal_control_t gimbal_control;
 
@@ -94,12 +97,20 @@ void usb_send_gimbal_data(void)
     // memcpy(send_buffer + 35, &bullet_speed_data, 4);
     // memcpy(send_buffer + 39, &bullet_count_data, 2);
 
-    fp32 timestamp_data = vision_data.timestamp;
-    memcpy(send_buffer + 2, &timestamp_data, 4);
+    union {
+        fp32 f;
+        uint32_t u;
+    } timestamp_conv;
+
+    timestamp_conv.f = vision_data.timestamp;  // 读取大端序浮点数
+    timestamp_conv.u = __REV(timestamp_conv.u);  // 反转字节序（大端→小端）
+    fp32 timestamp_data = timestamp_conv.f;  // 得到小端序浮点数
+
+    memcpy(send_buffer + 2, &timestamp_data, sizeof(fp32));
     // 计算CRC16校验
     uint32_t crc_length = sizeof(GimbalToVision) - 2; // 减去CRC16本身的2字节
     uint16_t crc_data = get_CRC16_check_sum(send_buffer, crc_length, 0xFFFF);
-    memcpy(send_buffer + 4, &crc_data, 2);
+    memcpy(send_buffer + 6, &crc_data, sizeof(uint16_t));
 
     // 发送数据
     CDC_Transmit_FS(send_buffer, sizeof(GimbalToVision));
