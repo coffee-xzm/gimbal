@@ -28,6 +28,7 @@ void data_init(void){
   */
   void usb_receive_callback(uint8_t* Buf, uint32_t *Len)
   {
+    traceISR_ENTER();
       // 检查数据长度
       if (*Len != sizeof(VisionToGimbal)) {
           return;
@@ -50,6 +51,7 @@ void data_init(void){
           }
       }
 
+    traceISR_EXIT();
   }
 
 void get_vision_data(VisionToGimbal* data_out)

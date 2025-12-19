@@ -133,8 +133,8 @@ void MX_FREERTOS_Init(void) {
 
   /* Create the thread(s) */
   /* definition and creation of test */
-  osThreadDef(test, test_task, osPriorityNormal, 0, 128);
-  testHandle = osThreadCreate(osThread(test), NULL);
+  // osThreadDef(test, test_task, osPriorityNormal, 0, 128);
+  // testHandle = osThreadCreate(osThread(test), NULL);
 
   // /* definition and creation of enginerTask */
   // osThreadDef(enginerTask, enginer_task, osPriorityAboveNormal, 0, 512);
@@ -157,8 +157,8 @@ void MX_FREERTOS_Init(void) {
   // gimbal_controlHandle = osThreadCreate(osThread(gimbal_control), NULL);
 
   /* definition and creation of gimbal_send */
-  osThreadDef(gimbal_send, usbSendTask, osPriorityRealtime, 0, 1024);
-  gimbal_sendHandle = osThreadCreate(osThread(gimbal_send), NULL);
+  // osThreadDef(gimbal_send, usbSendTask, osPriorityRealtime, 0, 1024);
+  // gimbal_sendHandle = osThreadCreate(osThread(gimbal_send), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
   osThreadDef(imuTask, imu_task, osPriorityRealtime, 0, 1024);

@@ -34,6 +34,7 @@
 #include "pid.h"
 #include "AHRS.h"
 #include "SEGGER_SYSVIEW.h"
+#include "usb_callback.h"
 
 
 
@@ -275,6 +276,8 @@ void imu_task(void const *pvParameters)
             mag_update_flag |= (1 << IMU_SPI_SHFITS);
 //            ist8310_read_mag(ist8310_real_data.mag);
         }
+
+        usb_send_gimbal_data();
 
         SEGGER_SYSVIEW_OnTaskStopExec();
 
