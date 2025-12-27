@@ -1,82 +1,65 @@
-#此文件从模板自动生成! 请勿更改!
-set(CMAKE_SYSTEM_NAME Generic)
-set(CMAKE_SYSTEM_VERSION 1)
-cmake_minimum_required(VERSION 3.28)
+cmake_minimum_required(VERSION 3.22)
 
-# specify cross-compilers and tools
-set(CMAKE_C_COMPILER arm-none-eabi-gcc)
-set(CMAKE_CXX_COMPILER arm-none-eabi-g++)
-set(CMAKE_ASM_COMPILER  arm-none-eabi-gcc)
-set(CMAKE_AR arm-none-eabi-ar)
-set(CMAKE_OBJCOPY arm-none-eabi-objcopy)
-set(CMAKE_OBJDUMP arm-none-eabi-objdump)
-set(SIZE arm-none-eabi-size)
-set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
+#
+# This file is generated only once,
+# and is not re-generated if converter is called multiple times.
+#
+# User is free to modify the file as much as necessary
+#
 
-# project settings
-project(gimbal_task C CXX ASM)
-set(CMAKE_CXX_STANDARD 17)
+# Setup compiler settings
 set(CMAKE_C_STANDARD 11)
-
-if (CMAKE_C_COMPILER_ID STREQUAL "GNU")
-    add_compile_options(-U__WCHAR_TYPE__)  # 清除潜在宏定义
-    add_compile_options(-fno-short-wchar)  # 显式禁用 2 字节模式
-endif()
-
-add_definitions(-DUSE_LEGACY_TRACE_API=1) # freertos v10的兼容
-
-#Uncomment for hardware floating point
-add_compile_definitions(ARM_MATH_CM4;ARM_MATH_MATRIX_CHECK;ARM_MATH_ROUNDING)
-add_compile_options(-mfloat-abi=hard -mfpu=fpv4-sp-d16)
-add_link_options(-mfloat-abi=hard -mfpu=fpv4-sp-d16)
-
-#Uncomment for software floating point
-#add_compile_options(-mfloat-abi=soft)
-
-add_compile_options(-mcpu=cortex-m4 -mthumb -mthumb-interwork)
-add_compile_options(-ffunction-sections -fdata-sections -fno-common -fmessage-length=0)
-
-# uncomment to mitigate c++17 absolute addresses warnings
-#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-register")
-
-# Enable assembler files preprocessing
-add_compile_options($<$<COMPILE_LANGUAGE:ASM>:-x$<SEMICOLON>assembler-with-cpp>)
-
-if ("${CMAKE_BUILD_TYPE}" STREQUAL "Release")
-    message(STATUS "Maximum optimization for speed")
-    add_compile_options(-Ofast)
-elseif ("${CMAKE_BUILD_TYPE}" STREQUAL "RelWithDebInfo")
-    message(STATUS "Maximum optimization for speed, debug info included")
-    add_compile_options(-Ofast -g)
-elseif ("${CMAKE_BUILD_TYPE}" STREQUAL "MinSizeRel")
-    message(STATUS "Maximum optimization for size")
-    add_compile_options(-Os)
-else ()
-    message(STATUS "Minimal optimization, debug info included")
-    add_compile_options(-Og -g)
-endif ()
+set(CMAKE_C_STANDARD_REQUIRED ON)
+set(CMAKE_C_EXTENSIONS ON)
 
 set(SYSVIEW_ROOT_DIR ${CMAKE_SOURCE_DIR}/Middlewares/Third_Party/SEGGER)
 
-include_directories(Inc Drivers/STM32F4xx_HAL_Driver/Inc
-        Drivers/STM32F4xx_HAL_Driver/Inc/Legacy
-        Middlewares/Third_Party/FreeRTOS/Source/include
-        Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS
-        Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F
-        Drivers/CMSIS/Device/ST/STM32F4xx/Include
-        Drivers/CMSIS/Include Middlewares/ST/STM32_USB_Device_Library/Core/Inc
-        Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc
-        Drivers/CMSIS/Include
-        Drivers/CMSIS/Device/ST/STM32F4xx/Include
-        Middlewares/ST/ARM/DSP/Inc
+# Define the build type
+if(NOT CMAKE_BUILD_TYPE)
+    set(CMAKE_BUILD_TYPE "Debug")
+endif()
 
-        # 移植systemview
-        ${SYSVIEW_ROOT_DIR}/include
+# Set the project name
+set(CMAKE_PROJECT_NAME C_Board_Standard_Robot)
 
+# Enable compile command to ease indexing with e.g. clangd
+set(CMAKE_EXPORT_COMPILE_COMMANDS TRUE)
+
+# Core project settings
+project(${CMAKE_PROJECT_NAME})
+message("Build type: " ${CMAKE_BUILD_TYPE})
+
+# Enable CMake support for ASM and C languages
+enable_language(C ASM)
+
+# Create an executable object type
+add_executable(${CMAKE_PROJECT_NAME})
+
+# Add STM32CubeMX generated sources
+add_subdirectory(cmake/stm32cubemx)
+
+# Link directories setup
+target_link_directories(${CMAKE_PROJECT_NAME} PRIVATE
+    # Add user defined library search paths
+    Drivers/CMSIS/Lib/GCC
 )
 
-set(SYSVIEW_SOURCES
-    ${SYSVIEW_ROOT_DIR}/SEGGER_RTT.c
+# Add sources to executable
+target_sources(${CMAKE_PROJECT_NAME} PRIVATE
+    # Add user sources here
+    whx_imu/Components/kalman_filter.c
+    whx_imu/Components/user_lib.c
+    whx_imu/Components/Devices/BMI088Middleware.c
+    whx_imu/Components/Devices/BMI088driver.c
+    whx_imu/Components/Devices/transfer_function.c
+    whx_imu/Components/Controller/controller.c
+    whx_imu/Components/Algorithm/QuaternionEKF.c
+    whx_imu/Application/ins_task.c
+    whx_imu/Bsp/bsp_dwt.c
+    whx_imu/Bsp/bsp_PWM.c
+
+    USER/application/Task/INS_task.c
+
     ${SYSVIEW_ROOT_DIR}/SEGGER_SYSVIEW.c
     ${SYSVIEW_ROOT_DIR}/SEGGER_SYSVIEW_Config_FreeRTOS.c
     ${SYSVIEW_ROOT_DIR}/SEGGER_SYSVIEW_FreeRTOS.c
@@ -84,64 +67,55 @@ set(SYSVIEW_SOURCES
     ${SYSVIEW_ROOT_DIR}/SEGGER_RTT_printf.c
 )
 
-# 为汇编文件设置特定的编译选项
-set_source_files_properties(${SYSVIEW_ROOT_DIR}/SEGGER_RTT_ASM_ARMv7M.S
-    PROPERTIES
-    COMPILE_FLAGS "-x assembler-with-cpp"
+file(GLOB_RECURSE USER_SOURCES
+        "USER/**/*.*"
 )
 
-include_directories(
-        USB_DEVICE/App  USB_DEVICE/Target
-        # application
-        USER/application/module/gimbal
-        USER/application/module/imu
-        USER/application/callback
-        USER/application/Task
-        # component/algorithm
-        USER/components/algorithm
-        USER/components/algorithm/Include
-        # component/controller
-        USER/components/controller
-        # component/device
-        USER/components/device/DT7
-        USER/components/device/DJI_Motor
-        USER/components/device/DM
-        USER/components/device/bmi088
-        USER/components/device/ist8310
-        # component/support
-        USER/components/bsp
-        USER/components/support)
+# Add include paths
+target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
+    # Add user defined include paths
+    whx_imu/Components/
+    whx_imu/Components/Algorithm/
+    whx_imu/Components/Algorithm/Include/
+    whx_imu/Components/Controller/
+    whx_imu/Components/Devices/
+    whx_imu/Application/
+    whx_imu/Bsp/
 
-add_definitions(-DDEBUG -DUSE_HAL_DRIVER -DSTM32F407xx)
+    ${SYSVIEW_ROOT_DIR}/include
 
-file(GLOB_RECURSE SOURCES
-        "Startup/*.*"
-        "Src/*.*"
-        "Middlewares/*.*"
-        "Drivers/*.*"
-        "USB_DEVICE/*.*"
-        # User file BEGIN
-        "USER/*.*"
-        # User file END
+    USER/application/Task/
+    USER/application/module/gimbal/
+    USER/application/module/imu/
+    USER/application/callback/
+    USER/components/algorithm/
+    USER/components/algorithm/include/
+    USER/components/bsp/
+    USER/components/controller/
+    USER/components/device/bmi088/
+    USER/components/device/ist8310/
+    USER/components/device/DM/
+    USER/components/device/DT7/
+    USER/components/device/DJI_Motor/
+    USER/components/support/
 )
 
-set(LINKER_SCRIPT ${CMAKE_SOURCE_DIR}/STM32F407IGHX_FLASH.ld)
-
-add_link_options(-Wl,-gc-sections,--print-memory-usage,-Map=${PROJECT_BINARY_DIR}/${PROJECT_NAME}.map)
-add_link_options(-mcpu=cortex-m4 -mthumb -mthumb-interwork)
-add_link_options(-T ${LINKER_SCRIPT})
-
-add_executable(${PROJECT_NAME}.elf ${SOURCES} ${LINKER_SCRIPT} ${SYSVIEW_SOURCES})
-
-set(HEX_FILE ${PROJECT_BINARY_DIR}/${PROJECT_NAME}.hex)
-set(BIN_FILE ${PROJECT_BINARY_DIR}/${PROJECT_NAME}.bin)
-link_directories(${CMAKE_SOURCE_DIR}/USER/components/algorithm)
-target_link_libraries(${PROJECT_NAME}.elf PRIVATE
-        ${CMAKE_SOURCE_DIR}/USER/components/algorithm/AHRS.lib
-        ${CMAKE_SOURCE_DIR}/Middlewares/ST/ARM/DSP/Lib/libarm_cortexM4lf_math.a
+# Add project symbols (macros)
+target_compile_definitions(${CMAKE_PROJECT_NAME} PRIVATE
+    # Add user defined symbols
+    ARM_MATH_CM4
+    ARM_MATH_DSP   
+    ARM_MATH_MATRIX_CHECK      
+    ARM_MATH_ROUNDING  
 )
-add_custom_command(TARGET ${PROJECT_NAME}.elf POST_BUILD
-        COMMAND ${CMAKE_OBJCOPY} -Oihex $<TARGET_FILE:${PROJECT_NAME}.elf> ${HEX_FILE}
-        COMMAND ${CMAKE_OBJCOPY} -Obinary $<TARGET_FILE:${PROJECT_NAME}.elf> ${BIN_FILE}
-        COMMENT "Building ${HEX_FILE}
-Building ${BIN_FILE}")
+
+# Remove wrong libob.a library dependency when using cpp files
+list(REMOVE_ITEM CMAKE_C_IMPLICIT_LINK_LIBRARIES ob)
+
+# Add linked libraries
+target_link_libraries(${CMAKE_PROJECT_NAME}
+    stm32cubemx
+    # Add user defined libraries
+    arm_cortexM4lf_math
+    m
+)

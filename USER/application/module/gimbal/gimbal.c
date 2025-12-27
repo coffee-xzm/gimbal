@@ -40,7 +40,7 @@ void InitializeModeHandlers()
     RegisterModeHandler(INIT_MODE, HandleInitMode); // 初始化模式
     RegisterModeHandler(FORCELESS_MODE,HandleGravityCompensationMode);  // 无力模式
     RegisterModeHandler(REMOTE_MODE, HandleRemoteMode); // 遥控器模式
-    // RegisterModeHandler(AUTO_MODE,HandleAutoMode);  //自动模式
+    RegisterModeHandler(AUTO_MODE,HandleAutoMode);  //自动模式
 
 }
 

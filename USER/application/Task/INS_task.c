@@ -187,7 +187,7 @@ void imu_task(void const *pvParameters)
     }
 
     static uint8_t send_counter = 0;
-    #define SEND_INTERVAL 2
+    #define SEND_INTERVAL 1
 
     BMI088_read(bmi088_real_data.gyro, bmi088_real_data.accel, &bmi088_real_data.temp);
     //rotate and zero drift

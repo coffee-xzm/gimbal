@@ -73,44 +73,37 @@ void usb_send_gimbal_data(void)
     uint8_t head[2] = {'S', 'P'};
     memcpy(send_buffer + 0, head, 2);
 
-    // // 填充模式信息
-    // uint8_t mode = (gimbal_control.mode == AUTO_MODE) ? 1 : 0;
-    // memcpy(send_buffer + 2, &mode, 1);
+    // 填充模式信息
+    uint8_t mode = (gimbal_control.mode == AUTO_MODE) ? 1 : 0;
+    memcpy(send_buffer + 2, &mode, 1);
 
-    // // 填充四元数 - 使用固定值测试用
-    // // fp32 quat_data[4] = {1.0f, 0.0f, 0.0f, 0.0f};  // w, x, y, z
-    // const fp32* quat_data = get_INS_quat_point();
-    // memcpy(send_buffer + 3, quat_data, 16);  // 4个float = 16字节  //这个要改成
+    // 填充四元数 - 使用固定值测试用
+    // fp32 quat_data[4] = {1.0f, 0.0f, 0.0f, 0.0f};  // w, x, y, z
+    const fp32* quat_data = get_INS_quat_point();
+    memcpy(send_buffer + 3, quat_data, 16);  // 4个float = 16字节  //这个要改成
 
-    // fp32 yaw_data = gimbal_control.yaw.absolute_angle;
-    // fp32 yaw_vel_data = gimbal_control.yaw.motor_gyro;  //萌神，这个是电机速度，记得修改成陀螺仪速度  已改
-    // fp32 pitch_data = gimbal_control.pitch.absolute_angle;
-    // fp32 pitch_vel_data = gimbal_control.pitch.motor_gyro;
-    // memcpy(send_buffer + 19, &yaw_data, 4);
-    // memcpy(send_buffer + 23, &yaw_vel_data, 4);
-    // memcpy(send_buffer + 27, &pitch_data, 4);
-    // memcpy(send_buffer + 31, &pitch_vel_data, 4);
+    fp32 yaw_data = gimbal_control.yaw.absolute_angle;
+    fp32 yaw_vel_data = gimbal_control.yaw.motor_gyro;  //萌神，这个是电机速度，记得修改成陀螺仪速度  已改
+    fp32 pitch_data = gimbal_control.pitch.absolute_angle;
+    fp32 pitch_vel_data = gimbal_control.pitch.motor_gyro;
+    memcpy(send_buffer + 19, &yaw_data, 4);
+    memcpy(send_buffer + 23, &yaw_vel_data, 4);
+    memcpy(send_buffer + 27, &pitch_data, 4);
+    memcpy(send_buffer + 31, &pitch_vel_data, 4);
 
-    // // 填充射击信息
-    // fp32 bullet_speed_data = 15.0f;
-    // uint16_t bullet_count_data = 0;
-    // memcpy(send_buffer + 35, &bullet_speed_data, 4);
-    // memcpy(send_buffer + 39, &bullet_count_data, 2);
+    // 填充射击信息
+    fp32 bullet_speed_data = 15.0f;
+    uint16_t bullet_count_data = 0;
+    memcpy(send_buffer + 35, &bullet_speed_data, 4);
+    memcpy(send_buffer + 39, &bullet_count_data, 2);
 
-    union {
-        fp32 f;
-        uint32_t u;
-    } timestamp_conv;
 
-    timestamp_conv.f = vision_data.timestamp;  // 读取大端序浮点数
-    timestamp_conv.u = __REV(timestamp_conv.u);  // 反转字节序（大端→小端）
-    fp32 timestamp_data = timestamp_conv.f;  // 得到小端序浮点数
-
-    memcpy(send_buffer + 2, &timestamp_data, sizeof(fp32));
+    // memcpy(send_buffer + 2, &vision_data.timestamp, sizeof(fp32));
     // 计算CRC16校验
     uint32_t crc_length = sizeof(GimbalToVision) - 2; // 减去CRC16本身的2字节
     uint16_t crc_data = get_CRC16_check_sum(send_buffer, crc_length, 0xFFFF);
-    memcpy(send_buffer + 6, &crc_data, sizeof(uint16_t));
+    // memcpy(send_buffer + 6, &crc_data, sizeof(uint16_t));
+    memcpy(send_buffer + 41, &crc_data, sizeof(uint16_t));
 
     // 发送数据
     CDC_Transmit_FS(send_buffer, sizeof(GimbalToVision));
