@@ -25,7 +25,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "ins_task.h" //* whx的
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -157,6 +157,7 @@ void StartINSTask(void const * argument)
   /* Infinite loop */
   for(;;)
   {
+    INS_Task();
     osDelay(1);
   }
   /* USER CODE END StartINSTask */
