@@ -1,7 +1,7 @@
 #include "gimbal_task.h"
 #include "cmsis_os.h"
 #include "gimbal.h"
-#include "SEGGER_SYSVIEW.h"
+// #include "SEGGER_SYSVIEW.h"
 
 void gimbal_task(void const *argument)
 {
@@ -11,7 +11,7 @@ void gimbal_task(void const *argument)
     while (1)
     {
 
-        SEGGER_SYSVIEW_OnTaskStartExec(osThreadGetId());
+        // SEGGER_SYSVIEW_OnTaskStartExec(osThreadGetId());
 
         gimbal_mode_set(&gimbal_control);  // 设置云台控制模式
 
@@ -23,7 +23,7 @@ void gimbal_task(void const *argument)
 
         gimbal_position_control(&gimbal_control);  // 位置控制
 
-        SEGGER_SYSVIEW_OnTaskStopExec();
+        // SEGGER_SYSVIEW_OnTaskStopExec();
 
         osDelay(1);
         // taskYIELD();

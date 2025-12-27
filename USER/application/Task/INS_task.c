@@ -33,7 +33,7 @@
 #include "ist8310driver.h"
 #include "pid.h"
 #include "AHRS.h"
-#include "SEGGER_SYSVIEW.h"
+// #include "SEGGER_SYSVIEW.h"
 #include "usb_callback.h"
 
 
@@ -218,7 +218,7 @@ void imu_task(void const *pvParameters)
 
     while (1)
     {
-      SEGGER_SYSVIEW_OnTaskStartExec((void*)INS_task_local_handler);
+      // SEGGER_SYSVIEW_OnTaskStartExec((void*)INS_task_local_handler);
         //wait spi DMA tansmit done
         //µÈ´ýSPI DMA´«Êä
         while (ulTaskNotifyTake(pdTRUE, portMAX_DELAY) != pdPASS)
@@ -286,7 +286,7 @@ void imu_task(void const *pvParameters)
             usb_send_gimbal_data();
         }
 
-        SEGGER_SYSVIEW_OnTaskStopExec();
+        // SEGGER_SYSVIEW_OnTaskStopExec();
 
     }
 }

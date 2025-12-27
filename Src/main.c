@@ -38,7 +38,7 @@
 #include "bsp_delay.h"
 #include "bsp_usart.h"
 #include "DT7.h"
-#include "SEGGER_SYSVIEW.h"
+// #include "SEGGER_SYSVIEW.h"
 #include "bsp_dwt.h"
 // #include "SEGGER_RTT.h"
 /* USER CODE END Includes */
@@ -139,7 +139,7 @@ int main(void)
 
   // SEGGER_RTT_WriteString(0, "RTT Test: System starting...\r\n");
 
-  SEGGER_SYSVIEW_Conf();
+  // SEGGER_SYSVIEW_Conf();
 
   DWT_Init(168);
     while (BMI088_init(&hspi1, 1) != BMI088_NO_ERROR)

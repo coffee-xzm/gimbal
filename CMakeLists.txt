@@ -12,7 +12,7 @@ set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_C_EXTENSIONS ON)
 
-set(SYSVIEW_ROOT_DIR ${CMAKE_SOURCE_DIR}/Middlewares/Third_Party/SEGGER)
+# set(SYSVIEW_ROOT_DIR ${CMAKE_SOURCE_DIR}/Middlewares/Third_Party/SEGGER)
 
 # Define the build type
 if(NOT CMAKE_BUILD_TYPE)
@@ -20,7 +20,7 @@ if(NOT CMAKE_BUILD_TYPE)
 endif()
 
 # Set the project name
-set(CMAKE_PROJECT_NAME C_Board_Standard_Robot)
+set(CMAKE_PROJECT_NAME gimbal)
 
 # Enable compile command to ease indexing with e.g. clangd
 set(CMAKE_EXPORT_COMPILE_COMMANDS TRUE)
@@ -60,11 +60,11 @@ target_sources(${CMAKE_PROJECT_NAME} PRIVATE
 
     USER/application/Task/INS_task.c
 
-    ${SYSVIEW_ROOT_DIR}/SEGGER_SYSVIEW.c
-    ${SYSVIEW_ROOT_DIR}/SEGGER_SYSVIEW_Config_FreeRTOS.c
-    ${SYSVIEW_ROOT_DIR}/SEGGER_SYSVIEW_FreeRTOS.c
-    ${SYSVIEW_ROOT_DIR}/SEGGER_RTT_ASM_ARMv7M.S
-    ${SYSVIEW_ROOT_DIR}/SEGGER_RTT_printf.c
+    # ${SYSVIEW_ROOT_DIR}/SEGGER_SYSVIEW.c
+    # ${SYSVIEW_ROOT_DIR}/SEGGER_SYSVIEW_Config_FreeRTOS.c
+    # ${SYSVIEW_ROOT_DIR}/SEGGER_SYSVIEW_FreeRTOS.c
+    # ${SYSVIEW_ROOT_DIR}/SEGGER_RTT_ASM_ARMv7M.S
+    # ${SYSVIEW_ROOT_DIR}/SEGGER_RTT_printf.c
 )
 
 file(GLOB_RECURSE USER_SOURCES
@@ -82,7 +82,7 @@ target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
     whx_imu/Application/
     whx_imu/Bsp/
 
-    ${SYSVIEW_ROOT_DIR}/include
+    # ${SYSVIEW_ROOT_DIR}/include
 
     USER/application/Task/
     USER/application/module/gimbal/

@@ -6,7 +6,7 @@
 #include "usbd_cdc_if.h"
 #include "INS_task.h"
 
-#include "SEGGER_SYSVIEW.h"
+// #include "SEGGER_SYSVIEW.h"
 #include "core_cm4.h"
 
 // 外部声明全局变量
@@ -31,7 +31,7 @@ void data_init(void){
   */
   void usb_receive_callback(uint8_t* Buf, uint32_t *Len)
   {
-    traceISR_ENTER();
+    // traceISR_ENTER();
       // 检查数据长度
       if (*Len != sizeof(VisionToGimbal)) {
           return;
@@ -54,7 +54,7 @@ void data_init(void){
           }
       }
 
-    traceISR_EXIT();
+    // traceISR_EXIT();
   }
 
 void get_vision_data(VisionToGimbal* data_out)
