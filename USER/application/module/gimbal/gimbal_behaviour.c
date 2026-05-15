@@ -8,7 +8,7 @@ void gimbal_behaviour_mode_set(gimbal_control_t *set_mode)
         return;
     }
 
-    //³õÊ¼»¯Ä£Ê½ÅÐ¶ÏÊÇ·ñµ½´ïÖÐÖµÎ»ÖÃ
+    //ï¿½ï¿½Ê¼ï¿½ï¿½Ä£Ê½ï¿½Ð¶ï¿½ï¿½Ç·ñµ½´ï¿½ï¿½ï¿½ÖµÎ»ï¿½ï¿½
     if (gimbal_control.mode == INIT_MODE)
     {
         static uint16_t init_time = 0;
@@ -30,9 +30,9 @@ void gimbal_behaviour_mode_set(gimbal_control_t *set_mode)
             }
         }
 
-        //³¬¹ý³õÊ¼»¯×î´óÊ±¼ä£¬»òÕßÒÑ¾­ÎÈ¶¨µ½ÖÐÖµÒ»¶ÎÊ±¼ä£¬ÍË³ö³õÊ¼»¯×´Ì¬¿ª¹Ø´òÏÂµµ£¬»òÕßµôÏß
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ä£¬ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½È¶ï¿½ï¿½ï¿½ï¿½ï¿½ÖµÒ»ï¿½ï¿½Ê±ï¿½ä£¬ï¿½Ë³ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½×´Ì¬ï¿½ï¿½ï¿½Ø´ï¿½ï¿½Âµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ßµï¿½ï¿½ï¿½
         if (init_time < 6000 && init_stop_time < 100 &&
-            !switch_is_down(set_mode->gimbal_rc_ctrl->rc.s[0]) )
+            !switch_is_down(set_mode->gimbal_rc_ctrl->s[2]) )
         {
             return;
         }
@@ -43,12 +43,12 @@ void gimbal_behaviour_mode_set(gimbal_control_t *set_mode)
         }
     }
 
-    // Èç¹ûÊÕµ½µÄÊý¾ÝÊÇ¿ØÖÆÆ÷Ä£Ê½±êÖ¾Î»£¬ÔòÇÐ»»µ½¿ØÖÆÆ÷Ä£Ê½
-    if(switch_is_up(gimbal_control.gimbal_rc_ctrl->rc.s[0]))
+    // ï¿½ï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç¿ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½ï¿½ï¿½Ö¾Î»ï¿½ï¿½ï¿½ï¿½ï¿½Ð»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½
+    if(switch_is_up(gimbal_control.gimbal_rc_ctrl->s[2]))
     {
         ChangeMode(set_mode,AUTO_MODE);
     }
-    else if(switch_is_mid(gimbal_control.gimbal_rc_ctrl->rc.s[0]))
+    else if(switch_is_mid(gimbal_control.gimbal_rc_ctrl->s[2]))
     {
         ChangeMode(set_mode,REMOTE_MODE);
 
@@ -58,7 +58,7 @@ void gimbal_behaviour_mode_set(gimbal_control_t *set_mode)
     }
     // ChangeMode(set_mode,AUTO_MODE);
 
-    //ÅÐ¶Ï½øÈëinit×´Ì¬»ú
+    //ï¿½Ð¶Ï½ï¿½ï¿½ï¿½init×´Ì¬ï¿½ï¿½
     {
         static gimbal_mode_e last_gimbal_behaviour = FORCELESS_MODE;
         if (last_gimbal_behaviour == FORCELESS_MODE && gimbal_control.mode != FORCELESS_MODE)
@@ -82,7 +82,7 @@ void gimbal_behaviour_mode_set(gimbal_control_t *set_mode)
         }                                                \
     }
 
-// ×Ô¶¯Ä£Ê½
+// ï¿½Ô¶ï¿½Ä£Ê½
 void HandleAutoMode() {
 #define MIN_YAW_ANGLE -1.5f
 #define MAX_YAW_ANGLE 1.5f
@@ -97,7 +97,7 @@ void HandleAutoMode() {
 
     gimbal_control.control_strategy = NormalControlStrategy;
 
-    // ½Ç¶ÈÏÞÖÆ
+    // ï¿½Ç¶ï¿½ï¿½ï¿½ï¿½ï¿½
     fp32 limited_yaw = data.yaw;
     fp32 limited_pitch = data.pitch;
 
@@ -107,7 +107,7 @@ void HandleAutoMode() {
     if (limited_pitch > MAX_PITCH_ANGLE) limited_pitch = MAX_PITCH_ANGLE;
     else if (limited_pitch < MIN_PITCH_ANGLE) limited_pitch = MIN_PITCH_ANGLE;
 
-    // // µÍÍ¨ÂË²¨Æ÷ (alphaÔ½Ð¡Ô½Æ½»¬£¬µ«ÑÓ³ÙÔ½´ó)
+    // // ï¿½ï¿½Í¨ï¿½Ë²ï¿½ï¿½ï¿½ (alphaÔ½Ð¡Ô½Æ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó³ï¿½Ô½ï¿½ï¿½)
     // #define FILTER_ALPHA 0.3f
     // fp32 filtered_yaw = FILTER_ALPHA * limited_yaw + (1.0f - FILTER_ALPHA) * last_yaw;
     // fp32 filtered_pitch = FILTER_ALPHA * limited_pitch + (1.0f - FILTER_ALPHA) * last_pitch;
@@ -119,18 +119,18 @@ void HandleAutoMode() {
     // gimbal_control.yaw.absolute_angle_set = filtered_yaw ;
     // gimbal_control.pitch.absolute_angle_set = -filtered_pitch;
     gimbal_control.yaw.absolute_angle_set = limited_yaw;
-    gimbal_control.pitch.absolute_angle_set = limited_pitch;//todo ÕâÀïÉÏÏÂÎ»»ú¶¼È¥³ý¸ººÅ£¬Ã÷Ìì²âÊÔÏÂ
-    //TODO Ö®ºóÏë³¢ÊÔÏÂtracealyzer
+    gimbal_control.pitch.absolute_angle_set = limited_pitch;//todo ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½È¥ï¿½ï¿½ï¿½ï¿½ï¿½Å£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    //TODO Ö®ï¿½ï¿½ï¿½ë³¢ï¿½ï¿½ï¿½ï¿½tracealyzer
 }
 
-// ÎÞÁ¦Ä£Ê½
+// ï¿½ï¿½ï¿½ï¿½Ä£Ê½
 void HandleGravityCompensationMode() {
-    // ÎÞÁ¦Ä£Ê½Âß¼­
+    // ï¿½ï¿½ï¿½ï¿½Ä£Ê½ï¿½ß¼ï¿½
     gimbal_control.control_strategy = ForcelessControlStrategy;
 }
 
 
-// ²Ù×÷Ä£Ê½
+// ï¿½ï¿½ï¿½ï¿½Ä£Ê½
 void HandleRemoteMode()
 {
 #define MIN_YAW_ANGLE -1.5f
@@ -144,29 +144,29 @@ void HandleRemoteMode()
     const float pitch_rc_sen = 0.000024f;
     static int16_t yaw_channel = 0, pitch_channel = 0;
 
-    rc_deadband_limit(gimbal_control.gimbal_rc_ctrl->rc.ch[2], yaw_channel, 10);
-    rc_deadband_limit(gimbal_control.gimbal_rc_ctrl->rc.ch[3], pitch_channel, 10);
+    rc_deadband_limit(gimbal_control.gimbal_rc_ctrl->ch[2], yaw_channel, 10);
+    rc_deadband_limit(gimbal_control.gimbal_rc_ctrl->ch[3], pitch_channel, 10);
 
     add_yaw_angle = -(float)yaw_channel * yaw_rc_sen;
     add_pitch_angle = -(float)pitch_channel * pitch_rc_sen;
 
-    // ÉèÖÃ¿ØÖÆ²ßÂÔ
+    // ï¿½ï¿½ï¿½Ã¿ï¿½ï¿½Æ²ï¿½ï¿½ï¿½
     gimbal_control.control_strategy = NormalControlStrategy;
 
-    // YawÖá½Ç¶ÈÏÞÖÆ´¦Àí£¨°´ÕÕgimbal_absolute_angle_limitÂß¼­£©
+    // Yawï¿½ï¿½Ç¶ï¿½ï¿½ï¿½ï¿½Æ´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½gimbal_absolute_angle_limitï¿½ß¼ï¿½ï¿½ï¿½
     static fp32 yaw_bias_angle;
     static fp32 yaw_angle_set;
 
-    // µ±Ç°¿ØÖÆÎó²î½Ç¶È
+    // ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç¶ï¿½
     yaw_bias_angle = gimbal_control.yaw.absolute_angle_set - gimbal_control.yaw.absolute_angle;
 
-    // ÔÆÌ¨Ïà¶Ô½Ç¶È + Îó²î½Ç¶È + ÐÂÔö½Ç¶È Èç¹û´óÓÚ ×î´ó»úÐµ½Ç¶È
+    // ï¿½ï¿½Ì¨ï¿½ï¿½Ô½Ç¶ï¿½ + ï¿½ï¿½ï¿½Ç¶ï¿½ + ï¿½ï¿½ï¿½ï¿½ï¿½Ç¶ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ðµï¿½Ç¶ï¿½
     if (gimbal_control.yaw.relative_angle + yaw_bias_angle + add_yaw_angle > MAX_YAW_ANGLE)
     {
-        // Èç¹ûÊÇÍù×î´ó»úÐµ½Ç¶È¿ØÖÆ·½Ïò
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½Ç¶È¿ï¿½ï¿½Æ·ï¿½ï¿½ï¿½
         if (add_yaw_angle > 0.0f)
         {
-            // ¼ÆËã³öÒ»¸ö×î´óµÄÌí¼Ó½Ç¶È
+            // ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó½Ç¶ï¿½
             add_yaw_angle = MAX_YAW_ANGLE - gimbal_control.yaw.relative_angle - yaw_bias_angle;
         }
     }
@@ -180,20 +180,20 @@ void HandleRemoteMode()
     yaw_angle_set = gimbal_control.yaw.absolute_angle_set;
     gimbal_control.yaw.absolute_angle_set = yaw_angle_set + add_yaw_angle;
 
-    // PitchÖá½Ç¶ÈÏÞÖÆ´¦Àí£¨°´ÕÕgimbal_absolute_angle_limitÂß¼­£©
+    // Pitchï¿½ï¿½Ç¶ï¿½ï¿½ï¿½ï¿½Æ´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½gimbal_absolute_angle_limitï¿½ß¼ï¿½ï¿½ï¿½
     static fp32 pitch_bias_angle;
     static fp32 pitch_angle_set;
 
-    // µ±Ç°¿ØÖÆÎó²î½Ç¶È
+    // ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç¶ï¿½
     pitch_bias_angle = gimbal_control.pitch.absolute_angle_set - gimbal_control.pitch.absolute_angle;
 
-    // ÔÆÌ¨Ïà¶Ô½Ç¶È + Îó²î½Ç¶È + ÐÂÔö½Ç¶È Èç¹û´óÓÚ ×î´ó»úÐµ½Ç¶È
+    // ï¿½ï¿½Ì¨ï¿½ï¿½Ô½Ç¶ï¿½ + ï¿½ï¿½ï¿½Ç¶ï¿½ + ï¿½ï¿½ï¿½ï¿½ï¿½Ç¶ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ðµï¿½Ç¶ï¿½
     if (gimbal_control.pitch.relative_angle + pitch_bias_angle + add_pitch_angle > MAX_PITCH_ANGLE)
     {
-        // Èç¹ûÊÇÍù×î´ó»úÐµ½Ç¶È¿ØÖÆ·½Ïò
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½Ç¶È¿ï¿½ï¿½Æ·ï¿½ï¿½ï¿½
         if (add_pitch_angle > 0.0f)
         {
-            // ¼ÆËã³öÒ»¸ö×î´óµÄÌí¼Ó½Ç¶È
+            // ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó½Ç¶ï¿½
             add_pitch_angle = MAX_PITCH_ANGLE - gimbal_control.pitch.relative_angle - pitch_bias_angle;
         }
     }
@@ -212,8 +212,8 @@ void HandleRemoteMode()
 
 void HandleInitMode()
 {
-    //* ÉÏµçÊ±ÉèÖÃ»úÐµÁãµã
-    //! ²»Ó¦¸ÃÔÚÕâÀïÉèÖÃ£¬»á±»¸Ä±ä
+    //* ï¿½Ïµï¿½Ê±ï¿½ï¿½ï¿½Ã»ï¿½Ðµï¿½ï¿½ï¿½
+    //! ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½á±»ï¿½Ä±ï¿½
     // gimbal_control.initial_yaw_motor_angle = gimbal_control.yaw.motor_measure.motor_DM->position;
     // gimbal_control.initial_pitch_motor_angle = gimbal_control.pitch.motor_measure.motor_DJI->Now_Angle;
 

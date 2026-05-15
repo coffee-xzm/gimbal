@@ -28,12 +28,10 @@ typedef enum
     //GM6020电流控制前四位STDID
 //  CAN_GM6020_FRONT_STD_ID = 0x1FE,
 
-    //CAN1：机械臂joint1 joint2 达妙大8009*2（ID：1 2）机械臂joint3 达妙小4310*（ID：3）
+    //CAN1：Yaw轴 GM6020（ID：0x206） Pitch轴 GM6020（ID：0x205）
 
-    CAN1_4310_YAW_RXID = 0x12,
-
-
-    Joint4_6020_RXID = 0x205,
+    CAN1_6020_YAW_RXID = 0x206,
+    CAN1_6020_PITCH_RXID = 0x205,
     Joint5_2006_right_RXID = 0x207,
     Joint5_2006_left_RXID = 0x208,
 

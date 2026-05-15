@@ -1,8 +1,9 @@
 #include "DJI_Motor.h"
 #include "can.h"
 
-motor_measure_t dji_motor ;  //大疆电机
-#define ZERO_ANGLE 2107
+motor_measure_t dji_motor[2] = {0};  //大疆电机 [0]=Pitch(0x205), [1]=Yaw(0x206)
+#define PITCH_ZERO_ANGLE 2107
+#define YAW_ZERO_ANGLE 2107  //TODO: 根据实际硬件校准偏航轴零点
 /**
  * @brief 解析CAN数据并填充到motor_3508_measure_t结构体中。
  *
@@ -50,36 +51,38 @@ float simple_encoder_to_radians(int encoder_value, int zero_position) {
  * @param can_id
  * @param rx_data
  */
-void DJI_6020_data_Get(uint8_t* data)
+void DJI_6020_data_Get(motor_measure_t* motor, const uint8_t* data)
 {
-    dji_motor_measure_parse(&dji_motor,data);
+    if (motor == NULL) return;
+    dji_motor_measure_parse(motor, data);
     int16_t delta_encoder;  //编码器增量
     uint16_t tmp_encoder;   //编码器值
     int16_t tmp_omega, tmp_torque, tmp_temperature; //角速度、扭矩、温度
-    tmp_omega = dji_motor.raw_speed_rpm;
-    tmp_encoder = dji_motor.raw_ecd;
-    tmp_torque = dji_motor.raw_given_current;
-    tmp_temperature = dji_motor.raw_temperate;
-    delta_encoder = tmp_encoder - dji_motor.raw_last_ecd; //计算编码器增量
+    tmp_omega = motor->raw_speed_rpm;
+    tmp_encoder = motor->raw_ecd;
+    tmp_torque = motor->raw_given_current;
+    tmp_temperature = motor->raw_temperate;
+    delta_encoder = tmp_encoder - motor->raw_last_ecd; //计算编码器增量
     if(delta_encoder < -Encoder_Num_Per_Round / 2)
     {
         //正方向转过了一圈
-        dji_motor.Total_Round++;
+        motor->Total_Round++;
     }
     else if(delta_encoder > Encoder_Num_Per_Round / 2)
     {
         //反方向转过了一圈
-        dji_motor.Total_Round--;
+        motor->Total_Round--;
     }
-    dji_motor.Total_Encoder = dji_motor.Total_Round * Encoder_Num_Per_Round + tmp_encoder;
+    motor->Total_Encoder = motor->Total_Round * Encoder_Num_Per_Round + tmp_encoder;
     //计算电机本身信息
-    dji_motor.Now_Angle = simple_encoder_to_radians(dji_motor.raw_ecd,ZERO_ANGLE) ;
-    dji_motor.Now_Omega = (float) tmp_omega * RPM_TO_RADPS ;
-    dji_motor.Now_Current = tmp_torque / 1000.0f;
-    dji_motor.Now_Temperature = (float)tmp_temperature ;
+    float zero_angle = (motor == &dji_motor[0]) ? PITCH_ZERO_ANGLE : YAW_ZERO_ANGLE;
+    motor->Now_Angle = simple_encoder_to_radians(motor->raw_ecd, zero_angle);
+    motor->Now_Omega = (float) tmp_omega * RPM_TO_RADPS ;
+    motor->Now_Current = tmp_torque / 1000.0f;
+    motor->Now_Temperature = (float)tmp_temperature ;
 
     //存储预备信息
-    dji_motor.Pre_Encoder = tmp_encoder;
+    motor->Pre_Encoder = tmp_encoder;
 }
 
 /**
@@ -90,8 +93,11 @@ void DJI_6020_data_Get(uint8_t* data)
 void dji_motor_can_callback(uint32_t can_id, const uint8_t* rx_data)
 {
     switch (can_id){
-        case DJI_MOTOR_6020_RXID:  //0x206
-            DJI_6020_data_Get(rx_data);
+        case DJI_MOTOR_6020_PITCH_RXID:  //0x205 - Pitch
+            DJI_6020_data_Get(&dji_motor[0], rx_data);
+            break;
+        case DJI_MOTOR_6020_YAW_RXID:    //0x206 - Yaw
+            DJI_6020_data_Get(&dji_motor[1], rx_data);
             break;
         default:
             break;
@@ -135,7 +141,7 @@ void CAN_cmd_DJI_control(int16_t motor1, int16_t motor2, int16_t motor3, int16_t
  * @param i 数组索引，范围为0到2。
  * @return 指向指定索引的motor_measure_t结构体的指针。
  */
-const motor_measure_t* get_motor_measure_point()
+const motor_measure_t* get_motor_measure_point(uint8_t i)
 {
-    return &dji_motor;
+    return &dji_motor[i];
 }

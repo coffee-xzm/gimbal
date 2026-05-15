@@ -45,16 +45,18 @@
 
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN Variables */
-osThreadId imuTaskHandle;
+// osThreadId imuTaskHandle;
 osThreadId gimbalTaskHandle;
+osThreadId usbTaskHandle;
 /* USER CODE END Variables */
 osThreadId INSTaskHandle;
 osThreadId ledTaskHandle;
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
-extern void imu_task(void const * argument);
+// extern void imu_task(void const * argument);
 extern void gimbal_task(void const * argument);
+extern void usbSendTask(void const * argument);
 /* USER CODE END FunctionPrototypes */
 
 void StartINSTask(void const * argument);
@@ -131,12 +133,14 @@ void MX_FREERTOS_Init(void) {
   ledTaskHandle = osThreadCreate(osThread(ledTask), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
-  osThreadDef(imuTask, imu_task, osPriorityRealtime, 0, 1024);
-  imuTaskHandle = osThreadCreate(osThread(imuTask), NULL);
+  // osThreadDef(imuTask, imu_task, osPriorityRealtime, 0, 1024);
+  // imuTaskHandle = osThreadCreate(osThread(imuTask), NULL);
 
   osThreadDef(gimbalTask, gimbal_task, osPriorityAboveNormal, 0, 512);
   gimbalTaskHandle = osThreadCreate(osThread(gimbalTask), NULL);
 
+  osThreadDef(usbTask, usbSendTask, osPriorityNormal, 0, 512);
+  usbTaskHandle = osThreadCreate(osThread(usbTask), NULL);
 
   /* USER CODE END RTOS_THREADS */
 

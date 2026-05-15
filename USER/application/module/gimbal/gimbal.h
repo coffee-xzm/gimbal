@@ -3,16 +3,15 @@
 
 #include <stdbool.h>
 #include "main.h"
-#include "DM_4310.h"
 #include "DJI_Motor.h"
 #include "pid.h"
-#include "DT7.h"
+#include "i6x.h"
 #include "cmsis_os.h"
 
 #define PI	3.14159265358979f
 
-// ==================== PitchÖá-GM6020 PID¿ØÖÆ²ÎÊı³õÊ¼»¯ ====================
-// ´ó½®6020µç»úÎ»ÖÃ»·PID²ÎÊı
+// ==================== Pitchï¿½ï¿½-GM6020 PIDï¿½ï¿½ï¿½Æ²ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ ====================
+// ï¿½ï¿½6020ï¿½ï¿½ï¿½Î»ï¿½Ã»ï¿½PIDï¿½ï¿½ï¿½ï¿½
 #define M6020_MOTOR_SPEED_PID_KP 1300.0f//10
 #define M6020_MOTOR_SPEED_PID_KI 15.0f
 #define M6020_MOTOR_SPEED_PID_KD 0
@@ -20,7 +19,7 @@
 #define M6020_MOTOR_SPEED_PID_MAX_IOUT 10000.0f
 
 //pitch encode angle close-loop PID params, max out and max iout
-//pitch ½Ç¶È»· ½Ç¶ÈÓÉ±àÂëÆ÷ PID²ÎÊıÒÔ¼° PID×î´óÊä³ö£¬»ı·ÖÊä³ö
+//pitch ï¿½Ç¶È»ï¿½ ï¿½Ç¶ï¿½ï¿½É±ï¿½ï¿½ï¿½ï¿½ï¿½ PIDï¿½ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ PIDï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 #define PITCH_ENCODE_RELATIVE_PID_KP 50.0f
 #define PITCH_ENCODE_RELATIVE_PID_KI 5.00f
 #define PITCH_ENCODE_RELATIVE_PID_KD 0.0f
@@ -33,51 +32,51 @@
 #define PITCH_GYRO_ABSOLUTE_PID_MAX_OUT   10.0f
 #define PITCH_GYRO_ABSOLUTE_PID_MAX_IOUT  0.0f
 
-// ==================== YAWÖá-4310µç»ú PID¿ØÖÆ²ÎÊı³õÊ¼»¯ ====================
-#define DM4310_MOTOR_SPEED_PID_KP      1.0f
-#define DM4310_MOTOR_SPEED_PID_KI      0.0f
-#define DM4310_MOTOR_SPEED_PID_KD      0.0f
-#define DM4310_MOTOR_SPEED_PID_MAX_OUT  30000.0f
-#define DM4310_MOTOR_SPEED_PID_MAX_IOUT 10000.0f
+// ==================== YAWï¿½ï¿½-GM6020 PIDï¿½ï¿½ï¿½Æ²ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ ====================
+//ï¿½ï¿½ï¿½radar_gimbal-mainï¿½ï¿½ï¿½ï¿½
+//yaw speed close-loop PID params, max out and max iout
+#define YAW_SPEED_PID_KP        3000.0f
+#define YAW_SPEED_PID_KI        20.0f
+#define YAW_SPEED_PID_KD        0.0f
+#define YAW_SPEED_PID_MAX_OUT   30000.0f
+#define YAW_SPEED_PID_MAX_IOUT  5000.0f
 //yaw gyro angle close-loop PID params, max out and max iout
-//yaw ½Ç¶È»· ½Ç¶ÈÓÉÍÓÂİÒÇ½âËã PID²ÎÊıÒÔ¼° PID×î´óÊä³ö£¬»ı·ÖÊä³ö
-#define YAW_GYRO_ABSOLUTE_PID_KP        5.0f
-#define YAW_GYRO_ABSOLUTE_PID_KI        1.0f
-#define YAW_GYRO_ABSOLUTE_PID_KD        0.3f
-#define YAW_GYRO_ABSOLUTE_PID_MAX_OUT   10.0f
-#define YAW_GYRO_ABSOLUTE_PID_MAX_IOUT  0.0f
+#define YAW_GYRO_ABSOLUTE_PID_KP        50.0f
+#define YAW_GYRO_ABSOLUTE_PID_KI        0.8f
+#define YAW_GYRO_ABSOLUTE_PID_KD        0.0f
+#define YAW_GYRO_ABSOLUTE_PID_MAX_OUT   300.0f
+#define YAW_GYRO_ABSOLUTE_PID_MAX_IOUT  300.0f
 //yaw encode angle close-loop PID params, max out and max iout
-//yaw ½Ç¶È»· ½Ç¶ÈÓÉ±àÂëÆ÷ PID²ÎÊıÒÔ¼° PID×î´óÊä³ö£¬»ı·ÖÊä³ö
-#define YAW_ENCODE_RELATIVE_PID_KP        1.0f
-#define YAW_ENCODE_RELATIVE_PID_KI        0.0f
-#define YAW_ENCODE_RELATIVE_PID_KD        0.0f
-#define YAW_ENCODE_RELATIVE_PID_MAX_OUT   10.0f
-#define YAW_ENCODE_RELATIVE_PID_MAX_IOUT  0.0f
+#define YAW_ENCODE_RELATIVE_PID_KP        50.0f
+#define YAW_ENCODE_RELATIVE_PID_KI        1.0f
+#define YAW_ENCODE_RELATIVE_PID_KD        0.2f
+#define YAW_ENCODE_RELATIVE_PID_MAX_OUT   300.0f
+#define YAW_ENCODE_RELATIVE_PID_MAX_IOUT  200.0f
 
 
 typedef enum {
-    INIT_MODE = 0,      // ³õÊ¼»¯Ä£Ê½
+    INIT_MODE = 0,      // ï¿½ï¿½Ê¼ï¿½ï¿½Ä£Ê½
     FORCELESS_MODE,
-    REMOTE_MODE,        // Ò£¿ØÆ÷Ä£Ê½
-    AUTO_MODE,          // ×Ô¶¯Ä£Ê½
-    NUM_MODES           // ±ß½çÖµ
+    REMOTE_MODE,        // Ò£ï¿½ï¿½ï¿½ï¿½Ä£Ê½
+    AUTO_MODE,          // ï¿½Ô¶ï¿½Ä£Ê½
+    NUM_MODES           // ï¿½ß½ï¿½Öµ
 } gimbal_mode_e;
 
 
-// ==================== Ç°ÏòÉùÃ÷ ====================
+// ==================== Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ====================
 typedef struct gimbal_control_s gimbal_control_t;
 
-// ==================== º¯ÊıÖ¸ÕëÀàĞÍ¶¨Òå ====================
-// Ä£Ê½´¦Àíº¯ÊıÖ¸Õë
+// ==================== ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½Í¶ï¿½ï¿½ï¿½ ====================
+// Ä£Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½
 typedef void (*ModeHandler)(void);
 
-// ¿ØÖÆ²ßÂÔº¯ÊıÖ¸Õë
+// ï¿½ï¿½ï¿½Æ²ï¿½ï¿½Ôºï¿½ï¿½ï¿½Ö¸ï¿½ï¿½
 typedef void (*ControlStrategyFn)(gimbal_control_t*);
 
-// ==================== Ä£Ê½´¦Àíº¯Êı×¢²á±í ====================
+// ==================== Ä£Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½ï¿½ ====================
 typedef struct {
     gimbal_mode_e mode;        // Ä£Ê½
-    ModeHandler handler;       // ¸ÃÄ£Ê½¶ÔÓ¦µÄ´¦Àíº¯Êı
+    ModeHandler handler;       // ï¿½ï¿½Ä£Ê½ï¿½ï¿½Ó¦ï¿½Ä´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 } ModeHandlerEntry;
 
 typedef struct
@@ -101,14 +100,13 @@ typedef struct
 } gimbal_PID_t;
 
 /**
- * @brief ¶¨ÒåÔÆÌ¨µç»ú×´Ì¬Êı¾İ½á¹¹Ìå
+ * @brief ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¨ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½ï¿½İ½á¹¹ï¿½ï¿½
  */
 typedef struct
 {
     union
     {
-        const motor_measure_t *motor_DJI;                // Ö¸Ïò´ó½®µç»ú²âÁ¿Êı¾İµÄ³£Á¿Ö¸Õë
-        const dm_motor_measure_t *motor_DM;              // Ö¸Ïò´ïÃîµç»ú²âÁ¿Êı¾İµÄ³£Á¿Ö¸Õë
+        const motor_measure_t *motor_DJI;                // æŒ‡å‘å¤§ç–†ç”µæœºæµ‹é‡æ•°æ®çš„å¸¸é‡æŒ‡é’ˆ
     } motor_measure;
     fp32 relative_angle;     //rad
     fp32 relative_angle_set; //rad
@@ -117,39 +115,39 @@ typedef struct
     fp32 motor_gyro;         //rad/s
     fp32 motor_gyro_set;
     fp32 motor_speed;
-    float given_current;    // µçÁ÷±àÂëÖµ
-    float torque;           // Á¦¾ØÖµ
-    uint8_t motor_id;       // µç»úID
+    float given_current;    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ
+    float torque;           // ï¿½ï¿½ï¿½ï¿½Öµ
+    uint8_t motor_id;       // ï¿½ï¿½ï¿½ID
 
-    pid_type_def speed_pid;                  // ËÙ¶ÈPID¿ØÖÆÆ÷
+    pid_type_def speed_pid;                  // ï¿½Ù¶ï¿½PIDï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     gimbal_PID_t gimbal_motor_absolute_angle_pid;
     gimbal_PID_t gimbal_motor_relative_angle_pid;
 } gimbal_motor_status_t;
 
 /**
- * @brief ¶¨ÒåÔÆÌ¨¿ØÖÆÊı¾İ½á¹¹Ìå
+ * @brief ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İ½á¹¹ï¿½ï¿½
  */
 struct gimbal_control_s
 {
-    // ==================== ÊäÈëÊı¾İ ====================
-    const RC_ctrl_t *gimbal_rc_ctrl;        // Ò£¿ØÆ÷Êı¾İÖ¸Õë
-    const fp32 *gimbal_INT_angle_point;     // ÍÓÂİÒÇ½Ç¶ÈÊı¾İÖ¸Õë
-    const fp32 *gimbal_INT_gyro_point;      // ÍÓÂİÒÇ½ÇËÙ¶ÈÊı¾İÖ¸Õë
+    // ==================== ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ====================
+    const i6x_ctrl_t *gimbal_rc_ctrl;        // Ò£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½
+    const fp32 *gimbal_INT_angle_point;     // ï¿½ï¿½ï¿½ï¿½ï¿½Ç½Ç¶ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½
+    const fp32 *gimbal_INT_gyro_point;      // ï¿½ï¿½ï¿½ï¿½ï¿½Ç½ï¿½ï¿½Ù¶ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½
 
-    // ==================== Ö´ĞĞ»ú¹¹ ====================
-    gimbal_motor_status_t yaw;        // YawÖáµç»ú×´Ì¬
-    gimbal_motor_status_t pitch;        // pitchÖáµç»ú×´Ì¬
+    // ==================== Ö´ï¿½Ğ»ï¿½ï¿½ï¿½ ====================
+    gimbal_motor_status_t yaw;        // Yawï¿½ï¿½ï¿½ï¿½×´Ì¬
+    gimbal_motor_status_t pitch;        // pitchï¿½ï¿½ï¿½ï¿½×´Ì¬
     fp32 initial_yaw_motor_angle;
     fp32 initial_pitch_motor_angle;
 
-    // ==================== Ä£Ê½¹ÜÀí ====================
-    gimbal_mode_e mode;                     // µ±Ç°¿ØÖÆÄ£Ê½
-    gimbal_mode_e last_mode;                // ÉÏÒ»´Î¿ØÖÆÄ£Ê½
-    ModeHandlerEntry modeHandlers[NUM_MODES]; // Ä£Ê½´¦Àíº¯Êı±í
-    uint8_t registeredModes;                // ÒÑ×¢²áÄ£Ê½ÊıÁ¿
+    // ==================== Ä£Ê½ï¿½ï¿½ï¿½ï¿½ ====================
+    gimbal_mode_e mode;                     // ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½Ä£Ê½
+    gimbal_mode_e last_mode;                // ï¿½ï¿½Ò»ï¿½Î¿ï¿½ï¿½ï¿½Ä£Ê½
+    ModeHandlerEntry modeHandlers[NUM_MODES]; // Ä£Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    uint8_t registeredModes;                // ï¿½ï¿½×¢ï¿½ï¿½Ä£Ê½ï¿½ï¿½ï¿½ï¿½
 
-    // ==================== ¿ØÖÆ²ßÂÔ ====================
-    ControlStrategyFn control_strategy;     // µ±Ç°¿ØÖÆ²ßÂÔº¯ÊıÖ¸Õë
+    // ==================== ï¿½ï¿½ï¿½Æ²ï¿½ï¿½ï¿½ ====================
+    ControlStrategyFn control_strategy;     // ï¿½ï¿½Ç°ï¿½ï¿½ï¿½Æ²ï¿½ï¿½Ôºï¿½ï¿½ï¿½Ö¸ï¿½ï¿½
 
 };
 
@@ -167,8 +165,8 @@ float gimbal_angle_limit(float angle,float max,float min);
 void gimbal_mode_set(gimbal_control_t* set_mode);
 extern gimbal_control_t gimbal_control;
 
-// ÔÚgimbal.hÖĞÌí¼Ó
-// ¿ØÖÆ²ßÂÔº¯ÊıÉùÃ÷
+// ï¿½ï¿½gimbal.hï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+// ï¿½ï¿½ï¿½Æ²ï¿½ï¿½Ôºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 void NormalControlStrategy(gimbal_control_t* control);
 void ForcelessControlStrategy(gimbal_control_t* control);
 void InitControlStrategy(gimbal_control_t* control);

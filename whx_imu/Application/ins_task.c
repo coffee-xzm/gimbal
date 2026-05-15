@@ -19,6 +19,10 @@ INS_t INS;
 IMU_Param_t IMU_Param;
 PID_t TempCtrl = {0};
 
+// wrapper arrays for gimbal access (yaw=0, pitch=1, roll=2)
+static float whx_angle[3] = {0};
+static float whx_gyro[3] = {0};
+
 const float xb[3] = {1, 0, 0};
 const float yb[3] = {0, 1, 0};
 const float zb[3] = {0, 0, 1};
@@ -98,6 +102,14 @@ void INS_Task(void)
         INS.Pitch = QEKF_INS.Pitch;
         INS.Roll = QEKF_INS.Roll;
         INS.YawTotalAngle = QEKF_INS.YawTotalAngle;
+
+        // copy to wrapper arrays for gimbal access
+        whx_angle[0] = INS.Yaw;
+        whx_angle[1] = INS.Pitch;
+        whx_angle[2] = INS.Roll;
+        whx_gyro[0] = INS.Gyro[0];
+        whx_gyro[1] = INS.Gyro[1];
+        whx_gyro[2] = INS.Gyro[2];
     }
 
     // temperature control
@@ -237,6 +249,22 @@ void IMU_Temperature_Ctrl(void)
     PID_Calculate(&TempCtrl, BMI088.Temperature, RefTemp);
 
     TIM_Set_PWM(&htim10, TIM_CHANNEL_1, float_constrain(float_rounding(TempCtrl.Output), 0, UINT32_MAX));
+}
+
+// ==================== whx_imu accessor functions (for gimbal) ====================
+const float *get_whx_angle_point(void)
+{
+    return whx_angle;
+}
+
+const float *get_whx_gyro_point(void)
+{
+    return whx_gyro;
+}
+
+const float *get_whx_quat_point(void)
+{
+    return INS.q;
 }
 
 //------------------------------------functions below are not used in this demo-------------------------------------------------

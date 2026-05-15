@@ -67,9 +67,21 @@ typedef struct
 
 extern INS_t INS;
 
+#define WHX_INS_YAW_ADDRESS_OFFSET    0
+#define WHX_INS_PITCH_ADDRESS_OFFSET  1
+#define WHX_INS_ROLL_ADDRESS_OFFSET   2
+
+#define WHX_INS_GYRO_X_ADDRESS_OFFSET 0
+#define WHX_INS_GYRO_Y_ADDRESS_OFFSET 1
+#define WHX_INS_GYRO_Z_ADDRESS_OFFSET 2
+
 void INS_Init(void);
 void INS_Task(void);
 void IMU_Temperature_Ctrl(void);
+
+const float *get_whx_angle_point(void);
+const float *get_whx_gyro_point(void);
+const float *get_whx_quat_point(void);
 
 void QuaternionUpdate(float *q, float gx, float gy, float gz, float dt);
 void QuaternionToEularAngle(float *q, float *Yaw, float *Pitch, float *Roll);

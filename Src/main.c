@@ -41,6 +41,7 @@
 // #include "SEGGER_SYSVIEW.h"
 #include "bsp_dwt.h"
 // #include "SEGGER_RTT.h"
+#include "BMI088driver.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/

@@ -3,72 +3,71 @@
 #include "struct_typedef.h"
 #include "gimbal_behaviour.h"
 #include "can.h"
-#include "INS_task.h"
+#include "ins_task.h"
 #include "user_lib.h"
-#include "imu.h"
 #include "arm_math.h"
 
 /**
- * @brief ³õÊ¼»¯ÔÆÌ¨¿ØÖÆÊý¾Ý½á¹¹Ìå
+ * @brief ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½Ì¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý½á¹¹ï¿½ï¿½
  */
 gimbal_control_t gimbal_control={
-        .mode = INIT_MODE,   // µ±Ç°ÔÆÌ¨¿ØÖÆÄ£Ê½Îª³õÊ¼Ä£Ê½£¬³õÊ¼»¯Îª³õÊ¼Ä£Ê½
-        .last_mode = INIT_MODE,  // ÉÏÒ»´Î¿ØÖÆÄ£Ê½Ä¬ÈÏÎª³õÊ¼Ä£Ê½£¬³õÊ¼»¯Îª³õÊ¼Ä£Ê½
-        .registeredModes = 0,        // ÒÑ×¢²áµÄÄ£Ê½ÊýÁ¿£¬³õÊ¼»¯Îª0
-        .modeHandlers = {0},  // Ä£Ê½´¦Àíº¯Êý×¢²á±í£¬³õÊ¼»¯Îª0
+        .mode = INIT_MODE,   // ï¿½ï¿½Ç°ï¿½ï¿½Ì¨ï¿½ï¿½ï¿½ï¿½Ä£Ê½Îªï¿½ï¿½Ê¼Ä£Ê½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½Îªï¿½ï¿½Ê¼Ä£Ê½
+        .last_mode = INIT_MODE,  // ï¿½ï¿½Ò»ï¿½Î¿ï¿½ï¿½ï¿½Ä£Ê½Ä¬ï¿½ï¿½Îªï¿½ï¿½Ê¼Ä£Ê½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½Îªï¿½ï¿½Ê¼Ä£Ê½
+        .registeredModes = 0,        // ï¿½ï¿½×¢ï¿½ï¿½ï¿½Ä£Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½Îª0
+        .modeHandlers = {0},  // Ä£Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½Îª0
 };
 
 /**
- * @brief Ä£Ê½´¦Àíº¯Êý×¢²á
+ * @brief Ä£Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½
  * @param mode
  * @param handler
  */
 void RegisterModeHandler(gimbal_mode_e mode, ModeHandler handler) {
     if (mode < NUM_MODES) {
-        gimbal_control.modeHandlers[gimbal_control.registeredModes].mode = mode;    // ×¢²áÄ£Ê½
-        gimbal_control.modeHandlers[gimbal_control.registeredModes].handler = handler;  // ×¢²áÄ£Ê½¶ÔÓ¦µÄ´¦Àíº¯Êý
-        gimbal_control.registeredModes++; // ÒÑ×¢²áµÄÄ£Ê½ÊýÁ¿¼Ó1
+        gimbal_control.modeHandlers[gimbal_control.registeredModes].mode = mode;    // ×¢ï¿½ï¿½Ä£Ê½
+        gimbal_control.modeHandlers[gimbal_control.registeredModes].handler = handler;  // ×¢ï¿½ï¿½Ä£Ê½ï¿½ï¿½Ó¦ï¿½Ä´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        gimbal_control.registeredModes++; // ï¿½ï¿½×¢ï¿½ï¿½ï¿½Ä£Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½1
     } else {
     }
 }
 
 /**
- * @brief ¿ØÖÆÄ£Ê½º¯Êý×¢²á
+ * @brief ï¿½ï¿½ï¿½ï¿½Ä£Ê½ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½
  */
 void InitializeModeHandlers()
 {
-    RegisterModeHandler(INIT_MODE, HandleInitMode); // ³õÊ¼»¯Ä£Ê½
-    RegisterModeHandler(FORCELESS_MODE,HandleGravityCompensationMode);  // ÎÞÁ¦Ä£Ê½
-    RegisterModeHandler(REMOTE_MODE, HandleRemoteMode); // Ò£¿ØÆ÷Ä£Ê½
-    RegisterModeHandler(AUTO_MODE,HandleAutoMode);  //×Ô¶¯Ä£Ê½
+    RegisterModeHandler(INIT_MODE, HandleInitMode); // ï¿½ï¿½Ê¼ï¿½ï¿½Ä£Ê½
+    RegisterModeHandler(FORCELESS_MODE,HandleGravityCompensationMode);  // ï¿½ï¿½ï¿½ï¿½Ä£Ê½
+    RegisterModeHandler(REMOTE_MODE, HandleRemoteMode); // Ò£ï¿½ï¿½ï¿½ï¿½Ä£Ê½
+    RegisterModeHandler(AUTO_MODE,HandleAutoMode);  //ï¿½Ô¶ï¿½Ä£Ê½
 
 }
 
 /**
- * @brief ÔÆÌ¨¿ØÖÆÄ£Ê½´¦Àíº¯Êý
+ * @brief ï¿½ï¿½Ì¨ï¿½ï¿½ï¿½ï¿½Ä£Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  */
 void HandleCurrentMode(gimbal_control_t * move_init) {
     for (uint8_t i = 0; i < move_init->registeredModes; i++) {
         if (move_init->modeHandlers[i].mode == move_init->mode) {
-            move_init->modeHandlers[i].handler();  // Èç¹ûÄ£Ê½Æ¥Åä£¬µ÷ÓÃ¶ÔÓ¦µÄ´¦Àíº¯Êý
+            move_init->modeHandlers[i].handler();  // ï¿½ï¿½ï¿½Ä£Ê½Æ¥ï¿½ä£¬ï¿½ï¿½ï¿½Ã¶ï¿½Ó¦ï¿½Ä´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             return;
         }
     }
 }
 
 /**
- * @brief ÇÐ»»Ä£Ê½º¯Êý
- * @param engineer_mode »úÐµ±Û¿ØÖÆÊý¾Ý½á¹¹Ìå
- * @param newMode Ä¿±êÄ£Ê½
+ * @brief ï¿½Ð»ï¿½Ä£Ê½ï¿½ï¿½ï¿½ï¿½
+ * @param engineer_mode ï¿½ï¿½Ðµï¿½Û¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý½á¹¹ï¿½ï¿½
+ * @param newMode Ä¿ï¿½ï¿½Ä£Ê½
  */
 void ChangeMode(gimbal_control_t *move, gimbal_mode_e newMode) {
     if (move == NULL) return;
-    // ÇÐ»»µ½ÐÂÄ£Ê½
+    // ï¿½Ð»ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½
     move->mode = newMode;
 }
 
 /**
- * @brief »úÐµ±Û¿ØÖÆ³õÊ¼»¯
+ * @brief ï¿½ï¿½Ðµï¿½Û¿ï¿½ï¿½Æ³ï¿½Ê¼ï¿½ï¿½
  */
 void gimbal_init(gimbal_control_t * init){
 
@@ -76,37 +75,35 @@ void gimbal_init(gimbal_control_t * init){
         return;
     }
 
-    // ³õÊ¼»¯Ê±Ê¹ÄÜ´óß÷µç»ú
-    DM_MotorEnable(&hcan1,0x02);
-    // ³õÊ¼»¯Ä£Ê½´¦Àíº¯Êý
+    // ï¿½ï¿½Ê¼ï¿½ï¿½Ä£Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     InitializeModeHandlers();
 
-    // ==================== PitchÖá-GM6020 PID¿ØÖÆ²ÎÊý³õÊ¼»¯ ====================
+    // ==================== Pitchï¿½ï¿½-GM6020 PIDï¿½ï¿½ï¿½Æ²ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ ====================
     const static fp32 pitch_speed_pid[3] = {M6020_MOTOR_SPEED_PID_KP, M6020_MOTOR_SPEED_PID_KI, M6020_MOTOR_SPEED_PID_KD};
     PID_init(&init->pitch.speed_pid, PID_POSITION,pitch_speed_pid,M6020_MOTOR_SPEED_PID_MAX_OUT, M6020_MOTOR_SPEED_PID_MAX_IOUT);//6020
     gimbal_PID_init(&init->pitch.gimbal_motor_absolute_angle_pid, PITCH_GYRO_ABSOLUTE_PID_MAX_OUT, PITCH_GYRO_ABSOLUTE_PID_MAX_IOUT, PITCH_GYRO_ABSOLUTE_PID_KP, PITCH_GYRO_ABSOLUTE_PID_KI, PITCH_GYRO_ABSOLUTE_PID_KD);
     gimbal_PID_init(&init->pitch.gimbal_motor_relative_angle_pid, PITCH_ENCODE_RELATIVE_PID_MAX_OUT, PITCH_ENCODE_RELATIVE_PID_MAX_IOUT, PITCH_ENCODE_RELATIVE_PID_KP, PITCH_ENCODE_RELATIVE_PID_KI, PITCH_ENCODE_RELATIVE_PID_KD);
 
-    // ==================== YawÖá-4310µç»ú PID¿ØÖÆ²ÎÊý³õÊ¼»¯ ====================
-    const static fp32 yaw_speed_pid[3] = {DM4310_MOTOR_SPEED_PID_KP, DM4310_MOTOR_SPEED_PID_KI, DM4310_MOTOR_SPEED_PID_KD};
-    PID_init(&init->yaw.speed_pid, PID_POSITION,yaw_speed_pid,DM4310_MOTOR_SPEED_PID_MAX_OUT, DM4310_MOTOR_SPEED_PID_MAX_IOUT);//4310
+    // ==================== Yawï¿½ï¿½-GM6020 PIDï¿½ï¿½ï¿½Æ²ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ ====================
+    const static fp32 yaw_speed_pid[3] = {YAW_SPEED_PID_KP, YAW_SPEED_PID_KI, YAW_SPEED_PID_KD};
+    PID_init(&init->yaw.speed_pid, PID_POSITION, yaw_speed_pid, YAW_SPEED_PID_MAX_OUT, YAW_SPEED_PID_MAX_IOUT);
     gimbal_PID_init(&init->yaw.gimbal_motor_absolute_angle_pid, YAW_GYRO_ABSOLUTE_PID_MAX_OUT, YAW_GYRO_ABSOLUTE_PID_MAX_IOUT, YAW_GYRO_ABSOLUTE_PID_KP, YAW_GYRO_ABSOLUTE_PID_KI, YAW_GYRO_ABSOLUTE_PID_KD);
     gimbal_PID_init(&init->yaw.gimbal_motor_relative_angle_pid, YAW_ENCODE_RELATIVE_PID_MAX_OUT, YAW_ENCODE_RELATIVE_PID_MAX_IOUT, YAW_ENCODE_RELATIVE_PID_KP, YAW_ENCODE_RELATIVE_PID_KI, YAW_ENCODE_RELATIVE_PID_KD);
 
-    // »ñÈ¡YawÖá - 4310µç»ú²âÁ¿Êý¾ÝÖ¸Õë
-    init->yaw.motor_measure.motor_DM = get_dm_motor_measure_point(2);
-    // »ñÈ¡PitchÖá - 6020µç»ú²âÁ¿Êý¾ÝÖ¸Õë
-    init->pitch.motor_measure.motor_DJI = get_motor_measure_point();
+    // ï¿½ï¿½È¡Yawï¿½ï¿½ - GM6020ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ (dji_motor[1])
+    init->yaw.motor_measure.motor_DJI = get_motor_measure_point(1);
+    // ï¿½ï¿½È¡Pitchï¿½ï¿½ - 6020ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ (dji_motor[0])
+    init->pitch.motor_measure.motor_DJI = get_motor_measure_point(0);
 
-    //ÍÓÂÝÒÇÊý¾ÝÖ¸Õë»ñÈ¡
-    init->gimbal_INT_angle_point = get_INS_angle_point();
-    init->gimbal_INT_gyro_point = get_gyro_data_point();
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½È¡
+    init->gimbal_INT_angle_point = get_whx_angle_point();
+    init->gimbal_INT_gyro_point = get_whx_gyro_point();
 
-    //¸üÐÂÊý¾Ý
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     gimbal_feedback_update(init);
 
-    //»ñÈ¡Ò£¿ØÆ÷Êý¾ÝÖ¸Õë
-    init->gimbal_rc_ctrl = get_remote_control_point();
+    //ï¿½ï¿½È¡Ò£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½
+    init->gimbal_rc_ctrl = get_i6x_point();
 
     init->mode = FORCELESS_MODE;
     init->last_mode = FORCELESS_MODE;
@@ -119,14 +116,14 @@ void gimbal_init(gimbal_control_t * init){
     init->pitch.relative_angle_set = init->pitch.relative_angle;
     init->pitch.motor_gyro_set = init->pitch.motor_gyro;
 
-    init->initial_yaw_motor_angle = init->yaw.motor_measure.motor_DM->position;
+    init->initial_yaw_motor_angle = init->yaw.motor_measure.motor_DJI->Now_Angle;
     init->initial_pitch_motor_angle = init->pitch.motor_measure.motor_DJI->Now_Angle;
 
 }
 
 /**
- * @brief Ä£Ê½ÇÐ»»×´Ì¬±£´æ
- * @param engineer_mode_change ¿ØÖÆÊý¾Ý½á¹¹ÌåÖ¸Õë
+ * @brief Ä£Ê½ï¿½Ð»ï¿½×´Ì¬ï¿½ï¿½ï¿½ï¿½
+ * @param engineer_mode_change ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý½á¹¹ï¿½ï¿½Ö¸ï¿½ï¿½
  */
 void gimbal_mode_change_control_transit(gimbal_control_t* mode_change)
 {
@@ -134,12 +131,12 @@ void gimbal_mode_change_control_transit(gimbal_control_t* mode_change)
         return;
     }
     if (mode_change->last_mode != INIT_MODE && mode_change->mode == INIT_MODE)
-    {  // ÇÐ»»µ½³õÊ¼»¯Ä£Ê½
+    {  // ï¿½Ð»ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½Ä£Ê½
         mode_change->yaw.relative_angle_set = mode_change->yaw.relative_angle;
         mode_change->pitch.relative_angle_set = mode_change->pitch.relative_angle;
     }
     if (mode_change->last_mode != REMOTE_MODE && mode_change->mode == REMOTE_MODE)
-    {  // ÇÐ»»µ½Ò£¿ØÄ£Ê½
+    {  // ï¿½Ð»ï¿½ï¿½ï¿½Ò£ï¿½ï¿½Ä£Ê½
 
         // mode_change->yaw.absolute_angle_set = mode_change->yaw.absolute_angle;
         // mode_change->pitch.absolute_angle_set = mode_change->pitch.absolute_angle;
@@ -147,15 +144,15 @@ void gimbal_mode_change_control_transit(gimbal_control_t* mode_change)
         mode_change->pitch.absolute_angle_set = mode_change->pitch.absolute_angle_set;
     }
     else if (mode_change->last_mode != AUTO_MODE && mode_change->mode == AUTO_MODE)
-    {    // ÇÐ»»µ½×Ô¶¯Ä£Ê½
-        //! ÏÈÊÔÒ»ÏÂ£¬»¹Ã»ÏëÍ¨ÎªÉ¶ÕâÑù¸Ä
+    {    // ï¿½Ð»ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½Ä£Ê½
+        //! ï¿½ï¿½ï¿½ï¿½Ò»ï¿½Â£ï¿½ï¿½ï¿½Ã»ï¿½ï¿½Í¨ÎªÉ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         // mode_change->yaw.absolute_angle_set = mode_change->yaw.absolute_angle;
         // mode_change->pitch.absolute_angle_set = mode_change->pitch.absolute_angle;
         mode_change->yaw.absolute_angle_set = mode_change->yaw.absolute_angle_set;
         mode_change->pitch.absolute_angle_set = mode_change->pitch.absolute_angle_set;
     }
     else if (mode_change->last_mode != FORCELESS_MODE && mode_change->mode == FORCELESS_MODE)
-    {    // ÇÐ»»µ½ÎÞÁ¦Ä£Ê½
+    {    // ï¿½Ð»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½
         mode_change->yaw.absolute_angle_set = mode_change->yaw.absolute_angle_set;
         mode_change->pitch.absolute_angle_set = mode_change->pitch.absolute_angle_set;
     }
@@ -166,7 +163,7 @@ void gimbal_mode_change_control_transit(gimbal_control_t* mode_change)
 #define PITCH_TURN 1
 
 /**
- * @brief Êý¾Ý¸üÐÂº¯Êý
+ * @brief ï¿½ï¿½ï¿½Ý¸ï¿½ï¿½Âºï¿½ï¿½ï¿½
  * @param feedback_update
  */
 void gimbal_feedback_update(gimbal_control_t* feedback_update){
@@ -174,35 +171,28 @@ void gimbal_feedback_update(gimbal_control_t* feedback_update){
     {
         return;
     }
-    //ÔÆÌ¨Êý¾Ý¸üÐÂ
-    feedback_update->pitch.absolute_angle = *(feedback_update->gimbal_INT_angle_point + INS_PITCH_ADDRESS_OFFSET);
+    //ï¿½ï¿½Ì¨ï¿½ï¿½ï¿½Ý¸ï¿½ï¿½ï¿½
+    feedback_update->pitch.absolute_angle = *(feedback_update->gimbal_INT_angle_point + WHX_INS_PITCH_ADDRESS_OFFSET);
 
 #if PITCH_TURN
     // feedback_update->pitch.relative_angle = (-feedback_update->pitch.motor_measure.motor_DJI->Now_Angle+ feedback_update->initial_pitch_motor_angle);
     feedback_update->pitch.relative_angle = -feedback_update->pitch.motor_measure.motor_DJI->Now_Angle;
     #else
-    // ÓÉÓÚ°²×°µÄÊÇGM6020µç»ú£¬µç»úµÄÏà¶Ô½Ç¶ÈÐèÒª×ª»»
+    // ï¿½ï¿½ï¿½Ú°ï¿½×°ï¿½ï¿½ï¿½ï¿½GM6020ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô½Ç¶ï¿½ï¿½ï¿½Òª×ªï¿½ï¿½
     feedback_update->pitch.relative_angle = feedback_update->pitch.motor_measure.motor_DJI->Now_Angle;
 #endif
 
-    feedback_update->pitch.motor_gyro = *(feedback_update->gimbal_INT_gyro_point + INS_GYRO_Y_ADDRESS_OFFSET);
+    feedback_update->pitch.motor_gyro = *(feedback_update->gimbal_INT_gyro_point + WHX_INS_GYRO_Y_ADDRESS_OFFSET);
 
-    feedback_update->yaw.absolute_angle = *(feedback_update->gimbal_INT_angle_point + INS_YAW_ADDRESS_OFFSET);
+    feedback_update->yaw.absolute_angle = *(feedback_update->gimbal_INT_angle_point + WHX_INS_YAW_ADDRESS_OFFSET);
 
-#if YAW_TURN
-    feedback_update->gimbal_yaw_motor.relative_angle = -motor_ecd_to_angle_change(feedback_update->gimbal_yaw_motor.gimbal_motor_measure->ecd,
-                                                                                        feedback_update->gimbal_yaw_motor.offset_ecd);
-
-#else
-    // feedback_update->yaw.relative_angle = feedback_update->yaw.motor_measure.motor_DM->position - feedback_update->initial_yaw_motor_angle;
-    feedback_update->yaw.relative_angle = feedback_update->yaw.motor_measure.motor_DM->position;
-#endif
-    feedback_update->yaw.motor_gyro = arm_cos_f32(feedback_update->pitch.relative_angle) * (*(feedback_update->gimbal_INT_gyro_point + INS_GYRO_Z_ADDRESS_OFFSET))
-                                                   - arm_sin_f32(feedback_update->pitch.relative_angle) * (*(feedback_update->gimbal_INT_gyro_point + INS_GYRO_X_ADDRESS_OFFSET));
+    feedback_update->yaw.relative_angle = feedback_update->yaw.motor_measure.motor_DJI->Now_Angle;
+    feedback_update->yaw.motor_gyro = arm_cos_f32(feedback_update->pitch.relative_angle) * (*(feedback_update->gimbal_INT_gyro_point + WHX_INS_GYRO_Z_ADDRESS_OFFSET))
+                                                   - arm_sin_f32(feedback_update->pitch.relative_angle) * (*(feedback_update->gimbal_INT_gyro_point + WHX_INS_GYRO_X_ADDRESS_OFFSET));
 }
 
 
-//½Ç¶ÈÏÞ·ùº¯Êý£¬·ÀÖ¹µç»ú¶Â×ª
+//ï¿½Ç¶ï¿½ï¿½Þ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½ï¿½×ª
 float gimbal_angle_limit(float angle,float max,float min)
 {
     float target_angle = angle;
@@ -218,8 +208,8 @@ float gimbal_angle_limit(float angle,float max,float min)
     return target_angle;
 }
 /**
-  * @brief          ÉèÖÃÔÆÌ¨¿ØÖÆÄ£Ê½£¬Ö÷ÒªÔÚ'gimbal_behaviour_mode_set'º¯ÊýÖÐ¸Ä±ä
-  * @param[out]     gimbal_set_mode:"gimbal_control"±äÁ¿Ö¸Õë.
+  * @brief          ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¨ï¿½ï¿½ï¿½ï¿½Ä£Ê½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½'gimbal_behaviour_mode_set'ï¿½ï¿½ï¿½ï¿½ï¿½Ð¸Ä±ï¿½
+  * @param[out]     gimbal_set_mode:"gimbal_control"ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½.
   * @retval         none
   */
 void gimbal_mode_set(gimbal_control_t* set_mode)
@@ -238,8 +228,8 @@ void gimbal_mode_set(gimbal_control_t* set_mode)
   * @retval         none
   */
 /**
-  * @brief          ³õÊ¼»¯"gimbal_control"±äÁ¿£¬°üÀ¨pid³õÊ¼»¯£¬ Ò£¿ØÆ÷Ö¸Õë³õÊ¼»¯£¬ÔÆÌ¨µç»úÖ¸Õë³õÊ¼»¯£¬ÍÓÂÝÒÇ½Ç¶ÈÖ¸Õë³õÊ¼»¯
-  * @param[out]     gimbal_init:"gimbal_control"±äÁ¿Ö¸Õë.
+  * @brief          ï¿½ï¿½Ê¼ï¿½ï¿½"gimbal_control"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½pidï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ Ò£ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¨ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç½Ç¶ï¿½Ö¸ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½
+  * @param[out]     gimbal_init:"gimbal_control"ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½.
   * @retval         none
   */
 static void gimbal_PID_init(gimbal_PID_t *pid, fp32 maxout, fp32 max_iout, fp32 kp, fp32 ki, fp32 kd)
@@ -274,9 +264,9 @@ static fp32 gimbal_PID_calc(gimbal_PID_t *pid, fp32 get, fp32 set, fp32 error_de
     pid->Pout = pid->kp * pid->err;
     pid->Iout += pid->ki * pid->err;
     pid->Dout = pid->kd * error_delta;
-    abs_limit(&pid->Iout, pid->max_iout);
+    pid->Iout = abs_limit(pid->Iout, pid->max_iout);
     pid->out = pid->Pout + pid->Iout + pid->Dout;
-    abs_limit(&pid->out, pid->max_out);
+    pid->out = abs_limit(pid->out, pid->max_out);
     return pid->out;
 }
 
@@ -286,8 +276,8 @@ static fp32 gimbal_PID_calc(gimbal_PID_t *pid, fp32 get, fp32 set, fp32 error_de
   * @retval         none
   */
 /**
-  * @brief          ÔÆÌ¨PIDÇå³ý£¬Çå³ýpidµÄout,iout
-  * @param[out]     gimbal_pid_clear:"gimbal_control"±äÁ¿Ö¸Õë.
+  * @brief          ï¿½ï¿½Ì¨PIDï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½pidï¿½ï¿½out,iout
+  * @param[out]     gimbal_pid_clear:"gimbal_control"ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½.
   * @retval         none
   */
 static void gimbal_PID_clear(gimbal_PID_t *gimbal_pid_clear)
@@ -300,27 +290,27 @@ static void gimbal_PID_clear(gimbal_PID_t *gimbal_pid_clear)
     gimbal_pid_clear->out = gimbal_pid_clear->Pout = gimbal_pid_clear->Iout = gimbal_pid_clear->Dout = 0.0f;
 }
 
-// ==================== ¿ØÖÆ²ßÂÔÊµÏÖ ====================
+// ==================== ï¿½ï¿½ï¿½Æ²ï¿½ï¿½ï¿½Êµï¿½ï¿½ ====================
 
 /**
- * @brief Õý³£¿ØÖÆ²ßÂÔ - Ë«»·PID¿ØÖÆ
+ * @brief ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ²ï¿½ï¿½ï¿½ - Ë«ï¿½ï¿½PIDï¿½ï¿½ï¿½ï¿½
  */
 /**
- * @brief Õý³£¿ØÖÆ²ßÂÔ - ½Ç¶È»·+ËÙ¶È»·Ë«»·PID¿ØÖÆ
- * @param control ÔÆÌ¨¿ØÖÆÊý¾Ý½á¹¹ÌåÖ¸Õë
- * @note Ê¹ÓÃ½Ç¶È»·(Íâ»·)Êä³ö½ÇËÙ¶ÈÉè¶¨Öµ£¬ËÙ¶È»·(ÄÚ»·)Êä³öµçÁ÷Öµ
+ * @brief ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ²ï¿½ï¿½ï¿½ - ï¿½Ç¶È»ï¿½+ï¿½Ù¶È»ï¿½Ë«ï¿½ï¿½PIDï¿½ï¿½ï¿½ï¿½
+ * @param control ï¿½ï¿½Ì¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý½á¹¹ï¿½ï¿½Ö¸ï¿½ï¿½
+ * @note Ê¹ï¿½Ã½Ç¶È»ï¿½(ï¿½â»·)ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ù¶ï¿½ï¿½è¶¨Öµï¿½ï¿½ï¿½Ù¶È»ï¿½(ï¿½Ú»ï¿½)ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ
  */
 void NormalControlStrategy(gimbal_control_t* control) {
     if (control == NULL) return;
 
-    // ==================== PitchÖá GM6020 Ë«»·PID¿ØÖÆ ====================
-    // ½Ç¶È»·PID¼ÆËã£º½Ç¶ÈÎó²î ¡ú ½ÇËÙ¶ÈÉè¶¨Öµ
+    // ==================== Pitchï¿½ï¿½ GM6020 Ë«ï¿½ï¿½PIDï¿½ï¿½ï¿½ï¿½ ====================
+    // ï¿½Ç¶È»ï¿½PIDï¿½ï¿½ï¿½ã£ºï¿½Ç¶ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Ù¶ï¿½ï¿½è¶¨Öµ
     control->pitch.motor_gyro_set = gimbal_PID_calc(&control->pitch.gimbal_motor_absolute_angle_pid,
                                                     control->pitch.absolute_angle,
                                                     control->pitch.absolute_angle_set,
                                                     control->pitch.motor_gyro);
 
-    // ËÙ¶È»·PID¼ÆËã£ºËÙ¶ÈÎó²î ¡ú µçÁ÷Öµ
+    // ï¿½Ù¶È»ï¿½PIDï¿½ï¿½ï¿½ã£ºï¿½Ù¶ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Öµ
     if (control->pitch.motor_measure.motor_DJI != NULL) {
         control->pitch.given_current = PID_calc(&control->pitch.speed_pid,
                                                 control->pitch.motor_gyro,
@@ -329,15 +319,15 @@ void NormalControlStrategy(gimbal_control_t* control) {
         control->pitch.given_current = 0;
     }
 
-    // ==================== YawÖá DM4310 Ë«»·PID¿ØÖÆ ====================
-    // ½Ç¶È»·PID¼ÆËã£º½Ç¶ÈÎó²î ¡ú ½ÇËÙ¶ÈÉè¶¨Öµ
+    // ==================== Yawï¿½ï¿½ GM6020 Ë«ï¿½ï¿½PIDï¿½ï¿½ï¿½ï¿½ ====================
+    // ï¿½Ç¶È»ï¿½PIDï¿½ï¿½ï¿½ã£ºï¿½Ç¶ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Ù¶ï¿½ï¿½è¶¨Öµ
     control->yaw.motor_gyro_set = gimbal_PID_calc(&control->yaw.gimbal_motor_absolute_angle_pid,
                                                   control->yaw.absolute_angle,
                                                   control->yaw.absolute_angle_set,
                                                   control->yaw.motor_gyro);
 
-    // ËÙ¶È»·PID¼ÆËã£ºËÙ¶ÈÎó²î ¡ú µçÁ÷Öµ
-    if (control->yaw.motor_measure.motor_DM != NULL) {
+    // ï¿½Ù¶È»ï¿½PIDï¿½ï¿½ï¿½ã£ºï¿½Ù¶ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Öµ
+    if (control->yaw.motor_measure.motor_DJI != NULL) {
         control->yaw.given_current = PID_calc(&control->yaw.speed_pid,
                                               control->yaw.motor_gyro,
                                               control->yaw.motor_gyro_set);
@@ -347,53 +337,43 @@ void NormalControlStrategy(gimbal_control_t* control) {
 }
 
 /**
- * @brief ÎÞÁ¦Ä£Ê½¿ØÖÆ²ßÂÔ - Êä³ö0µçÁ÷
+ * @brief ï¿½ï¿½ï¿½ï¿½Ä£Ê½ï¿½ï¿½ï¿½Æ²ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½0ï¿½ï¿½ï¿½ï¿½
  */
 void ForcelessControlStrategy(gimbal_control_t* control) {
     if (control == NULL) return;
 
-    // Ö±½ÓÊä³ö0µçÁ÷£¬µç»ú×ÔÓÉ×ª¶¯
-    control->yaw.torque = 0;
+    // Ö±ï¿½ï¿½ï¿½ï¿½ï¿½0ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½
+    control->yaw.given_current = 0;
     control->pitch.given_current = 0;
 
 }
 
 /**
- * @brief ³õÊ¼»¯¿ØÖÆ²ßÂÔ
+ * @brief ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½Æ²ï¿½ï¿½ï¿½
  */
 void InitControlStrategy(gimbal_control_t* control) {
     if (control == NULL) return;
 
-    // Ê¹ÓÃÕý³£µÄPID¿ØÖÆ£¬µ«Ä¿±ê½Ç¶ÈÉèÎª0£¨³õÊ¼»¯Î»ÖÃ£©
+    // Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½PIDï¿½ï¿½ï¿½Æ£ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½Ç¶ï¿½ï¿½ï¿½Îª0ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½Î»ï¿½Ã£ï¿½
     NormalControlStrategy(control);
 }
 
 /**
- * @brief ÔÆÌ¨Î»ÖÃ¿ØÖÆº¯Êý
- * @param control ÔÆÌ¨¿ØÖÆÊý¾Ý½á¹¹ÌåÖ¸Õë
+ * @brief ï¿½ï¿½Ì¨Î»ï¿½Ã¿ï¿½ï¿½Æºï¿½ï¿½ï¿½
+ * @param control ï¿½ï¿½Ì¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý½á¹¹ï¿½ï¿½Ö¸ï¿½ï¿½
  */
 void gimbal_position_control(gimbal_control_t *control){
     if (control == NULL)
         return;
 
-    // µ÷ÓÃµ±Ç°¿ØÖÆ²ßÂÔ
+    // ï¿½ï¿½ï¿½Ãµï¿½Ç°ï¿½ï¿½ï¿½Æ²ï¿½ï¿½ï¿½
     if (control->control_strategy != NULL) {
         control->control_strategy(control);
     } else {
-        // Ä¬ÈÏ²ßÂÔ£ºÎÞÁ¦Ä£Ê½
+        // Ä¬ï¿½Ï²ï¿½ï¿½Ô£ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½
         ForcelessControlStrategy(control);
     }
 
-    static int time = 0;
-    time++;
-    if(time==1)
-    {
-        MIT_CtrlMotor(&hcan1, 0x02, 0, 0.0f, 0, 0, control->yaw.given_current);
-    }
-    else if (time==2)
-    {
-        //CAN_cmd_DJI_control(0,0,0,0);
-        CAN_cmd_DJI_control((int16_t)(-control->pitch.given_current),0,0,0);
-        time= 0;
-    }
+    // Yaw(pitch)ï¿½ï¿½0x1FF -> 0x205/0x206 ï¿½Ö±ï¿½ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½GM6020
+    CAN_cmd_DJI_control((int16_t)(-control->pitch.given_current), (int16_t)(control->yaw.given_current), 0, 0);
 }

@@ -58,7 +58,7 @@ target_sources(${CMAKE_PROJECT_NAME} PRIVATE
     whx_imu/Bsp/bsp_dwt.c
     whx_imu/Bsp/bsp_PWM.c
 
-    USER/application/Task/INS_task.c
+    # USER/application/Task/INS_task.c
 
     # ${SYSVIEW_ROOT_DIR}/SEGGER_SYSVIEW.c
     # ${SYSVIEW_ROOT_DIR}/SEGGER_SYSVIEW_Config_FreeRTOS.c
@@ -68,8 +68,10 @@ target_sources(${CMAKE_PROJECT_NAME} PRIVATE
 )
 
 file(GLOB_RECURSE USER_SOURCES
-        "USER/**/*.*"
+        "USER/**/*.c"
 )
+
+target_sources(${CMAKE_PROJECT_NAME} PRIVATE ${USER_SOURCES})
 
 # Add include paths
 target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
@@ -86,17 +88,15 @@ target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
 
     USER/application/Task/
     USER/application/module/gimbal/
-    USER/application/module/imu/
     USER/application/callback/
     USER/components/algorithm/
     USER/components/algorithm/include/
     USER/components/bsp/
     USER/components/controller/
-    USER/components/device/bmi088/
-    USER/components/device/ist8310/
     USER/components/device/DM/
     USER/components/device/DT7/
     USER/components/device/DJI_Motor/
+    USER/components/device/i6x/
     USER/components/support/
 )
 
@@ -104,9 +104,9 @@ target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
 target_compile_definitions(${CMAKE_PROJECT_NAME} PRIVATE
     # Add user defined symbols
     ARM_MATH_CM4
-    ARM_MATH_DSP   
-    ARM_MATH_MATRIX_CHECK      
-    ARM_MATH_ROUNDING  
+    ARM_MATH_DSP
+    ARM_MATH_MATRIX_CHECK
+    ARM_MATH_ROUNDING
 )
 
 # Remove wrong libob.a library dependency when using cpp files

@@ -1,9 +1,9 @@
 /**
   ****************************(C) COPYRIGHT 2016 DJI****************************
   * @file       remote_control.c/h
-  * @brief      Ò£¿ØÆ÷´¦Àí£¬Ò£¿ØÆ÷ÊÇÍ¨¹ýÀàËÆSBUSµÄÐ­Òé´«Êä£¬ÀûÓÃDMA´«Êä·½Ê½½ÚÔ¼CPU
-  *             ×ÊÔ´£¬ÀûÓÃ´®¿Ú¿ÕÏÐÖÐ¶ÏÀ´À­Æð´¦Àíº¯Êý£¬Í¬Ê±Ìá¹©Ò»Ð©µôÏßÖØÆôDMA£¬´®¿Ú
-  *             µÄ·½Ê½±£Ö¤ÈÈ²å°ÎµÄÎÈ¶¨ÐÔ¡£
+  * @brief      Ò£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½SBUSï¿½ï¿½Ð­ï¿½é´«ï¿½ä£¬ï¿½ï¿½ï¿½ï¿½DMAï¿½ï¿½ï¿½ä·½Ê½ï¿½ï¿½Ô¼CPU
+  *             ï¿½ï¿½Ô´ï¿½ï¿½ï¿½ï¿½ï¿½Ã´ï¿½ï¿½Ú¿ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¬Ê±ï¿½á¹©Ò»Ð©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½DMAï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+  *             ï¿½Ä·ï¿½Ê½ï¿½ï¿½Ö¤ï¿½È²ï¿½Îµï¿½ï¿½È¶ï¿½ï¿½Ô¡ï¿½
   * @note
   * @history
   *  Version    Date            Author          Modification
@@ -20,24 +20,25 @@
 #ifndef REMOTE_CONTROL_H
 #define REMOTE_CONTROL_H
 #include "struct_typedef.h"
+#include "i6x.h"
 #include "bsp_rc.h"
 #include "main.h"
 
 #define SBUS_RX_BUF_NUM 36u
 
-#define RC_FRAME_LENGTH 18u
+#define RC_FRAME_LENGTH I6X_FRAME_LENGTH
 
 #define RC_CH_VALUE_MIN         ((uint16_t)364)
 #define RC_CH_VALUE_OFFSET      ((uint16_t)1024)
 #define RC_CH_VALUE_MAX         ((uint16_t)1684)
 
-/* ----------------------- RC Switch Definition----------------------------- */
-#define RC_SW_UP                ((uint16_t)1)
-#define RC_SW_MID               ((uint16_t)3)
-#define RC_SW_DOWN              ((uint16_t)2)
-#define switch_is_down(s)       (s == RC_SW_DOWN)
-#define switch_is_mid(s)        (s == RC_SW_MID)
-#define switch_is_up(s)         (s == RC_SW_UP)
+/* ----------------------- RC Switch Definition (i6x)----------------------------- */
+#define RC_SW_UP                I6X_SW_UP       //  1
+#define RC_SW_MID               I6X_SW_MID      //  0
+#define RC_SW_DOWN              I6X_SW_DOWN     // -1
+#define switch_is_down(s)       i6x_switch_is_down(s)
+#define switch_is_mid(s)        i6x_switch_is_mid(s)
+#define switch_is_up(s)         i6x_switch_is_up(s)
 /* ----------------------- PC Key Definition-------------------------------- */
 #define KEY_PRESSED_OFFSET_W            ((uint16_t)1 << 0)
 #define KEY_PRESSED_OFFSET_S            ((uint16_t)1 << 1)
@@ -83,6 +84,7 @@ typedef __attribute__((__packed__)) struct
 
 extern void remote_control_init(void);
 extern const RC_ctrl_t *get_remote_control_point(void);
+extern i6x_ctrl_t *get_i6x_point(void);
 extern uint8_t RC_data_is_error(void);
 extern void slove_RC_lost(void);
 extern void slove_data_error(void);

@@ -11,7 +11,8 @@
 
 
 
-#define DJI_MOTOR_6020_RXID  0x205  //大疆6020电机反馈ID
+#define DJI_MOTOR_6020_PITCH_RXID  0x205  //大疆6020电机反馈ID (Pitch)
+#define DJI_MOTOR_6020_YAW_RXID  0x206    //大疆6020电机反馈ID (Yaw)
 #define Encoder_Num_Per_Round 8192  //编码器每圈数
 
 #define RPM_TO_RADPS (2.0f * 3.14159f / 60.0f)  //RPM换算到rad/s
@@ -37,8 +38,8 @@ typedef struct
 } motor_measure_t;
 
 void dji_motor_can_callback(uint32_t can_id, const uint8_t* rx_data);   //大疆电机数据处理回调函数
-void DJI_6020_data_Get(uint8_t* data);    //大疆6020电机反馈数据处理
-const motor_measure_t* get_motor_measure_point();  //获取指定索引的电机结构体指针
+void DJI_6020_data_Get(motor_measure_t* motor, const uint8_t* data);    //大疆6020电机反馈数据处理
+const motor_measure_t* get_motor_measure_point(uint8_t i);  //获取指定索引的电机结构体指针
 /**
  * 大疆电机控制函数
  * @param target1

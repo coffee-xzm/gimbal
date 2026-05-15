@@ -1,6 +1,5 @@
 #include "Can_Callback.h"
 #include "DJI_Motor.h"
-#include "DM_4310.h"
 
 //fifo0 CAN中断
 void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
@@ -12,18 +11,18 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
     if(hcan->Instance == CAN1) {
         //标识符比对
         switch (rx_header.StdId) {
-            //大疆电机
-            case Joint4_6020_RXID: //0x205
+            //大疆电机 - Pitch (0x205)
+            case CAN1_6020_PITCH_RXID:
             {
                 dji_motor_can_callback(rx_header.StdId, _rx_data);  //大疆电机回调函数
                 break;
             }
-            //达妙电机
-            case CAN1_4310_YAW_RXID: //0x12
-                {
-                dm_motor_can_callback(rx_header.StdId, _rx_data);  //达妙电机回调函数
-                    break;
-                }
+            //大疆电机 - Yaw (0x206)
+            case CAN1_6020_YAW_RXID:
+            {
+                dji_motor_can_callback(rx_header.StdId, _rx_data);  //大疆电机回调函数
+                break;
+            }
 
             default:
             {
